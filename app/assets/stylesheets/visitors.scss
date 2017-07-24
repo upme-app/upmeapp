@@ -23,7 +23,7 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  background-image: url("landing/bg-wide.png");
+  background-image: image-url("landing/bg-wide.png");
   background-size: 100% auto;
   background-position: right 15%;
   margin: 0px;
@@ -65,7 +65,7 @@
 
 #bottom-logo {
   position: absolute;
-  background-image: url("landing/logo.png");
+  background-image: image-url("landing/logo.png");
   width: 200px;
   height: 80px;
   bottom: 15px;
