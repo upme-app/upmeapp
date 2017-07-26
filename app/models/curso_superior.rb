@@ -1,0 +1,2 @@
+class CursoSuperior < ApplicationRecord
+end

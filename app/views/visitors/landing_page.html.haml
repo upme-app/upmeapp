@@ -3,21 +3,37 @@
     .landing-content
       .title.big-title Inturma agora é UpMe!
       %br
-      .title.med-title Logo logo estaremos no ar
+      .title.med-title Encontre clientes para seus trabalhos de faculdade
       %br
       %br
 
       %div
-        .title.ns-title Fique por dentro!
 
-        %form
-          %div
-            %input.ns-input{placeholder: 'escreva seu e-mail'}
-            %button.ns-btn Enviar
+        .ns-form-s1
+          %button.upme-btn-md.ns-form-s1-btn{'data-quem' => 'Aluno'} Sou aluno
+          %button.upme-btn-md.ns-form-s1-btn{'data-quem' => 'Professor'} Sou professor
+          %button.upme-btn-md.ns-form-s1-btn{'data-quem' => 'Empresa'} Sou empresa/organização
+
+        .ns-form-s2
+          %form.ns-form-s2-form{action: '#'}
+            %input.upme-input-md.ns-form-s2-input#ns_form_s2_sel_curso_input{placeholder: "Qual o curso de interesse?"}
+
+        .ns-form-s3
+          %h3.upme-med-title
+          %input.upme-input-md.ns-form-s3-input{placeholder: "Escreva seu e-mail"}
+          %button.ns-submit-btn.upme-btn-md Peça seu convite!
+
+        .ns-form-success
+          = 'Obrigada! Em breve mandamos notícias :)'
+
+        .ns-form-error
+          = 'Um erro ocorreu.'
+          %br
+          = link_to 'Tentar novamente.', root_path
 
       %br
-      %iframe.video-yt{src: 'https://www.youtube.com/embed/Ehr_MLxgFZY', frameborder: '0'}
-      %iframe.video-yt{src: 'https://www.youtube.com/embed/ZZciPmuiQ-0', frameborder: '0'}
+      /%iframe.video-yt{src: 'https://www.youtube.com/embed/Ehr_MLxgFZY', frameborder: '0'}
+      /%iframe.video-yt{src: 'https://www.youtube.com/embed/ZZciPmuiQ-0', frameborder: '0'}
 
 
 #bottom-label Comece profissional
