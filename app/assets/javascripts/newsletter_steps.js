@@ -11,20 +11,20 @@ document.addEventListener("turbolinks:load", function() {
 
         $('.ns-form-s1-btn').click(function() {
             ns_form_s1.hide();
-            ns_form_s2.show().animateCss("fadeIn");
+            ns_form_s3.show().animateCss("fadeIn");
             quem = $(this).attr('data-quem');
-            $('.ns-form-s2-input').focus();
+            $('.ns-form-s3-input').focus();
         });
 
         // step 2
         $.get('/cursos-superiores').done(function(data) {
-            $("#ns_form_s2_sel_curso_input").autocomplete({
-                source: data
-            });
+            //$("#ns_form_s2_sel_curso_input").autocomplete({
+            //    source: data
+            //});
 
-            $('.ui-autocomplete').on('click', '.ui-menu-item', function(){
-                step3();
-            });
+            //$('.ui-autocomplete').on('click', '.ui-menu-item', function(){
+            //    step3();
+            //});
         });
 
         $('body').keypress(function(event) {
@@ -43,18 +43,20 @@ document.addEventListener("turbolinks:load", function() {
         });
 
         function ns_submit() {
-            $.post('/save_quiz', {
-                quem: quem,
-                email: $('.ns-form-s3-input').val(),
-                curso: $('.ns-form-s2-input').val()
-            }, function(data) {
-                ns_form_s3.hide();
-                if(data == "success") {
-                    show_success_finish();
-                } else {
-                    show_error_finish();
-                }
-            });
+            if($('.ns-form-s3-input').val() != "") {
+                $.post('/save_quiz', {
+                    quem: quem,
+                    email: $('.ns-form-s3-input').val(),
+                    curso: $('.ns-form-s2-input').val()
+                }, function(data) {
+                    ns_form_s3.hide();
+                    if(data == "success") {
+                        show_success_finish();
+                    } else {
+                        show_error_finish();
+                    }
+                });
+            }
         }
 
         function step3() {
