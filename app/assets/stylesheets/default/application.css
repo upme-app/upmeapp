@@ -1,0 +1,16 @@
+.post {
+    font-family: Sans-Serif;
+    line-height: 1.5;
+    color: #333;
+    max-width: 970px;
+    margin: 0px auto;
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: left;
+}
+
+.post figure {
+    text-align: center;
+}
