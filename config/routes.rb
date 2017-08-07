@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  mount Spina::Engine => '/blog'
 
-
+  mount Spina::Engine => '/blog', as: :blog_root
   root 'visitors#landing_page'
 
 

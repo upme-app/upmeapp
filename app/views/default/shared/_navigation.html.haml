@@ -1,5 +1,24 @@
 - pages = current_spina_user.present? ? Spina::Page.active : Spina::Page.live
-- menu = Spina::Pages::MenuPresenter.new(pages.in_menu.arrange(order: :position), self, @page)
-- menu.list_class = 'nav'
-- menu.list_item_css = 'nav-item'
-= menu.to_html
+
+
+- #menu = Spina::Pages::MenuPresenter.new(pages.in_menu.arrange(order: :position), self, @page)
+- #menu.list_class = 'nav'
+- #menu.list_item_css = 'nav-item'
+= #menu.to_html
+
+- #pages.each do |page|
+= #link_to page.url_title, '/blog' + page.materialized_path
+
+
+
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{href: '/'}
+        %img{:alt => "Brand", :src => image_url('landing/logo'), height: 20}/
+
+    %ul.nav.navbar-nav.navbar-left
+      %li{class: action_name == 'homepage' ? 'active' : ''}
+        %a{href: '/blog'}
+          Blog
+          %span.sr-only (current)

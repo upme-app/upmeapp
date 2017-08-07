@@ -1,3 +1,11 @@
-%h1= @page.title
-= @page.content(:text).try(:html_safe)
+.container
+  .row
+    .col-md-12.text-center
+      %h1.text-center= @page.title
+
+      %img{src: @page.content(:post_logo).file}
+    .col-md-12
+      %br
+      = @page.content(:text).try(:html_safe)
+
 
