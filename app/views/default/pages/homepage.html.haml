@@ -1,14 +1,13 @@
 %h1= @page.title
 = @page.content(:text).try(:html_safe)
 
-
 .container
   - pages = current_spina_user.present? ? Spina::Page.active : Spina::Page.live
 
   .row
     - pages.each do |page|
-      - if page.content(:post_logo)
+      - if page.ontent(:post_logo)
         = link_to '/blog' + page.materialized_path do
-          .col-md-6{style: 'height: 280px;'}
+          .col-md-12{style: 'height: 280px;'}
             %h1= page.title
             %img{src: page.content(:post_logo).file}
