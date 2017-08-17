@@ -5,9 +5,20 @@
   - pages = current_spina_user.present? ? Spina::Page.active : Spina::Page.live
 
   .row
-    - pages.each do |page|
-      - if page.ontent(:post_logo)
-        = link_to '/blog' + page.materialized_path do
-          .col-md-12{style: 'height: 280px;'}
-            %h1= page.title
-            %img{src: page.content(:post_logo).file}
+    .col-md-8
+      - pages.each do |page|
+        - if page.content(:post_logo)
+          .row
+            .col-md-12{style: 'height: 280px;'}
+              = link_to '/blog' + page.materialized_path do
+                %h1= page.title
+                %img{src: page.content(:post_logo).file}
+    .col-md-4
+      - top_page = SpinaCountPageView.top_page_every_time
+      - if top_page
+        .row
+          .col-md-12
+            %h3 Mais visualizado
+            = link_to '/blog' + top_page.materialized_path do
+              %h1= top_page.title
+              %img{src: top_page.content(:post_logo).file}
