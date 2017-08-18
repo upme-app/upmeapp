@@ -20,7 +20,7 @@ class SpinaCountPageView < ApplicationRecord
     count = SpinaCountPageView.select(:page_id).all.group(:page_id).order(:page_id).count(:page_id)
     if count.size > 0
       page_id = count.sort_by { |a, b| b }.last.first
-      return Spina::Page.find(page_id)
+      return Spina::Page.where(id: page_id).first
     end
     nil
   end
