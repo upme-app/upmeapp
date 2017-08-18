@@ -1,13 +1,24 @@
 - SpinaCountPageView.increment(@page, request)
 
+.post-logo-top{style: "background-image: url(#{@page.content(:post_logo).file})"}
+/%img{style: 'width: 100%', src: @page.content(:post_logo).file}
 .container
   .row
-    .col-md-12.text-center
-      %h1.text-center= @page.title
-
-      %img{src: @page.content(:post_logo).file}
-    .col-md-12
-      %br
+    .col-md-8.left-bar.post
+      %h2.post-title= @page.title
+      .row
+        .col-md-12.text-right
+          = @page.created_at
       = @page.content(:text).try(:html_safe)
+
+      %h4 Veja também
+      .row
+        .col-md-6
+          post
+        .col-md-6
+          post
+    .col-md-4.right-bar
+      = render 'default/shared/banner'
+
 
 

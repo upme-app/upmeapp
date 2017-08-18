@@ -9,8 +9,10 @@
     %meta{property: 'og:description', content: 'https://upmeapp.com.br'}
     %meta{property: 'og:image',       content: ''}
 
+    %link{href: 'https://fonts.googleapis.com/css?family=Lato:300,300i,400,900i', rel: 'stylesheet'}
+
     = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
-    = stylesheet_link_tag    'default/application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'default/application.css', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body

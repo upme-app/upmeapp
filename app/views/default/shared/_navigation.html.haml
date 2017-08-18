@@ -13,9 +13,10 @@
 .container{style: 'padding: 15px 10px;'}
   .row
     .col-md-6
-      %img{:alt => "Brand", :src => image_url('landing/logo'), height: 42}
+      = link_to '/' do
+        %img{:alt => "Brand", :src => image_url('landing/logo'), height: 42}
     .col-md-6.text-right
-      %input.form-control{placeholder: "Pesquisa"}
+      %input.input-search-blog{placeholder: "Pesquisa"}
 
   /
     %ul.nav.navbar-nav.navbar-left
@@ -23,6 +24,3 @@
         %a{href: '/blog'}
           Blog
           %span.sr-only (current)
-
-
-.category_bar

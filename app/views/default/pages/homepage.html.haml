@@ -1,5 +1,8 @@
 = @page.content(:text).try(:html_safe)
 
+.category_bar
+
+
 .container
   - pages = current_spina_user.present? ? Spina::Page.active : Spina::Page.live
 
@@ -12,7 +15,7 @@
               .col-md-12
                 = link_to '/blog' + page.materialized_path do
                   %img.first_post_image{src: page.content(:post_logo).file}
-                  %h2= page.title
+                  %h2.huge-title= page.title
             %br
             %br
         - else
@@ -23,15 +26,16 @@
                   %img.post-image{src: page.content(:post_logo).file}
               .col-md-8
                 = link_to '/blog' + page.materialized_path do
-                  %h3= page.title
-                %p= page.content(:subtitle)
+                  %h2.post-list-title= page.title
+                %h3.post-list-subtitle= page.content(:subtitle)
 
     .col-md-4.right-bar
       - top_page = SpinaCountPageView.top_page_every_time
       - if top_page
         .row
           .col-md-12
-            %h3 Mais vistos:
+            %h3.blue-label Mais vistos:
             = link_to '/blog' + top_page.materialized_path do
-              %img{src: top_page.content(:post_logo).file}
-              %h3= top_page.title
+              %img{src: top_page.content(:post_logo).file, width: '100%'}
+              %h3.post-list-title= top_page.title
+            = render 'default/shared/banner'
