@@ -9,8 +9,43 @@
 
 h1, h2, h3, h4, h5, h6 {
     text-align: left;
+    font-family: Lato;
+    color: #333333;
 }
 
 .post figure {
     text-align: center;
+}
+
+
+h2 {
+    line-height: 42px;
+    font-size: 42px;
+}
+
+.first_post_image {
+    width:100%;
+}
+
+.post-image {
+    max-width: 100%;
+}
+
+.category_bar {
+    height: 78px;
+    width:100%;
+    background: #00C7FF;
+    display: block;
+}
+
+.left-bar {
+    padding: 60px 25px 15px 25px;
+}
+
+.right-bar {
+    padding: 60px 25px 15px 25px;
+}
+
+.post-row {
+    padding: 15px;
 }

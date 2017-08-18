@@ -10,15 +10,19 @@
 = #link_to page.url_title, '/blog' + page.materialized_path
 
 
+.container{style: 'padding: 15px 10px;'}
+  .row
+    .col-md-6
+      %img{:alt => "Brand", :src => image_url('landing/logo'), height: 42}
+    .col-md-6.text-right
+      %input.form-control{placeholder: "Pesquisa"}
 
-%nav.navbar.navbar-default
-  .container-fluid
-    .navbar-header
-      %a.navbar-brand{href: '/'}
-        %img{:alt => "Brand", :src => image_url('landing/logo'), height: 20}/
-
+  /
     %ul.nav.navbar-nav.navbar-left
       %li{class: action_name == 'homepage' ? 'active' : ''}
         %a{href: '/blog'}
           Blog
           %span.sr-only (current)
+
+
+.category_bar

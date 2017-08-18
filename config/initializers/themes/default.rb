@@ -8,6 +8,10 @@
     title:          'Text',
     partable_type:  'Spina::Text'
   },{
+      name:           'subtitle',
+      title:          'Subtitle',
+      partable_type:  'Spina::Line'
+  },{
     name:           'post_logo',
     title:          'Post Logo',
     partable_type:  'Spina::Photo'
@@ -22,7 +26,7 @@
     title:        'Default',
     description:  'A simple page',
     usage:        'Use for your content',
-    page_parts:   ['post_logo', 'text']
+    page_parts:   ['post_logo', 'subtitle', 'text']
   }]
 
   theme.custom_pages = [{
