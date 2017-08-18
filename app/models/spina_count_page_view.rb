@@ -18,8 +18,11 @@ class SpinaCountPageView < ApplicationRecord
 
   def self.top_page_every_time
     count = SpinaCountPageView.select(:page_id).all.group(:page_id).order(:page_id).count(:page_id)
-    page_id = count.sort_by { |a, b| b }.last.first
-    Spina::Page.find(page_id)
+    if count
+      page_id = count.sort_by { |a, b| b }.last.first
+      return Spina::Page.find(page_id)
+    end
+    nil
   end
 
 end
