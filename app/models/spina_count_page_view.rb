@@ -22,7 +22,7 @@ class SpinaCountPageView < ApplicationRecord
       page_id = count.sort_by { |a, b| b }.last.first
       return Spina::Page.find(page_id)
     end
-    0
+    nil
   end
 
 end
