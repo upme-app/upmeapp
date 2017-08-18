@@ -8,7 +8,7 @@
       #navbarSupportedContent.collapse.navbar-collapse
         %ul.navbar-nav.ml-auto
           %li.nav-item
-            %a.nav-link{:href => "/blog"} Blog
+            %a.nav-link{href: "/blog", target: '_blank'} Blog
         %form.form-inline
           %a.btn.btn-outline-primary{:href => "#convite"} Pedir convite
 .hero-section
@@ -78,7 +78,7 @@
         %h2.sub-title O que andam falando de nós?
         %a{"data-target" => "#video-globo-modal", "data-toggle" => "modal", :href => "#"}
           = image_tag 'landing/globo.png', class: 'media-logos', height: 60
-        %a{:href => "http://g1.globo.com/sc/santa-catarina/rbs-noticias/videos/t/edicoes/v/iniciativa-conecta-universitarios-ao-mercado-de-trabalho-atraves-da-tecnologia/4960075/", :target => "_blank"}
+        %a{:href => "http://g1.globo.com/sc/santa-catarina/sc-que-da-certo/noticia/2016/07/plataforma-de-tecnologia-social-aproxima-universidade-e-mercado.html", :target => "_blank"}
           = image_tag 'landing/g1.png', class: 'media-logos', height: 60
         %a{:href => "https://medium.com/@millersocent/brazilian-social-enterprise-seeks-to-promote-economic-growth-by-linking-university-student-work-890ea9db26cf", :target => "_blank"}
           = image_tag 'landing/miller-center.png', class: 'media-logos', height: 80
