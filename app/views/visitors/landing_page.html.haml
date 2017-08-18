@@ -1,40 +1,169 @@
-.landing-page
-  .landing-container
-    .landing-content
-      .title.big-title Inturma agora é UpMe!
-      %br
-      .title.med-title Encontre clientes para seus trabalhos de faculdade
-      %br
-      %br
-
-      %div
-
-        .ns-form-s1
-          %button.upme-btn-md.ns-form-s1-btn{'data-quem' => 'Aluno'} Sou aluno
-          %button.upme-btn-md.ns-form-s1-btn{'data-quem' => 'Professor'} Sou professor
-          %button.upme-btn-md.ns-form-s1-btn{'data-quem' => 'Empresa'} Sou empresa/organização
-
-        .ns-form-s2
-          %form.ns-form-s2-form{action: '#'}
-            %input.upme-input-md.ns-form-s2-input#ns_form_s2_sel_curso_input{placeholder: "Qual o curso de interesse?"}
-
-        .ns-form-s3
-          %h3.upme-med-title
-          %input.upme-input-md.ns-form-s3-input{placeholder: "Escreva seu e-mail"}
-          %button.ns-submit-btn.upme-btn-md Peça seu convite!
-
-        .ns-form-success
-          = 'Obrigada! Em breve mandamos notícias :)'
-
-        .ns-form-error
-          = 'Um erro ocorreu.'
+.container
+  .row
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %a.navbar-brand{:href => "#"}
+        = image_tag 'landing/logo.png'
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.ml-auto
+          %li.nav-item
+            %a.nav-link{:href => "/blog"} Blog
+        %form.form-inline
+          %a.btn.btn-outline-primary{:href => "#convite"} Pedir convite
+.hero-section
+  .container
+    .row
+      .col-md-5
+        %h1.huge-title
+          /<h1 class="huge-title">Uma plataforma <br>que integra universidade<br> e empresas</h1>
+          Uma plataforma
           %br
-          = link_to 'Tentar novamente.', root_path
+          que integra universidade
+          %br
+          e empresas
+        = image_tag 'landing/hero-brush.png', class: 'hero-brush'
+        = image_tag 'landing/hero-brush-1.png', class: 'hero-brush-1'
+        %p.lead
+          conectando os assuntos de cada
+          %br/
+          disciplina com projetos de mercado.
+        %a.btn.btn-primary.btn-blue{:href => "#convite"} Peça seu convite
+      .col-md-7
+        = image_tag 'landing/veja-o-video-hero.png', class: 'hero-note'
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "354", :src => "https://www.youtube.com/embed/ywpooUzHVtk?rel=0&showinfo=0", :width => "100%"}
+.values
+  .container
+    .row
+      .col-12.col-md-4.text-center
+        = image_tag 'landing/alunos.png'
+        %h2.sub-title Alunos
+        %p.lead Transforme seus trabalhos de faculdade em uma porta de entrada para o mercado.
+      .col-12.col-md-4.text-center
+        = image_tag 'landing/professores.png'
+        %h2.sub-title Professores
+        %p.lead Motive seus alunos e ajude a desenvolver as habilidades do futuro
+      .col-12.col-md-4.text-center
+        = image_tag 'landing/empresas.png'
+        %h2.sub-title Empresas
+        %p.lead Encontre universitários para consultorias e projetos e impulsione seus negócios.
+.testimonials.blue-section
+  .container
+    .row
+      .col-12.col-md-4.text-center
+        .testimonial-phrase Além de todo o desenvolvimento pessoal e profissional, a gente conseguiu ainda vender um projeto para a nossa empresa júnior.
+        %p.testimonial-name Maria Júlia, universitária
+        .testimonial-avatar-container
+          = image_tag 'landing/avatar.png', class: 'testimonial-avatar'
+          %a{"data-target" => "#universitaria-modal", "data-toggle" => "modal", :href => "#"}
+            = image_tag 'landing/play-button.png', class: 'testimonial-play'
+      .col-12.col-md-4.text-center
+        .testimonial-phrase Contar com uma ferramenta que conecte a necessidade das empresas com aquilo que os alunos estão precisando aplicar é fenomenal!
+        %p.testimonial-name Graziela, Professora
+        .testimonial-avatar-container
+          = image_tag 'landing/avatar-professor.png', class: 'testimonial-avatar'
+          %a{"data-target" => "#professor-modal", "data-toggle" => "modal", :href => "#"}
+            = image_tag 'landing/play-button.png', class: 'testimonial-play'
+      .col-12.col-md-4.text-center
+        .testimonial-phrase Foi muito profissional. A gente até se surpreendeu de ver aquelas meninas tão jovens entregando um trabalho muito legal, muito profissional”
+        %p.testimonial-name Rodrigo, Empreendedor
+        .testimonial-avatar-container
+          = image_tag 'landing/avatar-empresa.png', class: 'testimonial-avatar'
+          %a{"data-target" => "#empresa-modal", "data-toggle" => "modal", :href => "#"}
+            = image_tag 'landing/play-button.png', class: 'testimonial-play'
+.media.text-center
+  .container
+    .row
+      .col.col-xs-12
+        %h2.sub-title O que andam falando de nós?
+        %a{"data-target" => "#video-globo-modal", "data-toggle" => "modal", :href => "#"}
+          = image_tag 'landing/globo.png', class: 'media-logos'
+        %a{:href => "http://g1.globo.com/sc/santa-catarina/rbs-noticias/videos/t/edicoes/v/iniciativa-conecta-universitarios-ao-mercado-de-trabalho-atraves-da-tecnologia/4960075/", :target => "_blank"}
+          = image_tag 'landing/g1.png', class: 'media-logos'
+        %a{:href => "https://medium.com/@millersocent/brazilian-social-enterprise-seeks-to-promote-economic-growth-by-linking-university-student-work-890ea9db26cf", :target => "_blank"}
+          = image_tag 'landing/miller-center.png', class: 'media-logos'
+        %a{:href => "http://socialgoodbrasil.org.br/2016/inturma-unindo-alunos-e-organizacoes-contra-o-desperdicio-de-conhecimento", :target => "_blank"}
+          = image_tag 'landing/sgb.png', class: 'media-logos'
+    .row
+      .col.col-xs-12.text-center
+        %h2.sub-title Quem acredita na UpMe!
+        %a{:href => "http://seed.mg.gov.br/", :target => "_blank"}
+          = image_tag 'landing/seed.png', class: 'media-logos'
+        %a{:href => "http://socialgoodbrasil.org.br/lab/", :target => "_blank"}
+          = image_tag 'landing/sgb-red.png', class: 'media-logos'
+        %a{:href => "https://www.scu-social-entrepreneurship.org/#home", :target => "_blank"}
+          = image_tag 'landing/GSBI.png', class: 'media-logos'
+        %a{:href => "https://www.sebrae.com.br/sites/PortalSebrae/ufs/sc/sebraeaz/programa-negocios-de-impacto-social-sebraesc,8203bc370248c510VgnVCM1000004c00210aRCRD", :target => "_blank"}
+          = image_tag 'landing/def.png', class: 'media-logos'
 
-      %br
-      %iframe.video-yt{src: 'https://www.youtube.com/embed/ywpooUzHVtk', frameborder: '0'}
-      %iframe.video-yt{src: 'https://www.youtube.com/embed/ZZciPmuiQ-0', frameborder: '0'}
-
-
-#bottom-label Comece profissional
-#bottom-logo
+#convite.cta
+  .container
+    .row
+      .col.col-md-6
+        .d-flex.flex-cloumn.align-items-center.justify-content-center
+          .bg-blue-font 1.000
+          .blue-font-phrase Mais de 1.000 universitários.
+        .d-flex.flex-cloumn.align-items-center.justify-content-center
+          .bg-blue-font 300
+          .blue-font-phrase Mais de 300 empresas.
+      .col.col-md-5.ml-md-auto
+        = image_tag 'landing/cta-note.png', class: 'cta-note'
+        %h2.huge-title
+          Tá esperando
+          %br/
+          o quê? Peça logo
+          %br/
+          seu convite!
+        = image_tag 'landing/cta-brush.png', class: 'cta-brush'
+        = form_tag '/newsletter' do
+          .form-group
+            %label{:for => "exampleInputEmail1"} Seu e-mail
+            %input#exampleInputEmail1.form-control{"aria-describedby" => "emailHelp", :placeholder => "Seu e-mail", :type => "email", name: 'email', required: 'true'}/
+            %small#emailHelp.form-text.text-muted Pode ficar tranquilo, odiamos spam ;)
+          .form-group
+            %label{:for => "exampleInputEmail1"} Você é?
+            %select.form-control{:id => "", :name => "quem"}
+              %option{:value => "aluno"} Aluno(a) 👩🏻‍🎓👨🏾‍🎓
+              %option{:value => "professor"} Professor(a) 👩‍🏫👨🏼‍🏫
+              %option{:value => "empresa"} Gestor(a) de empresa ou ONG 🤵👩🏾
+          .d-flex.justify-content-right
+            = submit_tag 'Pedir convite', class: 'btn btn-primary btn-blue d-flex'
+/ Modal
+#universitaria-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Depoimento Maria Júlia, universitária
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "https://www.youtube.com/embed/n56fi5ULKxY?rel=0&showinfo=0", :width => "100%"}
+#professor-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Depoimento Professora Graziela
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "https://www.youtube.com/embed/M_lhKYArXUw?rel=0&showinfo=0", :width => "100%"}
+#empresa-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Depoimento Rodrigo, empreendedor de Floripa
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "https://www.youtube.com/embed/luTpthSYKX4?rel=0&showinfo=0", :width => "100%"}
+#video-globo-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title UpMe! no RBS Notícias
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "480", :src => "https://www.youtube.com/embed/31sqKmwImCI?rel=0&showinfo=0", :width => "100%"}
+%footer.footer.text-center
+  = image_tag 'landing/logo-footer.png'

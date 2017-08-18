@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
 
   match '/cursos-superiores', to: 'cursos#all', via: :get
-  match '/save_quiz', to: 'visitors#save_quiz', via: :post
+  match '/newsletter', to: 'visitors#post_newsletter', via: :post
 
 end
