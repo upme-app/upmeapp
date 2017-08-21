@@ -16,7 +16,8 @@
       = link_to '/' do
         = image_tag 'landing/logo.png', height: 42
     .col-md-6.text-right
-      %input.input-search-blog{placeholder: "Pesquisa"}
+      %form{method: 'GET', action: '/blog'}
+        %input.input-search-blog{placeholder: "Pesquisa", name: :s}
 
   /
     %ul.nav.navbar-nav.navbar-left

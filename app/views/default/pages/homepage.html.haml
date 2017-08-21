@@ -4,7 +4,10 @@
 
 
 .container
-  - pages = current_spina_user.present? ? Spina::Page.active : Spina::Page.live
+  - if current_spina_user.present?
+    - pages = Spina::Page.active
+  - else
+    - pages = Spina::Page.live
 
   .row
     .col-md-8.left-bar

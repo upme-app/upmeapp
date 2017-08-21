@@ -11,12 +11,23 @@
           = @page.created_at
       = @page.content(:text).try(:html_safe)
 
-      %h4 Veja também
+      %h4.post-list-title.blue-label Veja também
+
+      - pages = Spina::Page.active.where('id != ?', @page.id)
       .row
-        .col-md-6
-          post
-        .col-md-6
-          post
+        - pages.each_with_index do |page, index|
+          - if index == 1
+            - if page.content(:post_logo)
+              .col-md-6
+                = link_to '/blog' + page.materialized_path do
+                  %img.post-image{src: page.content(:post_logo).file}
+                  %h2.small-title= page.title
+          - if index == 2
+            - if page.content(:post_logo)
+              .col-md-6
+                = link_to '/blog' + page.materialized_path do
+                  %img.post-image{src: page.content(:post_logo).file}
+                  %h2.small-title= page.title
     .col-md-4.right-bar
       = render 'default/shared/banner'
 
