@@ -10,7 +10,7 @@
       %h2.post-title= @page.title
       .row
         .col-md-12.text-right
-          = @page.created_at
+          = l @page.created_at
       = @page.content(:text).try(:html_safe)
 
       %h4.post-list-title.blue-label Veja também
