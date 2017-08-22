@@ -1,5 +1,7 @@
 - SpinaCountPageView.increment(@page, request)
 
+- @page_image = image_url(@page.content(:post_logo).file)
+
 .post-logo-top{style: "background-image: url(#{@page.content(:post_logo).file})"}
 /%img{style: 'width: 100%', src: @page.content(:post_logo).file}
 .container
@@ -20,13 +22,13 @@
             - if page.content(:post_logo)
               .col-md-6
                 = link_to '/blog' + page.materialized_path do
-                  %img.post-image{src: page.content(:post_logo).file}
+                  = image_tag page.content(:post_logo).file, class: 'post-image'
                   %h2.small-title= page.title
           - if index == 2
             - if page.content(:post_logo)
               .col-md-6
                 = link_to '/blog' + page.materialized_path do
-                  %img.post-image{src: page.content(:post_logo).file}
+                  = image_tag page.content(:post_logo).file, class: 'post-image'
                   %h2.small-title= page.title
     .col-md-4.right-bar
       = render 'default/shared/banner'

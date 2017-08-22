@@ -1,5 +1,6 @@
 = @page.content(:text).try(:html_safe)
 
+
 .category_bar
 
 
@@ -17,7 +18,7 @@
             .row
               .col-md-12
                 = link_to '/blog' + page.materialized_path do
-                  %img.first_post_image{src: page.content(:post_logo).file}
+                  = image_tag page.content(:post_logo).file, class: 'first_post_image'
                   %h2.huge-title= page.title
             %br
             %br
@@ -26,7 +27,7 @@
             .row.post-row
               .col-md-4
                 = link_to '/blog' + page.materialized_path do
-                  %img.post-image{src: page.content(:post_logo).file}
+                  = image_tag page.content(:post_logo).file, class: 'post-image'
               .col-md-8
                 = link_to '/blog' + page.materialized_path do
                   %h2.post-list-title= page.title
@@ -39,7 +40,7 @@
           - if top_page
             %h3.blue-label Mais vistos:
             = link_to '/blog' + top_page.materialized_path do
-              %img{src: top_page.content(:post_logo).file, width: '100%'}
+              = image_tag top_page.content(:post_logo).file, width: '100%'
               %h3.post-list-title= top_page.title
 
           = render 'default/shared/banner'
