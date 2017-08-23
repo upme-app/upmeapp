@@ -63,3 +63,5 @@ gem 'spina'
 
 gem 'carrierwave'
 gem 'fog'
+
+gem 'sendgrid-ruby'
