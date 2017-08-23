@@ -59,3 +59,7 @@ gem 'haml-rails'
 gem 'animate-rails'
 gem 'jquery-ui-rails'
 gem 'spina'
+
+
+gem 'carrierwave'
+gem 'fog'
