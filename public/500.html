@@ -1,66 +1,95 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UpMe! - Página não encontrada</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,900i" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    body {
+      background-image: url('paper-draft.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: bottom right;
+    }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    * {
+      margin: 0px auto;
+      text-align: center;
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    h1 {
+      font-family: Lato;
+      font-style: italic;
+      font-weight: 800;
+      line-height: 33px;
+      font-size: 32px;
+      color: #333333;
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+      font-family: Lato;
+      line-height: 16px;
+      font-size: 16px;
+      color: #999999;
+      margin:25px 0px 100px 0px;
+    }
+    a {
+      font-family: Lato;
+      font-style: italic;
+      font-weight: 800;
+      line-height: normal;
+      font-size: 22px;
+      color: #00C7FF;
+      text-decoration: none;
+    }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+    a:hover {
+      text-decoration: underline;
+    }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    td {
+      padding: 6px 12px;
+      position: relative;
+    }
+
+    #logo {
+      margin: 40px;
+    }
+
+    #note-404 {
+      position: absolute;
+      right: 24px;
+      top: -60px;
+    }
+
+    @media screen and (max-width: 680px) {
+      #note-404 {
+        display: none;
+      }
+
+      body {
+        background-image: none;
+      }
+    }
+
   </style>
 </head>
-
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+<body>
+<img id="logo" src="/logo.png" alt="">
+<h1>Algo deu errado.</h1>
+<h2></h2>
+<table>
+  <tr>
+    <td>
+      <img id="note-404" src="note-404.png" alt="">
+      <a href="/">Site</a>
+    </td>
+    <td><a href="/blog">Blog</a></td>
+    <td><a href="https://www.facebook.com/upmeapp">Facebook</a></td>
+  </tr>
+</table>
 </body>
 </html>
