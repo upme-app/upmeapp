@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
   mount Spina::Engine => '/blog'
   root 'visitors#landing_page'
 

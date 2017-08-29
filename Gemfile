@@ -65,3 +65,5 @@ gem 'carrierwave'
 gem 'fog'
 
 gem 'sendgrid-ruby'
+
+gem 'devise'

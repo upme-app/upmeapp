@@ -1,6 +1,11 @@
 CarrierWave.configure do |config|
   config.storage = :file
 
+
+  ENV['S3_REGION'] = '*'
+  ENV['S3_KEY'] = '*'
+  ENV['S3_SECRET'] = '*'
+
   #Use S3 if you want
   config.fog_credentials = {
     provider:               'AWS',
