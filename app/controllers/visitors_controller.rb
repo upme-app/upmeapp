@@ -12,6 +12,9 @@ class VisitorsController < ApplicationController
                               })
     if landing.save
       flash[:success] = 'Obrigada! Em breve mandamos notícias :)'
+      Thread.new do
+        LandingPageMailer.welcome_email(params[:email]).deliver
+      end
       redirect_to root_path
     else
       flash[:error] = 'Email já utilizado.'
