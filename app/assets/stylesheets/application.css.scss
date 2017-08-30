@@ -11,7 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require animate
- *= require jquery-ui
  *= require_tree .
  *= require_self
  */
+
+
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("blue", "base") !default;
+@import "materialize";

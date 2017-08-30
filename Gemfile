@@ -67,3 +67,5 @@ gem 'fog'
 gem 'sendgrid-ruby'
 
 gem 'devise'
+
+gem 'materialize-sass'

@@ -12,14 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 //= require turbolinks
+//= require materialize-sprockets
+//= require animateCss
+//= require is_on_screen
+//= require waves_fix
 //= require_tree .
-
-
-function is_on_screen(controller, action) {
-    if($('body').attr('data-current-screen') == controller + '_' + action) {
-        return true;
-    }
-    return false;
-}

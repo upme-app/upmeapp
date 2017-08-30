@@ -1,29 +1,99 @@
-<h2>Sign up</h2>
+<div class="upme-logo-container">
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="container upme-form-container">
+  <div id="registration-step-1" class="display-none">
+    <h1>Vamos começar seu cadastro.</h1>
+    <h4>Só precisamos de 4 informações.</h4>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div id="registration-step-2" class="display-none">
+    <h1>Qual seu nome e o que você faz?</h1>
+    <div class="input-field">
+      <input id="first_name" type="text" class="validate">
+      <label for="first_name">Nome</label>
+    </div>
+    <div class="input-field">
+      <input id="last_name" type="text" class="validate">
+      <label for="last_name">Sobrenome</label>
+    </div>
+    <table>
+      <tr>
+        <td>
+          <input id="radio-aluno" name="group1" type="radio" value="aluno"/>
+          <label for="radio-aluno" >Sou Aluno</label>
+        </td>
+        <td>
+          <input id="radio-prof" name="group1" type="radio" value="professor"/>
+          <label for="radio-prof">Sou Professor</label>
+        </td>
+        <td>
+          <input id="radio-empresa" name="group1" type="radio" value="empresa"/>
+          <label for="radio-empresa">Sou Empreendedor</label>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td width="50%">
+          <%= link_to user_session_path do %>
+            <%= button_tag 'Cancelar', class: 'btn-full-width btn-upme btn-upme-gray' %>
+          <% end %>
+        </td>
+        <td>
+          <button id="btn-continue-registration-step-2" class="btn-full-width btn-upme btn-upme-blue">
+            Continuar
+          </button>
+        </td>
+      </tr>
+    </table>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div id="registration-step-3" class="display-none">
+    <h1>Cadastre seu e-mail e senha</h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <table>
+          <tr>
+            <td width="50%">
+              <button type="button" id="btn-back-registration-step-3" class="btn-full-width btn-upme btn-upme-gray">
+                Voltar
+              </button>
+            </td>
+            <td>
+              <button id="btn-continue-registration-step-3" class="btn-full-width btn-upme btn-upme-blue">
+                Finalizar
+              </button>
+            </td>
+          </tr>
+        </table>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+
