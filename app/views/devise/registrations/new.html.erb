@@ -5,7 +5,7 @@
   <h1>Vamos começar seu cadastro.</h1>
   <h4>Só precisamos de 4 informações.</h4>
 </div>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form'}) do |f| %>
 
   <div id="registration-step-2" class="display-none">
     <h1>Qual seu nome e o que você faz?</h1>
@@ -14,12 +14,12 @@
       <div class="input-field">
         <%= f.label :first_name, 'Nome', class: 'u-label-big' %>
         <br>
-        <%= f.text_field :first_name, class: 'validate' %>
+        <%= f.text_field :first_name, class: 'validate', minlength: 2, maxlength: 100, required: true, id: :registration_first_name %>
       </div>
       <div class="input-field">
-        <%= f.label :last_name, 'Sobrenome', class: 'u-label-big' %>
+        <%= f.label :last_name, 'Sobrenome', class: 'u-label-big'%>
         <br>
-        <%= f.text_field :last_name, class: 'validate' %>
+        <%= f.text_field :last_name, class: 'validate', minlength: 2, maxlength: 100, required: true, id: :registration_last_name%>
       </div>
       <table>
         <tr>

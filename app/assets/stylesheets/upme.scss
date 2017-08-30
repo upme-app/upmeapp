@@ -28,7 +28,7 @@
   height: 48px;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 26px 0px 40px 0px;
+  margin: 20px 0px 28px 0px;
 }
 
 .upme-form-container {
@@ -85,13 +85,13 @@
 }
 
 h1 {
-  font-family: Lato;
-  font-style: italic;
+  font-family: Lato !important;;
+  font-style: italic !important;;
   font-weight: 800 !important;
-  line-height: 46px;
-  font-size: 48px;
-  text-align: center;
-  color: #333333;
+  line-height: 46px !important;;
+  font-size: 48px !important;
+  text-align: center !important;;
+  color: #333333 !important;;
 }
 
 h4 {
