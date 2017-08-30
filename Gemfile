@@ -69,3 +69,5 @@ gem 'sendgrid-ruby'
 gem 'devise'
 
 gem 'materialize-sass'
+gem 'material_icons'
+

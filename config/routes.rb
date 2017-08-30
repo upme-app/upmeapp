@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   match '/cursos-superiores', to: 'cursos#all', via: :get
   match '/newsletter', to: 'visitors#post_newsletter', via: :post
 
+  match 'areas-de-interesse', to: 'areas_de_interesse#view', via: :get, as: :areas_de_interesse
+  match 'areas-de-interesse', to: 'areas_de_interesse#save', via: :post
+
 end

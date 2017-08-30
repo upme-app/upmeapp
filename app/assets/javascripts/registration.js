@@ -19,7 +19,7 @@ document.addEventListener("turbolinks:load", function() {
 
         setTimeout(function () {
             toggle_step(step_1, step_2);
-        }, 25);
+        }, 2500);
 
         step_2.hide();
 
