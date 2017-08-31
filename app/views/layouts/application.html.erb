@@ -52,7 +52,9 @@
     <%= render partial: "layouts/flash_messages", flash: flash %>
 
     <% if user_signed_in? %>
-      <%= link_to "Sair", destroy_user_session_path, method: :delete %>
+      <%=
+        #link_to "Sair", destroy_user_session_path, method: :delete
+      %>
     <% end %>
 
     <%= yield %>

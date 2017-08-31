@@ -1,0 +1,44 @@
+.upme-nav {
+  background: #FFFFFF;
+  border-bottom: 2px solid #ECECEC;
+  box-sizing: border-box;
+  height: 80px;
+}
+
+.upme-nav-item {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 18px;
+  color: #828282;
+  display: inline-block;
+  background-size: 25% auto;
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  height: 80px;
+  width: 80px;
+  line-height: 110px;
+  text-align: center;
+}
+
+.upme-nav-item:hover {
+  cursor: pointer;
+  color: #00C7FF;
+}
+
+.nav-bg-user { background-image: image_url('app/nav/user.svg'); }
+.nav-bg-user:hover { background-image: image_url('app/nav/user-hover.svg'); }
+
+.nav-bg-clipboard { background-image: image_url('app/nav/clipboard.svg'); }
+.nav-bg-clipboard:hover { background-image: image_url('app/nav/clipboard-hover.svg'); }
+
+.nav-bg-compass { background-image: image_url('app/nav/compass.svg'); }
+.nav-bg-compass:hover { background-image: image_url('app/nav/compass-hover.svg'); }
+
+.upme-nav-logo {
+  background-image: image_url('app/logo.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  height: 80px;
+  display: inline-block;
+}
