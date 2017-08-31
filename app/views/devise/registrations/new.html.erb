@@ -60,14 +60,22 @@
       <div class="input-field">
         <%= f.label :email, 'Escreva seu e-mail', class: 'u-label-big' %>
         <br />
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, required: true %>
       </div>
 
       <div class="input-field">
         <%= f.label :password, 'Uma senha forte para acessar a plataforma', class: 'u-label-big' %>
         <br>
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", required: true %>
       </div>
+
+      <p>
+        <input type="checkbox" id="terms" required />
+        <label for="terms">
+          Li e aceito os
+          <a href="/termos" target="_blank">termos de uso</a>
+        </label>
+      </p>
 
       <table>
         <tr>
