@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
@@ -14,5 +15,9 @@ Rails.application.routes.draw do
 
   match 'areas-de-interesse', to: 'areas_de_interesse#view', via: :get, as: :areas_de_interesse
   match 'areas-de-interesse', to: 'areas_de_interesse#save', via: :post
+  match 'areas-de-interesse/nomes', to: 'areas_de_interesse#all_names', via: :get
+  match 'areas-de-interesse/minhas-areas', to: 'areas_de_interesse#minhas_areas', via: :get
+
+  match 'explorar', to: 'explore#index', as: :explore, via: :get
 
 end

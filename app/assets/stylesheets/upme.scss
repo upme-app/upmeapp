@@ -103,3 +103,42 @@ h4 {
   text-align: center;
   color: #333333;
 }
+
+.bottom-image-label {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 23px;
+  font-size: 24px;
+  text-align: center;
+  color: #BDBDBD;
+}
+
+.upme-image-btn {
+  width: 128px;
+  height: 128px;
+  background-image: image_url('app/image-radio/black-and-white');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 10px;
+}
+
+.upme-image-btn-selected {
+  background-image: image_url('app/image-radio/color');
+}
+
+.upme-image-btn:focus {
+  background-color: transparent !important;
+}
+
+.chip {
+  background: #00C7FF !important;
+  border-radius: 4px !important;
+  font-family: Lato !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  color: #FFFFFF !important;
+}

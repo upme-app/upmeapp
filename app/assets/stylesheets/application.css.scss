@@ -18,6 +18,7 @@
 
 
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("blue", "base") !default;
+$secondary-color: #00C7FF !default;
+$success-color: #388E3C !default;
+$error-color: #CC3F0C !default;
 @import "materialize";

@@ -21,36 +21,33 @@
         <br>
         <%= f.text_field :last_name, class: 'validate', minlength: 2, maxlength: 100, required: true, id: :registration_last_name%>
       </div>
-      <table>
-        <tr>
-          <td>
-            <input id="radio-aluno" name="group1" type="radio" value="aluno"/>
-            <label for="radio-aluno" >Sou Aluno</label>
-          </td>
-          <td>
-            <input id="radio-prof" name="group1" type="radio" value="professor"/>
-            <label for="radio-prof">Sou Professor</label>
-          </td>
-          <td>
-            <input id="radio-empresa" name="group1" type="radio" value="empresa"/>
-            <label for="radio-empresa">Sou Empreendedor</label>
-          </td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td width="50%">
-            <%= link_to user_session_path do %>
+      <div class="row">
+        <div class="col s4">
+          <input id="radio-aluno" name="user[user_type]" type="radio" value="aluno">
+          <label for="radio-aluno" >Aluno</label>
+        </div>
+        <div class="col s4">
+          <input id="radio-prof" name="user[user_type]" type="radio" value="professor"/>
+          <label for="radio-prof">Professor</label>
+        </div>
+        <div class="col s4">
+          <input id="radio-empresa" name="user[user_type]" type="radio" value="empresa"/>
+          <label for="radio-empresa">Empreendedor</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <%= link_to user_session_path do %>
               <%= button_tag 'Cancelar', class: 'btn-full-width btn-upme btn-upme-gray', type: :button %>
-            <% end %>
-          </td>
-          <td>
-            <button type="button" id="btn-continue-registration-step-2" class="btn-full-width btn-upme btn-upme-blue">
-              Continuar
-            </button>
-          </td>
-        </tr>
-      </table>
+          <% end %>
+        </div>
+        <div class="col s6">
+          <button type="button" id="btn-continue-registration-step-2" class="btn-full-width btn-upme btn-upme-blue">
+            Continuar
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 

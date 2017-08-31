@@ -2,15 +2,45 @@
 </div>
 <h1 class="center-align">Selecione sua(s) área(s) de interesse</h1>
 <div class="container upme-form-container">
-  <div>
-    <button class="tags-hotkey" data-tag="Design">DESIGN</button>
-    <button class="tags-hotkey" data-tag="Administração">ADMINISTRAÇÃO</button>
-    <button class="tags-hotkey" data-tag="Arquitetura">ARQUITETURA</button>
-    <button class="tags-hotkey" data-tag="Engenharia">ENGENHARIA</button>
+  <div class="row">
+    <div class="col s3 center-align">
+      <button class="tag-shortcut upme-image-btn" data-tag="Design"></button>
+      <div class="bottom-image-label">Design</div>
+    </div>
+    <div class="col s3 center-align">
+      <button class="tag-shortcut upme-image-btn" data-tag="Administração"></button>
+      <div class="bottom-image-label">Administração</div>
+    </div>
+    <div class="col s3 center-align">
+      <button class="tag-shortcut upme-image-btn" data-tag="Arquitetura"></button>
+      <div class="bottom-image-label">Arquitetura</div>
+    </div>
+    <div class="col s3 center-align">
+      <button class="tag-shortcut upme-image-btn" data-tag="Engenharias"></button>
+      <div class="bottom-image-label">Engenharias</div>
+    </div>
   </div>
   <br>
   <div class="tag-list">
 
   </div>
-  <input id="input-add-tag" type="text">
+  <div class="input-field">
+    <label for="input-add-tag" class="u-label-big">Buscar áreas</label>
+    <br>
+    <input id="input-add-tag" type="text" >
+  </div>
+  <div class="row">
+    <div class="col s6">
+      <%= link_to explore_path do %>
+          <%= button_tag 'Voltar', class: 'btn-full-width btn-upme btn-upme-gray', type: :button %>
+      <% end %>
+    </div>
+    <div class="col s6">
+      <button type="button" id="btn-save-areas-de-interesse" class="btn-full-width btn-upme btn-upme-blue">
+        Salvar
+      </button>
+    </div>
+  </div>
 </div>
+<br>
+<br>
