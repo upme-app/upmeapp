@@ -53,6 +53,7 @@ document.addEventListener("turbolinks:load", function() {
             $.ajax({
                 url: "areas-de-interesse/minhas-areas"
             }).done(function(areas) {
+                $('.upme-loading').remove();
                 for(var i = 0; i < areas.length; i++) {
                     add_tag(areas[i]);
                 }
