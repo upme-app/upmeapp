@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901194412) do
+ActiveRecord::Schema.define(version: 20170901201328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 20170901194412) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "title"
+    t.text     "objective"
+    t.text     "description"
+    t.boolean  "nat_privada"
+    t.boolean  "nat_publica"
+    t.boolean  "nat_ong"
+    t.string   "target_audience"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
   create_table "spina_accounts", force: :cascade do |t|
@@ -271,6 +285,7 @@ ActiveRecord::Schema.define(version: 20170901194412) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "projects", "users"
   add_foreign_key "user_area_de_interesses", "area_de_interesses", column: "area_de_interesse_id"
   add_foreign_key "user_area_de_interesses", "users"
 end

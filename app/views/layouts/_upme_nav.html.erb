@@ -5,8 +5,12 @@
         &nbsp;
       </div>
       <div class="col s4 center-align">
-        <div class="upme-nav-item nav-bg-compass upme-nav-active">explorar</div>
-        <div class="upme-nav-item nav-bg-clipboard">projetos</div>
+        <%= link_to explore_path do %>
+          <div class="upme-nav-item nav-bg-compass upme-nav-active">explorar</div>
+        <% end %>
+        <%= link_to meus_projetos_path do %>
+          <div class="upme-nav-item nav-bg-clipboard">projetos</div>
+        <% end %>
       </div>
       <div class="col s4 right-align">
         <div class="upme-nav-item nav-bg-user">perfil</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  objective: MyText
+  description: MyText
+  nat_privada: false
+  nat_publica: false
+  nat_ong: false
+  target_audience: MyString
+
+two:
+  title: MyString
+  objective: MyText
+  description: MyText
+  nat_privada: false
+  nat_publica: false
+  nat_ong: false
+  target_audience: MyString
