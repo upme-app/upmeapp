@@ -78,7 +78,6 @@ document.addEventListener("turbolinks:load", function() {
 
         function refresh_shortcuts() {
             $('.tag-shortcut').each(function(index, value) {
-                console.log(exist_tag($(this).attr('data-tag')));
                if(exist_tag($(this).attr('data-tag'))) {
                    $(this).addClass('upme-image-btn-selected');
                    $(this).next().css("color", "#00C7FF");
