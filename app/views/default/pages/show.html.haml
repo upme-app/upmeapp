@@ -1,6 +1,9 @@
 - SpinaCountPageView.increment(@page, request)
 
 - @page_image = image_url(@page.content(:post_logo).file)
+- @title = @page.title
+- @page_image = page.content(:post_logo).file
+- @page_description = @page.description
 
 .post-logo-top{style: "background-image: url(#{@page.content(:post_logo).file})"}
 /%img{style: 'width: 100%', src: @page.content(:post_logo).file}

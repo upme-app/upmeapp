@@ -1,13 +1,13 @@
 !!!
 %html
   %head
-    %title= current_account.name
-
-    %meta{property: 'og:url',         content: 'https://upmeapp.com.br'}
-    %meta{property: 'og:type',        content: 'https://upmeapp.com.br'}
-    %meta{property: 'og:title',       content: 'https://upmeapp.com.br'}
-    %meta{property: 'og:description', content: 'https://upmeapp.com.br'}
+    %title= page_title
+    %meta{name: 'description', content: page_description }
+    %meta{property: 'og:title',       content: page_title }
+    %meta{property: 'og:description', content: page_description }
     %meta{property: 'og:image',       content: page_image }
+    %meta{property: 'og:image:type',  content: "page_image" }
+    %meta{property: 'og:type',        content: "website" }
 
     %link{href: 'https://fonts.googleapis.com/css?family=Lato:300,300i,400,900i', rel: 'stylesheet'}
 

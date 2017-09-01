@@ -8,6 +8,14 @@ module ApplicationHelper
     end
   end
 
+  def page_description
+    if @page_description
+      @page_description
+    else
+      'Comece profissional. Encontre clientes para seus trabalhos da faculdade e organize suas entregas como um profissional.'
+    end
+  end
+
   def page_image
     if @page_image
       @page_image
