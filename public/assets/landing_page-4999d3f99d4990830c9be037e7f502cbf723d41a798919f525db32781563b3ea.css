@@ -1,0 +1,244 @@
+body {
+    font-family: 'Lato';
+}
+img {
+    max-width: 100%;
+}
+.hero-section  {
+    margin-top: 96px;
+    margin-bottom: 96px;
+}
+.blue-section {
+    background: #EBFBFF;
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+.hero-note {
+    position: absolute;
+    left: -80px;
+    top: 220px;
+}
+.huge-title {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 800;
+    line-height: 53px;
+    font-size: 52px;
+
+    color: #232323;
+}
+.sub-title {
+    font-family: Lato;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 33px;
+    font-size: 32px;
+    text-align: center;
+
+    color: #232323;
+}
+.hero-section p.lead {
+    margin-top: 22px;
+    margin-bottom: 45px;
+}
+p.lead {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    font-size: 19px;
+    color: #000000;
+}
+.btn-blue {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-size: 20px;
+    background: #00C7FF;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 16px 24px !important;
+    border: none;
+}
+.btn-blue:hover {
+    background-color: #00C7FF;
+}
+.navbar {
+    background-color: transparent !important;
+    margin-top: 32px;
+    width: 100%;
+}
+.values {
+    margin-bottom: 128px;
+}
+.values .sub-title {
+    margin-top:16px;
+    margin-bottom: 20px;
+}
+.testimonial-avatar-container {
+    position: relative;
+}
+.testimonial-phrase {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    color: #000000;
+    min-height: 124px;
+}
+.testimonial-phrase:before {
+    content: '';
+    background-image: image-url('landing/quote.png');
+    height: 48px;
+    position: absolute;
+    display: block;
+    width: 48px;
+    background-repeat: no-repeat;
+    left: -20px;
+    top: -24px;
+}
+.testimonial-name {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.testimonial-avatar {
+    border-radius: 100px;
+    width: 128px;
+    height: 128px;
+}
+.testimonial-play {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+}
+.play-note {
+    position: absolute;
+    left: -25px;
+    top: 110px;
+}
+.media {
+    margin-top: 128px;
+    margin-bottom: 128px;
+}
+.bg-blue-font {
+    font-family: Lato;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 235px;
+    font-size: 230px;
+    text-align: center;
+
+    color: #afeeff;
+}
+.blue-font-phrase {
+    position: absolute;
+    font-family: Lato;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 33px;
+    font-size: 32px;
+    text-align: center;
+
+    color: #333333;
+}
+.media .sub-title {
+    margin-top: 30px;
+}
+.media-logos {
+    margin: 50px;
+}
+.form-control {
+    height: 60px !important;
+
+    background: rgba(255, 255, 255, 0.31);
+    border: 2px solid #828282;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+label {
+
+    font-size: 20px;
+
+    color: #828282;
+}
+.footer {
+    margin: 80px 0px 20px 0px;
+}
+.form-inline {
+    margin-left: 24px !important;
+}
+.cta .huge-title {
+    margin-bottom: 30px;
+}
+.cta-note {
+    position: absolute;
+    right: -10px;
+    top: -110px;
+}
+.cta-brush {
+    position: absolute;
+    top: 117px;
+    left: -6px;
+}
+.hero-brush,
+.hero-brush-1 {
+    position: absolute;
+}
+.hero-brush-1 {
+    top: 110px;
+    left: 7px;
+    z-index: -1;
+}
+.hero-brush {
+    top: 173px;
+    z-index: -1;
+}
+.btn-outline-primary {
+    color: #00C7FF;
+    border-color: #00C7FF;
+}
+.btn-outline-primary:hover {
+    background-color: #00C7FF;
+    border-color: #00C7FF;
+}
+img {
+    max-width: 100%;
+}
+@media screen and (max-width: 480px) {
+    .bg-blue-font {
+        font-size: 110px;
+    }
+    .testimonial-phrase {
+        margin-top: 80px;
+    }
+    .testimonial-phrase:before {
+        left: 0;
+    }
+    .values p.lead {
+        margin-bottom: 60px;
+    }
+    .play-note {
+        left: -15px;
+        top: 127px;
+    }
+    .hero-section  {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .navbar {
+        margin-top: 0;
+    }
+    .hero-note {
+        display: none;
+    }
+    .hero-section iframe {
+        height: 180px;
+        margin-top: 40px;
+    }
+}
