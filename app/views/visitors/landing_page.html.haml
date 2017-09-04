@@ -29,7 +29,7 @@
           %br/
           disciplina com projetos de mercado.
         %a.btn.btn-primary.btn-blue{:href => "#convite"} Peça seu convite
-      .col-md-7
+      .col-md-7.video-container
         = image_tag 'landing/veja-o-video-hero.png', class: 'hero-note'
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "354", :src => "https://www.youtube.com/embed/ywpooUzHVtk?rel=0&showinfo=0", :width => "100%"}
 .values
@@ -99,15 +99,15 @@
 #convite.cta
   .container
     .row
-      .col-md-6
-        .d-flex.flex-cloumn.align-items-center.justify-content-center
+      .col-md-6.numbers-mobile
+        .d-flex.flex-cloumn.align-items-center.justify-content-center{style: 'position: relative'}
           .bg-blue-font 1.000
           .blue-font-phrase Mais de 1.000 universitários.
-        .d-flex.flex-cloumn.align-items-center.justify-content-center
+        .d-flex.flex-cloumn.align-items-center.justify-content-center{style: 'position: relative'}
           .bg-blue-font 300
           .blue-font-phrase Mais de 300 empresas.
       .col-md-5.ml-md-auto
-        = image_tag 'landing/cta-note.png', class: 'cta-note'
+        = image_tag 'landing/cta-note.png', class: 'cta-note hide-cta-note'
         %h2.huge-title
           Tá esperando
           %br/
