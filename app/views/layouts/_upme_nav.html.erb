@@ -6,15 +6,28 @@
       </div>
       <div class="col s4 center-align">
         <%= link_to explore_path do %>
-          <div class="upme-nav-item nav-bg-compass upme-nav-active">explorar</div>
+          <div class="upme-nav-item nav-bg-compass upme-nav-active hide-on-med-and-down">explorar</div>
         <% end %>
-        <%= link_to meus_projetos_path do %>
-          <div class="upme-nav-item nav-bg-clipboard">projetos</div>
+        <%= link_to projects_path do %>
+          <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">projetos</div>
         <% end %>
       </div>
       <div class="col s4 right-align">
-        <div class="upme-nav-item nav-bg-user">perfil</div>
+        <div class="upme-nav-item nav-bg-user hide-on-med-and-down">perfil</div>
+        <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-large-only" >
+          <i class="material-icons" style="margin: 25px 15px">menu</i>
+        </a>
       </div>
     </div>
   </div>
 </div>
+
+<ul class="side-nav" id="mobile-demo">
+  <li><%= link_to 'Explorar', explore_path %></li>
+  <li><%= link_to 'Projetos', projects_path %></li>
+  <li><%= link_to 'Perfil', explore_path %></li>
+</ul>
+
+<script type="text/javascript" charset="utf-8">
+    $(".button-collapse").sideNav()
+</script>

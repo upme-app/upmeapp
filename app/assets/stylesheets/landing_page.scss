@@ -123,15 +123,15 @@ p.lead {
     top: 110px;
 }
 .media {
-    margin-top: 128px;
-    margin-bottom: 128px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 .bg-blue-font {
     font-family: Lato;
     font-style: italic;
     font-weight: 800;
-    line-height: 235px;
-    font-size: 230px;
+    line-height: 20vw;
+    font-size: 20vw;
     text-align: center;
 
     color: #afeeff;
@@ -210,12 +210,37 @@ label {
 img {
     max-width: 100%;
 }
+@media screen and (max-width: 768px) {
+  .hide-cta-note {
+    display: none;
+  }
+
+  .bg-blue-font {
+    line-height: 40vw;
+    font-size: 40vw;
+  }
+
+  .numbers-mobile {
+    margin-bottom: 80px;
+  }
+
+  .blue-font-phrase {
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
+  }
+
+  .video-container {
+    margin-top: 60px;
+  }
+
+}
+
 @media screen and (max-width: 480px) {
-    .bg-blue-font {
-        font-size: 110px;
-    }
+
     .testimonial-phrase {
         margin-top: 80px;
+        min-height: 90px;
     }
     .testimonial-phrase:before {
         left: 0;

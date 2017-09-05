@@ -18,8 +18,6 @@ Rails.application.routes.draw do
 
   match 'explorar', to: 'explore#index', as: :explore, via: :get
 
-  get 'meus-projetos', to: 'meus_projetos#index', via: :get, as: :meus_projetos
-  get 'meus-projetos/novo', to: 'meus_projetos#new', via: :get, as: :novo_projeto
-  get 'meus-projetos/:id', to: 'meus_projetos#show', via: :get, as: :ver_projeto
+  resources :projects, controller: :meus_projetos, path: 'meus-projetos', path_names: { new: 'novo' }
 
 end

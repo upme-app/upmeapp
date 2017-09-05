@@ -45,3 +45,10 @@
   height: 80px;
   display: inline-block;
 }
+
+
+@media screen and (max-width: 768px) {
+  .upme-nav-logo {
+    background-size: 100% auto;
+  }
+}
