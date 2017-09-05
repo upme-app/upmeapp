@@ -13,7 +13,9 @@
         <% end %>
       </div>
       <div class="col s4 right-align">
-        <div class="upme-nav-item nav-bg-user hide-on-med-and-down">perfil</div>
+        <%= link_to my_profile_path do %>
+          <div class="upme-nav-item nav-bg-user hide-on-med-and-down">perfil</div>
+        <%- end %>
         <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-large-only" >
           <i class="material-icons" style="margin: 25px 15px">menu</i>
         </a>
@@ -25,7 +27,7 @@
 <ul class="side-nav" id="mobile-demo">
   <li><%= link_to 'Explorar', explore_path %></li>
   <li><%= link_to 'Projetos', projects_path %></li>
-  <li><%= link_to 'Perfil', explore_path %></li>
+  <li><%= link_to 'Perfil', my_profile_path %></li>
   <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
 </ul>
 

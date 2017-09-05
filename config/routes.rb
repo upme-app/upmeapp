@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo' }
   match 'projetos/:id', to: 'projects#show_public', via: :get
 
+  match 'meu-perfil', to: 'profile#my_profile', via: :get, as: :my_profile
+  match 'meu-perfil/editar', to: 'profile#edit_profile', via: :get, as: :edit_profile
+  match 'meu-perfil/editar', to: 'profile#save_profile', via: :post, as: :save_profile
+
 end
