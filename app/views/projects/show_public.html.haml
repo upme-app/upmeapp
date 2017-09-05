@@ -1,0 +1,55 @@
+= render 'layouts/upme_nav'
+
+.container{style: 'margin-top: 30px'}
+  .row
+    .col.s12.l2
+      = link_to 'Voltar', projects_path
+      %br
+      .center-align
+        %a.waves-effect.waves-light.btn.modal-trigger{href: '#modal1', style: 'text-transform: none; letter-spacing: 0px; padding-right: 8px; padding-left: 8px'} Tenho interesse!
+      %br
+    .col.s12.l7.upme-form-container
+      %h4.left-align= @project.title
+      %p
+        %b Objetivo deste projeto
+        %br
+        = @project.objective
+      %p
+        %b Mais informações
+        %br
+        = @project.description
+      %p
+        %b Natureza
+        %br
+        %li= 'Pública' if @project.nat_publica
+        %li= 'Privada' if @project.nat_privada
+        %li= 'ONG' if @project.nat_ong
+      %p
+        %b O público alvo
+        %br
+        = @project.target_audience
+    .col.s12.l3
+      %h5 Equipe
+      %ul.collection{style: 'border: none'}
+        %li.collection-item.avatar{style: 'border: none'}
+          = image_tag 'app/image-radio/color.png', class: 'circle'
+          %span.title Paulao
+          %p Criador
+        %li.collection-item.avatar{style: 'border: none'}
+          = image_tag 'app/image-radio/color.png', class: 'circle'
+          %span.title João
+          %p Integrante
+
+#modal1.modal
+  .modal-content
+    %h4 Escolha
+    %p blabla
+  .modal-footer.row
+    .col.s6.left-align
+      %button.waves-effect.waves-light.upme-btn-c Cancelar
+    .col.s6.right-align
+      %button.waves-effect.waves-light.btn Enviar Mensagem
+
+
+:javascript
+  $('.modal').modal();
