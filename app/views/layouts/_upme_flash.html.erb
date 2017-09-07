@@ -1,0 +1,22 @@
+<%- if flash %>
+  <div class="container">
+    <% flash.each do |type, message| %>
+      <div class="row" onclick="$(this).fadeOut();">
+        <div class="col s12 m2"></div>
+        <div class="col s12 m8">
+          <div class="upme-alert-<%= type %>">
+            <% if type == 'success' %>
+              <i class="upme-icon-<%= type %>" data-feather="check"></i>
+            <% end %>
+            <% if type == 'danger' %>
+              <i class="upme-icon-<%= type %>" data-feather="x"></i>
+            <% end %>
+            <span class="upme-alert-text"><%= message %></span>
+          </div>
+        </div>
+        <div class="col s12 m2"></div>
+      </div>
+    <% end %>
+  </div>
+<%- end %>
+

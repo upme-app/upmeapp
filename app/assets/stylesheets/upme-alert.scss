@@ -1,0 +1,60 @@
+.upme-alert-success, .upme-alert-danger {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 34px;
+  font-size: 22px;
+  color: #333333;
+  bottom: 28.75%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 24px 16px 24px 16px;
+  margin-top: 32px;
+  height: 80px;
+  background: #FFFFFF;
+}
+
+.upme-icon-success, .upme-icon-danger {
+  border-radius: 100%;
+  padding: 6px;
+  color: #FFFFFF;
+  width: 32px;
+  height: 32px;
+}
+
+.upme-alert-text {
+  position: absolute;
+  padding-left: 12px;
+  margin-top: -2px;
+}
+
+// SUCCESS
+.upme-alert-success {
+  border: 2px solid #0FD990;
+}
+.upme-icon-success {
+  background: #0FD990;
+}
+
+//DANGER
+.upme-alert-danger {
+  border: 2px solid #FB3028;
+}
+.upme-icon-danger {
+  background: #FB3028;
+}
+
+@media screen and (max-width: 768px) {
+  .upme-alert-success, .upme-alert-danger {
+    font-size: 16px;
+    padding: 14px 10px;
+    height: 48px;
+    line-height: 18px;
+  }
+
+  .upme-icon-success, .upme-icon-danger {
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+  }
+}

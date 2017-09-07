@@ -7,33 +7,33 @@
       %br
       %h5.left-align Meu Perfil
       .upme-form-container.row
-        .col.s12.m2
+        .col.s12.m3
           = image_tag 'app/image-radio/color.png', class: 'circle', width: '100px'
           alterar foto
-        .col.s12.m10
+        .col.s12.m9
           %h4= current_user.full_name
-          %b Área(s) de interesse
+          %span.upme-bolder Área(s) de interesse
           - current_user.user_area_de_interesse.each do |a|
             %li= a.area_de_interesse.name
           .row
             .col.s12
-              %b Linkedin
+              %span.upme-bolder Linkedin
               %div asfdofadsfads
-              %b Sobre você
+              %span.upme-bolder Sobre você
               %div afsufuidasudasf
             .col.s12.no-padding
               .col.s12.m6
-                %b Email
+                %span.upme-bolder Email
                 %div= current_user.email
-                %b Celular
+                %span.upme-bolder Celular
                 %div (48) 99637 4388
               .col.s12.m6
-                %b Universidade
+                %span.upme-bolder Universidade
                 %div UNISUL
-                %b Semestre
+                %span.upme-bolder Semestre
                 %div 12
             .col.s12
-              %b Cidade
+              %span.upme-bolder Cidade
               %div Palhoça
             .col.s12.right-align
               = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn'
