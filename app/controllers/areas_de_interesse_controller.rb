@@ -18,6 +18,8 @@ class AreasDeInteresseController < ApplicationController
 
   def save
     current_user.update_areas_de_interesse(params['areas'])
+    flash[:success] = 'Áreas de interesse salvas!'
+    redirect_to my_profile_path
   end
 
 end

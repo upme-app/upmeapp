@@ -4,14 +4,13 @@
   .row
     .col.s12.m2
     .col.s12.m8
-      = form_for current_user, url: save_profile_path do |f|
-        %br
-        %h5.left-align Meu Perfil
-        .upme-form-container.row
-          .col.s12.m3
-            = image_tag 'app/image-radio/color.png', class: 'circle', width: '100px'
-            alterar foto
-          .col.s12.m9
+      %br
+      %h5.left-align Meu Perfil
+      .upme-form-container.row
+        .col.s12.m3
+          = render 'profile/update_profile_picture'
+        .col.s12.m9
+          = form_for current_user, url: save_profile_path, method: :post do |f|
             %h4= current_user.full_name
             %span.upme-bolder Área(s) de interesse
             %br
@@ -22,6 +21,11 @@
                 %span.upme-bolder Linkedin
                 %br
                 = f.text_field :linkedin, class: 'validate upme-input-small', placeholder: 'Coloque o link do seu Linkedin'
+              .col.s12
+                %span.upme-bolder Sobre Você
+                %br
+                = f.text_area :about, class: 'validate upme-input-small materialize-textarea', placeholder: 'Escreva um pouco sobre você'
+
               .col.s12.no-padding
                 .col.s12.m6
                   %span.upme-bolder Email
@@ -42,5 +46,6 @@
                 %br
                 = f.text_field :city, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
               .col.s12.right-align
-                %button.waves-effect.waves-light.btn Salvar Informações
+                = link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn upme-btn-cancel'
+                %button.waves-effect.waves-light.btn Salvar
     .col.s12.m2

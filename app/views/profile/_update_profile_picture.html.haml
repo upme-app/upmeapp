@@ -1,0 +1,52 @@
+%div.center-align
+  = image_tag profilepic(current_user), class: 'circle', width: '100px', id: 'img-profilepic'
+  %a.modal-trigger{href: '#modal-update-picture'} Alterar foto'
+
+
+#modal-update-picture.modal
+  .modal-content
+    %h4 Escolha sua foto
+
+    = form_tag update_picture_path, id: 'save-picture-form', method: :post, enctype: 'multipart/form-data' do
+
+      .file-field.input-field
+        .btn
+          %span Foto
+          = file_field_tag :picture, id: 'input-user-picture'
+        .file-path-wrapper
+          %input.file-path.validate{type: 'text'}
+
+    .upme-loading.display-none
+  .modal-footer.row
+    .col.s6.left-align
+      %button.waves-effect.waves-light.upme-btn-c{type: 'button'}  Cancelar
+    .col.s6.right-align
+      %button.waves-effect.waves-light.btn#btn-save-picture{type: 'button'} Salvar
+
+:javascript
+  $('.modal').modal();
+
+  $('#btn-save-picture').click(function() {
+
+    var formData = new FormData();
+    formData.append('file', $('#input-user-picture')[0].files[0]);
+
+    $('.upme-loading').fadeIn();
+
+    $.ajax({
+      url: $('#save-picture-form').attr('action'),
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      complete: function(xhr,status) {
+        if(xhr.responseText != 'error') {
+          $('#img-profilepic').attr('src', xhr.responseText);
+        }
+        $('#modal-update-picture').modal('close');
+        $('.upme-loading').fadeOut();
+      }
+    });
+
+
+  });
