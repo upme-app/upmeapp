@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
 
   has_many :project_users
+  has_many :timeline_steps
 
   after_create :add_creator_user
 

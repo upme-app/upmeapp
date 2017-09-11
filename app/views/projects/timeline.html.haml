@@ -4,5 +4,21 @@
 
 = render partial: 'project_tabs', locals: { project: @project }
 
+%ul.collapsible{data: {collapsible: 'expandable'}}
+  - @project.timeline_steps.each_with_index do |step, index|
+    %li
+      .collapsible-header.row
+        .col.s6
+          = "Etapa #{index+1}"
+        .col.s6.right-align
+          = l step.entrega
+      .collapsible-body
+        %h4= step.title
+        %p
+          = step.description
+        %b Entregavel
+        %p= step.entregavel
+
+
 = render partial: 'project_invitations', locals: { project: @project }
 

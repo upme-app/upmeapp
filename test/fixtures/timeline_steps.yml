@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  title: MyString
+  description: MyText
+  entregavel: MyText
+  entraga: 2017-09-11
+
+two:
+  project: two
+  title: MyString
+  description: MyText
+  entregavel: MyText
+  entraga: 2017-09-11
