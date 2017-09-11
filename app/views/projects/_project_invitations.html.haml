@@ -1,5 +1,8 @@
 %h4 Equipe
 
+- @project.project_users.each do |pu|
+  %li= pu.user.full_name
+
 
 
 %a.waves-effect.waves-light.btn.modal-trigger{href: '#invitation-modal'} Convide seu time

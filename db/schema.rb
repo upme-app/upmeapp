@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911191154) do
+ActiveRecord::Schema.define(version: 20170911201447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,6 +276,17 @@ ActiveRecord::Schema.define(version: 20170911191154) do
     t.datetime "password_reset_sent_at"
   end
 
+  create_table "timeline_steps", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "entregavel"
+    t.date     "entrega"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
+  end
+
   create_table "user_area_de_interesses", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "area_de_interesse_id"
@@ -316,6 +327,7 @@ ActiveRecord::Schema.define(version: 20170911191154) do
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "timeline_steps", "projects"
   add_foreign_key "user_area_de_interesses", "area_de_interesses", column: "area_de_interesse_id"
   add_foreign_key "user_area_de_interesses", "users"
 end
