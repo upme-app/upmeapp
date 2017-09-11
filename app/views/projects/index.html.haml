@@ -17,11 +17,22 @@
 
 
 - if current_user.my_projects.size > 0
-  %h4 Meus Projetos
+  .container
+    .row
+      .col.s6
+        %h2.upme-sub-title Seus projetos
+      .col.s6.right-align
+        %br
+        = link_to 'Novo projeto', new_project_path, class: 'waves-effect waves-light-blue btn-upme-outline-blue btn-small'
+      
 
   - current_user.my_projects.each do |project|
     %li= link_to project.title, project_path(project.id)
 - else
-  VC N TEM PROJETO AMIGO
-
-= link_to 'Novo projeto', new_project_path
+  .container
+    .row
+      .col.m4.offset-m4.center-align
+        %br
+        %i.no-projects-icon-plus{data: {feather: 'plus-circle'}}
+        %h2.upme-sub-title.center-align Você ainda não tem projetos cadastrados :(
+        = link_to 'Cadastrar primeiro projeto', new_project_path, class: 'waves-effect waves-light btn-upme-blue'

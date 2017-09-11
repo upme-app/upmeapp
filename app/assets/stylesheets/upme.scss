@@ -1,16 +1,46 @@
+// COMPONENTS
+
+$blue: #00C7FF;
+$black: #333;
+$grey: #666;
+$border-color: #BDBDBD;
+
+.paper-box {
+  border: 2px solid #F7F7F7;
+  border-radius: 4px;
+  padding: 48px;
+}
 .btn-full-width {
   width: 100%;
   margin: 0px;
 }
-
+.big-font-form {
+  font-style: italic !important;
+  font-weight: 940000;
+  font-size: 32px !important;
+  color: #333333;
+  padding: 8px 0px !important;
+}
+.label-upme {
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  color: #666 !important;;
+}
 .btn-upme {
-  border-radius: 2px;
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 900;
+  font-style: initial !important;
+  height: 48px;
   border: none;
-  padding: 5px;
+  text-align: center;
 }
 
 .btn-upme-blue {
-  background: #00C7FF;
+  @extend .btn-upme;
+  background: $blue;
   color: #ffffff;
 }
 
@@ -18,7 +48,35 @@
   background: #F5F5F5;
   color: #4F4F4F;
 }
+.btn-upme-outline-grey {
+  @extend .btn-upme;
 
+  color: $grey;
+  border: 2px solid $border-color;
+}
+.btn-upme-outline-blue {
+  @extend .btn-upme;
+
+  color: $blue;
+  border: 2px solid $blue;
+}
+.btn-small {
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 14px;
+  height: 32px;
+}
+.upme-sub-title {
+  font-style: italic;
+  font-weight: 400;
+  line-height: 22px;
+  font-size: 22px;
+  color: $grey;
+}
+// GENERAL STYLES
+body {
+  font-family: 'Lato', sans-serif;
+}
 .display-none {
   display: none;
 }
@@ -256,9 +314,13 @@ h4 {
   background: #FFFFFF !important;
 }
 
-.btn {
-  box-shadow: none !important;
-  letter-spacing: 0px !important;
-  font-family: Lato !important;
-  text-transform: none !important;
-}
+.waves-effect.waves-light-blue .waves-ripple {
+  /* The alpha value allows the text and background color
+  of the button to still show through. */
+   background-color: rgba(0, 199, 255, 0.5);
+ }
+ .no-projects-icon-plus {
+   color: $border-color;
+   height: 64px !important;
+   width: 64px !important;
+ }
