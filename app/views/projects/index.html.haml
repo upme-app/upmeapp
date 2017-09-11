@@ -26,8 +26,13 @@
         = link_to 'Novo projeto', new_project_path, class: 'waves-effect waves-light-blue btn-upme-outline-blue btn-small'
       
 
-  - current_user.my_projects.each do |project|
-    %li= link_to project.title, project_path(project.id)
+    - current_user.my_projects.each do |project|
+      .row
+        .col.s3
+          = link_to project_path(project.id) do
+            .paper-box
+              .project-title= project.title
+              .project-description=project.description
 - else
   .container
     .row
