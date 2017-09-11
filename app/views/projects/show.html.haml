@@ -1,7 +1,17 @@
 = render 'layouts/upme_nav'
 
-%h4 Tela do projeto
+.container
+    .row
+        .col.s12.m12
+            = render partial: 'project_tabs', locals: { project: @project }
+        .row
+            .col.m2.s12
+            .col.m8.s12
+                .private-project-box
+                    %h1= @project.title
 
-= render partial: 'project_tabs', locals: { project: @project }
+            .col.m2.s12
+                = render partial: 'project_invitations', locals: { project: @project }
 
-= render partial: 'project_invitations', locals: { project: @project }
+
+
