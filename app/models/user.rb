@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def my_projects
-    Project.where(user_id: id)
+    Project.where(id: ProjectUser.where(user_id: id).pluck(:project_id))
   end
 
   def my_invitations
