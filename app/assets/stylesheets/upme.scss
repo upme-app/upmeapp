@@ -15,6 +15,7 @@ body {
 
 // COMPONENTS
 .paper-box {
+  width: 100%;
   border: 2px solid $border-color;
   border-radius: 4px;
   padding: 48px;
@@ -25,7 +26,6 @@ body {
   -moz-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
   transition: all 0.25s ease;
-  
   &:before {
     content: '';
     border: 2px solid $border-color;
@@ -38,24 +38,8 @@ body {
     left: 8px;
     z-index: -2;
   }
-  &:hover {
-   margin-top: -8px;
-  }
-  .project-title {
-    line-height: 24px;
-    font-size: 24px;
-    font-weight: 800 !important;
-    color: $black;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
-  .project-description {
-    color: $grey;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 16px;
-  }
 }
+
 .btn-full-width {
   width: 100%;
   margin: 0px;
@@ -118,6 +102,51 @@ body {
   line-height: 22px;
   font-size: 22px;
   color: $grey;
+}
+.project-box {
+  @extend .paper-box;
+  &:hover {
+    margin-top: -8px;
+   }
+}
+.project-title {
+  line-height: 24px;
+  font-size: 24px;
+  font-weight: 800 !important;
+  color: $black;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.project-description {
+  color: $grey;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+}
+.private-project-box {
+  @extend .paper-box;
+  margin-top: -18px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.upme-tab {
+  display: table;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: 8px;
+  width: 100%;
+  margin-top: 48px;
+  li {
+    display: inline-block;
+    padding-right: 16px;
+    a:hover {
+      color: $black;
+    }
+  }
+}
+.upme-tab-title {
+  @extend .upme-sub-title;
+  border-bottom: 2px solid transparent;
 }
 // GENERAL STYLES
 
@@ -368,3 +397,9 @@ h4 {
    height: 64px !important;
    width: 64px !important;
  }
+
+@media only screen and (min-width: 993px) {
+  .container {
+      width: 1170px !important;
+  }
+}
