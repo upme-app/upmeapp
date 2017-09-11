@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.user_id = current_user.id
     if @project.save
       redirect_to project_path(@project)
     else
@@ -14,7 +15,15 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    set_project
+  end
 
+  def invitations
+    set_project
+  end
+
+  def timeline
+    set_project
   end
 
   def show_public
@@ -22,6 +31,29 @@ class ProjectsController < ApplicationController
   end
 
   def view
+  end
+
+  def create_invitation
+    set_project
+
+    user_to = User.find_by_email(params[:email])
+
+    if user_to
+      @invitation = ProjectInvitation.new({
+        user_from_id: current_user.id,
+        user_to_id: user_to.id,
+        project_id: @project.id
+      })
+      if @invitation.save
+        flash[:success] = 'Solicitação enviada!'
+      else
+        flash[:danger] = 'Erro!'
+      end
+    else
+      flash[:danger] = 'Email não cadastrado.'
+    end
+
+    redirect_back(fallback_location: project_path(@project.id))
   end
 
   private

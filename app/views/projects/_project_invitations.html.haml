@@ -1,0 +1,20 @@
+%h4 Equipe
+
+
+
+%a.waves-effect.waves-light.btn.modal-trigger{href: '#invitation-modal'} Convide seu time
+
+
+#invitation-modal.modal
+  = form_tag create_invitation_path do |f|
+    .modal-content
+      %h4 Convide seu time
+
+      = email_field_tag :email, '', placeholder: 'Digite o email de quem você quer convidar.'
+    .modal-footer
+      %a.modal-action.modal-close.waves-effect.btn-flat{href: '#!'} Cancelar
+      %button.modal-action.waves-effect.btn-flat{type: :submit} Convidar
+
+
+:javascript
+  $('.modal').modal();

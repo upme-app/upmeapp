@@ -21,4 +21,12 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def my_projects
+    Project.where(user_id: id)
+  end
+
+  def my_invitations
+    ProjectInvitation.where(user_to_id: id)
+  end
+
 end

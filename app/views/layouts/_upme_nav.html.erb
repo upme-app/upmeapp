@@ -5,9 +5,11 @@
         &nbsp;
       </div>
       <div class="col s4 center-align">
+        <!--
         <%= link_to explore_path do %>
           <div class="upme-nav-item nav-bg-compass upme-nav-active hide-on-med-and-down">explorar</div>
         <% end %>
+        -->
         <%= link_to projects_path do %>
           <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">projetos</div>
         <% end %>
@@ -25,7 +27,7 @@
 </div>
 
 <ul class="side-nav" id="mobile-demo">
-  <li><%= link_to 'Explorar', explore_path %></li>
+  <!--<li><%= link_to 'Explorar', explore_path %></li>-->
   <li><%= link_to 'Projetos', projects_path %></li>
   <li><%= link_to 'Perfil', my_profile_path %></li>
   <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>

@@ -1,2 +1,27 @@
 = render 'layouts/upme_nav'
+
+
+- if current_user.my_invitations.size > 0
+  %h4 Meus convites
+  .container
+    .row
+      .col.s2
+      .col.s8
+        - current_user.my_invitations.each do |invitation|
+          %h5 o projeto tal quer te convidar
+          .right-align
+            = link_to 'Aceitar', accept_invitation_path(invitation.id)
+            = link_to 'Recusar', refuse_invitation_path(invitation.id)
+      .col.s2
+
+
+
+- if current_user.my_projects.size > 0
+  %h4 Meus Projetos
+
+  - current_user.my_projects.each do |project|
+    %li= link_to project.title, project_path(project.id)
+- else
+  VC N TEM PROJETO AMIGO
+
 = link_to 'Novo projeto', new_project_path
