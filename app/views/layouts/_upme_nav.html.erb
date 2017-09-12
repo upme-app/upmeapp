@@ -13,9 +13,16 @@
         <% end %>
       </div>
       <div class="col s4 right-align">
-        <%= link_to my_profile_path do %>
-          <div class="upme-nav-item nav-bg-user hide-on-med-and-down">perfil</div>
-        <%- end %>
+        
+          <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>Conta</a>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li>
+              <%= link_to my_profile_path do %>
+                Meu perfil
+              <%- end %>
+            </li>
+            <li><a href="#!">Sair</a></li>
+          </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-large-only" >
           <i class="material-icons" style="margin: 25px 15px">menu</i>
         </a>
@@ -33,6 +40,18 @@
 
 <script type="text/javascript" charset="utf-8">
     $(".button-collapse").sideNav()
+
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'right', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+       
 </script>
 
 <%= render 'layouts/upme_flash' %>

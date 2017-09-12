@@ -4,13 +4,12 @@ $black: #333;
 $grey: #666;
 $border-color: #ECECEC;
 
-
 body {
   font-family: 'Lato', sans-serif;
-  color: $grey;
+  color: $black;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 18px;
 }
 
 // COMPONENTS
@@ -53,8 +52,12 @@ body {
 }
 .label-upme {
   font-weight: 800 !important;
-  font-size: 16px !important;
-  color: #666 !important;;
+  font-size: 14px !important;
+  color: #666 !important;
+}
+.collapsible-body .label-upme {
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 .btn-upme {
   border-radius: 4px;
@@ -125,22 +128,65 @@ body {
 }
 .private-project-box {
   @extend .paper-box;
-  margin-top: -18px;
+  margin-top: -20px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+  > .label-upme {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .timeline {
+    margin-left: -50px;
+    margin-right: -50px;
+  }
+}
+.timeline-step-header {
+  border: 2px solid $border-color !important;
+  margin-bottom: -2px;
+  position: relative;
+  height: 64px;
+  padding: 20px 16px;
+}
+.timeline-step-body {
+  .upme-sub-title {
+    color: #333;
+  }
+}
+.timeline-step-check {
+  border: 2px solid $border-color !important;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  top: 14px;
+  left: -18px;
+  background-color: #fff;
 }
 
 .upme-tab {
   display: table;
   border-bottom: 2px solid $border-color;
-  padding-bottom: 8px;
   width: 100%;
   margin-top: 48px;
+  padding-bottom: 10px;
   li {
     display: inline-block;
     padding-right: 16px;
-    a:hover {
-      color: $black;
+    a {
+      padding-bottom: 6px;
+      &:hover {
+        color: $black;
+      }
+    }
+    .active {
+      color: $blue;
+      border-bottom: 4px solid $blue;
+      &:hover {
+        color: $blue;
+      }
     }
   }
 }
@@ -178,7 +224,7 @@ body {
 .u-label {
   font-family: Lato;
   line-height: 17px;
-  font-size: 18px;
+  font-size: 14px;
   color: #333333;
 }
 
@@ -214,24 +260,14 @@ body {
   color: #00C7FF;
 }
 
-h1 {
-  font-family: Lato !important;;
-  font-style: italic !important;;
+.huge-title {
+  font-family: Lato !important;
+  font-style: italic !important;
   font-weight: 800 !important;
-  line-height: 46px !important;;
+  line-height: 48px !important;
   font-size: 48px !important;
-  text-align: center !important;;
-  color: #333333 !important;;
-}
-
-h4 {
-  font-family: Lato;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 23px;
-  font-size: 24px;
-  text-align: center;
-  color: #333333;
+  color: #333333 !important;
+  margin: 0;
 }
 
 .bottom-image-label {
@@ -377,7 +413,6 @@ h4 {
   color: #666666;
 }
 
-
 .upme-btn-cancel {
   border: 2px solid #BDBDBD !important;
   box-sizing: border-box !important;
@@ -402,4 +437,19 @@ h4 {
   .container {
       width: 1170px !important;
   }
+}
+p {
+  margin: 0;
+}
+.btn-invite-your-team {
+  border: 2px solid $blue;
+  border-radius: 4px;
+  padding: 16px;
+  @extend .upme-sub-title;
+  color: $blue;
+  text-align: center;
+}
+.collapsible {
+  box-shadow: none !important;
+  border: 0 !important;
 }

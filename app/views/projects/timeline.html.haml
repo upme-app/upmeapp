@@ -1,24 +1,32 @@
 = render 'layouts/upme_nav'
 
-%h4 Linha do Tempo
+.container
+  .row
+    .col.s12.m12
+      = render partial: 'project_tabs', locals: { project: @project }
+    .row
+      .col.m2.s12
+      .col.m8.s12
+        .private-project-box
+          .label-upme Projeto
+          %h1.huge-title= @project.title
+          %br
+          .timeline
+            %ul.collapsible{data: {collapsible: 'expandable'}}
+              - @project.timeline_steps.each_with_index do |step, index|
+                %li
+                  .collapsible-header.timeline-step-header
+                    .timeline-step-check
+                    .col.s6
+                      .label-upme= "Etapa 0#{index+1}"
+                    .col.s6.right-align
+                      .label-upme= l step.entrega
+                  .collapsible-body.timeline-step-body
+                    %h4.upme-sub-title= step.title
+                    %p
+                      = step.description
+                    .label-upme Entregavel
+                    %p= step.entregavel
 
-= render partial: 'project_tabs', locals: { project: @project }
-
-%ul.collapsible{data: {collapsible: 'expandable'}}
-  - @project.timeline_steps.each_with_index do |step, index|
-    %li
-      .collapsible-header.row
-        .col.s6
-          = "Etapa #{index+1}"
-        .col.s6.right-align
-          = l step.entrega
-      .collapsible-body
-        %h4= step.title
-        %p
-          = step.description
-        %b Entregavel
-        %p= step.entregavel
-
-
-= render partial: 'project_invitations', locals: { project: @project }
-
+      .col.m2.s12
+        = render partial: 'project_invitations', locals: { project: @project }

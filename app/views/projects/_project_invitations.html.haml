@@ -1,11 +1,15 @@
 %h2.upme-sub-title Equipe
 
 - @project.project_users.each do |pu|
-  %li= pu.user.full_name
+  %ul
+    %li= pu.user.full_name
 
 
 
-%a.waves-effect.waves-light.btn.modal-trigger{href: '#invitation-modal'} Convide seu time
+%a.waves-effect.waves-light.modal-trigger.btn-invite-your-team{href: '#invitation-modal'}
+  = image_tag 'app/invite-your-team.svg'
+  %br
+  Convide seu time
 
 
 #invitation-modal.modal

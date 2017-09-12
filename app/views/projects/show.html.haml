@@ -8,7 +8,16 @@
             .col.m2.s12
             .col.m8.s12
                 .private-project-box
-                    %h1= @project.title
+                    .label-upme Projeto
+                    %h1.huge-title= @project.title
+                    .label-upme Objetivo
+                    %p= @project.objective
+                    .label-upme Mais informações
+                    %p= @project.description
+                    .label-upme Natureza da organização
+                    %p= @project.description
+                    .label-upme Publico alvo
+                    %p= @project.target_audience
 
             .col.m2.s12
                 = render partial: 'project_invitations', locals: { project: @project }
