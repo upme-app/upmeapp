@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :client_solicitations
 
   belongs_to :user
+  belongs_to :client, class_name: 'User'
 
   after_create :add_creator_user
 
