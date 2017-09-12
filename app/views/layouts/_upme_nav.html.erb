@@ -21,7 +21,9 @@
                 Meu perfil
               <%- end %>
             </li>
-            <li><a href="#!">Sair</a></li>
+            <li>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+            </li>
           </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-large-only" >
           <i class="material-icons" style="margin: 25px 15px">menu</i>

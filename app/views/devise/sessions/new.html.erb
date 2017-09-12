@@ -9,16 +9,16 @@
       <div class="paper-box">
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="input-field">
-          <%= f.label :email, 'Seu e-mail', class: 'label-upme' %>
-          <%= f.email_field :email, class: 'validate big-font-form', placeholder: 'Digite seu e-mail aqui' %>
-        </div>
-        
-        <div class="input-field">
-          <%= f.label :password, 'Sua senha', class: 'label-upme' %>
-          <%= f.password_field :password, autocomplete: "off", class: 'big-font-form', placeholder: '********'%>
-        </div>
-        <%= f.submit 'Fazer login', class: 'waves-effect waves-light btn-upme-blue btn-full-width ' %>
+          <div class="input-field">
+            <%= f.label :email, 'Seu e-mail', class: 'label-upme' %>
+            <%= f.email_field :email, class: 'validate big-font-form', placeholder: 'Digite seu e-mail aqui' %>
+          </div>
+
+          <div class="input-field">
+            <%= f.label :password, 'Sua senha', class: 'label-upme' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'big-font-form', placeholder: '********'%>
+          </div>
+          <button type="submit" class="waves-effect waves-light btn-upme-blue btn-full-width">Fazer login</button>
         <% end %>
         <%=
         #render "devise/shared/links"
