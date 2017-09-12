@@ -29,4 +29,13 @@ class User < ApplicationRecord
     ProjectInvitation.where(user_to_id: id)
   end
 
+  def profile_is_complete?
+    return false if city.blank?
+    if aluno?
+      return false if universidade.blank? or semestre.blank?
+    end
+
+    true
+  end
+
 end
