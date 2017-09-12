@@ -4,6 +4,8 @@ class Project < ApplicationRecord
   has_many :timeline_steps
   has_many :client_solicitations
 
+  belongs_to :user
+
   after_create :add_creator_user
 
   def add_user(user)

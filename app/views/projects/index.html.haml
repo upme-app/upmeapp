@@ -33,6 +33,9 @@
             .paper-box
               .project-title= project.title
               .project-description=project.description
+              %br   
+              .p.project-description= project.created_at.strftime('%d/%m/%y')
+
 - else
   .container
     .row
