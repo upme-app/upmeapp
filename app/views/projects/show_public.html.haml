@@ -2,37 +2,31 @@
 
 .container{style: 'margin-top: 30px'}
   .row
-    .col.s12.l2
-      = link_to 'Voltar', projects_path
+    .col.s12.m2
+      = link_to '< Voltar', projects_path
       %br
-
       - if ClientSolicitation.solicitation_exists(@project, current_user)
-        Aguardando solicitação.
+        %br
+        Aguardando resposta.
       - if current_user.empresa? and @project.client_id.nil? and !ClientSolicitation.solicitation_exists(@project, current_user)
-        .center-align
-          %a.waves-effect.waves-light.btn.modal-trigger{href: '#modal1', style: 'text-transform: none; letter-spacing: 0px; padding-right: 8px; padding-left: 8px'} Tenho interesse!
+        %br
+        %a.waves-effect.waves-light.btn-upme-blue.modal-trigger{href: '#modal1', style: 'text-transform: none; letter-spacing: 0px; padding-right: 8px; padding-left: 8px'} Tenho interesse!
       %br
-    .col.s12.l7.upme-form-container
-      %h4.left-align= @project.title
-      %p
-        %b Objetivo deste projeto
+    .col.s12.m8
+      .paper-box
+        %h1.huge-title= @project.title
         %br
-        = @project.objective
-      %p
-        %b Mais informações
-        %br
-        = @project.description
-      %p
-        %b Natureza
-        %br
+        .label-upme Objetivo deste projeto
+        %p= @project.objective
+        .label-upme Mais informações
+        %p= @project.description
+        .label-upme Natureza
         %li= 'Pública' if @project.nat_publica
         %li= 'Privada' if @project.nat_privada
         %li= 'ONG' if @project.nat_ong
-      %p
-        %b O público alvo
-        %br
-        = @project.target_audience
-    .col.s12.l3
+        .label-upme O público alvo
+        %p= @project.target_audience
+    .col.s12.m2
       %h5 Equipe
       %ul.collection{style: 'border: none'}
         %li.collection-item.avatar{style: 'border: none'}
@@ -47,14 +41,16 @@
 #modal1.modal
   = form_tag add_client_solicitation_path do
     .modal-content
-      %h4 Porque você quer isso?
-      = text_area_tag :message
+      %h4.upme-sub-title Mostre seu interesse
+      %p.help-text
+        %i{data: {feather: "help-circle"}}
+        Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
+      .label-upme Edite sua mensagem
+      = text_area_tag :message,"Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "materialize-textarea"
     .modal-footer.row
-      .col.s6.left-align
-        %button.waves-effect.waves-light.upme-btn-c.modal-close{type: :button} Cancelar
-      .col.s6.right-align
-        %button.waves-effect.waves-light.btn Enviar Solicitação
-
+      .col.s12
+        %button.waves-effect.waves-light.btn-upme-outline-grey.modal-close{type: :button} Cancelar
+        %button.waves-effect.waves-light.btn-upme-blue Enviar Solicitação
 
 :javascript
   $('.modal').modal();

@@ -5,47 +5,40 @@
     .col.s12.m2
     .col.s12.m8
       %br
-      %h5.left-align Meu Perfil
-      .upme-form-container.row
-        .col.s12.m3
-          = render 'profile/update_profile_picture'
-        .col.s12.m9
-          = form_for current_user, url: save_profile_path, method: :post do |f|
-            %h4= current_user.full_name
-            %span.upme-bolder Área(s) de interesse
-            %br
-            - current_user.user_area_de_interesse.each do |a|
-              = a.area_de_interesse.name + ';'
-            .row
-              .col.s12
-                %span.upme-bolder Linkedin
-                %br
-                = f.text_field :linkedin, class: 'validate upme-input-small', placeholder: 'Coloque o link do seu Linkedin'
-              .col.s12
-                %span.upme-bolder Sobre Você
-                %br
-                = f.text_area :about, class: 'validate upme-input-small materialize-textarea', placeholder: 'Escreva um pouco sobre você'
+      %h5.upme-sub-title Meu Perfil
+      .paper-box
+        .row
+          .col.s12.m3
+            = render 'profile/update_profile_picture'
+          .col.s12.m9
+            = form_for current_user, url: save_profile_path, method: :post do |f|
+              %h4= current_user.full_name
+              %span.upme-bolder Área(s) de interesse
+              %br
+              - current_user.user_area_de_interesse.each do |a|
+                = a.area_de_interesse.name + ';'
+              .row
+                .col.s12
+                  %span.upme-bolder Linkedin
+                  %br
+                  = f.text_field :linkedin, class: 'validate upme-input-small', placeholder: 'Coloque o link do seu Linkedin'
+                .col.s12
+                  %span.upme-bolder Sobre Você
+                  %br
+                  = f.text_area :about, class: 'validate upme-input-small materialize-textarea', placeholder: 'Escreva um pouco sobre você'
 
-              .col.s12.no-padding
-                .col.s12.m6
-                  %span.upme-bolder Email
-                  %br
-                  = f.text_field :email, class: 'validate upme-input-small'
-                  %span.upme-bolder Celular
-                  %br
-                  = f.text_field :phone, class: 'validate upme-input-small', placeholder: '(DDD) 0000-0000'
-                .col.s12.m6
+                .col.s12
                   %span.upme-bolder Universidade
                   %br
                   = f.text_field :universidade, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
                   %span.upme-bolder Semestre
                   %br
                   = f.text_field :semestre, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
-              .col.s12
-                %span.upme-bolder Cidade
-                %br
-                = f.text_field :city, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
-              .col.s12.right-align
-                = link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn upme-btn-cancel'
-                %button.waves-effect.waves-light.btn Salvar
+                .col.s12
+                  %span.upme-bolder Cidade
+                  %br
+                  = f.text_field :city, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                .col.s12.right-align
+                  = link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn-upme-outline-grey'
+                  %button.waves-effect.waves-light.btn-upme-blue Salvar
     .col.s12.m2

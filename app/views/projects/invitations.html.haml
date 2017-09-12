@@ -8,18 +8,21 @@
       .col.m2.s12
       .col.m8.s12
         .private-project-box
-          - if @project.client_solicitations.size == 0
-            .upme-sub-title.center-align Você ainda não tem solicitaçõoes.
-          - @project.client_solicitations.each do |cs|
-            = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'
+          .row
+            - @project.client_solicitations.each do |cs|
+              .col.s2
+                = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'
+              
+              .col.s9
+                .upme-sub-title= cs.user.full_name
+                .row
+                  .col.s12
+                  %br
+                  %p= cs.message
+                  %br
+                  = link_to 'Aceitar', accept_client_solicitation_path(cs.id), class: 'waves-effect waves-light btn-upme-blue'
+                  = link_to 'Recusar', refuse_client_solicitation_path(cs.id), class: 'waves-effect waves-dark btn-upme-outline-grey'
 
-            %li= cs.user.full_name
-            %li= cs.user.email
-
-            %p= cs.message
-            = link_to 'Aceitar', accept_client_solicitation_path(cs.id)
-            = link_to 'Recusar', refuse_client_solicitation_path(cs.id)
-            %hr
       .col.m2.s12
         = render partial: 'project_invitations', locals: { project: @project }
 
