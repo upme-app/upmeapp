@@ -14,7 +14,8 @@
           %span.upme-bolder Área(s) de interesse
           %br
           = areas_de_interesse(current_user)
-          = link_to 'Editar', areas_de_interesse_path
+          .btn-upme-outline-grey.btn-small
+            = link_to 'Editar', areas_de_interesse_path
           .row
             .col.s12
               %span.upme-bolder Linkedin
@@ -36,5 +37,5 @@
               %span.upme-bolder Cidade
               %div= complete_seu_cadastro(current_user.city)
             .col.s12.right-align
-              = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn'
+              = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
     .col.s12.m2

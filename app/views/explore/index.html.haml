@@ -1,9 +1,12 @@
 = render 'layouts/upme_nav'
-
-%h4 Projetos sem cliente
-
-- Project.without_client.each do |project|
-  %li= link_to project.title, public_project_path(project.id)
+.container
+  .row
+    .col.m12
+      %h4.upme-sub-title Projetos sem cliente
+  .row
+    .col.m3
+      - Project.without_client.each do |project|
+        .paper-box= link_to project.title, public_project_path(project.id)
 
 
 
