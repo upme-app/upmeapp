@@ -56,6 +56,24 @@ class ProjectsController < ApplicationController
     redirect_back(fallback_location: project_path(@project.id))
   end
 
+  def add_client_solicitation
+    set_project
+
+    @solicitation = ClientSolicitation.new({
+      user_id: current_user.id,
+      project_id: @project.id,
+      message: params[:message]
+    })
+
+    if @solicitation.save
+      flash[:success] = 'Solicitação enviada!'
+    else
+      flash[:danger] = 'Erro!'
+    end
+
+    redirect_to public_project_path(@project.id)
+  end
+
   private
 
   def project_params

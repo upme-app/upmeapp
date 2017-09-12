@@ -2,6 +2,7 @@ class Project < ApplicationRecord
 
   has_many :project_users
   has_many :timeline_steps
+  has_many :client_solicitations
 
   after_create :add_creator_user
 
@@ -11,6 +12,10 @@ class Project < ApplicationRecord
      project_id: id,
      user_id: user.id
     })
+  end
+
+  def self.without_client
+    Project.where(client_id: nil)
   end
 
   private

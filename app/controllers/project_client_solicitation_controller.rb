@@ -1,0 +1,2 @@
+class ProjectClientSolicitationController < ApplicationController
+end

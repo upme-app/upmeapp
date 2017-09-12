@@ -12,12 +12,4 @@ module ProfileHelper
     AreaDeInteresse.where(id: user.user_area_de_interesse.map(&:area_de_interesse_id)).pluck(:name).join(', ')
   end
 
-  def profilepic(user)
-    if user.profilepicurl.nil?
-      'app/profile_empty.png'
-    else
-      user.profilepicurl
-    end
-  end
-
 end

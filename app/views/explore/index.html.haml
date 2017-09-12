@@ -1,7 +1,9 @@
 = render 'layouts/upme_nav'
 
-%h4 ExploreController#index
-%p Find me in app/views/explore/index.html.haml
+%h4 Projetos sem cliente
+
+- Project.without_client.each do |project|
+  %li= link_to project.title, public_project_path(project.id)
 
 
-= link_to 'Áreas de interesse', areas_de_interesse_path, data: { 'turbolinks-action' => 'replace' }
+

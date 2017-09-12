@@ -39,4 +39,12 @@ module ApplicationHelper
     end
   end
 
+  def profilepic(user)
+    if user.profilepicurl.nil?
+      'app/profile_empty.png'
+    else
+      user.profilepicurl
+    end
+  end
+
 end

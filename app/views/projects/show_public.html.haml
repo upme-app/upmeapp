@@ -5,8 +5,12 @@
     .col.s12.l2
       = link_to 'Voltar', projects_path
       %br
-      .center-align
-        %a.waves-effect.waves-light.btn.modal-trigger{href: '#modal1', style: 'text-transform: none; letter-spacing: 0px; padding-right: 8px; padding-left: 8px'} Tenho interesse!
+
+      - if ClientSolicitation.solicitation_exists(@project, current_user)
+        Aguardando solicitação.
+      - if current_user.empresa? and @project.client_id.nil? and !ClientSolicitation.solicitation_exists(@project, current_user)
+        .center-align
+          %a.waves-effect.waves-light.btn.modal-trigger{href: '#modal1', style: 'text-transform: none; letter-spacing: 0px; padding-right: 8px; padding-left: 8px'} Tenho interesse!
       %br
     .col.s12.l7.upme-form-container
       %h4.left-align= @project.title
@@ -41,14 +45,15 @@
           %p Integrante
 
 #modal1.modal
-  .modal-content
-    %h4 Escolha
-    %p blabla
-  .modal-footer.row
-    .col.s6.left-align
-      %button.waves-effect.waves-light.upme-btn-c Cancelar
-    .col.s6.right-align
-      %button.waves-effect.waves-light.btn Enviar Mensagem
+  = form_tag add_client_solicitation_path do
+    .modal-content
+      %h4 Porque você quer isso?
+      = text_area_tag :message
+    .modal-footer.row
+      .col.s6.left-align
+        %button.waves-effect.waves-light.upme-btn-c.modal-close{type: :button} Cancelar
+      .col.s6.right-align
+        %button.waves-effect.waves-light.btn Enviar Solicitação
 
 
 :javascript
