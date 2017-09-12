@@ -1,4 +1,4 @@
-.upme-alert-success, .upme-alert-danger {
+.upme-alert-success, .upme-alert-danger, .upme-alert-notice {
   font-family: Lato;
   font-style: italic;
   font-weight: bold;
@@ -29,7 +29,7 @@
 }
 
 // SUCCESS
-.upme-alert-success {
+.upme-alert-success, .upme-alert-notice {
   border: 2px solid #0FD990;
 }
 .upme-icon-success {
@@ -45,7 +45,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .upme-alert-success, .upme-alert-danger {
+  .upme-alert-success, .upme-alert-notice, .upme-alert-danger {
     font-size: 16px;
     padding: 14px 10px;
     height: 48px;
