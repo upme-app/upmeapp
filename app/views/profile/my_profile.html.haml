@@ -5,37 +5,32 @@
     .col.s12.m2
     .col.s12.m8
       %br
-      %h5.left-align Meu Perfil
-      .upme-form-container.row
-        .col.s12.m3
-          = render 'profile/update_profile_picture'
-        .col.s12.m9
-          %h4= current_user.full_name
-          %span.upme-bolder Área(s) de interesse
-          %br
-          = areas_de_interesse(current_user)
-          .btn-upme-outline-grey.btn-small
-            = link_to 'Editar', areas_de_interesse_path
-          .row
-            .col.s12
-              %span.upme-bolder Linkedin
-              %div= complete_seu_cadastro(current_user.linkedin)
-              %span.upme-bolder Sobre você
-              %div= complete_seu_cadastro(current_user.about)
-            .col.s12.no-padding
-              .col.s12.m6
-                %span.upme-bolder Email
-                %div= current_user.email
-                %span.upme-bolder Celular
-                %div= complete_seu_cadastro(current_user.phone)
-              .col.s12.m6
-                %span.upme-bolder Universidade
-                %div= complete_seu_cadastro(current_user.universidade)
-                %span.upme-bolder Semestre
-                %div= complete_seu_cadastro(current_user.semestre)
-            .col.s12
-              %span.upme-bolder Cidade
-              %div= complete_seu_cadastro(current_user.city)
-            .col.s12.right-align
-              = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
+      %h5.upme-sub-title Meu Perfil
+      .paper-box
+        .row
+          .col.s12.m3
+            = render 'profile/update_profile_picture'
+          .col.s12.m9
+            %h4= current_user.full_name
+            .label-upme Área(s) de interesse
+            %br
+            = areas_de_interesse(current_user)
+            .btn-upme-outline-grey.btn-small
+              = link_to 'Editar', areas_de_interesse_path
+            .row
+              .col.s12
+                .label-upme Linkedin
+                %div= complete_seu_cadastro(current_user.linkedin)
+                .label-upme Sobre você
+                %div= complete_seu_cadastro(current_user.about)
+              .col.s12.no-padding
+                .col.s12.m6
+                  .label-upme Universidade
+                  %div= complete_seu_cadastro(current_user.universidade)
+                  .label-upme Semestre
+                  %div= complete_seu_cadastro(current_user.semestre)
+                  .label-upme Cidade
+                  %div= complete_seu_cadastro(current_user.city)
+              .col.s12.right-align
+                = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
     .col.s12.m2
