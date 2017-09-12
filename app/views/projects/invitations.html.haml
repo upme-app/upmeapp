@@ -15,8 +15,8 @@
             %li= cs.user.email
 
             %p= cs.message
-            = link_to 'Aceitar', accept_client_solicitation_path
-            = link_to 'Recusar', refuse_client_solicitation_path
+            = link_to 'Aceitar', accept_client_solicitation_path(cs.id)
+            = link_to 'Recusar', refuse_client_solicitation_path(cs.id)
             %hr
       .col.m2.s12
         = render partial: 'project_invitations', locals: { project: @project }
