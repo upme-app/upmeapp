@@ -27,12 +27,7 @@
         .label-upme O público alvo
         %p= @project.target_audience
     .col.s12.m2
-      %h5 Equipe
-      %ul.collection{style: 'border: none'}
-        - @project.project_users.each do |pu|
-          %li.collection-item.avatar{style: 'border: none'}
-            = image_tag profilepic(pu.user), class: 'circle', width: '100px', id: 'img-profilepic'
-            %span.title= pu.user.full_name
+      = render partial: 'project_team'
 
 #modal1.modal
   = form_tag add_client_solicitation_path do

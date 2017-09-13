@@ -1,0 +1,36 @@
+= render 'layouts/upme_nav'
+
+.container
+  .row
+    .col.s12.m2
+    .col.s12.m8
+      %br
+      %h5.upme-sub-title Perfil
+      .paper-box
+        .row
+          .col.s12.m3
+            = image_tag profilepic(@user), class: 'circle', width: '100px', id: 'img-profilepic'
+          .col.s12.m9
+            %h4= @user.full_name
+            .label-upme Área(s) de interesse
+            %br
+            = areas_de_interesse(@user)
+            .row
+              .col.s12
+                - if @user.empresa?
+                  .label-upme Nome da empresa
+                  %div= current_user.nome_empresa
+                .label-upme Linkedin
+                %div= current_user.linkedin
+                .label-upme Sobre você
+                %div= current_user.about
+              .col.s12.no-padding
+                .col.s12.m6
+                  - if current_user.aluno?
+                    .label-upme Universidade
+                    %div= current_user.universidade
+                    .label-upme Semestre
+                    %div= current_user.semestre
+                  .label-upme Cidade
+                  %div= current_user.city
+    .col.s12.m2

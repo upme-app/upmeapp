@@ -46,5 +46,7 @@ Rails.application.routes.draw do
   match 'meu-perfil/editar', to: 'profile#edit_profile', via: :get, as: :edit_profile
   match 'meu-perfil/editar', to: 'profile#save_profile', via: :post, as: :save_profile
   match 'meu-perfil/salvar_foto', to: 'profile#update_picture', via: :post, as: :update_picture
+  match 'perfil/:id', to: 'profile#profile', via: :get, as: :profile
+
 
 end

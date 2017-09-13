@@ -33,7 +33,8 @@
                     - step.timeline_comments.each do |comment|
                       .comment-row
                         = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
-                        %span.comment-username= comment.user.full_name
+                        %span.comment-username
+                          = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
                         %p.comment-message= comment.message
                         .comment-info= l comment.created_at
                     .label-upme Comente
