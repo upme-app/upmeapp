@@ -29,7 +29,7 @@
 
     - current_user.my_projects.each do |project|
       .row
-        .col.s3
+        .col.m3.s12
           = link_to project_path(project.id) do
             .paper-box
               .project-title= project.title
