@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo' }
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
   match 'meus-projetos/:id/solicitacoes', as: :invitations, to: 'projects#invitations', via: :get
-  match 'meus-projetos/:id/enviar-solicitacao', as: :create_invitation, to: 'projects#create_invitation', via: :post
+  match 'meus-projetos/:id/enviar-solicitacao-para-usuario', as: :create_invitation, to: 'projects#create_invitation', via: :post
   match 'aceitar-convite/:invitation_id', as: :accept_invitation, to: 'projects_invitation#accept_invitation', via: :get
   match 'recusar-convite/:invitation_id', as: :refuse_invitation, to: 'projects_invitation#refuse_invitation', via: :get
 
