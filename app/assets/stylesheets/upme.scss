@@ -297,25 +297,6 @@ button:focus {
   color: #BDBDBD;
 }
 
-.upme-image-btn {
-  width: 128px;
-  height: 128px;
-  background-image: image_url('app/image-radio/black-and-white');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  border: none;
-  background-color: transparent;
-  margin-bottom: 10px;
-}
-
-.upme-image-btn-selected {
-  background-image: image_url('app/image-radio/color');
-}
-
-.upme-image-btn:focus {
-  background-color: transparent !important;
-}
-
 .chip {
   background: #00C7FF !important;
   border-radius: 4px !important;

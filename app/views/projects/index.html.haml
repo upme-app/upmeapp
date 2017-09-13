@@ -26,15 +26,15 @@
         %br
         = link_to 'Novo projeto', new_project_path, class: 'waves-effect waves-light-blue btn-upme-outline-blue btn-small'
       
-
-    - current_user.my_projects.each do |project|
-      .row
+    .row
+      - current_user.my_projects.each do |project|
         .col.m3.s12
-          = link_to project_path(project.id) do
-            .paper-box
-              .project-title= project.title
-              .project-description=project.description
-              %br   
+          = link_to public_project_path(project.id) do
+            .paper-box{style: 'height: 280px; margin-bottom: 20px;'}
+              .h2.project-title= project.title[0..30] + '...'
+              .p.project-description= project.description[0..70] + '...'
+              %br
+              .p.project-description= project.user.full_name
               .p.project-description= project.created_at.strftime('%d/%m/%y')
 
 - else
