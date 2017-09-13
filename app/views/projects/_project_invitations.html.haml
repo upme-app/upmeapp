@@ -17,7 +17,7 @@
 
 
 #invitation-modal.modal
-  = form_tag create_invitation_path do |f|
+  = form_tag create_invitation_path(@project.id) do |f|
     .modal-content
       %h4 Convide seu time
 
