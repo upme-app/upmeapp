@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-i  before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :authorize_project, except: [:show_public, :index, :new, :create]
 
   def new
