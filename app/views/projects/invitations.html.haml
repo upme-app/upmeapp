@@ -9,6 +9,8 @@
       .col.m8.s12
         .private-project-box
           .row
+            - if @project.client_solicitations.empty?
+              .upme-sub-title Nenhuma solicitação.
             - @project.client_solicitations.each do |cs|
               .col.s2
                 = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'

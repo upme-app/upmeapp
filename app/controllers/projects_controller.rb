@@ -26,6 +26,22 @@ class ProjectsController < ApplicationController
     set_project
   end
 
+  def timeline_comment
+    set_project
+    @step = TimelineStep.find(params[:timeline_step_id])
+
+    if current_user.can_timeline_comment?(@project, @step)
+      TimelineComment.create({
+                                 message: params[:message],
+                                 timeline_step_id: @step.id,
+                                 user_id: current_user.id
+                             })
+      flash[:notice] = 'Comentário enviado.'
+    end
+
+    redirect_to timeline_path(@project.id)
+  end
+
   def show_public
     set_project
   end
@@ -38,7 +54,7 @@ class ProjectsController < ApplicationController
 
     user_to = User.find_by_email(params[:email])
 
-    if user_to
+    if user_to and !@project.has_user(current_user)
       @invitation = ProjectInvitation.new({
         user_from_id: current_user.id,
         user_to_id: user_to.id,

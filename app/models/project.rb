@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :client_solicitations
 
   belongs_to :user
+  belongs_to :client, class_name: 'User'
 
   after_create :add_creator_user
 
@@ -18,6 +19,10 @@ class Project < ApplicationRecord
 
   def self.without_client
     Project.where(client_id: nil)
+  end
+
+  def has_user(user)
+    ProjectUser.where(project_id: id).where(user_id: user.id).size > 0
   end
 
   private

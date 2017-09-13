@@ -15,7 +15,7 @@
             %ul.collapsible{data: {collapsible: 'expandable'}}
               - @project.timeline_steps.each_with_index do |step, index|
                 %li
-                  .collapsible-header.timeline-step-header
+                  .collapsible-header.timeline-step-header{class: index == 0 ? 'active' : ''}
                     .timeline-step-check
                     .col.s6
                       .label-upme= "Etapa 0#{index+1}"
@@ -25,7 +25,22 @@
                     %h4.upme-sub-title= step.title
                     %p
                       = step.description
-                    .label-upme Entregavel
+                    .label-upme Entregável
                     %p= step.entregavel
+
+                    %hr
+                    %h4 Comentários
+                    - step.timeline_comments.each do |comment|
+                      %div
+                        = image_tag profilepic(comment.user), class: 'circle', width: '40px', id: 'img-profilepic'
+                        %span.title= comment.user.full_name
+                        %br
+                        %span= l comment.created_at
+                        %p= comment.message
+                    %h4 Comente
+                    = form_tag timeline_comment_path(@project.id) do
+                      = hidden_field_tag :timeline_step_id, step.id
+                      = text_area_tag :message, '', class: 'materialize-textarea'
+                      %button Enviar Comentário
       .col.m2.s12
         = render partial: 'project_invitations', locals: { project: @project }

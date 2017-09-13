@@ -5,7 +5,7 @@ class ProjectsInvitationController < ApplicationController
     set_invitation
     flash[:success] = 'Você entrou no projeto!'
     @invitation.accept
-    redirect_to project_path(@invitation.id)
+    redirect_to project_path(@invitation.project_id)
   end
 
   def refuse_invitation

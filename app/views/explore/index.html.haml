@@ -4,12 +4,12 @@
     .col.m12
       %h4.upme-sub-title Todos os projetos
   .row
-    .col.m3
-      - Project.without_client.each do |project|
+    - Project.without_client.each do |project|
+      .col.m3
         = link_to public_project_path(project.id) do
-          .paper-box
-            .h2.project-title= project.title
-            .p.project-description= project.description
+          .paper-box{style: 'height: 220px; margin-bottom: 20px;'}
+            .h2.project-title= project.title[0..10] + '...'
+            .p.project-description= project.description[0..50] + '...'
             %br
             .p.project-description= project.user.full_name
             .p.project-description= project.created_at.strftime('%d/%m/%y')

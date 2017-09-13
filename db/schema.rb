@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911214321) do
+ActiveRecord::Schema.define(version: 20170913020332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,6 +287,16 @@ ActiveRecord::Schema.define(version: 20170911214321) do
     t.datetime "password_reset_sent_at"
   end
 
+  create_table "timeline_comments", force: :cascade do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "timeline_step_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["timeline_step_id"], name: "index_timeline_comments_on_timeline_step_id", using: :btree
+    t.index ["user_id"], name: "index_timeline_comments_on_user_id", using: :btree
+  end
+
   create_table "timeline_steps", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "title"
@@ -340,6 +350,8 @@ ActiveRecord::Schema.define(version: 20170911214321) do
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "timeline_comments", "timeline_steps"
+  add_foreign_key "timeline_comments", "users"
   add_foreign_key "timeline_steps", "projects"
   add_foreign_key "user_area_de_interesses", "area_de_interesses", column: "area_de_interesse_id"
   add_foreign_key "user_area_de_interesses", "users"
