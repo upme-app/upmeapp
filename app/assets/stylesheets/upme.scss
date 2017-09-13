@@ -260,16 +260,6 @@ button:focus {
   height: 60px;
   margin: 10%;
 }
-
-.u-label-big {
-  font-size: 2rem !important;
-  font-family: Lato !important;
-  font-style: italic!important;
-  font-weight: 300 !important;
-  line-height: normal !important;
-  color: #BDBDBD !important;
-}
-
 .u-link-med {
   font-family: Lato;
   line-height: normal;
@@ -457,84 +447,84 @@ label {
 // PRETTY IMAGE CHECKBOX AND RADIO
 [type="checkbox"].pretty-image-checkbox + label:before,
 [type="radio"].pretty-image-checkbox + label:before {
-  display: none !important;
+  display: none;
 }
 [type="checkbox"]:checked + label:after,
 [type="radio"]:checked + label:after {
-  display: block !important;
+  display: block;
 }
 
 [type="radio"].pretty-image-checkbox + label,
 [type="checkbox"].pretty-image-checkbox + label
  {
-     background: #999 !important;
-     height: 128px !important;
-     width: 128px !important;
-     display:inline-block !important;
-     border-radius: 128px !important;
-     position: relative !important;
-     transition: all .1s ease-in-out !important;
+     background: #d0d0d0;
+     height: 128px;
+     width: 128px;
+     display:inline-block;
+     border-radius: 128px;
+     position: relative;
+     transition: all .1s ease-in-out;
  }
  [type="radio"].pretty-image-checkbox:checked + label,
  [type="checkbox"].pretty-image-checkbox:checked + label
   {
-      background: #00C7FF !important;
-      height: 128px !important;
-      width: 128px !important;
-      display:inline-block !important;
-      border-radius: 128px !important;
-      position: relative !important;
+      background: #00C7FF;
+      display:inline-block;
+      position: relative;
   }
   [type="radio"].pretty-image-checkbox + label:after,
   [type="checkbox"].pretty-image-checkbox + label:after {
-     content: url(https://i.imgur.com/wOPxOBG.png) !important;
-     color: #fff !important;
-     text-align: center !important;
-     line-height: 34px !important;
-     display: block !important;
-     width: 34px !important;
-     height: 34px !important;
+     content: url(https://i.imgur.com/wOPxOBG.png);
+     color: #fff;
+     text-align: center;
+     line-height: 34px;
+     display: block;
+     width: 34px;
+     height: 34px;
      border: 3px solid #fff !important;
-     border-radius: 34px !important;
-     background-color: #00C7FF !important;
-     position: absolute !important;
-     right: 0 !important;
-     top: 0 !important;
-     opacity: 0 !important;
-     transition: all .1s ease-in-out !important;
+     border-radius: 34px;
+     background-color: #00C7FF;
+     position: absolute;
+     right: 0;
+     top: 0;
+     opacity: 0;
+     transition: all .1s ease-in-out;
   }
   [type="radio"].pretty-image-checkbox:checked + label:after,
   [type="checkbox"].pretty-image-checkbox:checked + label:after
   {
-     opacity: 1 !important;
+     opacity: 1;
   }
   [type="radio"].pretty-image-checkbox:checked + label .pretty-checkbox-image,
   [type="checkbox"].pretty-image-checkbox:checked + label .pretty-checkbox-image
   {
-     -webkit-filter: grayscale(0) !important;
-    filter: grayscale(0) !important;
+     -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+    opacity: 1;
+    
   }
   [type="radio"].pretty-image-checkbox:checked + label .pretty-checkbox-name,
   [type="checkbox"].pretty-image-checkbox:checked + label .pretty-checkbox-name
   {
-   color: #00C7FF !important;
+   color: #00C7FF;
   }
   .pretty-checkbox-image {
-    position: absolute !important;
-    transform: translateX(-50%) !important;
-    left: 50% !important;
-    top: 14px !important;
-    -webkit-filter: grayscale(1) !important;
-    filter: grayscale(1) !important;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 14px;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    opacity: .6;
   }
   .pretty-checkbox-name {
-    display: block !important;
-    color: #666 !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    font-family: 'Lato', sans-serif !important;
+    display: block;
+    color: #666;
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Lato', sans-serif;
     font-size: 16px;
     text-align: center;
     width: 100%;
@@ -576,8 +566,32 @@ label {
   .comment-info {
     font-size: 14px;
   }
-
-
 .dark-link {
   color: #666;
+}
+@media screen and (max-width: 480px) {
+  body {
+    position: relative;
+  }
+  [type="radio"].pretty-image-checkbox + label,
+  [type="checkbox"].pretty-image-checkbox + label {
+    height: 96px !important;
+    width: 96px !important;
+  }
+  [type="radio"].pretty-image-checkbox + label:after,
+  [type="checkbox"].pretty-image-checkbox + label:after {
+    top: -10px;
+  }
+  .pretty-checkbox-image {
+    height: 72px;
+  }
+  .paper-box {
+    position: relative;
+    padding: 24px;
+    left: 0;
+    right: 0;
+  }
+  .pretty-checkbox-name {
+    font-size: 13px;
+  }
 }
