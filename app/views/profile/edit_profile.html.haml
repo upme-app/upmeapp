@@ -19,6 +19,10 @@
                 = a.area_de_interesse.name + ';'
               .row
                 .col.s12
+                  - if current_user.empresa?
+                    %span.upme-bolder Nome da empersa
+                    %br
+                    = f.text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Coloque o nome da sua empresa'
                   %span.upme-bolder Linkedin
                   %br
                   = f.text_field :linkedin, class: 'validate upme-input-small', placeholder: 'Coloque o link do seu Linkedin'
@@ -28,12 +32,13 @@
                   = f.text_area :about, class: 'validate upme-input-small materialize-textarea', placeholder: 'Escreva um pouco sobre você'
 
                 .col.s12
-                  %span.upme-bolder Universidade
-                  %br
-                  = f.text_field :universidade, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
-                  %span.upme-bolder Semestre
-                  %br
-                  = f.text_field :semestre, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                  - if current_user.aluno?
+                    %span.upme-bolder Universidade
+                    %br
+                    = f.text_field :universidade, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                    %span.upme-bolder Semestre
+                    %br
+                    = f.text_field :semestre, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
                 .col.s12
                   %span.upme-bolder Cidade
                   %br

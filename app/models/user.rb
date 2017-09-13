@@ -35,6 +35,10 @@ class User < ApplicationRecord
       return false if universidade.blank? or semestre.blank?
     end
 
+    if empresa?
+      return false if nome_empresa.blank?
+    end
+
     true
   end
 

@@ -38,7 +38,7 @@ class ProfileController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:linkedin, :email, :universidade, :semestre, :phone, :city, :about)
+    params.require(:user).permit(:linkedin, :email, :universidade, :semestre, :phone, :city, :about, :nome_empresa)
   end
 
 end

@@ -19,16 +19,20 @@
               = link_to 'Editar', areas_de_interesse_path
             .row
               .col.s12
+                - if current_user.empresa?
+                  .label-upme Nome da empresa
+                  %div= complete_seu_cadastro(current_user.nome_empresa)
                 .label-upme Linkedin
                 %div= complete_seu_cadastro(current_user.linkedin)
                 .label-upme Sobre você
                 %div= complete_seu_cadastro(current_user.about)
               .col.s12.no-padding
                 .col.s12.m6
-                  .label-upme Universidade
-                  %div= complete_seu_cadastro(current_user.universidade)
-                  .label-upme Semestre
-                  %div= complete_seu_cadastro(current_user.semestre)
+                  - if current_user.aluno?
+                    .label-upme Universidade
+                    %div= complete_seu_cadastro(current_user.universidade)
+                    .label-upme Semestre
+                    %div= complete_seu_cadastro(current_user.semestre)
                   .label-upme Cidade
                   %div= complete_seu_cadastro(current_user.city)
               .col.s12.right-align
