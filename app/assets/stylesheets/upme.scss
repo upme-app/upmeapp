@@ -468,10 +468,8 @@ label {
   font-size: 100% !important;
 }
 // PRETTY IMAGE CHECKBOX AND RADIO
-[type="checkbox"] + label:before,
-[type="radio"] + label:before,
-[type="checkbox"] + label:after,
-[type="radio"] + label:after {
+[type="checkbox"].pretty-image-checkbox + label:before,
+[type="radio"].pretty-image-checkbox + label:before {
   display: none !important;
 }
 [type="checkbox"]:checked + label:after,
@@ -553,4 +551,14 @@ label {
     font-size: 16px;
     text-align: center;
     width: 100%;
+  }
+  .note-areas {
+    position: absolute;
+    left: -110px;
+    top: 20px;
+  }
+  .invitation-button {
+    position: absolute;
+    right: 24px;
+    top: 34px;
   }

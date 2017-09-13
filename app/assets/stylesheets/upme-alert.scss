@@ -44,6 +44,17 @@
   background: #FB3028;
 }
 
+.upme-alert-invitation {
+  border: 2px solid #ECECEC;
+  padding: 34px;
+  border-radius: 4px;
+  margin-top: 24px;
+  position: relative;
+  .upme-sub-title {
+    width: 60%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .upme-alert-success, .upme-alert-notice, .upme-alert-danger, .upme-alert-alert {
     font-size: 16px;
