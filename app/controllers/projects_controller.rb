@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @project = Project.new
   end
@@ -24,6 +26,12 @@ class ProjectsController < ApplicationController
 
   def timeline
     set_project
+
+    project_user = ProjectUser.where(project_id: @project.id).where(user_id: current_user.id).first
+    unless project_user.first_timeline_view == true
+      project_user.update_attribute :first_timeline_view, true
+    end
+
   end
 
   def timeline_comment

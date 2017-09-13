@@ -1,5 +1,6 @@
 class ProjectsInvitationController < ApplicationController
 
+  before_action :authenticate_user!
 
   def accept_invitation
     set_invitation

@@ -1,5 +1,7 @@
 class AreasDeInteresseController < ApplicationController
 
+  before_action :authenticate_user!
+
   def all_names
     render json: AreaDeInteresse.all.pluck(:name).to_json
   end

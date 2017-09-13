@@ -1,5 +1,7 @@
 class ProjectClientSolicitationController < ApplicationController
 
+  before_action :authenticate_user!
+
   def accept_client_solicitation
     set_solicitation
     project_id = @solicitation.project_id
