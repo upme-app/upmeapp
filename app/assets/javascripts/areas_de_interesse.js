@@ -79,10 +79,10 @@ document.addEventListener("turbolinks:load", function() {
         function refresh_shortcuts() {
             $('.tag-shortcut').each(function(index, value) {
                if(exist_tag($(this).attr('data-tag'))) {
-                   $(this).addClass('upme-image-btn-selected');
+                   $(this).css("background-image", "url(" + $(this).attr('data-btn-img-selected') + ")");
                    $(this).next().css("color", "#00C7FF");
                } else {
-                   $(this).removeClass('upme-image-btn-selected');
+                   $(this).css("background-image", "url(" + $(this).attr('data-btn-img') + ")");
                    $(this).next().css("color", "#BDBDBD");
                }
             });
