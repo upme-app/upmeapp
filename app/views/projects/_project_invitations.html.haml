@@ -21,7 +21,7 @@
     .modal-content
       %h4 Convide seu time
 
-      = email_field_tag :email, '', placeholder: 'Digite o email de quem você quer convidar.'
+      = text_field_tag :email, '', placeholder: 'Digite o email de quem você quer convidar.'
     .modal-footer
       %a.modal-action.modal-close.waves-effect.btn-flat{href: '#!'} Cancelar
       %button.modal-action.waves-effect.btn-flat{type: :submit} Convidar
