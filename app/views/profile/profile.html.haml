@@ -19,18 +19,18 @@
               .col.s12
                 - if @user.empresa?
                   .label-upme Nome da empresa
-                  %div= current_user.nome_empresa
+                  %div= @user.nome_empresa
                 .label-upme Linkedin
-                %div= current_user.linkedin
+                %div= @user.linkedin
                 .label-upme Sobre você
-                %div= current_user.about
+                %div= @user.about
               .col.s12.no-padding
                 .col.s12.m6
-                  - if current_user.aluno?
+                  - if @user.aluno?
                     .label-upme Universidade
-                    %div= current_user.universidade
+                    %div= @user.universidade
                     .label-upme Semestre
-                    %div= current_user.semestre
+                    %div= @user.semestre
                   .label-upme Cidade
-                  %div= current_user.city
+                  %div= @user.city
     .col.s12.m2
