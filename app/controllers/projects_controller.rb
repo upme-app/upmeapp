@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
 
     user_to = User.find_by_email(params[:email])
 
-    if user_to and !@project.has_user(current_user)
+    if user_to and !@project.has_user(user_to)
       @invitation = ProjectInvitation.new({
         user_from_id: current_user.id,
         user_to_id: user_to.id,
