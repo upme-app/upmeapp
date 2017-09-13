@@ -29,7 +29,7 @@
     .row
       - current_user.my_projects.each do |project|
         .col.m3
-          = link_to public_project_path(project.id) do
+          = link_to project_path(project.id) do
             .paper-box{style: 'height: 280px; margin-bottom: 20px;'}
               .h2.project-title= project.title[0..30] + '...'
               .p.project-description= project.description[0..70] + '...'
