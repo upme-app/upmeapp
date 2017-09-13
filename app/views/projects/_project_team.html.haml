@@ -3,7 +3,7 @@
 %ul.collection{style: 'border: none'}
 - @project.project_users.each do |pu|
   %ul
-    - if @project.client.id != pu.user.id
+    - if @project.client.nil? or @project.client.id != pu.user.id
       = link_to profile_path(pu.user.id) do
         %li.collection-item.avatar{style: 'border: none'}
           = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
