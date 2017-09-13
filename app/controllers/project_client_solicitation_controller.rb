@@ -5,6 +5,7 @@ class ProjectClientSolicitationController < ApplicationController
     project_id = @solicitation.project_id
     if current_user.my_projects.pluck(:id).include? @solicitation.project_id
       @solicitation.project.update_attribute(:client_id, @solicitation.user_id)
+      @solicitation.project.add_user(User.find(@solicitation.user_id))
       TimelineStep.init_project_steps(@solicitation.project)
       @solicitation.destroy
     end
