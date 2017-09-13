@@ -1,5 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
     if (is_on_screen("areas_de_interesse", "view")) {
+        refresh_shortcuts();
+
         var tags = $('.tag-list');
 
         function html_tag(tag) {
