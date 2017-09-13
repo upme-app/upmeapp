@@ -1,8 +1,12 @@
 %h2.upme-sub-title Equipe
 
+
+%ul.collection{style: 'border: none'}
 - @project.project_users.each do |pu|
   %ul
-    %li= pu.user.full_name
+    %li.collection-item.avatar{style: 'border: none'}
+      = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
+      %span.title= pu.user.full_name
 
 
 
