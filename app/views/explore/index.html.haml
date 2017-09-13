@@ -7,8 +7,8 @@
     - Project.without_client.each do |project|
       .col.m3.s12
         = link_to public_project_path(project.id) do
-          .paper-box{style: 'height: 280px; margin-bottom: 20px;'}
-            .h2.project-title= project.title[0..30] + '...'
+          .paper-box{style: 'height: 300px; margin-bottom: 20px;'}
+            .h2.project-title= project.title
             .p.project-description= project.description[0..70] + '...'
             %br
             .p.project-description= project.user.full_name
