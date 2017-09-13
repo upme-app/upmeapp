@@ -569,6 +569,12 @@ label {
 .dark-link {
   color: #666;
 }
+.input-field label:not(.label-icon).active {
+  transform: translateY(-14px) scale(1) !important;
+}
+.input-field label {
+  top: -18px !important;
+}
 @media screen and (max-width: 480px) {
   body {
     position: relative;
