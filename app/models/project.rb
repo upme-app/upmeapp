@@ -21,6 +21,10 @@ class Project < ApplicationRecord
     Project.where(client_id: nil)
   end
 
+  def has_user(user)
+    ProjectUser.where(project_id: id).where(user_id: user.id).size > 0
+  end
+
   private
 
   def add_creator_user

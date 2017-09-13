@@ -38,4 +38,8 @@ class User < ApplicationRecord
     true
   end
 
+  def can_timeline_comment?(project, step)
+    project.has_user(self)
+  end
+
 end

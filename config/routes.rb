@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   match 'aceitar-convite/:invitation_id', as: :accept_invitation, to: 'projects_invitation#accept_invitation', via: :get
   match 'recusar-convite/:invitation_id', as: :refuse_invitation, to: 'projects_invitation#refuse_invitation', via: :get
 
+  match 'meus-projetos/:id/linha-do-tempo/comentar', as: :timeline_comment, to: 'projects#timeline_comment', via: :post
+
   match 'aceitar-solicitacao-cliente/:solicitation_id', as: :accept_client_solicitation, to: 'project_client_solicitation#accept_client_solicitation', via: :get
   match 'recusar-solicitacao-cliente/:solicitation_id', as: :refuse_client_solicitation, to: 'project_client_solicitation#refuse_client_solicitation', via: :get
 
