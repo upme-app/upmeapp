@@ -1,4 +1,4 @@
-.upme-alert-success, .upme-alert-danger, .upme-alert-notice {
+.upme-alert-success, .upme-alert-danger, .upme-alert-notice, .upme-alert-alert {
   font-family: Lato;
   font-style: italic;
   font-weight: bold;
@@ -14,7 +14,7 @@
   background: #FFFFFF;
 }
 
-.upme-icon-success, .upme-icon-danger {
+.upme-icon-success, .upme-icon-danger, .upme-icon-alert {
   border-radius: 100%;
   padding: 6px;
   color: #FFFFFF;
@@ -37,22 +37,22 @@
 }
 
 //DANGER
-.upme-alert-danger {
+.upme-alert-danger, .upme-alert-notice, .upme-alert-alert {
   border: 2px solid #FB3028;
 }
-.upme-icon-danger {
+.upme-icon-danger, .upme-icon-alert {
   background: #FB3028;
 }
 
 @media screen and (max-width: 768px) {
-  .upme-alert-success, .upme-alert-notice, .upme-alert-danger {
+  .upme-alert-success, .upme-alert-notice, .upme-alert-danger, .upme-alert-alert {
     font-size: 16px;
     padding: 14px 10px;
     height: 48px;
     line-height: 18px;
   }
 
-  .upme-icon-success, .upme-icon-danger {
+  .upme-icon-success, .upme-icon-danger, .upme-icon-alert {
     padding: 4px;
     width: 20px;
     height: 20px;

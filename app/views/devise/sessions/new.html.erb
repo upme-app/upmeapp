@@ -3,11 +3,11 @@
 <h1 class="center-align huge-title">Faça seu login</h1>
 <br/>
 <br/>
+<%= render 'layouts/upme_flash' %>
 <div class="container">
   <div class="row">
     <div class="col m8 offset-m2">
       <div class="paper-box">
-
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="input-field">
             <%= f.label :email, 'Seu e-mail', class: 'label-upme' %>
