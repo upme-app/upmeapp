@@ -9,6 +9,7 @@
 
 ## SETUP
 
+* create development postgres user
 * bundle install
 * rake db:create db:migrate
 * rails server
