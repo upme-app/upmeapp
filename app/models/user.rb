@@ -42,6 +42,14 @@ class User < ApplicationRecord
     true
   end
 
+  def available_projects
+    if empresa?
+      Project.available_empresa_projects
+    else
+      Project.available_aluno_projects
+    end
+  end
+
   def can_timeline_comment?(project, step)
     project.has_user(self)
   end

@@ -4,7 +4,7 @@
     .col.m12
       %h4.upme-sub-title Todos os projetos
   .row
-    - Project.without_client.each do |project|
+    - current_user.available_projects.each do |project|
       .col.m4.s12
         = link_to public_project_path(project.id) do
           .paper-box{style: 'height: 300px; margin-bottom: 20px;'}

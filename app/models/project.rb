@@ -21,6 +21,14 @@ class Project < ApplicationRecord
     Project.where(client_id: nil)
   end
 
+  def self.available_empresa_projects
+    Project.joins(:user).without_client.where('users.user_type != ?', User.user_types[:empresa])
+  end
+
+  def self.available_aluno_projects
+    Project.joins(:user).without_client.where('users.user_type = ?', User.user_types[:empresa])
+  end
+
   def has_user(user)
     ProjectUser.where(project_id: id).where(user_id: user.id).size > 0
   end
