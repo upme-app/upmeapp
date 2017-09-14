@@ -15,7 +15,7 @@
       <div class="col s4 right-align">
         
           <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>
-            <%= current_user.first_name %>
+            <%= current_user.first_name.split(' ').first %>
           </a>
           <ul id='dropdown1' class='dropdown-content' style="min-width: 120px;">
             <li>
@@ -42,6 +42,7 @@
   <li><%= link_to 'Explorar', explore_path %></li>
   <li><%= link_to 'Projetos', projects_path %></li>
   <li><%= link_to 'Perfil', my_profile_path %></li>
+  <li><%= link_to 'Conta', my_account_path %></li>
   <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
 </ul>
 
