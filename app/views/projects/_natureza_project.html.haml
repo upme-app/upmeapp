@@ -1,4 +1,8 @@
-.label-upme Natureza
+.label-upme
+  - if @project.user.empresa?
+    = 'Natureza'
+  - else
+    = 'O projeto atende a organizações'
 
 .row
   - if @project.nat_publica
