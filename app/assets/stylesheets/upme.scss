@@ -458,8 +458,8 @@ label {
 [type="checkbox"].pretty-image-checkbox + label
  {
      background: #d0d0d0;
-     height: 128px;
-     width: 128px;
+     height: 128px !important;
+     width: 128px !important;
      display:inline-block;
      border-radius: 128px;
      position: relative;
