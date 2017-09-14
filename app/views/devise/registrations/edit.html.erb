@@ -1,43 +1,49 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= render 'layouts/upme_nav' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m2"></div>
+    <div class="col s12 m8">
+      <br>
+      <h5 class="upme-sub-title">Alterar Minha Conta</h5>
+      <div class="paper-box">
+        <div class="row">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+            <div class="col s12">
+              <span class="upme-bolder"> Email</span><br />
+              <%= f.email_field :email, class: 'validate upme-input-small' %>
+            </div>
+
+            <div class="col s12">
+              <span class="upme-bolder"> Senha atual</span><br />
+              <span class="help-text">Precisamos da sua senha para alterar estes dados</span>
+              <%= f.password_field :current_password, autocomplete: "off" %>
+            </div>
+
+
+              <div class="col s12">
+              <span class="upme-bolder"> Senha nova</span><br>
+              <span class="help-text">Deixe em branco se você não deseja alterar</span>
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
+
+            <div class="col s12">
+              <span class="upme-bolder"> Confirme sua nova senha</span><br />
+              <span class="help-text">No mínimo <%= @minimum_password_length %> caracteres</span>
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+            <div class="col s12 right-align">
+              <%= link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn-upme-outline-grey' %>
+              <%= f.submit "Salvar", class: 'waves-effect waves-light btn-upme-blue' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m2"></div>
   </div>
+</div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

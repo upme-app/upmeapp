@@ -14,12 +14,17 @@
       </div>
       <div class="col s4 right-align">
         
-          <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>Conta</a>
-          <ul id='dropdown1' class='dropdown-content'>
+          <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>
+            <%= current_user.first_name %>
+          </a>
+          <ul id='dropdown1' class='dropdown-content' style="min-width: 120px;">
             <li>
               <%= link_to my_profile_path do %>
                 Meu perfil
               <%- end %>
+            </li>
+            <li>
+              <%= link_to 'Conta', my_account_path %>
             </li>
             <li>
               <%= link_to 'Sair', destroy_user_session_path, method: :delete %>

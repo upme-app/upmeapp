@@ -13,7 +13,6 @@
           .col.s12.m9
             = form_for current_user, url: save_profile_path, method: :post do |f|
               %h4= current_user.full_name
-              %span.upme-bolder Área(s) de interesse
               %br
               - current_user.user_area_de_interesse.each do |a|
                 = a.area_de_interesse.name + ';'
