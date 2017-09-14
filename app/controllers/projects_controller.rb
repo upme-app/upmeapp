@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :authorize_project, except: [:show_public, :index, :new, :create]
+  before_action :authorize_project, except: [:show_public, :index, :new, :create, :add_client_solicitation]
 
   def new
     @project = Project.new

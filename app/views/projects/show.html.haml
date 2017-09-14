@@ -6,18 +6,20 @@
             = render partial: 'project_tabs', locals: { project: @project }
         .row
             .col.m2.s12
+                %br
+                = link_to 'Projeto Público', public_project_path(@project)
             .col.m8.s12
                 .private-project-box
                     .label-upme Projeto
                     %h1.huge-title= @project.title
                     .label-upme Objetivo
+                    .label-upme Público-alvo
+                    %p= @project.target_audience
                     %p= @project.objective
                     .label-upme Mais informações
                     %p= @project.description
-                    .label-upme Natureza da organização
-                    -# %p= @project.description
-                    .label-upme Publico alvo
-                    %p= @project.target_audience
+                    = render partial: 'natureza_project'
+
 
             .col.m2.s12
                 = render partial: 'project_invitations', locals: { project: @project }

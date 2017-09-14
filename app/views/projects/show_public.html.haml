@@ -8,9 +8,14 @@
       - if ClientSolicitation.solicitation_exists(@project, current_user)
         %br
         Aguardando resposta.
-      - if current_user.empresa? and @project.client_id.nil? and !ClientSolicitation.solicitation_exists(@project, current_user)
+      - if current_user.empresa? and @project.client_id.nil? and !ClientSolicitation.solicitation_exists(@project, current_user) and @project.user_id != current_user.id
         %br
         %a.waves-effect.waves-light.btn-upme-blue.modal-trigger{href: '#modal1', style: 'text-transform: none; letter-spacing: 0px; padding-right: 8px; padding-left: 8px'} Tenho interesse!
+      - if @project.has_user current_user
+        %br
+        .help-text Você é membro deste projeto
+        %br
+        = link_to 'Área Privada', project_path(@project)
       %br
     .col.s12.m8
       .paper-box
@@ -18,14 +23,14 @@
         %br
         .label-upme Objetivo deste projeto
         %p= @project.objective
+        .label-upme Público-alvo
+        %p= @project.target_audience
         .label-upme Mais informações
         %p= @project.description
-        .label-upme Natureza
-        %li= 'Pública' if @project.nat_publica
-        %li= 'Privada' if @project.nat_privada
-        %li= 'ONG' if @project.nat_ong
-        .label-upme O público alvo
-        %p= @project.target_audience
+
+        = render partial: 'natureza_project'
+
+
     .col.s12.m2
       = render partial: 'project_team'
 

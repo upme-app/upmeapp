@@ -1,0 +1,15 @@
+.label-upme Natureza
+
+.row
+  - if @project.nat_publica
+    .col.s12.m3.center-align
+      = image_tag('natureza-organizacao/natureza-publica.png')
+      .upme-sub-title Pública
+  - if @project.nat_privada
+    .col.s12.m3.center-align
+      = image_tag('natureza-organizacao/natureza-privada.png')
+      .upme-sub-title Privada
+  - if @project.nat_ong
+    .col.s12.m4.center-align
+      = image_tag('natureza-organizacao/natureza-ong.png')
+      .upme-sub-title ONG
