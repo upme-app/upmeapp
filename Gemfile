@@ -72,3 +72,5 @@ gem 'materialize-sass'
 gem 'material_icons'
 
 gem 'aws-sdk', '~> 2'
+
+gem 'rspec-rails'
