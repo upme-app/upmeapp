@@ -1,13 +1,14 @@
-= render partial: 'project_team'
 
 %a.waves-effect.waves-light.modal-trigger.btn-invite-your-team{href: '#invitation-modal'}
   = image_tag 'app/invite-your-team.svg'
   %br
   Convide seu time
 
+= render partial: 'project_team'
+
 
 #invitation-modal.modal
-  = form_tag create_invitation_path(@project.id) do |f|
+  = form_tag invite_user_to_project_path(@project.id) do |f|
     .modal-content
       %h4 Convide seu time
 

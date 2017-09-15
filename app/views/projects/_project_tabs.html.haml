@@ -10,8 +10,16 @@
 
   - unless @project.client
     %li
-      = link_to invitations_path(project.id), class: 'upme-tab-title ' + (action_name == 'invitations' ? 'active' : '') do
-        Solicitações
+      = link_to client_solicitations_path(project.id), class: 'upme-tab-title ' + (action_name == 'client_solicitations' ? 'active' : '') do
+        Solicitações de clientes
 
         - if @project.client_solicitations.size > 0
           %span.new.badge.red.upme-badge-number{data: {'badge-caption' => ''}}= @project.client_solicitations.size
+
+  - if @project.client and @project.project_users.size == 1
+    %li
+      = link_to member_solicitations_path(project.id), class: 'upme-tab-title ' + (action_name == 'member_solicitations' ? 'active' : '') do
+        Solicitações de alunos/professores
+
+        - if @project.member_solicitations.size > 0
+          %span.new.badge.red.upme-badge-number{data: {'badge-caption' => ''}}= @project.member_solicitations.size

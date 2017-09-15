@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   has_many :project_users
   has_many :timeline_steps
   has_many :client_solicitations
+  has_many :member_solicitations
 
   belongs_to :user
   belongs_to :client, class_name: 'User'
@@ -17,16 +18,25 @@ class Project < ApplicationRecord
     })
   end
 
+  def start
+    update_attribute :started, true
+    TimelineStep.init_project_steps self
+  end
+
   def self.without_client
     Project.where(client_id: nil)
   end
 
+  def self.not_started_projects
+    Project.where(started: false)
+  end
+
   def self.available_empresa_projects
-    Project.joins(:user).without_client.where('users.user_type != ?', User.user_types[:empresa])
+    Project.joins(:user).not_started_projects.where('users.user_type != ?', User.user_types[:empresa])
   end
 
   def self.available_aluno_projects
-    Project.joins(:user).without_client.where('users.user_type = ?', User.user_types[:empresa])
+    Project.joins(:user).not_started_projects.where('users.user_type = ?', User.user_types[:empresa])
   end
 
   def has_user(user)
@@ -36,7 +46,10 @@ class Project < ApplicationRecord
   private
 
   def add_creator_user
-    add_user(User.find(user_id))
+    add_user(self.user)
+    if self.user.empresa?
+      update_attribute :client_id, self.user.id
+    end
   end
 
 end

@@ -1,0 +1,2 @@
+module MemberSolicitationHelper
+end

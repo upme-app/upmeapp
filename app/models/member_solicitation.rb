@@ -1,11 +1,11 @@
-class ClientSolicitation < ApplicationRecord
+class MemberSolicitation < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
   validate :solicitation_already_exists
 
   def self.new_solicitation(current_user, project, message)
-    ClientSolicitation.new({
+    MemberSolicitation.new({
       user_id: current_user.id,
       project_id: project.id,
       message: message
@@ -16,7 +16,6 @@ class ClientSolicitation < ApplicationRecord
     if project.user_id == current_user.id
       project.add_user(self.user)
       project.start
-      project.update_attribute :client_id, self.user_id
       self.destroy
     end
   end
@@ -28,13 +27,13 @@ class ClientSolicitation < ApplicationRecord
   end
 
   def solicitation_already_exists
-    if ClientSolicitation.where(project_id: project_id).where(user_id: user_id).size > 0
+    if MemberSolicitation.where(project_id: project_id).where(user_id: user_id).size > 0
       errors.add(:invitation_already_exists, 'Convite já enviado.')
     end
   end
 
   def self.solicitation_exists(project, user)
-    ClientSolicitation.where(project_id: project.id).where(user_id: user.id).size > 0
+    MemberSolicitation.where(project_id: project.id).where(user_id: user.id).size > 0
   end
 
 end

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :authorize_project, except: [:show_public, :index, :new, :create, :add_client_solicitation]
+  before_action :authorize_project, except: [:show_public, :index, :new, :create, :add_client_solicitation, :add_member_solicitation]
 
   def new
     @project = Project.new
@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
+    @project.started = false
     if @project.save
       redirect_to project_path(@project)
     else
@@ -21,9 +22,14 @@ class ProjectsController < ApplicationController
     set_project
   end
 
-  def invitations
+  def client_solicitations
     set_project
   end
+
+  def member_solicitations
+    set_project
+  end
+
 
   def timeline
     set_project
@@ -58,7 +64,7 @@ class ProjectsController < ApplicationController
   def view
   end
 
-  def create_invitation
+  def invite_user_to_project
     set_project
 
     user_to = User.find_by_email(params[:email])
@@ -83,21 +89,28 @@ class ProjectsController < ApplicationController
 
   def add_client_solicitation
     set_project
-
-    @solicitation = ClientSolicitation.new({
-      user_id: current_user.id,
-      project_id: @project.id,
-      message: params[:message]
-    })
+    @solicitation = ClientSolicitation.new_solicitation(current_user, @project, params[:message])
 
     if @solicitation.save
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'
     end
-
     redirect_to public_project_path(@project.id)
   end
+
+  def add_member_solicitation
+    set_project
+    @solicitation = MemberSolicitation.new_solicitation(current_user, @project, params[:message])
+
+    if @solicitation.save
+      flash[:success] = 'Solicitação enviada!'
+    else
+      flash[:danger] = 'Erro!'
+    end
+    redirect_to public_project_path(@project.id)
+  end
+
 
   private
 
