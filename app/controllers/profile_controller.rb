@@ -34,7 +34,26 @@ class ProfileController < ApplicationController
     else
       render json: :error
     end
+  end
 
+  def update_logo
+    picture_address = "./tmp/#{current_user.id}-tmp-profile-pic.png"
+    IO.copy_stream(params['file'], picture_address)
+
+    uuid = SecureRandom.uuid
+
+    new_url = "https://s3-sa-east-1.amazonaws.com/#{ENV['S3_BUCKET_NAME']}/user-logo/#{uuid}"
+    obj = S3_BUCKET.object("user-logo/#{uuid}")
+    upload = obj.upload_file(picture_address)
+
+    File.delete(picture_address)
+
+    if upload
+      current_user.update_attribute :logourl, new_url
+      render json: current_user.logourl
+    else
+      render json: :error
+    end
   end
 
   def profile
