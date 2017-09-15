@@ -5,10 +5,10 @@
         &nbsp;
       </div>
       <div class="col s4 center-align">
-        <%= link_to explore_path do %>
-          <div class="upme-nav-item nav-bg-compass upme-nav-active hide-on-med-and-down">explorar</div>
+        <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active' : '' do %>
+          <div class="upme-nav-item nav-bg-compass hide-on-med-and-down">explorar</div>
         <% end %>
-        <%= link_to projects_path do %>
+        <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active' : '' do %>
           <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">projetos</div>
         <% end %>
       </div>

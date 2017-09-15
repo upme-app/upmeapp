@@ -26,8 +26,18 @@
   color: #00C7FF;
 }
 
-.upme-nav-active {
+.upme-nav-compass-active div {
+  color: #00C7FF;
+  background-image: image_url('app/nav/compass-hover.svg');
+  border-bottom: 2px solid #00C7FF;
 }
+
+.upme-nav-clipboard-active div {
+  color: #00C7FF;
+  background-image: image_url('app/nav/clipboard-hover.svg');
+  border-bottom: 2px solid #00C7FF;
+}
+
 
 .nav-bg-user { background-image: image_url('app/nav/user.svg'); }
 .nav-bg-user:hover { background-image: image_url('app/nav/user-hover.svg'); }
