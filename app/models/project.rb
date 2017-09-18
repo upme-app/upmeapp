@@ -27,7 +27,7 @@ class Project < ApplicationRecord
     Project.where(client_id: nil)
   end
 
-  def self.not_started_projects
+  def self.not_started
     Project.where(started: false)
   end
 
@@ -36,11 +36,11 @@ class Project < ApplicationRecord
   end
 
   def self.available_empresa_projects
-    Project.joins(:user).not_deleted.not_started_projects.where('users.user_type != ?', User.user_types[:empresa])
+    Project.joins(:user).not_deleted.not_started.where('users.user_type != ?', User.user_types[:empresa])
   end
 
   def self.available_aluno_projects
-    Project.joins(:user).not_deleted.not_started_projects.where('users.user_type = ?', User.user_types[:empresa])
+    Project.joins(:user).not_deleted.not_started.where('users.user_type = ?', User.user_types[:empresa])
   end
 
   def has_user(user)

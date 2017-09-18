@@ -74,3 +74,4 @@ gem 'material_icons'
 gem 'aws-sdk', '~> 2'
 
 gem 'rspec-rails'
+gem "factory_girl_rails", "~> 4.0"
