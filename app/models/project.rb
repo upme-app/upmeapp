@@ -62,6 +62,9 @@ class Project < ApplicationRecord
     if self.user.empresa?
       update_attribute :client_id, self.user.id
     end
+
+    update_attribute :deleted, false
+    update_attribute :started, false
   end
 
 end

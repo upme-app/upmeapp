@@ -10,7 +10,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    @project.started = false
     if @project.save
       redirect_to project_path(@project)
     else
