@@ -111,6 +111,25 @@ class ProjectsController < ApplicationController
     redirect_to public_project_path(@project.id)
   end
 
+  def delete
+    if @project.can_be_deleted_by(current_user)
+      flash[:success] = 'Projeto excluído!'
+      @project.update_attribute(:deleted, true)
+    else
+      flash[:danger] = 'Você não pode fazer isso.'
+    end
+    redirect_to project_path(@project.id)
+  end
+
+  def restore
+    if @project.can_be_restored_by(current_user)
+      flash[:success] = 'Projeto restaurado!'
+      @project.update_attribute(:deleted, false)
+    else
+      flash[:danger] = 'Você não pode fazer isso.'
+    end
+    redirect_to project_path(@project.id)
+  end
 
   private
 

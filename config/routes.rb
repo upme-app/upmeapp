@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   # PROJECTS
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo' }
+  match 'meus-projetos/:id/excluir', as: :delete_project, to: 'projects#delete', via: :get
+  match 'meus-projetos/:id/restaurar', as: :restore_project, to: 'projects#restore', via: :get
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get

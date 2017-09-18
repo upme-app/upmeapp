@@ -36,6 +36,8 @@
               %br
               .p.project-description= project.user.full_name
               .p.project-description= project.created_at.strftime('%d/%m/%y')
+              - if project.deleted
+                %span.red.badge{style: 'color: white;'} Projeto excluído
 
 - else
   .container

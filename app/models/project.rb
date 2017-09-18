@@ -31,16 +31,28 @@ class Project < ApplicationRecord
     Project.where(started: false)
   end
 
+  def self.not_deleted
+    Project.where(deleted: false)
+  end
+
   def self.available_empresa_projects
-    Project.joins(:user).not_started_projects.where('users.user_type != ?', User.user_types[:empresa])
+    Project.joins(:user).not_deleted.not_started_projects.where('users.user_type != ?', User.user_types[:empresa])
   end
 
   def self.available_aluno_projects
-    Project.joins(:user).not_started_projects.where('users.user_type = ?', User.user_types[:empresa])
+    Project.joins(:user).not_deleted.not_started_projects.where('users.user_type = ?', User.user_types[:empresa])
   end
 
   def has_user(user)
     ProjectUser.where(project_id: id).where(user_id: user.id).size > 0
+  end
+
+  def can_be_deleted_by(user)
+    true if deleted == false and user.id == user_id
+  end
+
+  def can_be_restored_by(user)
+    true if deleted == true and user.id == user_id
   end
 
   private
