@@ -18,6 +18,19 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def duplicate
+    @duplicated_project = @project
+    @project = Project.new
+    @project.title = @duplicated_project.title
+    @project.target_audience = @duplicated_project.target_audience
+    @project.objective = @duplicated_project.objective
+    @project.description = @duplicated_project.description
+    @project.nat_privada = @duplicated_project.nat_privada
+    @project.nat_publica = @duplicated_project.nat_publica
+    @project.nat_ong = @duplicated_project.nat_ong
+    render 'projects/new'
+  end
+
   def show
     set_project
   end
@@ -134,7 +147,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :objective, :description, :nat_privada, :nat_publica, :nat_ong)
+    params.require(:project).permit(:title, :objective, :description, :target_audience, :nat_privada, :nat_publica, :nat_ong)
   end
 
   def set_project

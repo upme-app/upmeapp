@@ -8,11 +8,15 @@
             .col.m2.s12
                 %br
                 = link_to 'Projeto Público', public_project_path(@project)
-                %br
                 - if @project.can_be_restored_by(current_user)
+                    %br
                     = link_to 'Restaurar', restore_project_path(@project)
                 - if @project.can_be_deleted_by(current_user)
+                    %br
                     = link_to 'Excluir', delete_project_path(@project)
+                - if @project.user_id == current_user.id
+                    %br
+                    = link_to 'Duplicar', duplicate_project_path(@project)
             .col.m8.s12
                 .private-project-box
                     .label-upme Projeto
