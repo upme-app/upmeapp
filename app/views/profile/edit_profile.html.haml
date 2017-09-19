@@ -31,10 +31,14 @@
                   = f.text_area :about, class: 'validate upme-input-small materialize-textarea', placeholder: 'Escreva um pouco sobre você'
 
                 .col.s12
-                  - if current_user.aluno?
+                  - if current_user.aluno? or current_user.professor?
                     %span.upme-bolder Universidade
                     %br
                     = f.text_field :universidade, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                  - if current_user.aluno?
+                    %span.upme-bolder Curso(s)
+                    %br
+                    = f.text_field :curso, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
                     %span.upme-bolder Semestre
                     %br
                     = f.text_field :semestre, class: 'validate upme-input-small', placeholder: 'Escreva aqui'

@@ -28,9 +28,12 @@
                 %div= complete_seu_cadastro(current_user.about)
               .col.s12.no-padding
                 .col.s12.m6
-                  - if current_user.aluno?
+                  - if current_user.aluno? or current_user.professor?
                     .label-upme Universidade
                     %div= complete_seu_cadastro(current_user.universidade)
+                  - if current_user.aluno?
+                    .label-upme Curso(s)
+                    %div= complete_seu_cadastro(current_user.curso)
                     .label-upme Semestre
                     %div= complete_seu_cadastro(current_user.semestre)
                   .label-upme Cidade
