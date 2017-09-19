@@ -9,14 +9,11 @@
                 %br
                 = link_to 'Projeto Público', public_project_path(@project)
                 - if @project.can_be_restored_by(current_user)
-                    %br
-                    = link_to 'Restaurar', restore_project_path(@project)
+                    = button_to 'Restaurar', restore_project_path(@project), class: 'upme-btn-red btn-full-width', method: :get
                 - if @project.can_be_deleted_by(current_user)
-                    %br
-                    = link_to 'Excluir', delete_project_path(@project)
+                    = button_to 'Excluir Projeto', delete_project_path(@project), class: 'upme-btn-red btn-full-width', method: :get
                 - if @project.user_id == current_user.id
-                    %br
-                    = link_to 'Duplicar', duplicate_project_path(@project)
+                    = button_to 'Duplicar', duplicate_project_path(@project), class: 'upme-btn-blue btn-full-width', method: :get
             .col.m8.s12
                 .private-project-box
                     .label-upme Projeto

@@ -332,45 +332,6 @@ button:focus {
 .upme-action-bar {
 }
 
-.upme-btn-a, .upme-btn-b {
-  font-size: 18px;
-  font-family: Lato;
-  border-radius: 4px;
-  box-sizing: border-box;
-  text-align: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  height: 50px;
-  line-height: 45px;
-  padding: 0px 16px;
-}
-
-.upme-btn-a {
-  border: 2px solid #FFFFFF;
-  color: #ffffff;
-  background: #00C7FF;
-}
-
-.upme-btn-b {
-  background: rgba(0, 0, 0, 0.1);
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  color: rgba(51, 51, 51, 0.3);
-}
-
-.upme-btn-c {
-  background: #FFFFFF;
-  border: 2px solid #ECECEC;
-  box-sizing: border-box;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-  line-height: 40px;
-  font-family: Lato;
-  line-height: normal;
-  font-size: 18px;
-  text-align: center;
-  color: #828282;
-}
-
 @media screen and (max-width: 768px) {
   .upme-form-container {
     padding: 24px;
