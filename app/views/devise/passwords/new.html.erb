@@ -1,16 +1,35 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="upme-logo-container">
+</div>
+<h1 class="center-align huge-title">Esqueceu sua senha?</h1>
+<br/>
+<br/>
+<%= render 'layouts/upme_flash' %>
+<div class="container">
+  <div class="row">
+    <div class="col m8 offset-m2">
+      <div class="paper-box">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= devise_error_messages! %>
+            <div class="input-field">
+              <%= f.label :email, 'Seu e-mail', class: 'label-upme' %>
+              <%= f.email_field :email, class: 'validate big-font-form', placeholder: 'Digite seu e-mail aqui' %>
+            </div>
+            <button type="submit" class="waves-effect waves-light btn-upme-blue btn-full-width">Recuperar senha</button>
+        <% end %>
+        <%=
+          #render "devise/shared/links"
+        %>
+      </div>
+      <div class="row">
+        <div class="col s6">
+          <br>
+          <%= link_to 'Voltar', entrar_path, class: 'waves-effect waves-light-blue btn-upme-outline-blue btn-small' %>
+        </div>
+        <div class="col s6 right-align">
+          <br>
+          <%= link_to 'Faça seu cadastro', registrar_path, data: { turbolinks: false }, class: 'waves-effect waves-dark btn-upme-outline-grey btn-small' %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
