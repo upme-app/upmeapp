@@ -1,5 +1,9 @@
+%br
+%br
+%br
+
 %div.center-align
-  = image_tag logourl(current_user), class: 'circle', width: '100px', id: 'img-logo'
+  = image_tag logourl(current_user), width: '100px', id: 'img-logo'
   %br
   %a.btn-upme-outline-grey.btn-small.modal-trigger{href: '#modal-update-logo'}
     Alterar logo
@@ -20,9 +24,7 @@
 
     .upme-loading.display-none
   .modal-footer.row
-    .col.s6.left-align
-      %button.waves-effect.waves-light.upme-btn-c{type: 'button'}  Cancelar
-    .col.s6.right-align
+    .col.s12.right-align
       %button.waves-effect.waves-light.btn#btn-save-logo{type: 'button'} Salvar
 
 :javascript
