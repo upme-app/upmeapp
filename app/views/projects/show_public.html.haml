@@ -3,7 +3,7 @@
 .container{style: 'margin-top: 30px'}
   .row
     .col.s12.m2
-      = link_to '< Voltar', projects_path
+      = link_to '< Voltar', :back
       %br
       %br
       - if ClientSolicitation.solicitation_exists(@project, current_user) or MemberSolicitation.solicitation_exists(@project, current_user)
