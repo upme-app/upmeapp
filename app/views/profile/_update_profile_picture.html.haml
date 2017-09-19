@@ -2,10 +2,7 @@
   = image_tag profilepic(current_user), class: 'circle', width: '100px', id: 'img-profilepic'
   %br
   %a.btn-upme-outline-grey.btn-small.modal-trigger{href: '#modal-update-picture'}
-    - if current_user.empresa?
-      Alterar logo
-    - else
-      Alterar foto
+    Alterar foto
 
 
 #modal-update-picture.modal

@@ -10,8 +10,13 @@
         .row
           .col.s12.m3
             = render 'profile/update_profile_picture'
+            = render 'profile/update_logo'
           .col.s12.m9
-            %h4= current_user.full_name
+            %h4
+              - if current_user.empresa?
+                = complete_seu_cadastro(current_user.nome_empresa, 'Nome da empresa')
+              - else
+                = current_user.full_name
             .label-upme Área(s) de interesse
             %br
             = areas_de_interesse(current_user)
@@ -20,8 +25,8 @@
             .row
               .col.s12
                 - if current_user.empresa?
-                  .label-upme Nome da empresa
-                  %div= complete_seu_cadastro(current_user.nome_empresa)
+                  .label-upme Nome
+                  %div= current_user.full_name
                 .label-upme Linkedin
                 %div= complete_seu_cadastro(current_user.linkedin)
                 .label-upme Sobre você

@@ -1,8 +1,8 @@
 module ProfileHelper
 
-  def complete_seu_cadastro(value)
+  def complete_seu_cadastro(value, custom_label = nil)
     if value.nil? or value == ''
-      content_tag(:span, 'Complete seu cadastro', style: 'color: #BDBDBD')
+      content_tag(:span, (custom_label == nil ? 'Complete seu cadastro' : custom_label), style: 'color: #BDBDBD')
     else
       value
     end

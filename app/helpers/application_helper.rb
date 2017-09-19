@@ -47,4 +47,12 @@ module ApplicationHelper
     end
   end
 
+  def logourl(user)
+    if user.logourl.nil?
+      'app/profile_empty.png'
+    else
+      user.logourl
+    end
+  end
+
 end

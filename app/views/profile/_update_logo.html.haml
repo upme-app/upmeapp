@@ -1,0 +1,54 @@
+%div.center-align
+  = image_tag logourl(current_user), class: 'circle', width: '100px', id: 'img-logo'
+  %br
+  %a.btn-upme-outline-grey.btn-small.modal-trigger{href: '#modal-update-logo'}
+    Alterar logo
+
+
+#modal-update-logo.modal
+  .modal-content
+    %h4 Escolha sua logo
+
+    = form_tag update_logo_path, id: 'save-logo-form', method: :post, enctype: 'multipart/form-data' do
+
+      .file-field.input-field
+        .btn
+          %span Logo da empresa
+          = file_field_tag :logo, id: 'input-user-logo'
+        .file-path-wrapper
+          %input.file-path.validate{type: 'text'}
+
+    .upme-loading.display-none
+  .modal-footer.row
+    .col.s6.left-align
+      %button.waves-effect.waves-light.upme-btn-c{type: 'button'}  Cancelar
+    .col.s6.right-align
+      %button.waves-effect.waves-light.btn#btn-save-logo{type: 'button'} Salvar
+
+:javascript
+  $('.modal').modal();
+
+  $('#btn-save-logo').click(function() {
+
+    var formData = new FormData();
+    formData.append('file', $('#input-user-logo')[0].files[0]);
+
+    $('.upme-loading').fadeIn();
+
+    $.ajax({
+      url: $('#save-logo-form').attr('action'),
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      complete: function(xhr,status) {
+        if(xhr.responseText != 'error') {
+          $('#img-logo').attr('src', xhr.responseText);
+        }
+        $('#modal-update-logo').modal('close');
+        $('.upme-loading').fadeOut();
+      }
+    });
+
+
+  });
