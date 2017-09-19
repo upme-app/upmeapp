@@ -1,9 +1,10 @@
-%h2.upme-sub-title Equipe
+%h2.upme-sub-title Professor
+
 
 %ul.collection{style: 'border: none'}
 - @project.project_users.each do |pu|
   %ul
-    - if @project.client.nil? or @project.client.id != pu.user.id
+    - if pu.user.professor?
       = link_to profile_path(pu.user.id) do
         %li.collection-item.avatar{style: 'border: none'}
           = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
@@ -16,3 +17,12 @@
       %li.collection-item.avatar{style: 'border: none'}
         = image_tag profilepic(@project.client), class: 'circle', width: '30px', id: 'img-profilepic'
         %span.title.dark-link= @project.client.full_name
+
+%h2.upme-sub-title Equipe
+- @project.project_users.each do |pu|
+  %ul
+    - if pu.user.aluno?
+      = link_to profile_path(pu.user.id) do
+        %li.collection-item.avatar{style: 'border: none'}
+          = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
+          %span.title.dark-link= pu.user.full_name
