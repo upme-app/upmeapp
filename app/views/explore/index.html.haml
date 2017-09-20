@@ -1,8 +1,14 @@
 = render 'layouts/upme_nav'
+.explore-bg
 .container
   .row
     .col.m12
-      %h4.upme-sub-title Todos os projetos
+      .upme-screen-title
+        %i.upme-screen-logo{data: {feather: 'compass'}}
+        - if current_user.empresa?
+          %span Explore os projetos a procura de empresas
+        - else
+          %span Explore os projetos a procura de alunos
   .row
     - current_user.available_projects.each do |project|
       .col.m4.s12

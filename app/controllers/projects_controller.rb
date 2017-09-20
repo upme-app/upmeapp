@@ -1,7 +1,17 @@
 class ProjectsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :authorize_project, except: [:show_public, :index, :new, :create, :add_client_solicitation, :add_member_solicitation]
+  before_action :authorize_project, except: [:show_public, :index, :filed_projects, :new, :create, :add_client_solicitation, :add_member_solicitation]
+
+
+  def index
+    @projects = current_user.my_projects
+  end
+
+  def filed_projects
+    @projects = current_user.my_filed_projects
+    render 'index'
+  end
 
   def new
     @project = Project.new

@@ -22,7 +22,11 @@ class User < ApplicationRecord
   end
 
   def my_projects
-    Project.where(id: ProjectUser.where(user_id: id).pluck(:project_id))
+    Project.where(id: ProjectUser.where(user_id: id).pluck(:project_id)).where(deleted: false)
+  end
+
+  def my_filed_projects
+    Project.where(id: ProjectUser.where(user_id: id).pluck(:project_id)).where(deleted: true)
   end
 
   def my_invitations

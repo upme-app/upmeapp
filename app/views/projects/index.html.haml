@@ -17,17 +17,31 @@
               = link_to 'Recusar', refuse_invitation_path(invitation.id), class: "btn-upme-outline-grey"
       .col.m2
 
-- if current_user.my_projects.size > 0
+- if @projects.size > 0
   .container
     .row
-      .col.s6
-        %h4.upme-sub-title Seus projetos.
-      .col.s6.right-align
+      .col.m12.l6
+        .upme-screen-title
+          %i.upme-screen-logo{data: {feather: 'clipboard'}}
+          - if action_name == 'filed_projects'
+            %span Projeto arquivados
+          - else
+            %span Projetos que você faz parte
+      .col.m12.l6.right-align
         %br
+        %br
+        - if action_name == 'index'
+          = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
+        - else
+          = link_to projects_path, class: 'waves-effect waves-light-dark btn-upme-outline-grey btn-small' do
+            %i.icon-small{data: {feather: 'chevron-left'}}
+            Voltar para projetos
+        &nbsp
+        &nbsp
         = link_to 'Novo projeto', new_project_path, class: 'waves-effect waves-light-blue btn-upme-outline-blue btn-small'
       
     .row
-      - current_user.my_projects.each do |project|
+      - @projects.each do |project|
         .col.m4.s12
           = link_to project_path(project.id) do
             .paper-box{style: 'height: 300px; margin-bottom: 20px;'}
@@ -37,7 +51,7 @@
               .p.project-description= project.user.full_name
               .p.project-description= project.created_at.strftime('%d/%m/%y')
               - if project.deleted
-                %span.red.badge{style: 'color: white;'} Projeto excluído
+                %span.red.badge{style: 'color: white;'} Projeto arquivado
 
 - else
   .container

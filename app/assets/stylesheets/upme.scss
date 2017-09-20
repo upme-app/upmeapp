@@ -571,3 +571,43 @@ label {
   font-family: 'Lato', sans-serif !important;
   font-weight: 900 !important;
 }
+
+.upme-screen-title {
+  margin-top: 36px;
+  font-family: Lato;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 21px;
+  font-size: 22px;
+  padding-bottom:10px;
+}
+
+.upme-screen-logo {
+  color: $blue;
+  margin-top: 10px;
+  stroke: 1px;
+  width: 24px;
+  height: 24px;
+}
+
+.upme-screen-title span {
+  display: inline-block;
+  bottom: 4px;
+  position: relative;
+  margin-left: 8px;
+}
+
+
+.icon-small {
+  width: 10px;
+  height: 11px;
+}
+
+.explore-bg {
+  z-index: -1;
+  position: absolute;
+  width: 1440px;
+  height: 184px;
+  background-image: image_url('app/bg-blue-1px.png');
+  background-repeat: repeat-x;
+}

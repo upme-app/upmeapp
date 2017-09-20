@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   # PROJECTS
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo' }
+  match 'meus-projetos-arquivados', as: :filed_projects, to: 'projects#filed_projects', via: :get
   match 'meus-projetos/:id/excluir', as: :delete_project, to: 'projects#delete', via: :get
   match 'meus-projetos/:id/duplicar', as: :duplicate_project, to: 'projects#duplicate', via: :get
   match 'meus-projetos/:id/restaurar', as: :restore_project, to: 'projects#restore', via: :get
