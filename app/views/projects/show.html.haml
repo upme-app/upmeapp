@@ -14,6 +14,7 @@
                     = button_to 'Excluir Projeto', delete_project_path(@project), class: 'upme-btn-red btn-full-width', method: :get
                 - if @project.user_id == current_user.id
                     = button_to 'Duplicar', duplicate_project_path(@project), class: 'upme-btn-blue btn-full-width', method: :get
+                %br
             .col.m8.s12
                 .private-project-box
                     .label-upme Projeto

@@ -16,12 +16,14 @@ class MemberSolicitation < ApplicationRecord
     if project.user_id == current_user.id
       project.add_user(self.user)
       project.start
+      Thread.new { MemberSolicitation.accept(current_user, project.user).deliver }
       self.destroy
     end
   end
 
   def refuse(current_user)
     if project.user_id == current_user.id
+      Thread.new { MemberSolicitation.refuse(current_user, project.user).deliver }
       self.destroy
     end
   end

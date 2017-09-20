@@ -104,6 +104,7 @@ class ProjectsController < ApplicationController
     @solicitation = ClientSolicitation.new_solicitation(current_user, @project, params[:message])
 
     if @solicitation.save
+      Thread.new { ClientSolicitationMailer.invite(current_user, @solicitation.user).deliver }
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'

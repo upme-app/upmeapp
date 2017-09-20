@@ -5,5 +5,4 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Bem vindo a UpMe!')
   end
 
-
 end
