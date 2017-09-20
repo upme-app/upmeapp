@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    UserMailer.welcome(current_user).deliver if current_user
+    #Thread.new { UserMailer.welcome(current_user).deliver if current_user }
   end
 
   # GET /resource/edit
