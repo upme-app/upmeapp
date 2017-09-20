@@ -10,13 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    #if user_signed_in?
-    #  current_user.update_attributes({
-    #      first_name: 'Paulo',
-    #      last_name: 'Jansen',
-    #      user_type: 1
-    #   })
-    #end
+    UserMailer.welcome(current_user).deliver if current_user
   end
 
   # GET /resource/edit
