@@ -3,6 +3,7 @@ class MemberSolicitation < ApplicationRecord
   belongs_to :user
 
   validate :solicitation_already_exists
+  validate :not_empresa
 
   def self.new_solicitation(current_user, project, message)
     MemberSolicitation.new({
@@ -36,6 +37,12 @@ class MemberSolicitation < ApplicationRecord
 
   def self.solicitation_exists(project, user)
     MemberSolicitation.where(project_id: project.id).where(user_id: user.id).size > 0
+  end
+
+  def not_empresa
+    if user.empresa?
+      errors.add(:not_empresa, 'Empresa não pode participar de um projeto de uma empresa')
+    end
   end
 
 end

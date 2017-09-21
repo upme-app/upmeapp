@@ -3,6 +3,7 @@ class ClientSolicitation < ApplicationRecord
   belongs_to :user
 
   validate :solicitation_already_exists
+  validate :only_empresa
 
   def self.new_solicitation(current_user, project, message)
     ClientSolicitation.new({
@@ -37,6 +38,12 @@ class ClientSolicitation < ApplicationRecord
 
   def self.solicitation_exists(project, user)
     ClientSolicitation.where(project_id: project.id).where(user_id: user.id).size > 0
+  end
+
+  def only_empresa
+    unless user.empresa?
+      errors.add(:not_empresa, 'Apenas empresas podem pode participar de um projeto de aluno ou professor')
+    end
   end
 
 end
