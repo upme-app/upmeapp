@@ -50,7 +50,8 @@ document.addEventListener("turbolinks:load", function() {
         function is_step_2_valid() {
             var first_name = document.getElementById('registration_first_name').validity.valid;
             var last_name = document.getElementById('registration_last_name').validity.valid;
-            if(first_name && last_name) {
+            var user_type = document.getElementById('radio-aluno').validity.valid;
+            if(first_name && last_name && user_type) {
                 return true;
             }
             return false;
