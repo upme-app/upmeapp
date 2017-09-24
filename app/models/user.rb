@@ -58,4 +58,10 @@ class User < ApplicationRecord
     project.has_user(self)
   end
 
+  def user_label
+    return 'aluno(a)' if aluno?
+    return 'professor(a)' if professor?
+    'empresa'
+  end
+
 end

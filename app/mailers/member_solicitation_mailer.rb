@@ -1,21 +1,24 @@
 class MemberSolicitationMailer < ApplicationMailer
 
-  def invite(member, project_owner)
+  def invite(member, project_owner, project)
     @member = member
     @project_owner = project_owner
-    mail(to: @project_owner.email, subject: "#{@member.first_name} está interessado em seu projeto!")
+    @project = project
+    mail(to: @project_owner.email, subject: "Já tem #{@member.user_label} interessado(a) em atender a sua empresa! ")
   end
 
-  def accept(member, project_owner)
+  def accept(member, project_owner, project)
     @member = member
     @project_owner = project_owner
-    mail(to: @member.email, subject: 'Sua solicitação foi aceita!')
+    @project = project
+    mail(to: @member.email, subject: "Seu perfil foi selecionado para atender a empresa #{project_owner.nome_empresa}!")
   end
 
-  def refuse(member, project_owner)
+  def refuse(member, project_owner, project)
     @member = member
     @project_owner = project_owner
-    mail(to: @member.email, subject: 'Sua solicitação foi recusada!')
+    @project = project
+    mail(to: @member.email, subject: "Infelizmente #{project_owner.nome_empresa} está procurando outro perfil de candidato para atendê-lo(a)!")
   end
 
 end

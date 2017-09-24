@@ -1,0 +1,6 @@
+%p
+  = "Olá! #{@project_owner.first_name} quer que você faça parte do projeto #{@project.title}."
+  %br
+  Para aceitar ou recusar ser parte do time, acesse:
+  %br
+  = link_to 'Meus convites', projects_url

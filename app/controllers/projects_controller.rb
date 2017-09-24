@@ -98,6 +98,7 @@ class ProjectsController < ApplicationController
         project_id: @project.id
       })
       if @invitation.save
+        Thread.new {ProjectInvitationMailer.invite(@invitation.user_to, @invitation.user_from, @project).deliver }
         flash[:success] = 'Solicitação enviada!'
       else
         flash[:danger] = 'Erro!'
@@ -114,7 +115,7 @@ class ProjectsController < ApplicationController
     @solicitation = ClientSolicitation.new_solicitation(current_user, @project, params[:message])
 
     if @solicitation.save
-      #Thread.new { ClientSolicitationMailer.invite(current_user, @solicitation.user).deliver }
+      Thread.new { ClientSolicitationMailer.invite(current_user, @project.user, @project).deliver }
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'
@@ -127,6 +128,7 @@ class ProjectsController < ApplicationController
     @solicitation = MemberSolicitation.new_solicitation(current_user, @project, params[:message])
 
     if @solicitation.save
+      Thread.new { MemberSolicitationMailer.invite(current_user, @project.user, @project).deliver }
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'
