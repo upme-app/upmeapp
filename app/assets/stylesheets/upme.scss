@@ -82,6 +82,21 @@ body {
   color: #ffffff;
 }
 
+.tag-upme-blue {
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 14px;
+  height: 32px;
+  font-style: italic !important;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  background: $blue;
+  color: #ffffff;
+  cursor: initial;
+  display: inline-block
+}
+
 .btn-upme-gray {
   background: #F5F5F5;
   color: #4F4F4F;
@@ -91,11 +106,11 @@ body {
 
   color: $grey;
   border: 2px solid $border-color;
-  background-color: transparent;
+  background-color: white;
 }
 .btn-upme-outline-blue {
   @extend .btn-upme;
-  background-color: transparent;
+  background-color: white;
   color: $blue;
   border: 2px solid $blue;
 }
@@ -189,6 +204,8 @@ button:focus {
   width: 100%;
   margin-top: 48px;
   padding-bottom: 10px;
+  z-index: 99;
+  position: relative;
   li {
     display: inline-block;
     padding-right: 16px;
@@ -529,6 +546,14 @@ label {
   }
 .dark-link {
   color: #666;
+  cursor: pointer;
+  &:hover {
+    color: #333;
+  }
+}
+.profiles-names {
+  font-size: 16px;
+  vertical-align: super;
 }
 .input-field label:not(.label-icon).active {
   transform: translateY(-14px) scale(1) !important;
@@ -602,11 +627,43 @@ label {
   height: 11px;
 }
 
-.explore-bg {
-  z-index: -1;
+.btn-square {
+  height: 32px;
+  width: 32px;
+    padding: 2px 3px;
+}
+
+.profile-photo-container {
+  position: relative;
+}
+.profile-company-logo {
+  border: 4px solid white;
+  box-sizing: content-box;
+  width: 64px;
+  height: 64px;
+  margin-top: -90px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   position: absolute;
-  width: 100%;
-  height: 184px;
-  background-image: image_url('app/bg-blue-1px.png');
-  background-repeat: repeat-x;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 188px;
+}
+.btn-change-logo {
+  vertical-align: middle;
+  position: absolute;
+  top: 155px;
+  right: 28px;
+}
+.btn-change-profilepic {
+  vertical-align: middle;
+  position: absolute;
+  position: absolute;
+  z-index: 2;
+  top: -6px;
+  right: 20px;
+}
+.mb-16 {
+  margin-bottom: 16px;
 }

@@ -49,7 +49,7 @@ module ApplicationHelper
 
   def logourl(user)
     if user.logourl.nil?
-      'app/profile_empty.png'
+      'app/logo-empty.png'
     else
       user.logourl
     end
