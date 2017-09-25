@@ -3,28 +3,22 @@
     .row
       .col.s12.m2
       .col.s12.m8
-        .upme-form-container
+        .paper-box.creating-project
           .input-field
-            = f.label :title, 'Título do Projeto', class: 'u-label-big'
-            %br
-            = f.text_field :title, class: 'validate'
+            = f.label :title, 'Título do Projeto', class: 'label-upme'
+            = f.text_field :title, class: 'validate big-font-form', placeholder: 'Escreva o titulo aqui'
+            .help-text (Ex.: Planejamento estratégico, Plano de cargos e salários, Logotipo, Campanha publicitária, Projeto Arquitetônico e etc.)
           .input-field
-            = f.label :objective, 'Objetivos do Projeto', class: 'u-label-big'
-            %br
-            = f.text_area :objective, class: 'materialize-textarea', data: { length: 350 }
+            = f.label :objective, 'Objetivos do Projeto', class: 'label-upme'
+            = f.text_area :objective, class: 'materialize-textarea', data: { length: 350 }, placeholder: 'Escreva aqui'
+            .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
           .input-field
-            = f.label :target_audience, 'Público-alvo', class: 'u-label-big'
-            %br
-            = f.text_field :target_audience, class: 'validate'
-          .input-field
-            = f.label :description, 'Mais Informações', class: 'u-label-big'
-            %br
-            = f.text_area :description, class: 'materialize-textarea', data: { length: 350 }
-          %div
-            = f.label :natureza, 'Natureza da Organização', class: 'u-label-big'
-            %br
-            %br
+            = f.label :description, 'Mais Informações', class: 'label-upme'
+            = f.text_area :description, class: 'materialize-textarea', data: { length: 350 }, placeholder: 'Escreva outras informações'
+            .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
             .row
+              .col.s12
+                .label-upme A quem o projeto se destina
               .col.s4
                 = f.check_box :nat_privada
                 = f.label :nat_privada, 'Privada'
@@ -34,6 +28,11 @@
               .col.s4
                 = f.check_box :nat_ong
                 = f.label :nat_ong, 'ONG'
+          .input-field
+            = f.label :target_audience, 'Público-alvo', class: 'label-upme'
+            = f.text_field :target_audience, class: 'validate', placeholder: 'Escreva o publico alvo do seu projeto aqui'
+            .help-text (Quem vai se beneficiar do projeto solicitado, qual o setor da organização e público beneficiado pelo projeto)
+          
       .col.s12.m2
   .upme-action-bar-bg
     .container
@@ -41,8 +40,8 @@
         .col.m2.no-padding
         .col.m8.s12.no-padding
           .col.s3.m4.left-align.no-padding
-            = button_to 'Cancelar', projects_path, class: 'upme-btn-a'
+            = button_to 'Cancelar', projects_path, class: 'btn-upme-outline-white waves-effect waves-light'
           .col.s4.center-align.no-padding
 
           .col.s5.m4.right-align.no-padding
-            = submit_tag 'Publicar Projeto', class: 'upme-btn-b'
+            = submit_tag 'Publicar Projeto', class: 'btn-upme-white waves-effect waves-dark'
