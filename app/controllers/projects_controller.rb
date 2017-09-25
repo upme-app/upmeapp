@@ -68,12 +68,22 @@ class ProjectsController < ApplicationController
     @step = TimelineStep.find(params[:timeline_step_id])
 
     if current_user.can_timeline_comment?(@project, @step)
-      TimelineComment.create({
+      @comment = TimelineComment.new({
                                  message: params[:message],
                                  timeline_step_id: @step.id,
                                  user_id: current_user.id
                              })
-      flash[:notice] = 'Comentário enviado.'
+
+      if @comment.save
+        Thread.new do
+          @project.project_users.each do |pu|
+            if pu.user.id != current_user.id
+              TimelineMailer.comment(current_user, pu.user, @project).deliver
+            end
+          end
+        end
+        flash[:notice] = 'Comentário enviado.'
+      end
     end
 
     redirect_to timeline_path(@project.id)
