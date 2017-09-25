@@ -31,7 +31,7 @@
                     .label-upme Comentários
                     %br
                     - step.timeline_comments.each do |comment|
-                      .comment-row
+                      .comment-row#botaoenviarcomentario
                         = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
                         %span.comment-username
                           = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
@@ -42,5 +42,6 @@
                       = hidden_field_tag :timeline_step_id, step.id
                       = text_area_tag :message, '', class: 'materialize-textarea', placeholder: "Escreva seu comentário aqui"
                       %button.waves-effect.waves-light-blue.btn-upme-outline-blue.btn-small Enviar comentário
+
       .col.m2.s12
         = render partial: 'project_right_bar', locals: { project: @project }

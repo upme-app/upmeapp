@@ -9,28 +9,31 @@
       .paper-box
         .row
           .col.s12.m3
-            = render 'profile/update_profile_picture'
-            = render 'profile/update_logo'
+            .profile-photo-container
+              = render 'profile/update_profile_picture'
+              = render 'profile/update_logo'
           .col.s12.m9
+            .right-align
+              = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
             %h4
               - if current_user.empresa?
-                = complete_seu_cadastro(current_user.nome_empresa, 'Nome da empresa')
+                .label-upme Nome da empresa
+                = complete_seu_cadastro(current_user.nome_empresa, '')
               - else
                 = current_user.full_name
-            .label-upme Área(s) de interesse
-            %br
-            = areas_de_interesse(current_user)
-            .btn-upme-outline-grey.btn-small
-              = link_to 'Editar', areas_de_interesse_path
+            
             .row
               .col.s12
                 - if current_user.empresa?
                   .label-upme Nome
                   %div= current_user.full_name
-                .label-upme Linkedin
-                %div= complete_seu_cadastro(current_user.linkedin)
+                 
                 .label-upme Sobre você
                 %div= complete_seu_cadastro(current_user.about)
+
+                .label-upme Linkedin
+                %div= complete_seu_cadastro(current_user.linkedin)
+                
               .col.s12.no-padding
                 .col.s12.m6
                   - if current_user.aluno? or current_user.professor?
@@ -43,6 +46,12 @@
                     %div= complete_seu_cadastro(current_user.semestre)
                   .label-upme Cidade
                   %div= complete_seu_cadastro(current_user.city)
+                .col.s12.m12
+                  .label-upme Área(s) de interesse
+                  - current_user.user_area_de_interesse.each do |ua|
+                    .tag-upme-blue.mb-16= ua.area_de_interesse.name
+                  %br
+                  = link_to 'Editar área(s)', areas_de_interesse_path, class: 'btn-upme-outline-grey btn-small'
               .col.s12.right-align
-                = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
+                
     .col.s12.m2

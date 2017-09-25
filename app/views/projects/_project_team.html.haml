@@ -6,23 +6,23 @@
   %ul
     - if pu.user.professor?
       = link_to profile_path(pu.user.id) do
-        %li.collection-item.avatar{style: 'border: none'}
+        %li.collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
           = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
-          %span.title.dark-link= pu.user.full_name
+          %span.title.dark-link.profiles-names= pu.user.first_name
 
 - if @project.client
   %h2.upme-sub-title Cliente
   %ul
     = link_to profile_path(@project.client.id) do
-      %li.collection-item.avatar{style: 'border: none'}
+      %li.collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
         = image_tag profilepic(@project.client), class: 'circle', width: '30px', id: 'img-profilepic'
-        %span.title.dark-link= @project.client.full_name
+        %span.title.dark-link.profiles-names= @project.client.full_name
 
 %h2.upme-sub-title Equipe
 - @project.project_users.each do |pu|
   %ul
     - if pu.user.aluno?
       = link_to profile_path(pu.user.id) do
-        %li.collection-item.avatar{style: 'border: none'}
+        %li.collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
           = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
-          %span.title.dark-link= pu.user.full_name
+          %span.title.dark-link.profiles-names= pu.user.first_name
