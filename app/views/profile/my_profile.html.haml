@@ -12,10 +12,10 @@
             .profile-photo-container
               = render 'profile/update_profile_picture'
               = render 'profile/update_logo'
+              .center-align
+                = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
           .col.s12.m9
-            .right-align
-              = link_to 'Editar Perfil', edit_profile_path, class: 'waves-effect waves-light btn-upme-blue'
-            %h4
+            %h4.huge-title
               - if current_user.empresa?
                 .label-upme Nome da empresa
                 = complete_seu_cadastro(current_user.nome_empresa, '')
