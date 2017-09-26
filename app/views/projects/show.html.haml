@@ -7,7 +7,26 @@
         .row
             .col.m2.s12
                 %br
-                = link_to 'Projeto Público', public_project_path(@project)
+                .banner-see-public
+                    %i{data: {feather: 'eye'}}
+                    .upme-sub-title Visualizar projeto como público
+                -# = link_to 'Visualizar projeto como público', public_project_path(@project), class: 'upme-sub-title'
+                %br
+                .btn-upme-blue.btn-full-width Editar Projeto
+                %br
+                .dropdown-button.btn-upme-outline-grey.btn-small.btn-full-width{data: {activates: 'project-more-actions'}} Mais ações
+
+                
+                %ul.dropdown-content#project-more-actions
+                    %li
+                        %a{style: 'color: #FB3028;'}
+                            %i{data: {feather: 'inbox'}, style: 'stroke: #FB3028;'}
+                            %span Arquivar projeto
+                    %li
+                        %a{style: 'color: #666;'}
+                            %i{data: {feather: 'copy'}, style: 'stroke: #666;'}
+                            %span Duplicar projeto
+        
                 - if @project.can_be_restored_by(current_user)
                     = button_to 'Restaurar', restore_project_path(@project), class: 'upme-btn-red btn-full-width', method: :get
                 - if @project.can_be_deleted_by(current_user)
@@ -30,6 +49,3 @@
 
             .col.m2.s12
                 = render partial: 'project_right_bar', locals: { project: @project }
-
-
-

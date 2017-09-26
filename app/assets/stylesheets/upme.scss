@@ -283,8 +283,12 @@ button:focus {
   }
 }
 .upme-tab-title {
-  @extend .upme-sub-title;
   border-bottom: 2px solid transparent;
+  font-weight: 400;
+  line-height: 18px;
+  font-size: 18px;
+  color: #666;
+  padding: 0 8px;
 }
 // GENERAL STYLES
 
@@ -740,4 +744,54 @@ label {
   .input-field {
     margin-top: 32px;
   }
+}
+.check-validation {
+  position: relative;
+}
+.check-validation:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width:32px;
+  height: 32px;
+  border: 2px solid $border-color;
+  border-radius: 100px;
+  left: -65px;
+  top: -16px;
+  background-color: #fff;
+}
+.check-validation.active:after {
+  content: '✔';
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #fff;
+  border-radius: 100px;
+  left: -65px;
+  top: -16px;
+  background-color: $blue;
+  color: #fff;
+  text-align: center;
+  padding: 4px;
+}
+.banner-see-public {
+  border: 2px solid $border-color;
+  border-radius: 4px;
+  padding: 24px;
+  text-align: center;
+  .feather.feather-eye {
+    stroke: $grey;
+    height: 32px;
+    width: 32px;
+  }
+}
+.dropdown-content {
+  border: 2px solid #b8b8b8;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+#dropdown1 li > a,
+#dropdown1 li > span {
+  color: #666 !important;
 }
