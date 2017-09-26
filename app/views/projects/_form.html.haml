@@ -19,16 +19,17 @@
           
           .input-field.check-validation
             .label-upme A quem o projeto se destina
+            %br
             .row
               .col.s4
                 = f.check_box :nat_privada
-                = f.label :nat_privada, 'Privada'
+                = f.label :nat_privada, '🏢  Empresa privada'
               .col.s4
                 = f.check_box :nat_publica
-                = f.label :nat_publica, 'Pública'
+                = f.label :nat_publica, '🏛️  Empresa Pública'
               .col.s4  
                 = f.check_box :nat_ong
-                = f.label :nat_ong, 'ONG'
+                = f.label :nat_ong, '🙌  ONG/Social'
           .input-field.check-validation
             = f.label :target_audience, 'Público-alvo', class: 'label-upme'
             = f.text_field :target_audience, class: 'validate', placeholder: 'Escreva o publico alvo do seu projeto aqui'

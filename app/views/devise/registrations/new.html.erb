@@ -7,6 +7,7 @@
 </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form'}) do |f| %>
   <div class="container" id="registration-step-2" class="display-none">
+      
     <div class="row">
       <div class="col s12 m8 offset-m2 center-align">
         <h1 class="huge-title center-align">Quem é você?</h1>
@@ -17,7 +18,15 @@
       <div class="col s12 m8 offset-m2">
         <div class="paper-box">
             <div class="row">
-                <br>
+                <div class="col s4">
+                  <div class="top-step active"></div>
+                </div>
+                <div class="col s4">
+                  <div class="top-step"></div>
+                </div>
+                <div class="col s4">
+                  <div class="top-step"></div>
+                </div>
                 <div class="col s12">
                   <div class="label-upme">Selecione a opção apropriada
                     <br>
@@ -79,6 +88,7 @@
   </div>
 
   <div class="container" id="registration-step-3" class="display-none">
+      
     <div class="row">
       <div class="col s12 m8 offset-m2 center-align">
         <h1 class="huge-title center-align">Cadastre um e-mail e senha</h1>
@@ -88,6 +98,18 @@
     <div class="row">
       <div class="col s12 m8 offset-m2">
       <div class="paper-box">
+        <div class="row">
+
+          <div class="col s4">
+            <div class="top-step active"></div>
+          </div>
+          <div class="col s4">
+            <div class="top-step active"></div>
+          </div>
+          <div class="col s4">
+            <div class="top-step"></div>
+          </div>
+        </div>
         <%= devise_error_messages! %>
 
         <div class="input-field">

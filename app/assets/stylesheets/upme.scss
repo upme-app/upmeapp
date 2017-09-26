@@ -795,3 +795,16 @@ label {
 #dropdown1 li > span {
   color: #666 !important;
 }
+.top-step {
+  height: 8px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #ECECEC;
+
+}
+.top-step.active {
+  background-color: $blue; 
+}
+.autocomplete-content {
+  border: none;
+}
