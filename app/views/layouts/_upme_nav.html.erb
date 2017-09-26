@@ -9,7 +9,7 @@
           <div class="upme-nav-item nav-bg-compass hide-on-med-and-down">explorar</div>
         <% end %>
         <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active' : '' do %>
-          <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">projetos</div>
+          <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">meus projetos</div>
         <% end %>
       </div>
       <div class="col s4 right-align">
@@ -40,7 +40,7 @@
 
 <ul class="side-nav" id="mobile-demo">
   <li><%= link_to 'Explorar', explore_path %></li>
-  <li><%= link_to 'Projetos', projects_path %></li>
+  <li><%= link_to 'Meus Projetos', projects_path %></li>
   <li><%= link_to 'Perfil', my_profile_path %></li>
   <li><%= link_to 'Conta', my_account_path %></li>
   <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
