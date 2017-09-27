@@ -154,6 +154,10 @@ button:focus {
     margin-top: 24px;
     margin-bottom: 8px;
 }
+.paper-box > .label-upme {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
 .private-project-box, {
   @extend .paper-box;
   margin-top: -20px;
@@ -579,12 +583,39 @@ label {
   }
   .paper-box {
     position: relative;
-    padding: 24px;
+    padding: 16px;
     left: 0;
     right: 0;
   }
   .pretty-checkbox-name {
     font-size: 13px;
+  }
+  .m-center-align {
+    text-align: center !important;
+  }
+  .m-no-padding {
+    padding: 0 !important;
+  }
+  .huge-title {
+    font-size: 10vw !important;
+  }
+  .note-areas {
+    display: none;
+  }
+  .upme-image-btn {
+    width: 98px;
+    height: 98px;
+  }
+  .bottom-image-label {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .hamburguer-menu {
+    font-size: 34px;
+    color: #666;
+  }
+  .m-margin-top-48 {
+    margin-top: 48px;
   }
 }
 
@@ -666,4 +697,13 @@ label {
 }
 .mb-16 {
   margin-bottom: 16px;
+}
+
+// Coisas cagadas para resolver pequenos probelmas
+#registration-step-2 > div:nth-child(2) > div > div > div:nth-child(1) > div.col.s12 > .label-upme {
+  margin-top: 0;
+}
+.side-nav li > a {
+  font-size: 18px !important;
+  font-style: italic;
 }
