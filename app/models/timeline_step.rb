@@ -10,36 +10,33 @@ class TimelineStep < ApplicationRecord
         'Primeira reunião entre cliente e equipe realizada com sucesso - presencialmente ou via web.',
         Time.now + 2.weeks
     )
-  end
-
-  def self.create_other_steps(project)
     create_step(
         project,
         'Desenvolvimento 1',
         'Brainstorm da equipe, definição das melhorias, principais pontos a serem trabalhados e start no desenvolvimento do projeto.',
         'Elaborar o diagnóstico com os detalhes a serem trabalhados. ',
-        Time.now + 4.weeks
+        Time.now + 6.weeks
     )
     create_step(
         project,
         'Reunião intermediária',
         'Feedback do cliente sobre o diagnóstico, propor alterações e responder às demandas dos alunos. Pré-aprovação do esboço do projeto; referências; hora de tirar dúvidas e comunicar se existe algum documento ou informação faltando para a elaboração do projeto.',
         'Reunião realizada com sucesso.',
-        Time.now + 5.weeks
+        Time.now + 7.weeks
     )
     create_step(
         project,
         'Desenvolvimento 2',
         'Seguir o desenvolvimento do projeto com as alterações propostas pelo cliente, com a documentação completa e as informações em dia.',
         'Conclusão do projeto.',
-        Time.now + 9.weeks
+        Time.now + 11.weeks
     )
     create_step(
         project,
         'Entrega',
         'Apresentação final ao professor, realizar ajustes sugeridos e entregar o trabalho para cliente.',
         'Entrega do projeto pelo time e feedback do cliente',
-        Time.now + 10.weeks
+        Time.now + 12.weeks
     )
   end
 
