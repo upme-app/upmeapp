@@ -37,34 +37,33 @@
 
 %hr
 
+%h5= link_to 'Ver projeto na plataforma', public_project_path(@project)
+
 %h3 Linha do Tempo
 
-- @project.timeline_steps.each_with_index do |step, index|
-  %li
-    .collapsible-header.timeline-step-header{class: index == 0 ? 'active' : ''}
-      .timeline-step-check
-      .col.s6
-        .label-upme= "Etapa 0#{index+1}"
-      .col.s6.right-align
-        .label-upme= l step.entrega
-    .collapsible-body.timeline-step-body
-      %h4.upme-sub-title= step.title
-      %p
-        = step.description
-      .label-upme Entregável
-      %p= step.entregavel
+.timeline
+  %ul.collapsible{data: {collapsible: 'expandable'}}
+    - @project.timeline_steps.each_with_index do |step, index|
+      %li
+        .collapsible-header.timeline-step-header{class: index == 0 ? 'active' : ''}
+          .timeline-step-check
+          .col.s6
+            .label-upme= "Etapa 0#{index+1}"
+          .col.s6.right-align
+            .label-upme= l step.entrega
+        .collapsible-body.timeline-step-body
+          %h4.upme-sub-title= step.title
+          %p
+            = step.description
+          .label-upme Entregável
+          %p= step.entregavel
 
-      .label-upme Comentários
-      %br
-      - step.timeline_comments.each do |comment|
-        .comment-row#botaoenviarcomentario
-          = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
-          %span.comment-username
-            = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
-          %p.comment-message= comment.message
-          .comment-info= l comment.created_at
-      .label-upme Comente
-      = form_tag timeline_comment_path(@project.id) do
-        = hidden_field_tag :timeline_step_id, step.id
-        = text_area_tag :message, '', class: 'materialize-textarea', placeholder: "Escreva seu comentário aqui"
-        %button.waves-effect.waves-light-blue.btn-upme-outline-blue.btn-small Enviar comentário
+          .label-upme Comentários
+          %br
+          - step.timeline_comments.each do |comment|
+            .comment-row#botaoenviarcomentario
+              = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
+              %span.comment-username
+                = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
+              %p.comment-message= comment.message
+              .comment-info= l comment.created_at

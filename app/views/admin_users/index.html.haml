@@ -1,1 +1,6 @@
 %h3 Lista de usuários
+
+
+= render partial: 'users_table', locals: {title: 'Alunos', users: User.where(user_type: :aluno) }
+= render partial: 'users_table', locals: {title: 'Professores', users: User.where(user_type: :professor) }
+= render partial: 'users_table', locals: {title: 'Empresas', users: User.where(user_type: :empresa) }
