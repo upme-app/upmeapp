@@ -7,32 +7,29 @@
         .row
             .col.m2.s12
                 %br
-                .banner-see-public
-                    %i{data: {feather: 'eye'}}
-                    .upme-sub-title Visualizar projeto como público
-                -# = link_to 'Visualizar projeto como público', public_project_path(@project), class: 'upme-sub-title'
+                = link_to public_project_path(@project) do
+                    .banner-see-public
+                        %i{data: {feather: 'eye'}}
+                        .upme-sub-title Visualizar projeto como público
                 %br
                 .btn-upme-blue.btn-full-width Editar Projeto
                 %br
-                .dropdown-button.btn-upme-outline-grey.btn-small.btn-full-width{data: {activates: 'project-more-actions'}} Mais ações
 
-                
-                %ul.dropdown-content#project-more-actions
-                    %li
-                        %a{style: 'color: #FB3028;'}
-                            %i{data: {feather: 'inbox'}, style: 'stroke: #FB3028;'}
-                            %span Arquivar projeto
-                    %li
-                        %a{style: 'color: #666;'}
-                            %i{data: {feather: 'copy'}, style: 'stroke: #666;'}
-                            %span Duplicar projeto
-        
-                - if @project.can_be_restored_by(current_user)
-                    = button_to 'Restaurar', restore_project_path(@project), class: 'upme-btn-red btn-full-width', method: :get
                 - if @project.can_be_deleted_by(current_user)
-                    = button_to 'Excluir Projeto', delete_project_path(@project), class: 'upme-btn-red btn-full-width', method: :get
-                - if @project.user_id == current_user.id
-                    = button_to 'Duplicar', duplicate_project_path(@project), class: 'upme-btn-blue btn-full-width', method: :get
+                    .dropdown-button.btn-upme-outline-grey.btn-small.btn-full-width.hover-pointer{data: {activates: 'project-more-actions'}} Mais ações
+                    %ul.dropdown-content#project-more-actions
+                        %li
+                            = link_to delete_project_path(@project), style: 'color: #FB3028;' do
+                                %i{data: {feather: 'inbox'}, style: 'stroke: #FB3028;'}
+                                %span Arquivar Projeto
+                        %li
+                            = link_to duplicate_project_path(@project), style: 'color: #666;' do
+                                %i{data: {feather: 'copy'}, style: 'stroke: #666;'}
+                                %span Duplicar projeto
+
+                - if @project.can_be_restored_by(current_user)
+                    = button_to 'Restaurar', restore_project_path(@project), class: 'btn-upme-outline-grey btn-small btn-full-width', method: :get
+
                 %br
             .col.m8.s12
                 .private-project-box
