@@ -59,4 +59,10 @@ Rails.application.routes.draw do
   match 'perfil/:id', to: 'profile#profile', via: :get, as: :profile
 
 
+  # ADMIN
+  match 'admin', to: 'admin#index', via: :get, as: :admin
+  match 'admin/projetos', to: 'admin_projects#index', via: :get, as: :admin_projects
+  match 'admin/usuarios', to: 'admin_users#index', via: :get, as: :admin_users
+
+
 end

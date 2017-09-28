@@ -1,0 +1,21 @@
+%h2.center-align= title
+
+- if projects.empty?
+  .center-align Nenhum
+- else
+  %table.bordered.striped
+    %tr
+      %th ID
+      %th Título
+      %th Dono
+      %th Cliente
+    - projects.each do |project|
+      %tr
+        %td= project.id
+        %td= project.title
+        %td= project.user.first_name
+        %td
+          - if project.client
+            = project.client.first_name
+          - else
+            = "-"

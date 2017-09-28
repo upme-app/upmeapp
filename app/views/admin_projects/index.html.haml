@@ -1,0 +1,5 @@
+= render partial: 'projects_table', locals: {title: 'Projetos em andamento', projects: Project.projects_running}
+= render partial: 'projects_table', locals: {title: 'Projetos aguardando cliente', projects: Project.available_empresa_projects}
+= render partial: 'projects_table', locals: {title: 'Projetos aguardando professor/alunos', projects: Project.available_aluno_projects}
+= render partial: 'projects_table', locals: {title: 'Projetos finalizados', projects: []}
+= render partial: 'projects_table', locals: {title: 'Projetos arquivados', projects: Project.deleted_projects}
