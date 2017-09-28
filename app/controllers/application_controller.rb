@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
+  def authorize_admin
+    unless current_user.admin
+      flash[:danger] = 'Permissão negada.'
+      redirect_to root_path
+    end
+  end
+
 end

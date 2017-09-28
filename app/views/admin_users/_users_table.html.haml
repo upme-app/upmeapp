@@ -1,0 +1,21 @@
+%h2.center-align= title
+
+- if users.empty?
+  .center-align Nenhum
+- else
+  %table.bordered.striped
+    %tr
+      %th ID
+      %th Nome
+      - if title == 'Empresas'
+        %th Nome da Empresa
+      - else
+        %th Universidade
+    - users.each do |user|
+      %tr
+        %td= user.id
+        %td= link_to user.first_name, admin_user_path(user)
+        - if title == 'Empresas'
+          %td= user.nome_empresa
+        - else
+          %td= user.universidade

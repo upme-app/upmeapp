@@ -43,6 +43,14 @@ class Project < ApplicationRecord
     Project.joins(:user).not_deleted.not_started.where('users.user_type = ?', User.user_types[:empresa])
   end
 
+  def self.projects_running
+    Project.not_deleted.where(started: true)
+  end
+
+  def self.deleted_projects
+    Project.where(deleted: true)
+  end
+
   def has_user(user)
     ProjectUser.where(project_id: id).where(user_id: user.id).size > 0
   end

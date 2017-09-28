@@ -1,0 +1,21 @@
+%h2.center-align= title
+
+- if projects.empty?
+  .center-align Nenhum
+- else
+  %table.bordered.striped
+    %tr
+      %th ID
+      %th Título
+      %th Dono
+      %th Cliente
+    - projects.each do |project|
+      %tr
+        %td= project.id
+        %td= link_to project.title, admin_project_path(project)
+        %td= link_to project.user.first_name, admin_user_path(project.user)
+        %td
+          - if project.client
+            = link_to project.client.first_name, admin_user_path(project.client)
+          - else
+            = "-"
