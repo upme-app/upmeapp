@@ -12,7 +12,7 @@
             .profile-photo-container.center-align
               = image_tag profilepic(@user), class: 'circle', width: '130px', id: 'img-profilepic'
               = image_tag logourl(@user), class: 'circle', width: '130px', class: 'profile-company-logo'
-          .col.s12.m9
+          .col.s12.m9.m-margin-top-48
             - if @user.empresa?
               .huge-title=@user.nome_empresa
               .label-upme Nome

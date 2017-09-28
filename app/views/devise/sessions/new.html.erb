@@ -6,7 +6,7 @@
 <%= render 'layouts/upme_flash' %>
 <div class="container">
   <div class="row">
-    <div class="col m8 offset-m2">
+    <div class="col m8 offset-m2 m-no-padding">
       <div class="paper-box">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="input-field">
@@ -25,14 +25,14 @@
         %>
       </div>
       <div class="row">
-        <div class="col s6">
-          <br>
-            <%= link_to 'Esqueci minha senha', new_password_path(resource_name), class: 'waves-effect waves-light-blue btn-upme-outline-blue btn-small' %>
+      <div class="col m6 s12 m-center-align right-align">
+        <br>
+          <%= link_to 'Faça seu cadastro', registrar_path, data: { turbolinks: false }, class: 'waves-effect waves-dark btn-upme-outline-blue btn-small' %>
         </div>
-        <div class="col s6 right-align">
+        <div class="col m6 s12 m-center-align">
           <br>
-            <%= link_to 'Faça seu cadastro', registrar_path, data: { turbolinks: false }, class: 'waves-effect waves-dark btn-upme-outline-grey btn-small' %>
-          </div>
+            <%= link_to 'Esqueci minha senha', new_password_path(resource_name), class: 'waves-effect waves-light-blue btn-upme-outline-grey btn-small' %>
+        </div>
       </div>
     </div>
   </div>
