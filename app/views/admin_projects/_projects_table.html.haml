@@ -12,10 +12,10 @@
     - projects.each do |project|
       %tr
         %td= project.id
-        %td= project.title
-        %td= project.user.first_name
+        %td= link_to project.title, admin_project_path(project)
+        %td= link_to project.user.first_name, admin_user_path(project.user)
         %td
           - if project.client
-            = project.client.first_name
+            = link_to project.client.first_name, admin_user_path(project.client)
           - else
             = "-"
