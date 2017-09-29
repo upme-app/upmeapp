@@ -8,7 +8,8 @@
             = f.label :title, 'Título do Projeto', class: 'label-upme'
             = f.text_field :title, class: 'validate big-font-form', placeholder: 'Escreva o titulo aqui'
             .help-text (Ex.: Planejamento estratégico, Plano de cargos e salários, Logotipo, Campanha publicitária, Projeto Arquitetônico e etc.)
-          .input-field.check-validation.active
+          /.input-field.check-validation.active
+          .input-field.check-validation
             = f.label :objective, 'Objetivos do Projeto', class: 'label-upme'
             = f.text_area :objective, class: 'materialize-textarea', data: { length: 350 }, placeholder: 'Escreva aqui'
             .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
@@ -41,8 +42,14 @@
         .col.m2.no-padding
         .col.m8.s12.no-padding
           .col.s3.m4.left-align.no-padding
-            = button_to 'Cancelar', projects_path, class: 'btn-upme-outline-white'
+            - if action_name == 'edit'
+              = button_tag 'Cancelar', type: 'button', class: 'btn-upme-outline-white', :onclick => "location.href = '#{project_path(@project)}'"
+            - else
+              = button_tag 'Cancelar', type: 'button', class: 'btn-upme-outline-white', :onclick => "location.href = '#{projects_path}'"
           .col.s4.center-align.no-padding
 
           .col.s5.m4.right-align.no-padding
-            = submit_tag 'Publicar Projeto', class: 'btn-upme-white'
+            - if action_name == 'edit'
+              = submit_tag 'Salvar Projeto', class: 'btn-upme-white'
+            - else
+              = submit_tag 'Publicar Projeto', class: 'btn-upme-white'

@@ -27,6 +27,19 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    set_project
+  end
+
+  def update
+    set_project
+    if @project.update_attributes(project_params)
+      redirect_to project_path(@project)
+    else
+      render 'projects/edit'
+    end
+  end
+
   def duplicate
     @duplicated_project = @project
     @project = Project.new
