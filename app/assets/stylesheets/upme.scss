@@ -174,6 +174,8 @@ button:focus {
   background-color: #f7f7f7;
   border-radius: 100%;
   display: inline-block;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
 }
 .project-image-container {
   position: relative;

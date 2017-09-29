@@ -42,25 +42,7 @@
       
     .row
       - @projects.each do |project|
-        .col.m4.s12
-          = link_to project_path(project.id) do
-            .project-ad-box{style: 'height: 420px; margin-bottom: 24px;'}
-              .row.no-mb
-                .col.s6
-                  .project-user-photo
-                  .project-username= project.user.full_name
-                .col.s6
-                  .project-date= project.created_at.strftime('%d/%m/%y')
-              .project-image-container
-                = image_tag 'app/project-image-placeholder.png', class: 'project-image'
-                = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo'
-              .tag-upme-blue Publicidade & Propaganda
-              .btn-upme-outline-grey.btn-small.btn-square{style: 'padding: 6px 3px; display:inline-block;'} +9
-              .h2.project-title= project.title
-              .p.project-description= project.description[0..124] + '...'
-              - if project.deleted
-                %span.red.badge{style: 'color: white;'} Projeto arquivado
-
+        = render partial: 'project_box', locals: { project: project }
 - else
   .container
     .row
