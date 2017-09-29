@@ -1,14 +1,22 @@
+- if controller_name == "explore"
+  - path = public_project_path(project.id)
+- else
+  - if project.started
+    - path = timeline_path(project.id)
+  - else
+    - path = project_path(project.id)
+
 .col.m4.s12
-  = link_to project_path(project.id) do
+  = link_to path do
     .project-ad-box{style: 'height: 420px; margin-bottom: 24px;'}
       .row.no-mb
-        .col.s6
+        .col.s9
           - if project.user.profilepicurl
             .project-user-photo{style: "background-image: url('#{project.user.profilepicurl}')"}
           - else
             .project-user-photo
           .project-username= project.user.full_name
-        .col.s6
+        .col.s3
           .project-date= project.created_at.strftime('%d/%m/%y')
       .project-image-container
         = image_tag 'app/project-image-placeholder.png', class: 'project-image'
