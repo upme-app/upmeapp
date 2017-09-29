@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 
   def update
     set_project
-    if @project.update_attributes(project_params)
+    if @project.user_id == current_user.id and @project.update_attributes(project_params)
       redirect_to project_path(@project)
     else
       render 'projects/edit'

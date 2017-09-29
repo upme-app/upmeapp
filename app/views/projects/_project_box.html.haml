@@ -19,8 +19,15 @@
         .col.s3
           .project-date= project.created_at.strftime('%d/%m/%y')
       .project-image-container
-        = image_tag 'app/project-image-placeholder.png', class: 'project-image'
-        = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo'
+        - if project.imgurl
+          = image_tag project.imgurl, class: 'project-image'
+        - else
+          = image_tag 'app/project-image-placeholder.png', class: 'project-image'
+
+        - if project.client and project.client.logourl
+          = image_tag project.client.logourl, class: 'project-company-logo'
+        - else
+          = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo'
       - if project.user.user_area_de_interesse.first
         .tag-upme-blue
           = project.user.user_area_de_interesse.first.area_de_interesse.name
