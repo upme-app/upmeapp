@@ -42,7 +42,7 @@ body {
   font-style: italic;
   line-height: 14px;
   font-size: 14px;
-  color: #828282;
+  color: #afafaf;
 }
 .btn-full-width {
   width: 100%;
@@ -82,6 +82,12 @@ body {
   color: #ffffff;
 }
 
+.btn-upme-white {
+  @extend .btn-upme;
+  background: white;
+  color: #333;
+}
+
 .tag-upme-blue {
   padding: 8px 16px;
   font-size: 16px;
@@ -107,6 +113,12 @@ body {
   color: $grey;
   border: 2px solid $border-color;
   background-color: white;
+}
+.btn-upme-outline-white {
+  @extend .btn-upme;
+  color: #fff;
+  border: 2px solid #fff;
+  background-color: transparent;
 }
 .btn-upme-outline-blue {
   @extend .btn-upme;
@@ -136,6 +148,10 @@ button:focus {
     margin-top: -8px;
    }
 }
+.project-ad-box {
+  @extend .paper-box;
+  padding: 16px;
+}
 .project-title {
   line-height: 24px;
   font-size: 24px;
@@ -143,6 +159,50 @@ button:focus {
   color: $black;
   margin-top: 8px;
   margin-bottom: 8px;
+}
+.project-image {
+  background-color: #f7f7f7;
+  height: 150px;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.project-user-photo {
+  width: 32px;
+  height: 32px;
+  background-color: #f7f7f7;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.project-image-container {
+  position: relative;
+}
+.project-company-logo {
+  position: absolute;
+  height: 64px;
+  width: 64px;
+  border: 4px solid rgba(0,0,0,.2);
+  border-radius: 4px;
+  bottom: 20px;
+  left: 10px;
+}
+.project-username {
+  font-size: 16px;
+  color: #333333;
+  display: inline-block;
+  vertical-align: super;
+  line-height: 32px;
+  position: relative;
+  top: -3px;
+  padding-left: 8px;
+}
+.project-date {
+  font-size: 14px;
+  text-align: right;
+  color: #BDBDBD;
 }
 .project-description {
   color: $grey;
@@ -229,8 +289,12 @@ button:focus {
   }
 }
 .upme-tab-title {
-  @extend .upme-sub-title;
   border-bottom: 2px solid transparent;
+  font-weight: 400;
+  line-height: 18px;
+  font-size: 18px;
+  color: #666;
+  padding: 0 8px;
 }
 // GENERAL STYLES
 
@@ -347,7 +411,11 @@ button:focus {
 
 .upme-action-bar-bg {
   background: #00C7FF;
-  border-top: solid 1px #BDBDBD;
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0;
+  padding: 16px;
 }
 
 .upme-action-bar {
@@ -706,4 +774,83 @@ label {
 .side-nav li > a {
   font-size: 18px !important;
   font-style: italic;
+}
+.no-mb {
+  margin-bottom: 0 !important;
+}
+.input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  margin: 0 0 8px 0 !important;
+}
+.creating-project {
+  margin-bottom: 120px;
+  .input-field {
+    margin-top: 32px;
+  }
+}
+.check-validation {
+  position: relative;
+}
+.check-validation:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width:32px;
+  height: 32px;
+  border: 2px solid $border-color;
+  border-radius: 100px;
+  left: -65px;
+  top: -16px;
+  background-color: #fff;
+}
+.check-validation.active:after {
+  content: '✔';
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #fff;
+  border-radius: 100px;
+  left: -65px;
+  top: -16px;
+  background-color: $blue;
+  color: #fff;
+  text-align: center;
+  padding: 4px;
+}
+.banner-see-public {
+  border: 2px solid $border-color;
+  border-radius: 4px;
+  padding: 24px;
+  text-align: center;
+  .feather.feather-eye {
+    stroke: $grey;
+    height: 32px;
+    width: 32px;
+  }
+}
+.dropdown-content {
+  border: 2px solid #b8b8b8;
+  border-radius: 4px;
+  box-shadow: none !important;
+}
+#dropdown1 li > a,
+#dropdown1 li > span {
+  color: #666 !important;
+}
+.top-step {
+  height: 8px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: #ECECEC;
+
+}
+.top-step.active {
+  background-color: $blue; 
+}
+.autocomplete-content {
+  border: none;
+}
+
+.hover-pointer {
+  cursor: pointer;
 }
