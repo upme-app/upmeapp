@@ -1,0 +1,12 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+             Poxa! Infelizmente #{@project_owner.nome_empresa} está procurando outro perfil de candidato para atendê-lo(a).
+             ",
+             path: explore_url,
+             pre_btn_text: 'Para visualizar mais oportunidades de jobs na sua área, acesse:',
+             btn_text: 'Explorar'
+         }
+  )
+%>

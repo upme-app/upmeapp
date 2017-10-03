@@ -1,0 +1,10 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "Parabéns! Já tem cliente interessado na sua oferta! Acesse agora e descubra quem é! <br>",
+             path: client_solicitations_url(@project),
+             pre_btn_text: 'Acesse agora as solicitações do projeto:',
+             btn_text: 'Solicitações de clientes'
+         }
+  )
+%>

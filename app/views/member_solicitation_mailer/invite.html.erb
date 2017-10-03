@@ -1,0 +1,13 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+             Parabéns! Já tem aluno(a) interessado(a) em atender a sua empresa! Acesse agora e descubra quem é! <br>
+             Use a linha do tempo para trocar mensagens com seu novo cliente, mostrar sua pró-atividade e engajar o time!
+             ",
+             path: project_url(@project),
+             pre_btn_text: 'Acesse agora mesmo suas solicitações:',
+             btn_text: 'Solicitações do projeto'
+         }
+  )
+%>

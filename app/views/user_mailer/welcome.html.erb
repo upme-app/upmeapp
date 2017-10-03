@@ -1,0 +1,17 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: '
+              Olá! <br>
+              Fiquei muito feliz com o seu interesse em participar da UpMe! <br>
+              Desde 2015, a UpMe! vem impactando positivamente a vida de centenas de universitários <br>
+              professores e pequenos negócios. Vai ser um prazer conectar projetos para ajudá-lo a crescer <br>
+              Abç,
+             ',
+             path: entrar_url,
+             pre_btn_text: 'Para acessar a plataforma, clique no botão: ',
+             btn_text: 'Acessar plataforma',
+             gif: 'https://media.giphy.com/media/3ohhwE5buDQZdAXsv6/giphy.gif'
+         }
+  )
+%>

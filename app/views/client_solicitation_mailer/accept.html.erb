@@ -1,0 +1,13 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+             Parabéns! Sua empresa foi selecionada para atender o projeto #{@project.title}. <br>
+             Use a linha do tempo para trocar mensagens com sua equipe.
+             ",
+             path: project_url(@project),
+             pre_btn_text: 'Acesse agora mesmo o seu novo projeto:',
+             btn_text: 'Página do projeto'
+         }
+  )
+%>

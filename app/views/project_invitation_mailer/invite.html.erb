@@ -1,0 +1,12 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+              Olá! #{@project_owner.first_name} quer que você faça parte do projeto #{@project.title}. <br>
+             ",
+             path: projects_url,
+             pre_btn_text: 'Para aceitar ou recusar ser parte do time, acesse: ',
+             btn_text: 'Meus convites'
+         }
+  )
+%>

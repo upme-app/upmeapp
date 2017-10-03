@@ -1,0 +1,13 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+             Parabéns! Seu perfil foi selecionado para atender a empresa #{@project_owner.nome_empresa}. <br>
+             Use a linha do tempo para trocar mensagens com seu novo cliente, mostrar sua pró-atividade e engajar o time!
+             ",
+             path: project_url(@project),
+             pre_btn_text: 'Acesse agora mesmo o seu novo projeto:',
+             btn_text: 'Página do projeto'
+         }
+  )
+%>

@@ -1,0 +1,12 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+              #{@member.first_name} aceitou fazer parte do seu time! <br>
+             ",
+             path: timeline_url(@project),
+             pre_btn_text: 'Para trocar ideias com equipe e cliente, acesse:',
+             btn_text: 'Linha do tempo'
+         }
+  )
+%>

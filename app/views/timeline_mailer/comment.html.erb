@@ -1,0 +1,11 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "Você tem uma nova mensagem de #{@quem_enviou.first_name} na linha do tempo de seu projeto.",
+             path: timeline_url(@project),
+             pre_btn_text: 'Para visualizá-la, acesse:',
+             btn_text: 'Linha do Tempo',
+             img: 'https://i.imgur.com/RmbTEpe.png'
+         }
+  )
+%>

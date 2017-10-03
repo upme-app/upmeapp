@@ -1,0 +1,12 @@
+<%=
+  render(partial: 'layouts/default_email',
+         locals: {
+             message: "
+              Poxa! Infelizmente #{@member.first_name} recusou fazer parte do seu time! <br>
+             ",
+             path: project_url(@project),
+             pre_btn_text: 'Para convidar novos membros, acesse:',
+             btn_text: 'Convidar Membros'
+         }
+  )
+%>
