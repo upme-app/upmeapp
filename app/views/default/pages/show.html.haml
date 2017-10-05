@@ -14,9 +14,13 @@
       .row
         .col-md-12.text-right
           = #l @page.created_at
-      = @page.content(:text).try(:html_safe)
 
-      %h4.post-list-title.blue-label Veja também
+      - content = @page.content(:text)
+      - text = content.scan(/\[youtube .{11}\]/)
+      - text.each { |v| content = content.sub(v, '<div style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/'+text[0][9..-2]+'" frameborder="0" allowfullscreen></iframe></div>') }
+      = content.try(:html_safe)
+
+      %h4.post-list-title.blue-label Veja ta  mbém
 
       - pages = Spina::Page.active.where('id != ?', @page.id)
       .row
