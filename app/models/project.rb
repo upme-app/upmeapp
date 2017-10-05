@@ -55,6 +55,10 @@ class Project < ApplicationRecord
     ProjectUser.where(project_id: id).where(user_id: user.id).size > 0
   end
 
+  def has_step(step)
+    TimelineStep.find(step.id).project_id == self.id
+  end
+
   def can_be_deleted_by(user)
     true if deleted == false and user.id == user_id
   end

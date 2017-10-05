@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   match 'recusar-convite/:invitation_id', as: :refuse_invitation, to: 'projects_invitation#refuse_invitation', via: :get
 
   match 'meus-projetos/:id/linha-do-tempo/comentar', as: :timeline_comment, to: 'projects#timeline_comment', via: :post
+  match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa/:step_id', as: :finish_step, to: 'projects#finish_step', via: :get
 
   match 'aceitar-solicitacao-cliente/:solicitation_id', as: :accept_client_solicitation, to: 'client_solicitation#accept', via: :get
   match 'recusar-solicitacao-cliente/:solicitation_id', as: :refuse_client_solicitation, to: 'client_solicitation#refuse', via: :get

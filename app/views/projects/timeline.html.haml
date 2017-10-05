@@ -20,7 +20,18 @@
                     .col.s6
                       .label-upme= "Etapa 0#{index+1}"
                     .col.s6.right-align
-                      .label-upme= l step.entrega
+                      .label-upme
+                        - if step.entregue?
+                          .label-green= "Entregue #{l step.check_date}"
+                        - else
+                          - if step.entrega > Time.now.to_date
+                            = l step.entrega
+                          - else
+                            - dias_atraso = (Time.now.to_date - step.entrega).to_i
+                            - if dias_atraso == 0
+                              A entrega é hoje
+                            - else
+                              .label-red= "#{dias_atraso} dia(s) de atraso"
                   .collapsible-body.timeline-step-body
                     %h4.upme-sub-title= step.title
                     %p
@@ -37,6 +48,9 @@
                           = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
                         %p.comment-message= comment.message
                         .comment-info= l comment.created_at
+                    .right-align
+                      - if current_user.can_finish_step?(@project, step)
+                        = button_to 'Entregar', finish_step_path(@project, step), method: :get, class: 'upme-btn-a btn'
                     .label-upme Comente
                     = form_tag timeline_comment_path(@project.id) do
                       = hidden_field_tag :timeline_step_id, step.id
