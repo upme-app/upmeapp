@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def can_finish_step?(project, step)
-    project.has_user(self) and project.has_step(step) and project.client_id == self.id
+    project.has_user(self) and project.has_step(step) and project.client_id == self.id and !step.entregue?
   end
 
   def user_label

@@ -110,6 +110,7 @@ class ProjectsController < ApplicationController
     else
       flash[:alert] = 'Erro!'
     end
+    redirect_to timeline_path(@project)
   end
 
   def show_public

@@ -3,7 +3,7 @@ class TimelineStep < ApplicationRecord
   has_many :timeline_comments
 
   def finish(user)
-    if user.can_finish_step?(project, slef)
+    if user.can_finish_step?(project, self)
       update_attribute :check_date, Time.now
     end
   end
@@ -54,6 +54,10 @@ class TimelineStep < ApplicationRecord
       entregavel: entregavel,
       entrega: data_entrega
     })
+  end
+
+  def entregue?
+    true unless check_date.nil?
   end
 
 end
