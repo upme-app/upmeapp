@@ -2,6 +2,12 @@ class TimelineStep < ApplicationRecord
   belongs_to :project
   has_many :timeline_comments
 
+  def finish(user)
+    if user.can_finish_step?(project, slef)
+      update_attribute :check_date, Time.now
+    end
+  end
+
   def self.init_project_steps(project)
     create_step(
         project,

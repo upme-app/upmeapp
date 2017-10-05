@@ -20,8 +20,11 @@
                     .col.s6
                       .label-upme= "Etapa 0#{index+1}"
                     .col.s6.right-align
-                      .label-upme= l step.entrega
+                      .label-upme
+                        = l step.entrega
                   .collapsible-body.timeline-step-body
+                    .right-align
+                      = button_to 'Entregar', finish_step_path(@project, step), method: :get
                     %h4.upme-sub-title= step.title
                     %p
                       = step.description
