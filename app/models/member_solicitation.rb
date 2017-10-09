@@ -5,9 +5,9 @@ class MemberSolicitation < ApplicationRecord
   validate :solicitation_already_exists
   validate :not_empresa
 
-  def self.new_solicitation(current_user, project, message)
+  def self.new_solicitation(user, project, message)
     MemberSolicitation.new({
-      user_id: current_user.id,
+      user_id: user.id,
       project_id: project.id,
       message: message
     })

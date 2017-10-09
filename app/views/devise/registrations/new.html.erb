@@ -114,7 +114,12 @@
         <div class="input-field">
           <%= f.label :email, 'Escreva seu e-mail', class: 'label-upme' %>
           <br />
-          <%= f.email_field :email, required: true, class: 'big-font-form', placeholder: 'Seu melhor e-mail' %>
+          <%- if @invite %>
+            <%= email_field_tag :invite_email, @invite.to_email, disabled: true, class: 'big-font-form', placeholder: 'Seu melhor e-mail' %>
+            <%= hidden_field_tag :invite_token, @invite.token %>
+          <%- else %>
+            <%= f.email_field :email, required: true, class: 'big-font-form', placeholder: 'Seu melhor e-mail' %>
+          <%- end %>
         </div>
 
         <div class="input-field">

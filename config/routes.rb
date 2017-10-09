@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'entrar', to: 'devise/sessions#new', as: :entrar
-    get 'registrar', to: 'devise/registrations#new', as: :registrar
+    get 'registrar', to: 'users/registrations#new', as: :registrar
+    get 'registrar/:invite_token', to: 'users/registrations#new', as: :registrar_token
     get 'minha-conta', to: 'devise/registrations#edit', as: :my_account
   end
 

@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :invite_person do
+    user nil
+    to_email "MyString"
+    token "MyString"
+    project nil
+    completed false
+  end
 
   sequence :email do |n|
     "person#{n}@example.com"

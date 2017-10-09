@@ -7,6 +7,14 @@ class ProjectInvitationMailer < ApplicationMailer
     mail(to: @member.email, subject: "#{@project_owner.first_name} quer que você faça parte do projeto #{@project.title}.")
   end
 
+  def invite_email(email, project_owner, project, token)
+    @email = email
+    @project_owner = project_owner
+    @project = project
+    @token = token
+    mail(to: @email, subject: "#{@project_owner.first_name} quer que você faça parte do projeto #{@project.title}.")
+  end
+
   def accept(member, project_owner, project)
     @member = member
     @project_owner = project_owner
