@@ -2,11 +2,11 @@
   render(partial: 'layouts/default_email',
          locals: {
              message: "
-              Olá! #{@project_owner.first_name} quer que você faça parte do projeto #{@project.title}. <br>
+              Olá! #{@project_owner.first_name} está chamando você para fazer parte do projeto #{@project.title}. Faça seu cadastro na UpMe! agora mesmo e não esqueça de buscar seus projetos no sistema para aceitar e entrar no time!
              ",
              path: registrar_token_url(@token),
-             pre_btn_text: 'Para aceitar ou recusar ser parte do time, cadastre-se: ',
-             btn_text: 'UpMe!'
+             pre_btn_text: '',
+             btn_text: 'Cadastre-se!'
          }
   )
 %>

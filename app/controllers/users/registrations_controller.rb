@@ -4,16 +4,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
-    if params[:token]
-      @invite = InviteEmail.find_by_token(params[:token])
+    set_invite_token
+    if @invite and User.find_by_email(@invite.to_email)
+      flash[:success] = 'Email já cadastrado. Faça login.'
+      redirect_to entrar_path
+    else
+      super
     end
   end
 
   # POST /resource
   def create
+    # adiciona o email via backend por seguranca
+    set_invite_token
+    if @invite
+      params['user']['email'] = @invite.to_email
+    end
+
     super
-    Thread.new { UserMailer.welcome(current_user).deliver if current_user }
+    # se conseguir salvar dispara um email de bem vindo
+    if current_user
+      Thread.new { UserMailer.welcome(current_user).deliver if current_user }
+      # se for um save via convite, cria o convite
+      if @invite
+        ProjectInvitation.create({
+                                  user_from_id: @invite.user.id,
+                                  user_to_id: current_user.id,
+                                  project_id: @invite.project.id
+                              })
+      end
+    end
   end
 
   # GET /resource/edit
@@ -61,4 +81,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def set_invite_token
+    if params[:invite_token]
+      @invite = InviteEmail.find_by_token(params[:invite_token])
+    end
+  end
 end

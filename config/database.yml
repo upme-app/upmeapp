@@ -11,8 +11,8 @@ development:
   encoding: unicode
   pool: 5
   database: upmeapp_development
-  username: upmeapp
-  password: 123456
+  username: amandabusato
+  password:
   port: 5432
   host: localhost
 
@@ -25,8 +25,8 @@ test:
   encoding: unicode
   pool: 5
   database: upmeapp_test
-  username: upmeapp
-  password: 123456
+  username: amandabusato
+  password:
   port: 5432
   host: localhost
 
