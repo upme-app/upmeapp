@@ -3,9 +3,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+    if params[:token]
+      @invite = InviteEmail.find_by_token(params[:token])
+    end
+  end
 
   # POST /resource
   def create

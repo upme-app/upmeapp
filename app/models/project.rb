@@ -18,6 +18,15 @@ class Project < ApplicationRecord
     })
   end
 
+  def invite_email(email, from_user)
+    user = User.find_by_email(email)
+    if user
+      invite_registered_user(user, from_user)
+    else
+      invite_not_registered_user(email, from_user)
+    end
+  end
+
   def start
     update_attribute :started, true
     TimelineStep.init_project_steps self
@@ -78,5 +87,44 @@ class Project < ApplicationRecord
     update_attribute :deleted, false
     update_attribute :started, false
   end
+
+  def invite_registered_user(user, from_user)
+    return :user_already_in_project if has_user user
+    return :already_sent if ProjectInvitation.where(project_id: id, user_to_id: user.id).size > 0
+
+    invitation = ProjectInvitation.new({
+                                           user_from_id: from_user.id,
+                                           user_to_id: user.id,
+                                           project_id: self.id
+                                       })
+    if invitation.save
+      Thread.new {ProjectInvitationMailer.invite(invitation.user_to, invitation.user_from, self).deliver}
+      :success
+    else
+      :failed
+    end
+  end
+
+  def invite_not_registered_user(email, from_user)
+    return :failed if User.find_by_email(email)
+    return :already_sent if InviteEmail.where(project_id: id, to_email: email).size > 0
+    return :invalid_email unless email.match('[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})')
+
+    invitation = InviteEmail.new({
+        user_id: from_user.id,
+        project_id: self.id,
+        completed: false,
+        to_email: email,
+        token: SecureRandom.uuid
+    })
+
+    if invitation.save
+      Thread.new {ProjectInvitationMailer.invite_email(invitation.to_email, invitation.user, self, invitation.token).deliver}
+      :success
+    else
+      :failed
+    end
+  end
+
 
 end

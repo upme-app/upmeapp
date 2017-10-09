@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005163930) do
+ActiveRecord::Schema.define(version: 20171005181320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20171005163930) do
     t.string   "nome"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invite_emails", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "to_email"
+    t.string   "token"
+    t.integer  "project_id"
+    t.boolean  "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_invite_emails_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_invite_emails_on_user_id", using: :btree
   end
 
   create_table "landing_quizzes", force: :cascade do |t|
@@ -365,6 +377,8 @@ ActiveRecord::Schema.define(version: 20171005163930) do
 
   add_foreign_key "client_solicitations", "projects"
   add_foreign_key "client_solicitations", "users"
+  add_foreign_key "invite_emails", "projects"
+  add_foreign_key "invite_emails", "users"
   add_foreign_key "member_solicitations", "projects"
   add_foreign_key "member_solicitations", "users"
   add_foreign_key "project_invitations", "projects"

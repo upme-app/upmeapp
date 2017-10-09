@@ -123,22 +123,19 @@ class ProjectsController < ApplicationController
   def invite_user_to_project
     set_project
 
-    user_to = User.find_by_email(params[:email])
+    result = @project.invite_email(params[:email], current_user)
 
-    if user_to and !@project.has_user(user_to)
-      @invitation = ProjectInvitation.new({
-        user_from_id: current_user.id,
-        user_to_id: user_to.id,
-        project_id: @project.id
-      })
-      if @invitation.save
-        Thread.new {ProjectInvitationMailer.invite(@invitation.user_to, @invitation.user_from, @project).deliver }
+    case result
+      when :user_already_in_project
+        flash[:danger] = 'Este usuário já é membro deste projeto.'
+      when :success
         flash[:success] = 'Solicitação enviada!'
+      when :already_sent
+        flash[:danger] = 'Solicitação já foi enviada.'
+      when :invalid_email
+        flash[:danger] = 'Email inválido.'
       else
         flash[:danger] = 'Erro!'
-      end
-    else
-      flash[:danger] = 'Email não cadastrado.'
     end
 
     redirect_back(fallback_location: project_path(@project.id))
