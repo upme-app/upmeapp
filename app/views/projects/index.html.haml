@@ -17,7 +17,7 @@
               = link_to 'Recusar', refuse_invitation_path(invitation.id), class: "btn-upme-outline-grey"
       .col.m2
 
-- if @projects.size > 0
+- if current_user.my_projects.size > 0 or current_user.my_filed_projects.size > 0
   .container
     .row
       .col.m12.l6
