@@ -17,6 +17,8 @@
       <div class="col s12 m8 offset-m2 m-no-padding">
         <div class="paper-box">
             <div class="row">
+                <%= devise_error_messages! %>
+
                 <div class="col s4">
                   <div class="top-step active"></div>
                 </div>
@@ -33,21 +35,21 @@
                 </div>
                 <br>
                 <div class="col s4 m4">
-                  <input id="radio-aluno" class="pretty-image-checkbox" name="user[user_type]" type="radio" value="aluno" required>
+                  <%= f.radio_button :user_type, 'aluno', class: 'pretty-image-checkbox', required: true, id: 'radio-aluno' %>
                   <label for="radio-aluno">
                     <img src="https://i.imgur.com/hMY7GNR.png" alt="" class="pretty-checkbox-image">
                     <span class="pretty-checkbox-name">Sou aluno(a)</span>
                   </label>
                 </div>
                 <div class="col s4 m4">
-                  <input id="radio-prof" class="pretty-image-checkbox" name="user[user_type]" type="radio" value="professor" />
+                  <%= f.radio_button :user_type, 'professor', class: 'pretty-image-checkbox', required: true, id: 'radio-prof' %>
                   <label for="radio-prof">
                       <img src="https://i.imgur.com/yabrxOy.png" alt="" class="pretty-checkbox-image">
                       <span class="pretty-checkbox-name">Sou professor(a)</span>
                   </label>
                 </div>
                 <div class="col s4 m4">
-                  <input id="radio-empresa" class="pretty-image-checkbox" name="user[user_type]" type="radio" value="empresa"/>
+                  <%= f.radio_button :user_type, 'empresa', class: 'pretty-image-checkbox', required: true, id: 'radio-empresa' %>
                   <label for="radio-empresa">
                       <img src="https://i.imgur.com/vqqoE0D.png" alt="" class="pretty-checkbox-image">
                       <span class="pretty-checkbox-name">Empresa/ONG</span>
@@ -69,23 +71,24 @@
           
           <br>
 
-          <div class="row">
-            <div class="col s6">
-              <%= link_to entrar_path do %>
-                  <%= button_tag 'Cancelar', class: 'waves-effect waves-dark btn-full-width btn-upme-outline-grey', type: :button %>
-              <% end %>
+          <%- unless resource.errors.size > 0 %>
+            <div class="row">
+              <div class="col s6">
+                <%= link_to entrar_path do %>
+                    <%= button_tag 'Cancelar', class: 'waves-effect waves-dark btn-full-width btn-upme-outline-grey', type: :button %>
+                <% end %>
+              </div>
+              <div class="col s6">
+                <button type="button" id="btn-continue-registration-step-2" class="waves-effect waves-light btn-full-width btn-upme-blue">
+                  Continuar
+                </button>
+              </div>
             </div>
-            <div class="col s6">
-              <button type="button" id="btn-continue-registration-step-2" class="waves-effect waves-light btn-full-width btn-upme-blue">
-                Continuar
-              </button>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-
   <div class="container" id="registration-step-3" class="display-none">
       
     <div class="row">
@@ -109,7 +112,6 @@
             <div class="top-step"></div>
           </div>
         </div>
-        <%= devise_error_messages! %>
 
         <div class="input-field">
           <%= f.label :email, 'Escreva seu e-mail', class: 'label-upme' %>
@@ -120,12 +122,14 @@
           <%- else %>
             <%= f.email_field :email, required: true, class: 'big-font-form', placeholder: 'Seu melhor e-mail' %>
           <%- end %>
+          <%= form_error(resource.errors.messages[:email]) %>
         </div>
 
         <div class="input-field">
           <%= f.label :password, 'Escolha sua senha', class: 'label-upme' %>
           <br>
           <%= f.password_field :password, autocomplete: "off", required: true, class: 'big-font-form', placeholder: 'Uma senha forte'  %>
+          <%= form_error(resource.errors.messages[:password]) %>
         </div>
 <br>
         <p>
@@ -138,9 +142,11 @@
 <br>
         <div class="row">
           <div class="col s6">
+            <%- unless resource.errors.size > 0 %>
               <button type="button" id="btn-back-registration-step-3" class="btn-full-width btn-upme btn-upme-gray">
-                  Voltar
-                </button>
+                Voltar
+              </button>
+            <% end %>
           </div>
           <div class="col s6">
               <button type="submit" id="btn-continue-registration-step-3" class="btn-full-width btn-upme btn-upme-blue">

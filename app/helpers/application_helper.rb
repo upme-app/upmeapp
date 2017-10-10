@@ -55,4 +55,17 @@ module ApplicationHelper
     end
   end
 
+  def form_error(msg)
+    if msg
+      html = <<-HTML
+      <div>
+        <h5 class="label-red">#{msg.join(', ')}</h5>
+      </div>
+      HTML
+
+      html.html_safe
+    end
+
+  end
+
 end
