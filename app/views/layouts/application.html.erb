@@ -67,6 +67,14 @@
       d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
       ';path=/;expires='+new Date(0).toUTCString();i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
   })(window,document,window['_fs_namespace'],'script','user');
+
+  <%- if current_user %>
+    FS.identify('<%= current_user.id %>', {
+      displayName: '<%= current_user.full_name %>',
+      email: '<%= current_user.email %>>'
+    });
+  <% end %>
+
   </script>
   <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
   
