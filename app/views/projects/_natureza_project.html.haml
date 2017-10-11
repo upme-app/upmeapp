@@ -5,11 +5,11 @@
     = 'O projeto atende a organizações'
 
 .row
-  - if @project.nat_publica
+  - if @project.nat_privada
     .col.s12.m4.center-align
       .btn-upme-outline-grey 🏢  Empresa privada
       %br
-  - if @project.nat_privada
+  - if @project.nat_publica
     .col.s12.m4.center-align
       .btn-upme-outline-grey 🏛️ Empresa pública
       %br
