@@ -71,7 +71,8 @@
   <%- if current_user %>
     FS.identify('<%= current_user.id %>', {
       displayName: '<%= current_user.full_name %>',
-      email: '<%= current_user.email %>>'
+      email: '<%= current_user.email %>',
+      userType_str: '<%= current_user.user_type %>'
     });
   <% end %>
 
