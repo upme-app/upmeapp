@@ -128,7 +128,7 @@
         <div class="input-field">
           <%= f.label :password, 'Escolha sua senha', class: 'label-upme' %>
           <br>
-          <%= f.password_field :password, autocomplete: "off", required: true, class: 'big-font-form', placeholder: 'Uma senha forte'  %>
+          <%= f.password_field :password, autocomplete: "off", required: true, class: 'big-font-form', placeholder: 'Uma senha forte', pattern: ".{6,20}", title: "Entre 6 e 20 caracteres" %>
           <%= form_error(resource.errors.messages[:password]) %>
         </div>
 <br>
