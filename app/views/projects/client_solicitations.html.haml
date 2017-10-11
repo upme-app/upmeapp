@@ -13,11 +13,12 @@
               .upme-sub-title Nenhuma solicitação.
             - @project.client_solicitations.each do |cs|
               .col.s2
-                = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'
+                = link_to profile_path(cs.user) do
+                  = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'
               
               .col.s9
-                .upme-sub-title= cs.user.full_name
-                .row
+                = link_to profile_path(cs.user) do
+                  .upme-sub-title.blue-hover= cs.user.full_name
                   .col.s12
                   %br
                   %p= cs.message

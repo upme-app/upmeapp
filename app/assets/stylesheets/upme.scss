@@ -64,6 +64,9 @@ body {
   margin-top: 24px;
   margin-bottom: 8px;
 }
+.blue-hover:hover {
+  color: $blue !important;
+}
 .btn-upme {
   border-radius: 4px;
   padding: 16px;
