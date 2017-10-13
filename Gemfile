@@ -27,6 +27,7 @@ gem 'devise'
 gem 'materialize-sass'
 gem 'material_icons'
 gem 'aws-sdk', '~> 2'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug', platform: :mri
