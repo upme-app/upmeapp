@@ -57,7 +57,8 @@ class TimelineStep < ApplicationRecord
   end
 
   def entregue?
-    true unless check_date.nil?
+    return true unless check_date.nil?
+    false
   end
 
 end

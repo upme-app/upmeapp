@@ -62,6 +62,10 @@ class User < ApplicationRecord
     project.has_user(self) and project.has_step(step) and project.client_id == self.id and !step.entregue?
   end
 
+  def can_edit_step_entrega?(project, step)
+    true if professor? and project.has_user(self) and project.has_step(step) and !step.entregue?
+  end
+
   def user_label
     return 'aluno(a)' if aluno?
     return 'professor(a)' if professor?
