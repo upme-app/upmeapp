@@ -18,14 +18,14 @@ class ClientSolicitation < ApplicationRecord
       project.add_user(self.user)
       project.start
       project.update_attribute :client_id, self.user_id
-      Thread.new { ClientSolicitationMailer.accept(user, project.user, project).deliver }
+      ClientSolicitationMailer.accept(user, project.user, project).deliver_later
       self.destroy
     end
   end
 
   def refuse(current_user)
     if project.user_id == current_user.id
-      Thread.new { ClientSolicitationMailer.refuse(user, project.user, project).deliver }
+      ClientSolicitationMailer.refuse(user, project.user, project).deliver_later
       self.destroy
     end
   end
