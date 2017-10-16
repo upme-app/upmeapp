@@ -88,13 +88,10 @@ class ProjectsController < ApplicationController
                              })
 
       if @comment.save
-        Thread.new do
-          @project.project_users.each do |pu|
-            if pu.user.id != current_user.id
-              TimelineMailer.comment(current_user, pu.user, @project).deliver
-            end
-          end
+        @project.project_users.reject { |pu| pu.user.id == current_user.id }.each do |pu|
+          TimelineMailer.comment(current_user, pu.user, @project).deliver_later
         end
+
         flash[:notice] = 'Comentário enviado.'
       end
     end
@@ -150,7 +147,7 @@ class ProjectsController < ApplicationController
     @solicitation = ClientSolicitation.new_solicitation(current_user, @project, params[:message])
 
     if @solicitation.save
-      Thread.new { ClientSolicitationMailer.invite(current_user, @project.user, @project).deliver }
+      ClientSolicitationMailer.invite(current_user, @project.user, @project).deliver_later
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'
@@ -163,7 +160,7 @@ class ProjectsController < ApplicationController
     @solicitation = MemberSolicitation.new_solicitation(current_user, @project, params[:message])
 
     if @solicitation.save
-      Thread.new { MemberSolicitationMailer.invite(current_user, @project.user, @project).deliver }
+      MemberSolicitationMailer.invite(current_user, @project.user, @project).deliver_later
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'
