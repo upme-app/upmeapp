@@ -102,6 +102,10 @@ class ProjectsController < ApplicationController
     redirect_to timeline_path(@project.id)
   end
 
+  def update_timeline_date
+
+  end
+
   def finish_step
     set_project
     @step = TimelineStep.find(params[:step_id])

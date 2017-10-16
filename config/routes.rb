@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   match 'recusar-convite/:invitation_id', as: :refuse_invitation, to: 'projects_invitation#refuse_invitation', via: :get
 
   match 'meus-projetos/:id/linha-do-tempo/comentar', as: :timeline_comment, to: 'projects#timeline_comment', via: :post
+  match 'meus-projetos/:id/linha-do-tempo/alterar-data-entrega/:step_id', as: :update_timeline_date, to: 'projects#update_timeline_date', via: :post
   match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa/:step_id', as: :finish_step, to: 'projects#finish_step', via: :get
 
   match 'aceitar-solicitacao-cliente/:solicitation_id', as: :accept_client_solicitation, to: 'client_solicitation#accept', via: :get
