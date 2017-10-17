@@ -59,16 +59,33 @@
               </div>
               <br>
               <br>
-          <div class="input-field">
-            <%= f.label :first_name, 'Primeiro Nome', class: 'label-upme' %>
-            <br>
-            <%= f.text_field :first_name, class: 'big-font-form validate',placeholder: 'Primeiro nome', minlength: 2, maxlength: 100, required: true, id: :registration_first_name %>
+
+          <div>
+            <div class="row">
+              <div class="col s12" id="col-primeiro-nome">
+                <div class="input-field">
+                  <%= f.label :first_name, 'Primeiro Nome', class: 'label-upme' %>
+                  <br>
+                  <%= f.text_field :first_name, class: 'big-font-form validate',placeholder: 'Primeiro nome', minlength: 2, maxlength: 100, required: true, id: :registration_first_name %>
+                </div>
+              </div>
+              <div class="col s12" id="col-sobreonme">
+                <div class="input-field">
+                  <%= f.label :last_name, 'Sobrenome', class: 'label-upme'%>
+                  <br>
+                  <%= f.text_field :last_name, class: 'big-font-form validate',placeholder: 'Sobrenome', minlength: 2, maxlength: 100, required: true, id: :registration_last_name%>
+                </div>
+              </div>
+              <div class="col s12">
+                <div class="input-field" id="col-nome-da-empresa">
+                  <%= f.label :nome_empresa, 'Nome da empresa', class: 'label-upme'%>
+                  <br>
+                  <%= f.text_field :nome_empresa, class: 'big-font-form validate',placeholder: 'Nome da empresa', minlength: 2, maxlength: 100, required: true, id: :registration_nome_empresa%>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="input-field">
-            <%= f.label :last_name, 'Sobrenome', class: 'label-upme'%>
-            <br>
-            <%= f.text_field :last_name, class: 'big-font-form validate',placeholder: 'Sobrenome', minlength: 2, maxlength: 100, required: true, id: :registration_last_name%>
-          </div>
+
           <%= devise_error_messages! %>
           <br>
 
