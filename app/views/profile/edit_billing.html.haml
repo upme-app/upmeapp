@@ -9,19 +9,23 @@
                 = hidden_field_tag :back_to_project, params[:project_id] if params[:project_id]
                 .paper-box
                     .row
-                        %label
-                            = f.radio_button :tipo_pessoa, 'fisica', required: true
-                            Pessoa física
-                        %label
-                            = f.radio_button :tipo_pessoa, 'juridica'
-                            Pessoa Juridica
+                        .col.s6.m3
+                            %label
+                                = f.radio_button :tipo_pessoa, 'fisica', required: true
+                                %span.label-upme Pessoa física
+                        .col.s6.m3
+                            %label
+                                = f.radio_button :tipo_pessoa, 'juridica'
+                                %span.label-upme Pessoa Juridica
+
+                    %br
                     .row
                         .col.m6.s12
                             %span.label-upme CPF/CNPJ
-                            = f.text_field :cpf, class: 'validate upme-input-small', placeholder: 'Coloque o nome da sua empresa', required: true
+                            = f.text_field :cpf, class: 'validate upme-input-small', placeholder: 'CPF/CNPJ (Somente Números)', required: true
                         .col.m6.s12
                             %span.label-upme Telefone para contato
-                            = f.text_field :telefone, class: 'validate upme-input-small', placeholder: 'Coloque o nome da sua empresa', required: true
+                            = f.text_field :telefone, class: 'validate upme-input-small', placeholder: 'Telefone (Somente Números)', required: true
                     .row
                         .col.m9.s12
                             %span.label-upme Endereço
@@ -42,7 +46,7 @@
                     .row
                         .col.m6.s12
                             %span.label-upme CEP
-                            = f.text_field :cep, class: 'validate upme-input-small', placeholder: 'CEP', required: true
+                            = f.text_field :cep, class: 'validate upme-input-small', placeholder: 'CEP (Somente Números)', required: true
                         .col.s12.right-align
                             %br
                             = link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn-upme-outline-grey'
