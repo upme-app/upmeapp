@@ -1,5 +1,46 @@
 = render 'layouts/upme_nav'
 
-%h1 EDITAR COBRANCA
+.container
+    .row
+        .col.s12.m8.offset-m2
+            %br
+            %h5.upme-sub-title Informações de cobrança
+            .paper-box
+                .row
+                    %input{type: :radio} Pessoa física
+                    %input{type: :radio} Pessoa Juridica
+                .row
+                    .col.m6.s12
+                        %span.label-upme CPF/CNPJ
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Coloque o nome da sua empresa'
+                    .col.m6.s12
+                        %span.label-upme Telefone para contato
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Coloque o nome da sua empresa'
+                .row
+                    .col.m9.s12
+                        %span.label-upme Endereço
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Rua, Avenida (Sem número)'
+                    .col.m3.s12
+                        %span.label-upme Número
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Número'
+                .row
+                    .col.m5.s12
+                        %span.label-upme Bairro
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Rua, Avenida (Sem número)'
+                    .col.m4.s9
+                        %span.label-upme Cidade
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Número'
+                    .col.m3.s3
+                        %span.label-upme UF
+                        = text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Número'
+                .row
+                    .col.m6.s12
+                        %span.label-upme CEP
+                        = text_field :city, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                    .col.s12.right-align
+                        %br
+                        = link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn-upme-outline-grey'
+                        %button.waves-effect.waves-light.btn-upme-blue Salvar
+        .col.s12.m2
 
 = render 'layouts/upme_footer'
