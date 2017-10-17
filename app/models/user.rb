@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   enum user_type: [:aluno, :professor, :empresa]
+  enum tipo_pessoa: [:fisica, :juridica]
   has_many :user_area_de_interesse
 
 
@@ -47,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def billing_data_is_complete?
-    return false if cep.blank? and endereco.blank? and numero.blank? and uf.blank? and cidade.blank? and cpf.blank? and telefone.blank?
+    return false if tipo_pessoa.blank? or cep.blank? or endereco.blank? or numero.blank? or uf.blank? or cidade.blank? or cpf.blank? or telefone.blank?
     true
   end
 

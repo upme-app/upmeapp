@@ -557,7 +557,7 @@ label {
      -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;
-    
+
   }
   [type="radio"].pretty-image-checkbox:checked + label .pretty-checkbox-name,
   [type="checkbox"].pretty-image-checkbox:checked + label .pretty-checkbox-name
@@ -866,7 +866,7 @@ label {
   background-color: $blue;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
-} 
+}
 .autocomplete-content {
   border: none;
 }

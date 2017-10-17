@@ -85,7 +85,7 @@ class ProfileController < ApplicationController
   end
 
   def billing_params
-    params.require(:user).permit(:cpf, :telefone, :endereco, :numero, :bairro, :cidade, :uf, :cep)
+    params.require(:user).permit(:cpf, :telefone, :endereco, :numero, :bairro, :cidade, :uf, :cep, :tipo_pessoa)
   end
 
 end

@@ -9,8 +9,12 @@
                 = hidden_field_tag :back_to_project, params[:project_id] if params[:project_id]
                 .paper-box
                     .row
-                        %input{type: :radio} Pessoa física
-                        %input{type: :radio} Pessoa Juridica
+                        %label
+                            = f.radio_button :tipo_pessoa, 'fisica', required: true
+                            Pessoa física
+                        %label
+                            = f.radio_button :tipo_pessoa, 'juridica'
+                            Pessoa Juridica
                     .row
                         .col.m6.s12
                             %span.label-upme CPF/CNPJ
