@@ -50,14 +50,14 @@ document.addEventListener("turbolinks:load", function() {
         function is_step_2_valid() {
             var first_name = document.getElementById('registration_first_name').validity.valid;
             var last_name = document.getElementById('registration_last_name').validity.valid;
-            var nome_empresa = document.getElementById('registration_nome_empresa').validity.valid;
             var user_type = document.getElementById('radio-aluno').validity.valid;
 
-            if(!$('#radio-empresa').is(':checked')) {
-                nome_empresa = true;
-            }
+            //var nome_empresa = document.getElementById('registration_nome_empresa').validity.valid;
+            //if(!$('#radio-empresa').is(':checked')) {
+            //    nome_empresa = true;
+            //}
 
-            if(first_name && last_name && user_type && nome_empresa) {
+            if(first_name && last_name && user_type) {
                 return true;
             }
             return false;
