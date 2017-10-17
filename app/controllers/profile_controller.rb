@@ -67,7 +67,11 @@ class ProfileController < ApplicationController
   def save_billing
     if current_user.update_attributes(billing_params)
       flash[:success] = 'Dados de cobrança salvos!'
-      redirect_to my_profile_path
+      if params[:back_to_project]
+        redirect_to public_project_path(params[:back_to_project])
+      else
+        redirect_to my_profile_path
+      end
     else
       flash[:danger] = 'Não conseguimos salvar suas informações.'
       redirect_to :back

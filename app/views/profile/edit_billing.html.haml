@@ -6,6 +6,7 @@
             %br
             %h5.upme-sub-title Informações de cobrança
             = form_for current_user, url: save_billing_path, method: :post do |f|
+                = hidden_field_tag :back_to_project, params[:project_id] if params[:project_id]
                 .paper-box
                     .row
                         %input{type: :radio} Pessoa física

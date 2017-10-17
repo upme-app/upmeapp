@@ -46,6 +46,11 @@ class User < ApplicationRecord
     true
   end
 
+  def billing_data_is_complete?
+    return false if cep.blank? and endereco.blank? and numero.blank? and uf.blank? and cidade.blank? and cpf.blank? and telefone.blank?
+    true
+  end
+
   def available_projects
     if empresa?
       Project.available_empresa_projects
