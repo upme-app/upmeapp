@@ -1,20 +1,7 @@
 = render 'layouts/upme_nav'
 .explore-bg
 .container
-  .areas-container
-    .text-center
-      .nav-bg-compass{style: 'width: 80px;display: block;height: 77px;background-size: 100%;margin: 0 auto;'}
-      .huge-title Escolha quais áreas de atuação você tem interesse:
-      %br
-      %p Gostamos de entregar ofertas que tem mais a ver com você.
-      %p Escolha as áreas de atuação que você tem mais interesse:
-    %br
-    .row
-      .col
-        %span.label-upme Áreas de interesse
-    .row
-      .col.s12.text-center
-        %a.btn-upme-blue Salvar interesse!
+  = render 'areas_de_interesse/form' if current_user.user_area_de_interesse.size == 0
     
   .row
     .col.m12
