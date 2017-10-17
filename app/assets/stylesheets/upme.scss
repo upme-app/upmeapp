@@ -473,7 +473,10 @@ button:focus {
    height: 64px !important;
    width: 64px !important;
  }
-
+ p {
+  font-size: 16px;
+  color: #666;
+}
 @media only screen and (min-width: 993px) {
   .container {
       width: 1170px !important;
@@ -831,6 +834,19 @@ label {
     width: 32px;
   }
 }
+.box {
+  border-radius: 4px;
+  padding: 24px;
+  text-align: center;
+
+}
+.box-blue {
+  @extend .box;
+  border: 2px solid $blue;
+  .title {
+    color: $blue;
+  }
+}
 .dropdown-content {
   border: 2px solid #b8b8b8;
   border-radius: 4px;
@@ -891,4 +907,7 @@ label {
       color: $blue;
     }
   }
+}
+.text-left {
+  text-align: left;
 }
