@@ -1,0 +1,25 @@
+.areas-container
+  .text-center
+    .nav-bg-compass{style: 'width: 80px;display: block;height: 77px;background-size: 100%;margin: 0 auto;'}
+    .huge-title Escolha quais áreas de atuação você tem interesse:
+    %br
+    %p Gostamos de entregar ofertas que tem mais a ver com você.
+    %p Escolha as áreas de atuação que você tem mais interesse:
+    %br
+    .row
+      .col.s12
+        %span.label-upme Áreas de interesse
+      .col.s12
+        .tag-list
+          .upme-loading
+        .input-field
+          %label.label-upme{:for => "input-add-tag"} Buscar áreas
+          %br/
+          %input#input-add-tag{:placeholder => "Buscar área(s) de interesse", :type => "text"}/
+        .row
+          .col.s6
+            = link_to :back do
+              = button_tag 'Voltar', class: 'btn-full-width btn-upme btn-upme-gray', type: :button
+          .col.s6
+            %button#btn-save-areas-de-interesse.btn-full-width.btn-upme.btn-upme-blue{:type => "button"}
+              Salvar
