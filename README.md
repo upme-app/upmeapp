@@ -1,6 +1,6 @@
 A UpMe! é uma plataforma que integra universidade e empresas conectando os assuntos de cada disciplina com projetos de mercado.
 
-Nosso site; https://www.upmeapp.com.br
+Nosso site: https://www.upmeapp.com.br
 
 # GETTING STARTED
 
