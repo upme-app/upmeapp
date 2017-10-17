@@ -1,6 +1,6 @@
-https://www.upmeapp.com.br
-
 A UpMe! é uma plataforma que integra universidade e empresas conectando os assuntos de cada disciplina com projetos de mercado.
+
+Nosso site; https://www.upmeapp.com.br
 
 # GETTING STARTED
 
@@ -8,7 +8,8 @@ A UpMe! é uma plataforma que integra universidade e empresas conectando os assu
 
 * Ruby 2.3.0
 * Rails 5.1.3
-* PostgreSQL 9.4
+* PostgreSQL 9.4 
+* Redis
 
 ## SETUP
 
