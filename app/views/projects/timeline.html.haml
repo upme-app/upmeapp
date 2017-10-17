@@ -11,87 +11,69 @@
           .label-upme Projeto
           %h1.huge-title= @project.title
           %br
-          .timeline
-            %ul.collapsible{data: {collapsible: 'expandable'}}
-              - only_one_active_helper = false
-              - @project.timeline_steps.order(entrega: :asc).each_with_index do |step, index|
-                %li
-                  .collapsible-header.timeline-step-header{class: (!only_one_active_helper and !step.entregue?) ? 'active' : ''}
-                    - only_one_active_helper = true if !step.entregue?
-                    .timeline-step-check
-                    .col.s6
-                      .label-upme= "Etapa 0#{index+1}"
-                    .col.s6.right-align
-                      .label-upme
-                        - if step.entregue?
-                          .label-green= "Entregue #{l step.check_date}"
-                        - else
-                          - if current_user.can_edit_step_entrega?(@project, step)
-                            /%button.waves-effect.waves-light-black.btn-upme-outline-grey.btn-small.datepicker{onclick: "edit_step_data(event)"} Editar data
-                            &nbsp
-                            &nbsp
-                          - if step.entrega > Time.now.to_date
-                            = l step.entrega
-                          - else
-                            - dias_atraso = (Time.now.to_date - step.entrega).to_i
-                            - if dias_atraso == 0
-                              A entrega é hoje
-                            - else
-                              .label-red= "#{dias_atraso} dia(s) de atraso"
-                  .collapsible-body.timeline-step-body
-                    .left-align
-                      - if current_user.can_finish_step?(@project, step)
-                        = button_to finish_step_path(@project, step), method: :get, class: 'upme-screen-title btn-medium waves-effect waves-light-blue btn-upme-outline-blue', style: "padding: 8px" do
-                          %i{data: {feather: 'check-square'}}
-                          %span Marcar etapa como feita
-                    %h4.upme-sub-title= step.title
-                    %p
-                      = step.description
-                    .label-upme Entregável
-                    %p= step.entregavel
-
-                    .label-upme Comentários
-                    %br
-                    - step.timeline_comments.each do |comment|
-                      .comment-row#botaoenviarcomentario
-                        = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
-                        %span.comment-username
-                          = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
-                        %p.comment-message= comment.message
-                        .comment-info= l comment.created_at
-                    .label-upme Comente
-                    = form_tag timeline_comment_path(@project.id) do
-                      = hidden_field_tag :timeline_step_id, step.id
-                      = text_area_tag :message, '', class: 'materialize-textarea', placeholder: "Escreva seu comentário aqui"
-                      %button.waves-effect.waves-light-blue.btn-upme-outline-blue.btn-small Enviar comentário
-
+          .upme-loading
+          #timeline
       .col.m2.s12
         = render partial: 'project_right_bar', locals: { project: @project }
 
-
 :javascript
-  function edit_step_data(event, id) {
-    event.stopPropagation();
+
+
+  function refresh_timeline(html) {
+    $( "#timeline" ).html( html );
+    $( '.upme-loading').hide();
+
+    $('.edit-step-data').click(function(event) {
+      event.stopPropagation();
+      $('.datepicker').focus();
+    });
+
+    $('.timeline-comment-submit').click(function() {
+      $( '.upme-loading').show();
+      $( "#timeline" ).html( '' );
+
+      var form = $(this).parent();
+      $.ajax({
+        type: "POST",
+        url: form.attr('action'),
+        data: form.serialize(),
+        success: function(data)
+        {
+          refresh_timeline(data);
+        }
+      });
+    });
+
+    $('.datepicker').pickadate({
+      monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+      weekdaysFull: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo'],
+      weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+      today: 'Hoje',
+      clear: 'Limpar',
+      close: 'Pronto',
+      labelMonthNext: 'Próximo mês',
+      labelMonthPrev: 'Mês anterior',
+      labelMonthSelect: 'Selecione um mês',
+      labelYearSelect: 'Selecione um ano',
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year,
+      closeOnSelect: false, // Close upon selecting a date,
+      onSet: function() {
+        $('.picker__close').click(function() {
+          console.log('E MUDOU');
+        });
+      },
+    });
+
+    $('.collapsible').collapsible();
+
+    if($('#scroll-here').length) {
+      $('html,body').animate({scrollTop: $('#scroll-here').offset().top});
+    }
   }
 
-  $('.datepicker').pickadate({
-    monthsFull: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-    monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-    weekdaysFull: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo'],
-    weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-    today: 'Hoje',
-    clear: 'Limpar',
-    close: 'Pronto',
-    labelMonthNext: 'Próximo mês',
-    labelMonthPrev: 'Mês anterior',
-    labelMonthSelect: 'Selecione um mês',
-    labelYearSelect: 'Selecione um ano',
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
-    closeOnSelect: false, // Close upon selecting a date,
-    onSet: function() {
-      $('.picker__close').click(function() {
-        console.log('E MUDOU');
-      });
-    },
+  $( '.upme-loading').show();
+  $.get( "#{show_timeline_url(@project.id, @project.timeline_steps.first.id)}", function( data ) {
+    refresh_timeline(data);
   });
