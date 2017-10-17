@@ -60,6 +60,14 @@ class ProfileController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_billing
+
+  end
+
+  def save_billing
+
+  end
+
   private
 
   def user_params
