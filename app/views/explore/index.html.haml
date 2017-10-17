@@ -1,14 +1,29 @@
 = render 'layouts/upme_nav'
 .explore-bg
 .container
+  .areas-container
+    .text-center
+      .nav-bg-compass{style: 'width: 80px;display: block;height: 77px;background-size: 100%;margin: 0 auto;'}
+      .huge-title Escolha quais áreas de atuação você tem interesse:
+      %br
+      %p Gostamos de entregar ofertas que tem mais a ver com você.
+      %p Escolha as áreas de atuação que você tem mais interesse:
+    %br
+    .row
+      .col
+        %span.label-upme Áreas de interesse
+    .row
+      .col.s12.text-center
+        %a.btn-upme-blue Salvar interesse!
+    
   .row
     .col.m12
       .upme-screen-title
         %i.upme-screen-logo{data: {feather: 'compass'}}
         - if current_user.empresa?
-          %span Explore os projetos a procura de empresas
+          %span Explore as ofertas de universitários
         - else
-          %span Explore os projetos a procura de alunos
+          %span Explore as necessidades das empresas
   .row
     - current_user.available_projects.each do |project|
       = render partial: 'projects/project_box', locals: { project: project }

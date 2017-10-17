@@ -596,6 +596,10 @@ label {
     color: #666;
     font-size: 16px;
   }
+  p {
+    color: #666;
+    font-size: 16px;
+  }
   .comment-row {
     padding-left: 16px;
     border-left: 2px solid $blue;
@@ -878,4 +882,18 @@ label {
 }
 .text-right {
   text-align: right;
+}
+.areas-container {
+  background: rgba(255, 255, 255, 0.9);
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 110px 180px;
+  text-align: center;
+}
+.float-right {
+  float: right;
 }
