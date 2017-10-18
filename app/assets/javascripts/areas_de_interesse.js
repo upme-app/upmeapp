@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
-    if (is_on_screen("areas_de_interesse", "view")) {
+    if (is_on_screen("areas_de_interesse", "view") || is_on_screen("explore", "index")) {
         refresh_shortcuts();
 
         var tags = $('.tag-list');
@@ -44,7 +44,7 @@ document.addEventListener("turbolinks:load", function() {
 
             $('#input-add-tag').autocomplete({
                 data: data,
-                limit: 10,
+                limit: 999,
                 onAutocomplete: function(val) {
                     add_tag(val);
                     $('#input-add-tag').val('');
