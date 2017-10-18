@@ -68,12 +68,24 @@ class ProjectsController < ApplicationController
 
   def timeline
     set_project
+  end
+
+  def show_timeline
+    set_project
 
     project_user = ProjectUser.where(project_id: @project.id).where(user_id: current_user.id).first
     unless project_user.first_timeline_view == true
       project_user.update_attribute :first_timeline_view, true
     end
 
+    @selected_step = @project.timeline_steps.first.id
+    @project.timeline_steps.order(entrega: :desc).each do |step|
+      unless step.entregue?
+        @selected_step = step.id
+      end
+    end
+
+    render :layout => false
   end
 
   def timeline_comment
@@ -91,16 +103,25 @@ class ProjectsController < ApplicationController
         @project.project_users.reject { |pu| pu.user.id == current_user.id }.each do |pu|
           TimelineMailer.comment(current_user, pu.user, @project).deliver_later
         end
-
-        flash[:notice] = 'Comentário enviado.'
       end
     end
 
-    redirect_to timeline_path(@project.id)
+    @selected_step = @step.id
+
+    render :show_timeline, :layout => false
   end
 
   def update_timeline_date
+    set_project
+    @step = TimelineStep.find(params[:step_id])
 
+    if current_user.can_edit_step_entrega?(@project, @step) and @step.update_attribute(:entrega, params[:date])
+      flash[:notice] = 'Data alterada!'
+    else
+      flash[:alert] = 'Erro!'
+    end
+
+    redirect_to timeline_path(@project)
   end
 
   def finish_step
