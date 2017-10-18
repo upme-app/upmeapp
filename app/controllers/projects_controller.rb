@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show_public]
   before_action :authorize_project, except: [:show_public, :index, :filed_projects, :new, :create, :add_client_solicitation, :add_member_solicitation]
 
 

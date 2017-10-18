@@ -5,31 +5,36 @@
         &nbsp;
       </div>
       <div class="col s4 m4 hide-on-small-only center-align">
+
         <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active' : '' do %>
           <div class="upme-nav-item nav-bg-compass hide-on-med-and-down">explorar</div>
         <% end %>
-        <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active' : '' do %>
-          <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">meus projetos</div>
+        <%- if current_user %>
+          <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active' : '' do %>
+              <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">meus projetos</div>
+          <% end %>
         <% end %>
       </div>
       <div class="col s6 m4 right-align">
-        
-          <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>
-            <%= current_user.first_name.split(' ').first %>
-          </a>
-          <ul id='dropdown1' class='dropdown-content' style="min-width: 120px;">
-            <li>
-              <%= link_to my_profile_path do %>
-                Meu perfil
-              <%- end %>
-            </li>
-            <li>
-              <%= link_to 'Conta', my_account_path %>
-            </li>
-            <li>
-              <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
+
+          <%- if current_user %>
+            <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>
+              <%= current_user.first_name.split(' ').first %>
+            </a>
+            <ul id='dropdown1' class='dropdown-content' style="min-width: 120px;">
+              <li>
+                <%= link_to my_profile_path do %>
+                  Meu perfil
+                <%- end %>
+              </li>
+              <li>
+                <%= link_to 'Conta', my_account_path %>
+              </li>
+              <li>
+                <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          <% end %>
         <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-large-only" >
           <i class="material-icons hamburguer-menu" style="margin: 25px 15px">menu</i>
         </a>
