@@ -6,9 +6,9 @@
 
 .container
   - if current_spina_user.present?
-    - pages = Spina::Page.active
+    - pages = Spina::Page.active.order(created_at: :desc)
   - else
-    - pages = Spina::Page.live
+    - pages = Spina::Page.live.order(created_at: :desc)
 
   .row
     .col-md-8.left-bar
