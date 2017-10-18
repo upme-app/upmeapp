@@ -112,7 +112,16 @@ class ProjectsController < ApplicationController
   end
 
   def update_timeline_date
+    set_project
+    @step = TimelineStep.find(params[:step_id])
 
+    if current_user.can_edit_step_entrega?(@project, @step) and @step.update_attribute(:entrega, params[:date])
+      flash[:notice] = 'Data alterada!'
+    else
+      flash[:alert] = 'Erro!'
+    end
+
+    redirect_to timeline_path(@project)
   end
 
   def finish_step

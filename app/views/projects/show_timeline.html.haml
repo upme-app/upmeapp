@@ -12,8 +12,22 @@
                 .label-green= "Entregue #{l step.check_date}"
               - else
                 - if current_user.can_edit_step_entrega?(@project, step)
-                  %button.waves-effect.waves-light-black.btn-upme-outline-blue.btn-small{onclick: "event.stopPropagation()"} Salvar
-                  %button.waves-effect.waves-light-black.btn-upme-outline-grey.btn-small.edit-step-data Editar data
+                  - modal_id = "modal-update-date#{step.id}"
+
+                  .modal{id: modal_id}
+                    = form_tag update_timeline_date_path(@project.id, step.id), method: :post do
+                      .modal-content
+                        %h4= "Alterar data de entrega da etapa 0#{index+1}"
+                        .row
+                          .col.s12.m4
+                          .col.s12.m4
+                            = date_field_tag :date, nil
+                      .modal-footer.row
+                        .col.s12.right-align
+                          %button.waves-effect.waves-light.btn{type: 'submit'} Salvar
+
+                  %button.waves-effect.waves-light-black.btn-upme-outline-grey.btn-small.edit-step-data{data: {modal: modal_id}}
+                    Editar data
                   &nbsp
                   &nbsp
                 - if step.entrega > Time.now.to_date
