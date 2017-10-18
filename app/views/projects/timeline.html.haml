@@ -15,14 +15,14 @@
           - if @project.client
             .row
               .col.m6.s12
-                = image_tag 'https://avatars3.githubusercontent.com/u/6747627?s=460&v=4', class: 'circle', width: '30px', id: 'img-profilepic'
+                = image_tag profilepic(@project.client), class: 'circle', width: '30px', id: 'img-profilepic'
                 %span.title.dark-link.profiles-names= @project.client.full_name
-                %p 85 404040-94949 TODO
+                %p= @project.client.telefone
                 %p= @project.client.email
               .col.m6.s12.text-right
                 .upme-sub-title= @project.client.full_name
-                %p 2283 Auerbach Ave TODO
-                %p NY, New York TODO
+                %p= "#{@project.client.numero}, #{@project.client.endereco}"
+                %p= "#{@project.client.uf}, #{@project.client.cidade}"
 
           %br
           .timeline
