@@ -3,7 +3,7 @@ class AreasDeInteresseController < ApplicationController
   before_action :authenticate_user!
 
   def all_names
-    render json: AreaDeInteresse.all.pluck(:name).to_json
+    render json: AreaDeInteresse.all.order(name: :asc).pluck(:name).to_json
   end
 
   def minhas_areas
@@ -21,7 +21,11 @@ class AreasDeInteresseController < ApplicationController
   def save
     current_user.update_areas_de_interesse(params['areas'])
     flash[:success] = 'Áreas de interesse salvas!'
-    redirect_to my_profile_path
+    if request.referer == explore_url
+      redirect_to explore_path
+    else
+      redirect_to my_profile_path
+    end
   end
 
 end

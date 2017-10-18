@@ -60,10 +60,32 @@ class ProfileController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_billing
+
+  end
+
+  def save_billing
+    if current_user.update_attributes(billing_params)
+      flash[:success] = 'Dados de cobrança salvos!'
+      if params[:back_to_project]
+        redirect_to public_project_path(params[:back_to_project])
+      else
+        redirect_to my_profile_path
+      end
+    else
+      flash[:danger] = 'Não conseguimos salvar suas informações.'
+      redirect_to :back
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:linkedin, :email, :universidade, :semestre, :phone, :city, :about, :nome_empresa, :curso)
+  end
+
+  def billing_params
+    params.require(:user).permit(:cpf, :telefone, :endereco, :numero, :bairro, :cidade, :uf, :cep, :tipo_pessoa)
   end
 
 end

@@ -1,16 +1,19 @@
 = render 'layouts/upme_nav'
 .explore-bg
 .container
+  = render 'areas_de_interesse/form' if current_user.user_area_de_interesse.size == 0
+    
   .row
     .col.m12
       .upme-screen-title
         %i.upme-screen-logo{data: {feather: 'compass'}}
         - if current_user.empresa?
-          %span Explore os projetos a procura de empresas
+          %span Explore as ofertas de universitários
         - else
-          %span Explore os projetos a procura de alunos
+          %span Explore as necessidades das empresas
   .row
     - current_user.available_projects.each do |project|
       = render partial: 'projects/project_box', locals: { project: project }
 
 
+= render 'layouts/upme_footer'
