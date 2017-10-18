@@ -51,10 +51,38 @@ document.addEventListener("turbolinks:load", function() {
             var first_name = document.getElementById('registration_first_name').validity.valid;
             var last_name = document.getElementById('registration_last_name').validity.valid;
             var user_type = document.getElementById('radio-aluno').validity.valid;
+
+            //var nome_empresa = document.getElementById('registration_nome_empresa').validity.valid;
+            //if(!$('#radio-empresa').is(':checked')) {
+            //    nome_empresa = true;
+            //}
+
             if(first_name && last_name && user_type) {
                 return true;
             }
             return false;
         }
+
+        toggle_to_alunoprof_form();
+
+        function toggle_to_empresa_form() {
+            $('#col-nome-da-empresa').show();
+            $('#col-sobreonme').removeClass('s12').addClass('s6');
+            $('#col-primeiro-nome').removeClass('s12').addClass('s6');
+        }
+
+        function toggle_to_alunoprof_form() {
+            $('#col-nome-da-empresa').hide()
+            $('#col-sobreonme').removeClass('s6').addClass('s12');
+            $('#col-primeiro-nome').removeClass('s6').addClass('s12');
+        }
+
+        $('#radio-aluno, #radio-prof, #radio-empresa').change(function() {
+            if($(this).val() == 'empresa') {
+                toggle_to_empresa_form();
+            } else {
+                toggle_to_alunoprof_form();
+            }
+        });
     }
 });

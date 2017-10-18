@@ -473,7 +473,10 @@ button:focus {
    height: 64px !important;
    width: 64px !important;
  }
-
+ p {
+  font-size: 16px;
+  color: #666;
+}
 @media only screen and (min-width: 993px) {
   .container {
       width: 1170px !important;
@@ -554,7 +557,7 @@ label {
      -webkit-filter: grayscale(0);
     filter: grayscale(0);
     opacity: 1;
-    
+
   }
   [type="radio"].pretty-image-checkbox:checked + label .pretty-checkbox-name,
   [type="checkbox"].pretty-image-checkbox:checked + label .pretty-checkbox-name
@@ -835,6 +838,19 @@ label {
     width: 32px;
   }
 }
+.box {
+  border-radius: 4px;
+  padding: 24px;
+  text-align: center;
+
+}
+.box-blue {
+  @extend .box;
+  border: 2px solid $blue;
+  .title {
+    color: $blue;
+  }
+}
 .dropdown-content {
   border: 2px solid #b8b8b8;
   border-radius: 4px;
@@ -854,7 +870,7 @@ label {
   background-color: $blue;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
-} 
+}
 .autocomplete-content {
   border: none;
 }
@@ -882,6 +898,27 @@ label {
 }
 .text-right {
   text-align: right;
+}
+.page-footer {
+  background-color: #fff !important;
+  padding-top: 60px !important;
+  width: 100%;
+  color: #9D9D9D;
+  a {
+    color: #9D9D9D;
+    font-size: 14px;
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+.text-left {
+  text-align: left;
+}
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+  position: relative !important;
+  opacity: 1 !important;
 }
 .areas-container {
   background: rgba(255, 255, 255, 0.9);

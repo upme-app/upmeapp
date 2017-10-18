@@ -52,6 +52,9 @@
                     .tag-upme-blue.mb-16= ua.area_de_interesse.name
                   %br
                   = link_to 'Editar área(s)', areas_de_interesse_path, class: 'btn-upme-outline-grey btn-small'
+
+                  - if current_user.empresa?
+                    = link_to 'Editar dados de cobranca', edit_billing_path, class: 'btn-upme-outline-grey btn-small'
               .col.s12.right-align
                 
     .col.s12.m2
