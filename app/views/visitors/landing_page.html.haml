@@ -39,39 +39,108 @@
       .col-12.col-md-4.text-center
         = image_tag 'landing/alunos.png'
         %h2.sub-title Alunos
-        %p.lead Transforme seus trabalhos de faculdade em uma porta de entrada para o mercado.
+        %p.lead Ganhe portfolio fazendo projetos de faculdade para startups, empresas e ONGs.
       .col-12.col-md-4.text-center
         = image_tag 'landing/professores.png'
         %h2.sub-title Professores
-        %p.lead Motive seus alunos e ajude a desenvolver as habilidades do futuro.
+        %p.lead Transforme trabalhos de disciplinas em experiências reais de mercado.
       .col-12.col-md-4.text-center
         = image_tag 'landing/empresas.png'
         %h2.sub-title Empresas
-        %p.lead Encontre universitários para consultorias e projetos e impulsione seus negócios.
+        %p.lead Resolva problemas técnicos com ajuda de alunos e professores universitários.
 .testimonials.blue-section
   .container
     .row
-      .col-12.col-md-4.text-center
-        .testimonial-phrase Além de todo o desenvolvimento pessoal e profissional, a gente conseguiu ainda vender um projeto para a nossa empresa júnior.
-        %p.testimonial-name Maria Júlia, universitária
-        .testimonial-avatar-container
-          = image_tag 'landing/avatar.png', class: 'testimonial-avatar'
-          %a{"data-target" => "#universitaria-modal", "data-toggle" => "modal", :href => "#"}
-            = image_tag 'landing/play-button.png', class: 'testimonial-play'
-      .col-12.col-md-4.text-center
-        .testimonial-phrase Contar com uma ferramenta que conecte a necessidade das empresas com aquilo que os alunos estão precisando aplicar é fenomenal!
-        %p.testimonial-name Graziela, professora
-        .testimonial-avatar-container
-          = image_tag 'landing/avatar-professor.png', class: 'testimonial-avatar'
-          %a{"data-target" => "#professor-modal", "data-toggle" => "modal", :href => "#"}
-            = image_tag 'landing/play-button.png', class: 'testimonial-play'
-      .col-12.col-md-4.text-center
-        .testimonial-phrase Foi muito profissional. A gente até se surpreendeu de ver aquelas meninas tão jovens entregando um trabalho muito legal, muito profissional.”
-        %p.testimonial-name Rodrigo, empreendedor
-        .testimonial-avatar-container
-          = image_tag 'landing/avatar-empresa.png', class: 'testimonial-avatar'
-          %a{"data-target" => "#empresa-modal", "data-toggle" => "modal", :href => "#"}
-            = image_tag 'landing/play-button.png', class: 'testimonial-play'
+      .col-md-6.col-sm-12
+        %p
+          %strong Depoimento
+          Mária Júlia, Aluna ESAG
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "320", :src => "https://www.youtube.com/embed/n56fi5ULKxY?rel=0&showinfo=0", :width => "100%"}
+      .col-md-6.col-sm-12
+        %br
+        %h2
+          %strong  Para alunos(as)
+        %p.lead Otimize seu tempo na faculdade, transformando trabalhos de disciplinas em experiências reais de mercado e em portfólio! De quebra você ainda pode adquirir certificados para validar horas de atividades complementares.
+        %br
+        .row
+          .col-sm-4.text-center
+            = image_tag 'landing/idea.png'
+            %p Ganhe experiências reais de mercado.
+          .col-sm-4.text-center
+            = image_tag 'landing/diploma.png'
+            %p Emita certificados de atividades complementares.
+          .col-sm-4.text-center
+            = image_tag 'landing/file.png'
+            %p Enriqueça seu portfólio e currículo.
+    %br
+    %br
+    %br
+    .row
+      .col-md-6.col-sm-12
+        %br
+        %h2
+          %strong  Para professores(as)
+        %p.lead Acreditamos que o aprendizado vem dos livros, mas também da mão na massa! Cadastre os trabalhos de suas disciplinas para conectar seus alunos com startups, empresas ou ONGs. Você ainda terá a possibilidade de aproveitar os projetos para Extensão Universitária.
+        %br
+        .row
+          .col-sm-4.text-center
+            = image_tag 'landing/demandas.png'
+            %p Encontre demandas para extensão.
+          .col-sm-4.text-center
+            = image_tag 'landing/mortarboard.png'
+            %p Conecte disciplinas com o mercado.
+          .col-sm-4.text-center
+            = image_tag 'landing/presentation.png'
+            %p Dê aulas mais motivantes.
+      .col-md-6.col-sm-12
+        %p
+          %strong Depoimento
+          Professora Graziela
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "320", :src => "https://www.youtube.com/embed/M_lhKYArXUw?rel=0&showinfo=0", :width => "100%"}
+    %br
+    %br
+    %br
+    .row
+      .col-md-6.col-sm-12
+        %p
+          %strong Depoimento
+          Rodrigo, empreendedor de Floripa
+        %iframe{:allowfullscreen => "", :frameborder => "0", :height => "320", :src => "https://www.youtube.com/embed/luTpthSYKX4?rel=0&showinfo=0", :width => "100%"}
+      .col-md-6.col-sm-12
+        %br
+        %h2
+          %strong  Para empreededores(as)
+        %p.lead Encontre uma equipe de alunos e um professsor qualificado para ajudá-lo a resolver problemas de sua empresa! Explore projetos de faculdade e conecte-se pagando apenas uma taxa de operação pelo match.
+        %br
+        .row
+          .col-sm-6.text-center
+            = image_tag 'landing/handshake.png'
+            %p Ganhe consultoria de alunos e professores universitários.
+          .col-sm-6.text-center
+            = image_tag 'landing/growth.png'
+            %p Projetos pró-bono pensados no seu negócio.
+         
+      -# .col-12.col-md-4.text-center
+      -#   .testimonial-phrase Além de todo o desenvolvimento pessoal e profissional, a gente conseguiu ainda vender um projeto para a nossa empresa júnior.
+      -#   %p.testimonial-name Maria Júlia, universitária
+      -#   .testimonial-avatar-container
+      -#     = image_tag 'landing/avatar.png', class: 'testimonial-avatar'
+      -#     %a{"data-target" => "#universitaria-modal", "data-toggle" => "modal", :href => "#"}
+      -#       = image_tag 'landing/play-button.png', class: 'testimonial-play'
+      -# .col-12.col-md-4.text-center
+      -#   .testimonial-phrase Contar com uma ferramenta que conecte a necessidade das empresas com aquilo que os alunos estão precisando aplicar é fenomenal!
+      -#   %p.testimonial-name Graziela, professora
+      -#   .testimonial-avatar-container
+      -#     = image_tag 'landing/avatar-professor.png', class: 'testimonial-avatar'
+      -#     %a{"data-target" => "#professor-modal", "data-toggle" => "modal", :href => "#"}
+      -#       = image_tag 'landing/play-button.png', class: 'testimonial-play'
+      -# .col-12.col-md-4.text-center
+      -#   .testimonial-phrase Foi muito profissional. A gente até se surpreendeu de ver aquelas meninas tão jovens entregando um trabalho muito legal, muito profissional.”
+      -#   %p.testimonial-name Rodrigo, empreendedor
+      -#   .testimonial-avatar-container
+      -#     = image_tag 'landing/avatar-empresa.png', class: 'testimonial-avatar'
+      -#     %a{"data-target" => "#empresa-modal", "data-toggle" => "modal", :href => "#"}
+      -#       = image_tag 'landing/play-button.png', class: 'testimonial-play'
 .media.text-center
   .container
     .row
