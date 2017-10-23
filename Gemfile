@@ -28,6 +28,7 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'aws-sdk', '~> 2'
 gem 'sidekiq'
+gem 'select2-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

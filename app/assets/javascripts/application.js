@@ -17,4 +17,6 @@
 //= require animateCss
 //= require is_on_screen
 //= require waves_fix
+//= require select2
 //= require_tree .
+

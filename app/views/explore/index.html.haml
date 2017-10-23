@@ -2,18 +2,36 @@
 .explore-bg
 .container
   = render 'areas_de_interesse/form' if current_user.user_area_de_interesse.size == 0
-    
+
   .row
-    .col.m12
+    .col.m8
       .upme-screen-title
         %i.upme-screen-logo{data: {feather: 'compass'}}
         - if current_user.empresa?
           %span Explore as ofertas de universitários
         - else
           %span Explore as necessidades das empresas
+    .col.m4
+      %br
+      .label-upme Filtre por área de interesse:
+      %select#e1
+        %option{:value => "AL"} Alabama
+        %option{:value => "WY"} Wyoming
   .row
     - current_user.available_projects.each do |project|
       = render partial: 'projects/project_box', locals: { project: project }
+     
+:javascript
+  $(document).ready(function() {
+    $("#e1").select2({
+      ajax: {
+          url: '/areas-de-interesse/nomes',
+          dataType: 'json'
+        },
+       tags: true,
+       multiple: true
+    });
+  });
 
 
 = render 'layouts/upme_footer'
