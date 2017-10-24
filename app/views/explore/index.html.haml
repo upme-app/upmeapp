@@ -3,14 +3,14 @@
 .container
   = render 'areas_de_interesse/form' if current_user.user_area_de_interesse.size == 0
   .row
-    .col.m8
+    .col.m7
       .upme-screen-title
         %i.upme-screen-logo{data: {feather: 'compass'}}
         - if current_user.empresa?
           %span Explore as ofertas de universitários
         - else
           %span Explore as necessidades das empresas
-    .col.m4
+    .col.m5
       %br
       .label-upme Filtre por área de interesse:
       %form{action: "", method: "GET"}
