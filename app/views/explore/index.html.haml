@@ -2,7 +2,6 @@
 .explore-bg
 .container
   = render 'areas_de_interesse/form' if current_user.user_area_de_interesse.size == 0
-
   .row
     .col.m8
       .upme-screen-title
@@ -14,20 +13,24 @@
     .col.m4
       %br
       .label-upme Filtre por área de interesse:
-      %select#e1
-        %option{:value => "AL"} Alabama
-        %option{:value => "WY"} Wyoming
+      %form{action: "", method: "GET"}
+        %select#e1{name: "areas[]", multiple: :multiple}
+          - AreaDeInteresse.all.order(name: :asc).each do |a|
+            - if @selected_areas.include? a.name
+              %option{:value => a.name, selected: "selected"}= a.name
+            - else
+              %option{:value => a.name}= a.name
+        %button.upme-btn-blue Buscar
   .row
     - current_user.available_projects.each do |project|
-      = render partial: 'projects/project_box', locals: { project: project }
-     
+      - find = false
+      - project.user.user_area_de_interesse.each do |u|
+        - find = true if @selected_areas.include? u.area_de_interesse.name
+      - if find == true
+        = render partial: 'projects/project_box', locals: { project: project }     
 :javascript
   $(document).ready(function() {
     $("#e1").select2({
-      ajax: {
-          url: '/areas-de-interesse/nomes',
-          dataType: 'json'
-        },
        tags: true,
        multiple: true
     });
