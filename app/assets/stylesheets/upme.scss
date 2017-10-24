@@ -92,18 +92,36 @@ body {
 }
 
 .tag-upme-blue {
-  padding: 8px 16px;
-  font-size: 16px;
-  line-height: 14px;
+  padding: 8px 16px !important;
+  font-size: 16px !important;
+  line-height: 14px !important;
   height: 32px;
   font-style: italic !important;
-  border: none;
-  border-radius: 4px;
+  border: none !important;
+  border-radius: 4px !important;
   text-align: center;
-  background: $blue;
+  background: $blue !important;
   color: #ffffff;
   cursor: initial;
   display: inline-block
+}
+
+.select2-selection__choice {
+  padding: 8px 16px !important;
+  font-size: 16px !important;
+  line-height: 14px !important;
+  height: 32px;
+  font-style: italic !important;
+  border: none !important;
+  border-radius: 4px !important;
+  text-align: center;
+  background: $blue !important;
+  color: #ffffff;
+  display: inline-block
+}
+
+.select2-selection__choice__remove {
+  color: #fff !important;
 }
 
 .btn-upme-gray {
@@ -933,4 +951,14 @@ label {
 }
 .float-right {
   float: right;
+}
+.select2 .select2-container .select2-container--default {
+  border: 2px solid #999 !important;
+  height: 48px !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  height: 40px;
+}
+.select2-container {
+  width: 100% !important;
 }
