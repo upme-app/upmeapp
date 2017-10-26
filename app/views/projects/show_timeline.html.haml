@@ -1,6 +1,6 @@
 .timeline
   %ul.collapsible{data: {collapsible: 'expandable'}}
-    - @project.timeline_steps.order(entrega: :asc).each_with_index do |step, index|
+    - @project.ordered_timeline_steps.each_with_index do |step, index|
       %li
         .collapsible-header.timeline-step-header{class: (@selected_step == step.id) ? 'active' : ''}
           .timeline-step-check

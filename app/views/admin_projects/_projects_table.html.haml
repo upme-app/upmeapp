@@ -9,6 +9,7 @@
       %th Título
       %th Dono
       %th Cliente
+      %th Linha do Tempo
     - projects.each do |project|
       %tr
         %td= project.id
@@ -19,3 +20,17 @@
             = link_to project.client.first_name, admin_user_path(project.client)
           - else
             = "-"
+        %td
+          - if project.timeline_steps.size > 0
+            %table
+              - project.ordered_timeline_steps.each do |step|
+                - if step.entregue?
+                  - color = 'green'
+                - else
+                  - color = '#ccc'
+               
+                %td{style: "background: #{color}"}
+                  = step.timeline_comments.size
+          - else
+            = '-'
+

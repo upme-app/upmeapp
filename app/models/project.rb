@@ -75,7 +75,11 @@ class Project < ApplicationRecord
   def can_be_restored_by(user)
     true if deleted == true and user.id == user_id
   end
-
+  
+  def ordered_timeline_steps
+    timeline_steps.order(entrega: :asc)
+  end
+  
   private
 
   def add_creator_user
