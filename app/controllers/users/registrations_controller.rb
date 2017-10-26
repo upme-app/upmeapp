@@ -23,14 +23,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     super
     # se conseguir salvar dispara um email de bem vindo
+    
     if current_user
+      UserMailer.welcome(current_user).deliver_later if current_user
       # se for um save via convite, cria o convite
       if @invite
         ProjectInvitation.create({
-                                  user_from_id: @invite.user.id,
-                                  user_to_id: current_user.id,
-                                  project_id: @invite.project.id
-                              })
+          user_from_id: @invite.user.id,
+          user_to_id: current_user.id,
+          project_id: @invite.project.id
+        })
       end
     end
   end
