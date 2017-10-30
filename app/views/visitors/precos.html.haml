@@ -1,0 +1,81 @@
+.container
+  .row
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %a.navbar-brand{:href => "/"}
+        = image_tag 'landing/logo.png'
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.ml-auto
+          %li.nav-item
+            %a.nav-link{href: "/precos", target: '_blank'} Preços
+          %li.nav-item
+            %a.nav-link{href: "/blog", target: '_blank'} Blog
+          %li.nav-item
+            %a.nav-link{href: "/entrar", target: '_blank'} Login
+        %form.form-inline
+          %a.btn.btn-outline-primary{:href => "/registrar"} Cadastre-se
+
+
+
+.container
+  %br
+  %br
+  .row
+    .col
+      %h1.huge-title.text-center Preços
+      %br
+      %br
+  .row
+    .col.col-md-4
+      .paper-box.text-center
+        = image_tag 'landing/alunos-precos.png'
+        %h2.price-type Alunos
+        %sup R$
+        %span.the-price 15,00
+        %p.lead por certificado (Opcional)
+        %hr.price-line
+        %ul.price-benefits
+          %li Até 72h de atividades complementares.
+          %li Ganhe experiências reais de mercado.
+          %li Enriqueça seu portfólio e currículo.
+    .col.col-md-4
+      .paper-box.text-center
+        = image_tag 'landing/empresas-precos.png'
+        %h2.price-type Empresas
+        %sup R$
+        %span.the-price 500,00
+        %p.lead por match/projeto
+        %hr.price-line
+        %ul.price-benefits
+          %li Consultoria de alunos.
+          %li Projetos cordenados por Mestres ou PhD`s.
+          %li Projeto pró-bono pensado no seu negócio.
+          %li Qualidade que cabe no bolso.
+    .col.col-md-4
+      .paper-box.text-center
+        = image_tag 'landing/universidade-precos.png'
+        %h2.price-type Universidades
+        %span.the-price{style:"font-size:32px"} Entre em contato
+        %p.lead para mais informações
+        %hr.price-line
+        %ul.price-benefits
+          %li Experiência e portfólio com trabalhos de disciplina.
+          %li Acesso ao banco de demandas de empresas.
+          %li Transforme trabalho de disciplina em extensão universitária.
+          %li Emissão de certificados de atividades complementares.
+  .row
+    .col.col-md-5
+      %br
+      %br
+      = image_tag 'landing/parceiro.png'
+      %h1.huge-title Seja nosso parceiro
+      %br
+      %p
+        Coworking,  aceleradoras e incubadoras participe conheça nosso plano de parcerias e ofereça mais um benefício para as empresas residentes.
+        %br
+          Entre em contato:
+          %strong contato@upmeapp.com.br
+
+%footer.footer.text-center
+  = image_tag 'landing/logo-footer.png'

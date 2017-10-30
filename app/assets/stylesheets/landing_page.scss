@@ -268,3 +268,74 @@ img {
     }
 }
 
+.paper-box {
+    width: 100%;
+    border: 2px solid #ECECEC;
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+    background-color: #fff;
+    display: inline-block;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    &:before {
+      content: '';
+      border: 2px solid #ECECEC;
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+      background-color: #F8F8F8;
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: -2;
+    }
+  }
+  .price-type {
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 24px;
+    color: #333333;
+    margin-top: 14px;
+  }
+  .the-price {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    font-size: 48px;
+    color: #00C7FF;
+  }
+  .price-benefits {
+    line-height: 29px;
+    font-size: 16px;
+    color: #666666;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: left;
+    line-height: 90%;
+    margin-left: 15px;
+    li {
+        margin-bottom: 20px;
+        position: relative;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &:before {
+            content: '';
+            background-image: url('landing/check.png');
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            position: absolute;
+            left: -25px;
+        }
+    }
+  }
+  .price-line {
+      margin-top: 24px;
+      margin-bottom: 24px;
+  }
