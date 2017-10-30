@@ -44,19 +44,49 @@
                     %div= complete_seu_cadastro(current_user.curso)
                     .label-upme Semestre
                     %div= complete_seu_cadastro(current_user.semestre)
-                  .label-upme Cidade
-                  %div= complete_seu_cadastro(current_user.city)
+                  - unless current_user.empresa?
+                    .label-upme Cidade
+                    %div= complete_seu_cadastro(current_user.city)
                 .col.s12.m12
                   .label-upme Área(s) de interesse
                   - current_user.user_area_de_interesse.each do |ua|
                     .tag-upme-blue.mb-16= ua.area_de_interesse.name
                   %br
                   = link_to 'Editar área(s)', areas_de_interesse_path, class: 'btn-upme-outline-grey btn-small'
+              - if current_user.empresa?
+                .col.s12
+                  .label-upme
+                    - if current_user.fisica?
+                      %input{type: 'radio', checked: true}= 'Pessoa Física' 
+                  .label-upme
+                    - if current_user.juridica?
+                      %input{type: 'radio', checked: true}= 'Pessoa Jurídica'
+                .col.s12
+                  .label-upme CPF/CNPJ
+                  %div= current_user.cpf
+                .col.s12
+                  .label-upme Telefone para contato 
+                  %div= current_user.telefone
+                .col.s12.m9
+                  .label-upme Endereço
+                  %div= current_user.endereco
+                .col.s12.m3
+                  .label-upme Número
+                  %div= current_user.numero 
+                .col.s12.m5
+                  .label-upme Bairro
+                  %div= current_user.bairro
+                .col.s12.m4
+                  .label-upme Cidade
+                  %div= current_user.cidade
+                .col.s12.m3
+                  .label-upme UF
+                  %div= current_user.uf
+                .col.s12
+                  .label-upme CEP
+                  %div= current_user.cep
 
-                  - if current_user.empresa?
-                    = link_to 'Editar dados de cobranca', edit_billing_path, class: 'btn-upme-outline-grey btn-small'
-              .col.s12.right-align
-                
+
     .col.s12.m2
 
 = render 'layouts/upme_footer'
