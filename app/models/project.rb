@@ -4,6 +4,8 @@ class Project < ApplicationRecord
   has_many :timeline_steps
   has_many :client_solicitations
   has_many :member_solicitations
+  has_many :project_area_de_interesse
+
 
   belongs_to :user
   belongs_to :client, class_name: 'User'

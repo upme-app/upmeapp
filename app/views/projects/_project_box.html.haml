@@ -28,10 +28,11 @@
           = image_tag project.client.logourl, class: 'project-company-logo'
         - else
           = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo'
-      - if project.user.user_area_de_interesse.first
+      - if project.project_area_de_interesse.first
         .tag-upme-blue
-          = project.user.user_area_de_interesse.first.area_de_interesse.name
-          //.btn-upme-outline-grey.btn-small.btn-square{style: 'padding: 6px 3px; display:inline-block;'} +9
+          = project.project_area_de_interesse.first.area_de_interesse.name
+        - if project.project_area_de_interesse.size > 1
+          .btn-upme-outline-grey.btn-small.btn-square{style: 'padding: 6px 3px; display:inline-block;'}= "+#{project.project_area_de_interesse.size-1}"
       .h2.project-title= project.title
       .p.project-description= project.description[0..110] + '...'
       - if project.deleted
