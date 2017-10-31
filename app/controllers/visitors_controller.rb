@@ -22,4 +22,7 @@ class VisitorsController < ApplicationController
     end
   end
 
+  def precos
+  end
+
 end
