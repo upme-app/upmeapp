@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   match 'areas-de-interesse/minhas-areas', to: 'areas_de_interesse#minhas_areas', via: :get
 
   match 'explorar', to: 'explore#index', as: :explore, via: :get
-
+  match 'adicionar-notificacao-de-area-nao-encontrada', to: 'explore#create_not_found_notification', as: :create_not_found_notification, via: :post
 
   # PROJECTS
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo', edit: 'editar' }
@@ -58,7 +58,6 @@ Rails.application.routes.draw do
   match 'projetos/:id/enviar-solicitacao-membro', to: 'projects#add_member_solicitation', via: :post, as: :add_member_solicitation
 
   match 'meu-perfil', to: 'profile#my_profile', via: :get, as: :my_profile
-  match 'meu-perfil/editar-dados-de-cobranca', to: 'profile#edit_billing', via: :get, as: :edit_billing
   match 'meu-perfil/editar-dados-de-cobranca/:project_id', to: 'profile#edit_billing', via: :get, as: :edit_billing_back_to_project
   match 'meu-perfil/editar-dados-de-cobranca', to: 'profile#save_billing', via: :post, as: :save_billing
   match 'meu-perfil/editar', to: 'profile#edit_profile', via: :get, as: :edit_profile
