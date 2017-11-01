@@ -34,8 +34,12 @@
       = form_tag create_not_found_notification_path, method: :post do
         - @selected_areas.each do |area|
           = hidden_field_tag 'areas[]', area
-        Nenhum projeto encontrado
-        = submit_tag "Quero ser avisado quando um projeto desta área for criado."
+        .center-align
+          =image_tag 'https://media.giphy.com/media/3o6EQ7ox4WWTi1VjAQ/giphy.gif', {style: 'height: 200px;display:block;margin-bottom:20px;margin: 0 auto;'}
+          %br
+          .upme-sub-title Quer ser avisado quando tiver projetos desta(s) área(s)?
+          %br
+          = submit_tag "Quero ser avisado", class: 'btn-upme-blue'
 :javascript
   $(document).ready(function() {
     $("#e1").select2({
