@@ -7,7 +7,7 @@ class User < ApplicationRecord
   enum user_type: [:aluno, :professor, :empresa]
   enum tipo_pessoa: [:fisica, :juridica]
   has_many :user_area_de_interesse
-
+  has_many :notifications
 
   def update_areas_de_interesse(ar_nome_areas)
     user_area_de_interesse.destroy_all
