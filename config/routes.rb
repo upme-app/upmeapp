@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   match 'areas-de-interesse/minhas-areas', to: 'areas_de_interesse#minhas_areas', via: :get
 
   match 'explorar', to: 'explore#index', as: :explore, via: :get
-  match 'adicionar-notificacao-de-area-nao-encontrada', to: 'explore#create_not_found_notification', as: :create_not_found_notification, via: :post
 
   # PROJECTS
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo', edit: 'editar' }

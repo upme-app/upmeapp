@@ -31,15 +31,7 @@
         - projects_found += 1
         = render partial: 'projects/project_box', locals: { project: project }     
     - if projects_found == 0
-      = form_tag create_not_found_notification_path, method: :post do
-        - @selected_areas.each do |area|
-          = hidden_field_tag 'areas[]', area
-        .center-align
-          =image_tag 'https://media.giphy.com/media/3o6EQ7ox4WWTi1VjAQ/giphy.gif', {style: 'height: 200px;display:block;margin-bottom:20px;margin: 0 auto;'}
-          %br
-          .upme-sub-title Quer ser avisado quando tiver projetos desta(s) área(s)?
-          %br
-          = submit_tag "Quero ser avisado", class: 'btn-upme-blue'
+      .upme-sub-title Nenhum projeto foi encontrado.
 :javascript
   $(document).ready(function() {
     $("#e1").select2({

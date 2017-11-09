@@ -9,16 +9,5 @@ class ExploreController < ApplicationController
     end
   end
 
-  def create_not_found_notification
-    if params[:areas]
-			params[:areas].each do |area|
-				area_de_interesse = AreaDeInteresse.find_by_name(area)
-				if area_de_interesse
-					AreaNotFoundNotification.create({user_id: current_user.id, area_de_interesse_id: area_de_interesse.id})
-				end
-			end
-    end
-		render json: :oi
-  end
 
 end
