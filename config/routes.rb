@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   mount Spina::Engine => '/blog'
   root 'visitors#landing_page'
+  match '/termos', to: 'visitors#termos', via: :get
   match '/precos', to: 'visitors#precos', via: :get
   
 
