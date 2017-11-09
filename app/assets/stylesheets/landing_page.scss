@@ -326,7 +326,7 @@ img {
         }
         &:before {
             content: '';
-            background-image: url('landing/check.png');
+            background-image: image-url('landing/check.png');
             width: 18px;
             height: 18px;
             display: inline-block;
