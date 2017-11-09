@@ -28,7 +28,7 @@
       %br
   .row
     .col.col-md-4
-      .paper-box.text-center
+      .paper-box.text-center{style:"height: 620px"}
         = image_tag 'landing/alunos-precos.png'
         %h2.price-type Alunos
         %sup R$
@@ -37,22 +37,30 @@
         %hr.price-line
         %ul.price-benefits
           %li Até 72h de atividades complementares.
-          %li Enriqueça seu portfólio e currículo.
+          %li Portfólio e currículo turbinados.
+          %li Conexão com o mercado de trabalho.
+          %li Experiências com clientes reais.
+          %li Aumento de suas competências e skills.
+        %br
+        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
     .col.col-md-4
-      .paper-box.text-center
+      .paper-box.text-center{style:"height: 640px"}
         = image_tag 'landing/empresas-precos.png'
         %h2.price-type Empresas
         %sup R$
         %span.the-price 500,00
         %br
-        %h2.badge.badge-info Parcela única
-        %p.lead por match/projeto
+        %p.lead por match/projeto(parcela única)
         %hr.price-line
         %ul.price-benefits
+          %li Projeto pensado no seu negócio.
           %li Consultoria de universitários.
-          %li Projeto pró-bono pensado no seu negócio.
-          %li Projetos cordenados por Mestres ou PhD`s.
+          %li Trabalhos coordenados por professores Mestres ou PhD`s.
           %li Qualidade que cabe no bolso.
+          %li Planejamento detalhado da execução.
+          %li Controle dos prazos e entrega.
+        %br
+        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
     .col.col-md-4
       .paper-box.text-center
         = image_tag 'landing/universidade-precos.png'
@@ -75,10 +83,8 @@
       %h1.huge-title Seja nosso parceiro
       %br
       %p
-        Oferecemos PERKS para coworkings,  aceleradoras e incubadoras, com desconto especial no valor da taxa de operação pelo match. Entregue mais esse benefício para suas empresas residentes. Entre em contato para saber mais: contato@upmeapp.com.br
-        %br
-          Entre em contato:
-          %strong contato@upmeapp.com.br
+        Oferecemos vantagens para coworkings, aceleradoras e incubadoras, com desconto especial no valor da taxa de operação pelo match para espaços colaborativos parceiros. Entregue mais esse benefício para suas empresas residentes fazendo parte dos nossos PERKS. Entre em contato para saber mais:
+        %strong contato@upmeapp.com.br
 
 %footer.footer.text-center
   = image_tag 'landing/logo-footer.png'
