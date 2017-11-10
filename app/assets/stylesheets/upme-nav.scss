@@ -1,3 +1,5 @@
+@import 'variables';
+
 .upme-nav {
   background: #FFFFFF;
   border-bottom: 2px solid #ECECEC;
@@ -33,6 +35,12 @@
   border-bottom: 4px solid #00C7FF;
 }
 
+.nav-bell-active {
+  color: #00C7FF;
+  background-image: image_url('app/nav/bell-hover.svg') !important;
+  border-bottom: 4px solid #00C7FF;
+}
+
 .upme-nav-clipboard-active div {
   color: #00C7FF;
   background-image: image_url('app/nav/clipboard-hover.svg');
@@ -42,6 +50,9 @@
 
 .nav-bg-user { background-image: image_url('app/nav/user.svg'); }
 .nav-bg-user:hover { background-image: image_url('app/nav/user-hover.svg'); }
+
+.nav-bg-bell { background-image: image_url('app/nav/bell.svg'); }
+.nav-bg-bell:hover { background-image: image_url('app/nav/bell-hover.svg'); }
 
 .nav-bg-clipboard { background-image: image_url('app/nav/clipboard.svg'); }
 .nav-bg-clipboard:hover { background-image: image_url('app/nav/clipboard-hover.svg'); }
@@ -65,4 +76,36 @@
   .upme-nav-logo {
     background-size: 100% auto;
   }
+}
+
+
+#upme-notifications {
+  position: absolute;
+  background: #ffffff;
+  top: 80px;
+  right: 0px;
+  width: 400px;
+  z-index: 999999;
+  border: 2px solid #ECECEC;
+  border-top: none;
+  padding-bottom: 12px;
+  border-radius: 0px 0px 0px 4px;
+}
+
+.upme-notification {
+  color: #333333;
+  padding: 16px;
+  border-bottom: 1px solid #ECECEC;
+  background: #FFF;
+  font-size: 14px;
+}
+
+.upme-notification-read {
+  border-left: $blue 4px solid;
+  background: #ECFBFF;
+}
+
+.notification-date {
+  font-size: 11px;
+  color: #666666;
 }

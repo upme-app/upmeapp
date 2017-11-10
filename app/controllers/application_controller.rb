@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   def notifications
     if current_user
+      if params[:read_notification]
+        notification = Notification.find(params[:read_notification])
+        notification.update_attribute(:read, true) if notification.user_id == current_user.id
+      end
       @notifications = current_user.notifications
     end
   end

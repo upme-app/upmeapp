@@ -1,8 +1,4 @@
-
-$blue: #00C7FF;
-$black: #333;
-$grey: #666;
-$border-color: #ECECEC;
+@import 'variables';
 
 body {
   font-family: 'Lato', sans-serif;
@@ -961,17 +957,4 @@ label {
 }
 .select2-container {
   width: 78% !important;
-}
-
-#upme-notifications {
-  position: absolute;
-  background: red;
-  top: 0px;
-  right: 0px;
-  width: 400px;
-  z-index: 999999;
-}
-
-.upme-notification {
-  
 }
