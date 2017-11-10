@@ -13,14 +13,10 @@
  *= require select2
  *= require select2-bootstrap
  *= require animate
- *= require material_icons
  *= require_tree .
  *= require_self
  */
 
-
-@import "materialize/components/color";
 $secondary-color: #00C7FF !default;
 $success-color: #388E3C !default;
 $error-color: #CC3F0C !default;
-@import "materialize";
