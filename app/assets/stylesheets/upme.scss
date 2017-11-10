@@ -962,3 +962,16 @@ label {
 .select2-container {
   width: 78% !important;
 }
+
+#upme-notifications {
+  position: absolute;
+  background: red;
+  top: 0px;
+  right: 0px;
+  width: 400px;
+  z-index: 999999;
+}
+
+.upme-notification {
+  
+}

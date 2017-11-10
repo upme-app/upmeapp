@@ -78,4 +78,12 @@ class User < ApplicationRecord
     'empresa'
   end
 
+  def add_notification(description, url)
+    Notification.create({
+      user_id: self.id,
+      url: url,
+      description: description
+    })
+  end
+
 end

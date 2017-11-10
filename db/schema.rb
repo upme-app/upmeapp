@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 20171109160027) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
-    t.boolean  "read"
+    t.boolean  "read",        default: false
     t.string   "description"
     t.string   "url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
