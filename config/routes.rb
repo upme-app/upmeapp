@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root 'visitors#landing_page'
   match '/termos', to: 'visitors#termos', via: :get
   match '/precos', to: 'visitors#precos', via: :get
+  match '/contato', to: 'visitors#contato', via: :get
   
 
   match '/cursos-superiores', to: 'cursos#all', via: :get
