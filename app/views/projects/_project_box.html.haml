@@ -6,34 +6,34 @@
   - else
     - path = project_path(project.id)
 
-.col.m4.s12
-  = link_to path do
-    .project-ad-box{style: 'height: 420px; margin-bottom: 24px;'}
-      .row.no-mb
-        .col.s9
-          - if project.user.profilepicurl
-            .project-user-photo{style: "background-image: url('#{project.user.profilepicurl}')"}
-          - else
-            .project-user-photo
-          .project-username= project.user.full_name
-        .col.s3
-          .project-date= project.created_at.strftime('%d/%m/%y')
-      .project-image-container
-        - if project.imgurl
-          = image_tag project.imgurl, class: 'project-image'
-        - else
-          = image_tag 'app/project-image-placeholder.png', class: 'project-image'
+.col-lg-4.col-md-6.col-12
+  = link_to path, class: 'card projects-list' do
+    .card-header
+      - if project.user.profilepicurl
+        .up-avatar-small{style: "background-image: url('#{project.user.profilepicurl}')"}
+      - else
+        .avatar-small
+        .text-small
+          = project.user.first_name.split(' ').first
+    
+      
+      -# - if project.client and project.client.logourl
+      -#   = image_tag project.client.logourl, class: 'project-company-logo'
+      -# - else
+      -#   = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo'
+    .card-image-container
+      - if project.imgurl
+        = image_tag project.imgurl, class: 'card-image'
+      - else
+        = image_tag 'app/project-image-placeholder.png', class: 'card-image'
 
-        - if project.client and project.client.logourl
-          = image_tag project.client.logourl, class: 'project-company-logo'
-        - else
-          = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo'
       - if project.project_area_de_interesse.first
-        .tag-upme-blue
-          = project.project_area_de_interesse.first.area_de_interesse.name
-        - if project.project_area_de_interesse.size > 1
-          .btn-upme-outline-grey.btn-small.btn-square{style: 'padding: 6px 3px; display:inline-block;'}= "+#{project.project_area_de_interesse.size-1}"
-      .h2.project-title= project.title
-      .p.project-description= project.description[0..110] + '...'
+        .card-categories
+          .badge.badge-primary
+            = project.project_area_de_interesse.first.area_de_interesse.name
+          - if project.project_area_de_interesse.size > 1
+            .btn-upme-outline-grey.btn-small.btn-square{style: 'padding: 6px 3px; display:inline-block;'}= "+#{project.project_area_de_interesse.size-1}"
+    .card-footer
+      %h4.card-title.up-header= project.title
       - if project.deleted
         %span.red.badge{style: 'color: white;'} Projeto arquivado

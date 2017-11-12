@@ -1,0 +1,27 @@
+@import 'variables';
+
+.label {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    color: $black !important;
+}
+.title {
+    font-weight: 400 !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem;
+    color: $black !important;
+}
+.text {
+    color: $grey;
+    font-size: 1rem;
+}
+.text-link {
+    @extend .text;
+    &:hover {
+        color: $black;
+    }
+}
+.text-small {
+    @extend .text;
+    font-size: .875rem;    
+}
