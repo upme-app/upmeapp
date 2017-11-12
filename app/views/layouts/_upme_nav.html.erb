@@ -18,7 +18,7 @@
       </li>
       <%- if current_user %>
         <li class="nav-item">
-          <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active nav-link' : 'nav-link' do %>
+          <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
           Projetos
           <% end %>
         </li>
