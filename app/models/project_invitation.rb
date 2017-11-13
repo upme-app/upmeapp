@@ -15,6 +15,18 @@ class ProjectInvitation < ApplicationRecord
     self.destroy
   end
 
+  def accept_and_notify
+    ProjectInvitationMailer.accept(user_to, user_from, project).deliver_later
+    Notification.accept_project_invitation(user_to, user_from, project)
+    accept
+  end
+
+  def refuse_and_notify
+    ProjectInvitationMailer.refuse(user_to, user_from, project).deliver_later
+    Notification.refuse_project_invitation(user_to, user_from, project)
+    refuse
+  end
+
   def user_already_exists
     if ProjectUser.where(project_id: project_id).where(user_id: user_to_id).size > 0
       errors.add(:user_already_exists, 'O usuário já foi convidado.')

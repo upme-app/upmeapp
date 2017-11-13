@@ -19,6 +19,7 @@ class ClientSolicitation < ApplicationRecord
       project.start
       project.update_attribute :client_id, self.user_id
       ClientSolicitationMailer.accept(user, project.user, project).deliver_later
+      Notification.accept_client_solicitation(user, project.user, project)
       self.destroy
     end
   end
@@ -26,6 +27,7 @@ class ClientSolicitation < ApplicationRecord
   def refuse(current_user)
     if project.user_id == current_user.id
       ClientSolicitationMailer.refuse(user, project.user, project).deliver_later
+      Notification.refuse_client_solicitation(user, project.user, project)
       self.destroy
     end
   end

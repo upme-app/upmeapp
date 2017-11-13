@@ -18,6 +18,7 @@ class MemberSolicitation < ApplicationRecord
       project.add_user(self.user)
       project.start
       MemberSolicitationMailer.accept(user, project.user, project).deliver_later
+      Notification.accept_member_solicitation(user, project.user, project)
       self.destroy
     end
   end
@@ -25,6 +26,7 @@ class MemberSolicitation < ApplicationRecord
   def refuse(current_user)
     if project.user_id == current_user.id
       MemberSolicitationMailer.refuse(user, project.user, project).deliver_later
+      Notification.refuse_member_solicitation(user, project.user, project)
       self.destroy
     end
   end

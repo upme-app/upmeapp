@@ -86,4 +86,8 @@ class User < ApplicationRecord
     })
   end
 
+  def unread_notifications_size
+    notifications.reject{ |n| n.read == true }.size
+  end
+
 end

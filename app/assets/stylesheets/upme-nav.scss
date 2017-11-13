@@ -109,3 +109,18 @@
   font-size: 11px;
   color: #666666;
 }
+
+#notifications-link {
+  position: relative;
+}
+
+#unread-notifications-size {
+  background: #fb3028;
+  color: white;
+  border-radius: 2px;
+  font-size: 12px;
+  padding: 0px 4px;
+  position: absolute;
+  top: -20px;
+  right: 8px;
+}

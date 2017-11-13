@@ -169,6 +169,7 @@ class ProjectsController < ApplicationController
 
     if @solicitation.save
       ClientSolicitationMailer.invite(current_user, @project.user, @project).deliver_later
+      Notification.invite_client_solicitation(current_user, @project.user, @project)
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'
@@ -182,6 +183,7 @@ class ProjectsController < ApplicationController
 
     if @solicitation.save
       MemberSolicitationMailer.invite(current_user, @project.user, @project).deliver_later
+      Notification.invite_member_solicitation(current_user, @project.user, @project)
       flash[:success] = 'Solicitação enviada!'
     else
       flash[:danger] = 'Erro!'

@@ -16,7 +16,12 @@
         <% end %>
       </div>
       <div class="col s8 m4 right-align">
-          <%= link_to '#', onclick: "show_notifications()" do %>
+          <%= link_to '#', onclick: "show_notifications()", id: 'notifications-link' do %>
+            <%- if current_user.unread_notifications_size > 0 %>
+              <div id='unread-notifications-size'>
+                <%= current_user.unread_notifications_size %>
+              </div>
+            <%- end %>
             <div id='btn-bell' class="open-upme-notifications upme-nav-item nav-bg-bell">notificações</div>
           <% end %>
           <%- if current_user %>
@@ -54,7 +59,7 @@
 </ul>
 
 <div id="upme-notifications">
-  <%- current_user.notifications.each do |notification| %>
+  <%- current_user.notifications.reverse.each do |notification| %>
     <%= link_to notification.url + "?read_notification=#{notification.id}" do %>
       <div class="upme-notification <%= 'upme-notification-read' if !notification.read %>">
         <%= notification.description.capitalize %>
@@ -66,7 +71,7 @@
     <% end %>
   <% end %>
   <%- if current_user.notifications.size == 0 %>
-    Nenhuma fão.
+    Nenhuma notificação.
   <% end %>
 </div>
 
