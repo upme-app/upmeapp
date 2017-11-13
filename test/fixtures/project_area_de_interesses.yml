@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: one
+  area_de_interesse: one
+
+two:
+  project: two
+  area_de_interesse: two

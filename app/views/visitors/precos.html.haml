@@ -1,0 +1,93 @@
+.container
+  .row
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      %a.navbar-brand{:href => "/"}
+        = image_tag 'landing/logo.png'
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.ml-auto
+          %li.nav-item
+            %a.nav-link{href: "/precos" } Preços
+          %li.nav-item
+            %a.nav-link{href: "/blog", target: '_blank'} Blog
+          %li.nav-item
+            %a.nav-link{href: "/entrar", target: '_blank'} Login
+        %form.form-inline
+          %a.btn.btn-outline-primary{:href => "/registrar"} Cadastre-se
+
+
+
+.container
+  %br
+  %br
+  .row
+    .col.text-center
+      %h1.huge-title Preços
+      %br
+      %p.lead A plataforma é 100% gratuita. Cadastre-se agora mesmo.
+      .lead Empresas só pagam quando acontece um match.
+      %p.lead Alunos só pagam pela emissão do certificado, que é opicional.
+      %br
+  .row
+    .col.col-md-4
+      .paper-box.text-center{style:"height: 620px"}
+        = image_tag 'landing/alunos-precos.png'
+        %h2.price-type Alunos
+        %sup R$
+        %span.the-price 15,00
+        %p.lead por certificado (Opcional)
+        %hr.price-line
+        %ul.price-benefits
+          %li Até 72h de atividades complementares.
+          %li Portfólio e currículo turbinados.
+          %li Conexão com o mercado de trabalho.
+          %li Experiências com clientes reais.
+          %li Aumento de suas competências e skills.
+        %br
+        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
+    .col.col-md-4
+      .paper-box.text-center{style:"height: 640px"}
+        = image_tag 'landing/empresas-precos.png'
+        %h2.price-type Empresas
+        %sup R$
+        %span.the-price 500,00
+        %br
+        %p.lead por match/projeto(parcela única)
+        %hr.price-line
+        %ul.price-benefits
+          %li Projeto pensado no seu negócio.
+          %li Consultoria de universitários.
+          %li Trabalhos coordenados por professores Mestres ou PhD`s.
+          %li Qualidade que cabe no bolso.
+          %li Planejamento detalhado da execução.
+          %li Controle dos prazos e entrega.
+        %br
+        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
+    .col.col-md-4
+      .paper-box.text-center
+        = image_tag 'landing/universidade-precos.png'
+        %h2.price-type Universidades
+        %span.the-price{style:"font-size:32px"} Entre em contato
+        %p.lead contato@upmeapp.com.br
+        %hr.price-line
+        %ul.price-benefits
+          %li Acesso à demandas das empresas e ONGs.
+          %li Banco de projetos para Extensão Universitária.
+          %li Mais Produção Técnica no Lattes dos seus professores.
+          %li Experiência e portfólio para alunos com trabalhos de disciplina.
+          %li Emissão de certificados de atividades complementares.
+          %li Destaque de Qualidade para professores.
+  .row
+    .col.col-md-5
+      %br
+      %br
+      = image_tag 'landing/parceiro.png'
+      %h1.huge-title Seja nosso parceiro
+      %br
+      %p
+        Oferecemos vantagens para coworkings, aceleradoras e incubadoras, com desconto especial no valor da taxa de operação pelo match para espaços colaborativos parceiros. Entregue mais esse benefício para suas empresas residentes fazendo parte dos nossos PERKS. Entre em contato para saber mais:
+        %strong contato@upmeapp.com.br
+
+%footer.footer.text-center
+  = image_tag 'landing/logo-footer.png'

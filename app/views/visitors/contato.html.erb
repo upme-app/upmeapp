@@ -1,0 +1,69 @@
+<div class='container'>
+<div class='row'>
+  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+    <a class='navbar-brand' href='/'>
+      <%= image_tag 'landing/logo.png' %>
+    </a>
+    <button aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation' class='navbar-toggler' data-target='#navbarSupportedContent' data-toggle='collapse' type='button'>
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav ml-auto'>
+        <li class='nav-item'>
+          <a class='nav-link'>Preços</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link'>Blog</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link'>Login</a>
+        </li>
+      </ul>
+      <form class='form-inline'>
+        <a class='btn btn-outline-primary' href='/registrar'>Cadastre-se</a>
+      </form>
+    </div>
+  </nav>
+</div>
+</div>
+<div class='container'>
+  <br>
+  <br>
+  <div class='row'>
+    <div class='col text-center'>
+      <h1 class='huge-title'>Entre em contato</h1>
+      <br>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'></div>
+    <div class='col-md-6'>
+            <div class="form-group">
+                <label for="">
+                    Seu nome:
+                </label>
+                <input class="form-control" type="text" name="" id="" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+                <label for="">
+                    Você é:
+                </label>
+                <select class="form-control" style="height: 60px">
+                    <option>Aluno(a) 👩🏻‍🎓👨🏾‍🎓</option>
+                    <option>Professor(a) 👩‍🏫👨🏼‍🏫</option>
+                    <option>Gestor(a) de empresa ou ONG 🤵👩🏾</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="">
+                    Mensagem
+                </label>
+                <textarea class="form-control" name="" id="" cols="30" rows="10" style="height: 100px" placeholder="Escreva sua mensagem"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary btn-blue d-flex ml-auto" value="Enviar">
+    </div>
+  </div>
+</div>
+<footer class='footer text-center'>
+    <%= image_tag 'landing/logo-footer.png' %>
+</footer>

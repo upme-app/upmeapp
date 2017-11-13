@@ -35,6 +35,15 @@
             = f.text_field :target_audience, class: 'validate', placeholder: 'Escreva o publico alvo do seu projeto aqui'
             .help-text (Quem vai se beneficiar do projeto solicitado, qual o setor da organização e público beneficiado pelo projeto)
           
+          .row
+            .label-upme Áreas de interesse do projeto
+            %select#e2{name: "areas[]", multiple: :multiple}
+              - AreaDeInteresse.all.order(name: :asc).each do |a|
+                - if @selected_areas.include? a.name
+                  %option{:value => a.name, selected: "selected"}= a.name
+                - else
+                  %option{:value => a.name}= a.name
+     
       .col.s12.m2
   .upme-action-bar-bg
     .container
@@ -53,3 +62,13 @@
               = submit_tag 'Salvar Projeto', class: 'btn-upme-white'
             - else
               = submit_tag 'Publicar Projeto', class: 'btn-upme-white'
+
+:javascript
+  $(document).ready(function() {
+    $("#e2").select2({
+       tags: true,
+       multiple: true
+    });
+  });
+
+

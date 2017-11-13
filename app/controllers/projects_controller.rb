@@ -15,12 +15,14 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @selected_areas = []
   end
 
   def create
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     if @project.save
+      save_areas_de_interesse
       redirect_to project_path(@project)
     else
       render 'projects/new'
@@ -29,11 +31,14 @@ class ProjectsController < ApplicationController
 
   def edit
     set_project
+    @selected_areas = AreaDeInteresse.where(id: @project.project_area_de_interesse.pluck(:area_de_interesse_id)).pluck(:name)
   end
 
   def update
     set_project
     if @project.user_id == current_user.id and @project.update_attributes(project_params)
+      ProjectAreaDeInteresse.where(project_id: @project.id).delete_all
+      save_areas_de_interesse
       redirect_to project_path(@project)
     else
       render 'projects/edit'
@@ -228,5 +233,16 @@ class ProjectsController < ApplicationController
       redirect_to public_project_path(@project.id)
     end
   end
+ 
+  def save_areas_de_interesse
+    params[:areas] = [] if params[:areas].nil?
+    params[:areas].each do |nome_area|
+      area_de_interesse = AreaDeInteresse.find_by_name(nome_area)
+      if area_de_interesse
+        ProjectAreaDeInteresse.create({project_id: @project.id, area_de_interesse_id: area_de_interesse.id})  
+      end
+    end
+  end
 
 end
+

@@ -22,4 +22,10 @@ class VisitorsController < ApplicationController
     end
   end
 
+  def precos
+  end
+
+  def contato
+  end
+
 end

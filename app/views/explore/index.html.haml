@@ -22,12 +22,16 @@
               %option{:value => a.name}= a.name
         %button.upme-btn-blue Buscar
   .row
+    - projects_found = 0;
     - current_user.available_projects.each do |project|
       - find = false
-      - project.user.user_area_de_interesse.each do |u|
-        - find = true if @selected_areas.include? u.area_de_interesse.name
+      - project.project_area_de_interesse.each do |p|
+        - find = true if @selected_areas.include? p.area_de_interesse.name
       - if find == true
+        - projects_found += 1
         = render partial: 'projects/project_box', locals: { project: project }     
+    - if projects_found == 0
+      .upme-sub-title Nenhum projeto foi encontrado.
 :javascript
   $(document).ready(function() {
     $("#e1").select2({
