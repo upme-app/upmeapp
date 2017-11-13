@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20171030175654) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -410,6 +409,7 @@ ActiveRecord::Schema.define(version: 20171030175654) do
   add_foreign_key "invite_emails", "users"
   add_foreign_key "member_solicitations", "projects"
   add_foreign_key "member_solicitations", "users"
+
   add_foreign_key "project_area_de_interesses", "area_de_interesses", column: "area_de_interesse_id"
   add_foreign_key "project_area_de_interesses", "projects"
   add_foreign_key "project_invitations", "projects"

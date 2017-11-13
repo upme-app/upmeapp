@@ -104,7 +104,8 @@ class Project < ApplicationRecord
                                            project_id: self.id
                                        })
     if invitation.save
-      Thread.new {ProjectInvitationMailer.invite(invitation.user_to, invitation.user_from, self).deliver}
+      Notification.project_invitation(invitation.user_from, invitation.user_to)
+      ProjectInvitationMailer.invite(invitation.user_to, invitation.user_from, self).deliver_later
       :success
     else
       :failed
@@ -125,7 +126,7 @@ class Project < ApplicationRecord
     })
 
     if invitation.save
-      Thread.new {ProjectInvitationMailer.invite_email(invitation.to_email, invitation.user, self, invitation.token).deliver}
+      ProjectInvitationMailer.invite_email(invitation.to_email, invitation.user, self, invitation.token).deliver_later
       :success
     else
       :failed

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   enum user_type: [:aluno, :professor, :empresa]
   enum tipo_pessoa: [:fisica, :juridica]
   has_many :user_area_de_interesse
-
+  has_many :notifications
 
   def update_areas_de_interesse(ar_nome_areas)
     user_area_de_interesse.destroy_all
@@ -76,6 +76,18 @@ class User < ApplicationRecord
     return 'aluno(a)' if aluno?
     return 'professor(a)' if professor?
     'empresa'
+  end
+
+  def add_notification(description, url)
+    Notification.create({
+      user_id: self.id,
+      url: url,
+      description: description
+    })
+  end
+
+  def unread_notifications_size
+    notifications.reject{ |n| n.read == true }.size
   end
 
 end

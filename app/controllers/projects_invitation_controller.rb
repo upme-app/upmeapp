@@ -5,16 +5,14 @@ class ProjectsInvitationController < ApplicationController
   def accept_invitation
     set_invitation
     flash[:success] = 'Você entrou no projeto!'
-    ProjectInvitationMailer.accept(@invitation.user_to, @invitation.user_from, @invitation.project).deliver_later
-    @invitation.accept
+    @invitation.accept_and_notify
     redirect_to project_path(@invitation.project_id)
   end
 
   def refuse_invitation
     set_invitation
     flash[:success] = 'Convite recusado!'
-    ProjectInvitationMailer.refuse(@invitation.user_to, @invitation.user_from, @invitation.project).deliver_later
-    @invitation.refuse
+    @invitation.refuse_and_notify
     redirect_to projects_path
   end
 
