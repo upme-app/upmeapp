@@ -2,33 +2,16 @@
 
 .container
   .row
-    .col.s12.m12
+    .col-md-3
       = render partial: 'project_tabs', locals: { project: @project }
-    .row
-      .col.m2.s12
-      .col.m8.s12
-        .private-project-box
-          .label-upme Projeto
-          %h1.huge-title= @project.title
-          .label-upme Cliente
-
-          - if @project.client
-            .row
-              .col.m6.s12
-                = image_tag profilepic(@project.client), class: 'circle', width: '30px', id: 'img-profilepic'
-                %span.title.dark-link.profiles-names= @project.client.full_name
-                %p= @project.client.telefone
-                %p= @project.client.email
-              .col.m6.s12.text-right
-                .upme-sub-title= @project.client.full_name
-                %p= "#{@project.client.numero}, #{@project.client.endereco}"
-                %p= "#{@project.client.uf}, #{@project.client.cidade}"
-
-          %br
+    .col-12.col-md-6
+      .card
+        .card-body.private-project-box
+          .label Linha do tempo
           .upme-loading
           #timeline
-      .col.m2.s12
-        = render partial: 'project_right_bar', locals: { project: @project }
+    .col-12.col-md-3
+      = render partial: 'project_right_bar', locals: { project: @project }
 
 = render 'layouts/upme_footer'
 

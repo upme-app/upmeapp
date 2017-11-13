@@ -1,10 +1,11 @@
+-# Meus projetos - Projeto privado - informações do projeto
+
 = render 'layouts/upme_nav'
 
 .container
     .row
-        .col-lg-3
+        .col-12.col-md-3
             = render partial: 'project_tabs', locals: { project: @project }
-        .col-lg-9
             %br
             = link_to public_project_path(@project) do
                 .banner-see-public
@@ -12,7 +13,7 @@
                     .upme-sub-title Visualizar projeto como público
             - if @project.user_id == current_user.id
                 %br
-                = button_to 'Editar Projeto', edit_project_path(@project), class: 'btn-upme-blue btn-full-width', method: :get
+                = button_to 'Editar Projeto', edit_project_path(@project), class: 'btn-primary btn-full-width', method: :get
             %br
 
             - if @project.can_be_deleted_by(current_user)
@@ -31,20 +32,23 @@
                 = button_to 'Restaurar', restore_project_path(@project), class: 'btn-upme-outline-grey btn-small btn-full-width', method: :get
 
             %br
-        .col.m8.s12
-            .private-project-box
-                .label-upme Projeto
-                %h1.huge-title= @project.title
-                .label-upme Objetivo
-                %p= @project.objective
-                .label-upme Público-alvo
-                %p= @project.target_audience
-                .label-upme Mais informações
-                %p= @project.description
-                = render partial: 'natureza_project'
+        .col-12.col-md-6
+            .private-project-box.card
+                .card-body
+                   
+                    %br
+                    .label Objetivo
+                    %p= @project.objective
+                    %br
+                    .label Público-alvo
+                    %p= @project.target_audience
+                    %br
+                    .label Mais informações
+                    %p= @project.description
+                    = render partial: 'natureza_project'
 
 
-        .col.m2.s12
+        .col-12.col-md-3
             = render partial: 'project_right_bar', locals: { project: @project }
 
 = render 'layouts/upme_footer'

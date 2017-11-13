@@ -1,4 +1,5 @@
-@import 'variables';
+@import '_variables';
+@import 'typography';
 
 
 body {
@@ -25,12 +26,24 @@ a {
   margin-bottom: 1rem;
 }
 // COMPONENTS
-.avatar-small {
-  width: 1.5rem;
-  height: 1.5rem;
+.profile,
+.profile-small {
+  display: flex;
+  align-items: center;
+  .profile-image {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.profile-image {
+  width: 3rem;
+  height: 3rem;
   border-radius: 6px;
   background-color: $bg-light;
   margin-right: .5rem;
+}
+.profile-name {
+  @extend .text;
 }
 .up-navbar {
   background-color: #fff;
@@ -137,6 +150,8 @@ a {
   position: relative;
   height: 64px;
   padding: 20px 16px;
+  display: flex;
+  justify-content: space-between;
   .label-upme {
     margin-top: 4px;
   }
@@ -795,8 +810,7 @@ label {
   text-align: right;
 }
 .page-footer {
-  background-color: #fff !important;
-  padding-top: 60px !important;
+  padding-top: 100px !important;
   width: 100%;
   color: #9D9D9D;
   a {
