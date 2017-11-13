@@ -29,7 +29,6 @@
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.css">
     <script charset="UTF-8" src="//cdn.sendpulse.com/28edd3380a1c17cf65b137fe96516659/js/push/ea962bfd753b0f0e448308109423ba31_1.js" async></script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-TG368D9');</script>
     
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +38,9 @@
     <meta name="theme-color" content="#ffffff">
 
     <% if Rails.env.production? %>
+
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','GTM-TG368D9');</script>
+    
       <script type="text/javascript">
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -47,39 +49,41 @@
           ga('create', 'UA-105211137-1', 'auto');
       </script>
 
+      <script>
+          window['_fs_debug'] = false;
+          window['_fs_host'] = 'fullstory.com';
+          window['_fs_org'] = '75RQV';
+          window['_fs_namespace'] = 'FS';
+          (function(m,n,e,t,l,o,g,y){
+              if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+              g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+              o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+              y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+              g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};
+              g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+              g.clearUserCookie=function(c,d,i){if(!c || document.cookie.match('fs_uid=[`;`]*`[`;`]*`[`;`]*`')){
+              d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
+              ';path=/;expires='+new Date(0).toUTCString();i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
+          })(window,document,window['_fs_namespace'],'script','user');
+        
+          <%- if current_user %>
+            FS.identify('<%= current_user.id %>', {
+              displayName: '<%= current_user.full_name %>',
+              email: '<%= current_user.email %>',
+              userType_str: '<%= current_user.user_type %>'
+            });
+          <% end %>
+        
+          </script>
+
       <% end %>
       
       
   </head>
-  <script>
-  window['_fs_debug'] = false;
-  window['_fs_host'] = 'fullstory.com';
-  window['_fs_org'] = '75RQV';
-  window['_fs_namespace'] = 'FS';
-  (function(m,n,e,t,l,o,g,y){
-      if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
-      g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
-      o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
-      y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
-      g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};
-      g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
-      g.clearUserCookie=function(c,d,i){if(!c || document.cookie.match('fs_uid=[`;`]*`[`;`]*`[`;`]*`')){
-      d=n.domain;while(1){n.cookie='fs_uid=;domain='+d+
-      ';path=/;expires='+new Date(0).toUTCString();i=d.indexOf('.');if(i<0)break;d=d.slice(i+1)}}};
-  })(window,document,window['_fs_namespace'],'script','user');
 
-  <%- if current_user %>
-    FS.identify('<%= current_user.id %>', {
-      displayName: '<%= current_user.full_name %>',
-      email: '<%= current_user.email %>',
-      userType_str: '<%= current_user.user_type %>'
-    });
-  <% end %>
-
-  </script>
   <script src="https://cdn.jsdelivr.net/jquery.webui-popover/1.2.1/jquery.webui-popover.min.js"></script>
   
-  <body data-current-screen="<%= controller_name + '_' + action_name %>" data-turbolinks="false">
+  <body data-current-screen="<%= controller_name + '_' + action_name %>" data-turbolinks="false" class="app-body">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TG368D9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <%- if controller_name == "visitors" %>
     <%= render partial: "layouts/flash_messages", flash: flash %>

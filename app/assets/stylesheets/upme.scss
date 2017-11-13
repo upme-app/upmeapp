@@ -3,11 +3,15 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  color: $black;
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.app-body {
   background-color: $bg-light;
+  color: $grey;
 }
 a {
   color: $blue;

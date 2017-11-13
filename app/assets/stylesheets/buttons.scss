@@ -11,7 +11,7 @@
     padding: 16px;
     font-size: 16px;
     line-height: 16px;
-    font-weight: 400;
+    font-weight: 900;
     font-style: initial !important;
     height: 48px;
     border: none;
@@ -32,7 +32,16 @@
 }
 .btn-default {
   @extend .btn;
-  
+  color: $grey;
+  &:hover {
+    background-color: $bg-light;
+    color: $grey;
+  }
+  &:active,
+  &.focus,
+  &:focus {
+      background-color: darken($bg-light, 5%) !important;
+  }
 }
   .btn-upme-blue {
     background: $blue;
