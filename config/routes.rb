@@ -76,6 +76,6 @@ Rails.application.routes.draw do
 
   match 'admin/usuarios', to: 'admin_users#index', via: :get, as: :admin_users
   match 'admin/usuarios/:id', to: 'admin_users#show', via: :get, as: :admin_user
-
+  resources :charges, only: [:new, :create]
 
 end

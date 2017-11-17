@@ -29,6 +29,8 @@ gem 'material_icons'
 gem 'aws-sdk', '~> 2'
 gem 'sidekiq'
 gem 'select2-rails'
+gem "figaro"
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platform: :mri
