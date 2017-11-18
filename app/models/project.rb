@@ -1,23 +1,30 @@
 class Project < ApplicationRecord
-
+  # extends ...................................................................
+  # includes ..................................................................
+  # security (i.e. attr_accessible) ...........................................
+  # relationships .............................................................
   has_many :project_users
   has_many :timeline_steps
   has_many :client_solicitations
   has_many :member_solicitations
   has_many :project_area_de_interesse
-
-
   belongs_to :user
   belongs_to :client, class_name: 'User'
-
+  # validations ...............................................................
+  # callbacks .................................................................
   after_create :add_creator_user
+  # scopes ....................................................................
+  # additional config .........................................................
+  # class methods .............................................................
+  # public instance methods ...................................................
+
 
   def add_user(user)
     return false if ProjectUser.where(user_id: user.id).where(project_id: id).size > 0
     ProjectUser.create({
-      project_id: id,
-      user_id: user.id
-    })
+                           project_id: id,
+                           user_id: user.id
+                       })
   end
 
   def invite_email(email, from_user)
@@ -77,11 +84,13 @@ class Project < ApplicationRecord
   def can_be_restored_by(user)
     true if deleted == true and user.id == user_id
   end
-  
+
   def ordered_timeline_steps
     timeline_steps.order(entrega: :asc)
   end
-  
+
+  # protected instance methods ................................................
+  # private instance methods ..................................................
   private
 
   def add_creator_user
@@ -118,12 +127,12 @@ class Project < ApplicationRecord
     return :invalid_email unless email.match('[a-z0-9]+[_a-z0-9\.-]*[a-z0-9]+@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})')
 
     invitation = InviteEmail.new({
-        user_id: from_user.id,
-        project_id: self.id,
-        completed: false,
-        to_email: email,
-        token: SecureRandom.uuid
-    })
+                                     user_id: from_user.id,
+                                     project_id: self.id,
+                                     completed: false,
+                                     to_email: email,
+                                     token: SecureRandom.uuid
+                                 })
 
     if invitation.save
       ProjectInvitationMailer.invite_email(invitation.to_email, invitation.user, self, invitation.token).deliver_later
@@ -132,6 +141,4 @@ class Project < ApplicationRecord
       :failed
     end
   end
-
-
 end
