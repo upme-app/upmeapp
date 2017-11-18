@@ -95,7 +95,7 @@ class ProjectsController < ApplicationController
       end
     end
 
-    render :layout => false
+    render layout: false
   end
 
   def timeline_comment
@@ -118,7 +118,7 @@ class ProjectsController < ApplicationController
 
     @selected_step = @step.id
 
-    render :show_timeline, :layout => false
+    render :show_timeline, layout: false
   end
 
   def update_timeline_date
