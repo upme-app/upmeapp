@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/duplicar', as: :duplicate_project, to: 'projects#duplicate', via: :get
   match 'meus-projetos/:id/restaurar', as: :restore_project, to: 'projects#restore', via: :get
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
+  match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get
   match 'meus-projetos/:id/enviar-solicitacao-para-usuario', as: :invite_user_to_project, to: 'projects#invite_user_to_project', via: :post
