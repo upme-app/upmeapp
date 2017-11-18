@@ -52,7 +52,8 @@ class StripeChargesService
         user_id: @user.id,
         project_id: project,
         order_amount: order_amount,
-        currency: DEFAULT_CURRENCY
+        currency: DEFAULT_CURRENCY,
+        status: :aguardando
     )
   end
 
