@@ -53,7 +53,7 @@
       <% end %>
     <script src="https://js.stripe.com/v2/"></script>
     <script>
-        Stripe.setPublishableKey('pk_test_LgIn9j5xnZrhIINFabiohkYO');
+        Stripe.setPublishableKey(<%= ENV["stripe_publishable_key"] %>);
     </script>
   </head>
   <script>

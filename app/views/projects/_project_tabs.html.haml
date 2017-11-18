@@ -7,6 +7,10 @@
       - project_user = ProjectUser.where(project_id: @project.id).where(user_id: current_user.id).first
       -# - unless project_user.first_timeline_view == true
       -#   = image_tag('app/notes/note-frist-view-timeline.png', style: 'position: absolute; margin-top: -70px; margin-left: -45px;')
+  %li{style: 'position:relative'}
+    = link_to payment_path(project.id), class: 'upme-tab-title ' + (action_name == 'payment' ? 'active' : '') do
+      Pagamentos
+      - project_user = ProjectUser.where(project_id: @project.id).where(user_id: current_user.id).first
 
   - unless @project.client
     %li

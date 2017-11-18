@@ -50,13 +50,13 @@
 
 = render 'layouts/upme_footer'
 
-= form_tag charges_path do
-    = hidden_field_tag "stripeToken"
-    = hidden_field_tag "project_id",value:@project.id
-    %article
-    - if flash[:error].present?
-        %p= flash[:error]
-    %label.amount
-        %span
-        Amount: 444
-    %script.stripe-button{"data-amount" => "444", "data-description" => "A month's subscription", "data-key" => "pk_test_LgIn9j5xnZrhIINFabiohkYO", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+-#= form_tag charges_path do
+-#    = hidden_field_tag "stripeToken"
+-#    = hidden_field_tag "project_id",value:@project.id
+-#    %article
+-#    - if flash[:error].present?
+-#        %p= flash[:error]
+-#    %label.amount
+-#        %span
+-#        Amount: 444
+-#    %script.stripe-button{"data-amount" => "444", "data-description" => "A month's subscription", "data-key" => "pk_test_LgIn9j5xnZrhIINFabiohkYO", "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}

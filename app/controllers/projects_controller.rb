@@ -75,6 +75,10 @@ class ProjectsController < ApplicationController
     set_project
   end
 
+  def payment
+    set_project
+  end
+
   def show_timeline
     set_project
 

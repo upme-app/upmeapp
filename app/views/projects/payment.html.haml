@@ -1,0 +1,35 @@
+= render 'layouts/upme_nav'
+
+.container
+  .row
+    .col.s12.m12
+      = render partial: 'project_tabs', locals: { project: @project }
+    .row
+      .col.m2.s12
+      .col.m8.s12
+        .private-project-box
+          %h1.huge-title Pagamentos
+
+          - if @project.client
+            .row
+              .col.m6.s12
+
+
+
+            .row
+              .col.m6.s12
+            = form_tag charges_path do
+              = hidden_field_tag "stripeToken"
+              = hidden_field_tag "project_id",@project.id
+              %article
+              - if flash[:error].present?
+                %p= flash[:error]
+              %label.amount
+                %span
+                Valor: R$ 500,00
+              %script.stripe-button{"data-amount" => "444", "data-description" => "match payment", "data-key" => ENV["stripe_publishable_key"], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+
+      .col.m2.s12
+        = render partial: 'project_right_bar', locals: { project: @project }
+
+= render 'layouts/upme_footer'
