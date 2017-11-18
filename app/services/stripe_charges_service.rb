@@ -38,6 +38,7 @@ class StripeChargesService
   end
 
   def create_charge(customer)
+    create_payment
     Stripe::Charge.create(
         customer: customer.id,
         amount: order_amount,
@@ -46,7 +47,16 @@ class StripeChargesService
     )
   end
 
+  def create_payment
+    Payment.create(
+        user_id: @user.id,
+        project_id: project,
+        order_amount: order_amount,
+        currency: DEFAULT_CURRENCY
+    )
+  end
+
   def order_amount
-    5000
+    50000
   end
 end

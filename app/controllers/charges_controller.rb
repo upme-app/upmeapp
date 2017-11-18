@@ -7,7 +7,8 @@ class ChargesController < ApplicationController
 
   def create
     StripeChargesService.new(charges_params, current_user).call
-    redirect_to project_path(@project)
+    flash[:success] = 'Pagamento Enviado'
+    redirect_to  payment_path(@project)
   end
 
   private
