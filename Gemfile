@@ -45,6 +45,7 @@ group :development do
   # gem 'tzinfo-data' # WINDOWS
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'pry'
 end
 
 group :test do

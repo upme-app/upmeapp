@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   match '/termos', to: 'visitors#termos', via: :get
   match '/precos', to: 'visitors#precos', via: :get
   match '/contato', to: 'visitors#contato', via: :get
-  
+
 
   match '/cursos-superiores', to: 'cursos#all', via: :get
   match '/newsletter', to: 'visitors#post_newsletter', via: :post
@@ -77,6 +77,7 @@ Rails.application.routes.draw do
 
   match 'admin/usuarios', to: 'admin_users#index', via: :get, as: :admin_users
   match 'admin/usuarios/:id', to: 'admin_users#show', via: :get, as: :admin_user
-  resources :charges, only: [:new, :create]
-
+  resources :charges, only: [:new, :create] do
+    post 'payment_notification', on: :collection
+  end
 end
