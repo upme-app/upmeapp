@@ -86,16 +86,34 @@
                       };
 
                       // Create an instance of the card Element
-                      var card = elements.create('card', {style: style});
+                      var card = elements.create('card', { style: style });
 
                       // Add an instance of the card Element into the `card-element` <div>
                       card.mount('#card-element');
 
+                      function translateErrorMessages (message) {
+                        switch (message) {
+                          case 'Your card number is incomplete.':
+                            return 'O número do cartão está incompleto.';
+                          case 'Your card number is invalid.':
+                            return 'O número do cartão é inválido.';
+                          case "Your card's expiration date is incomplete.":
+                            return 'A data de expiração do cartão está incompleto.';
+                          case "Your card's security code is incomplete.":
+                            return 'O código de seguração está incompleto.';
+                          case 'Your postal code is incomplete.':
+                            return 'O código postal está incompleto.';
+                          default:
+                            return message;
+                        }
+                      }
+
                       // Handle real-time validation errors from the card Element.
                       card.addEventListener('change', function(event) {
                         var displayError = document.getElementById('card-errors');
+
                         if (event.error) {
-                          displayError.textContent = event.error.message;
+                          displayError.textContent = translateErrorMessages(event.error.message);
                         } else {
                           displayError.textContent = '';
                         }
