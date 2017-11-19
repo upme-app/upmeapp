@@ -41,31 +41,30 @@ class StripeChargesService
   end
 
   def create_customer
-    customer = Stripe::Customer.create(
-        email: stripe_email,
-        source: stripe_token
-    )
+    customer = Stripe::Customer.create(email: user.email, source: stripe_token)
+
     user.update(stripe_token: customer.id)
     customer
   end
 
   def create_charge(customer)
-    create_payment
+    payment = create_payment
     Stripe::Charge.create(
-        customer: customer.id,
-        amount: order_amount,
-        description: customer.email,
-        currency: DEFAULT_CURRENCY
+      customer: customer.id,
+      amount: order_amount,
+      description: customer.email,
+      currency: DEFAULT_CURRENCY,
+      metadata: { payment_id: payment.id }
     )
   end
 
   def create_payment
     Payment.create(
-        user_id: @user.id,
-        project_id: project,
-        order_amount: order_amount,
-        currency: DEFAULT_CURRENCY,
-        status: :aguardando
+      user_id: @user.id,
+      project_id: project,
+      order_amount: order_amount,
+      currency: DEFAULT_CURRENCY,
+      status: :aguardando
     )
   end
 

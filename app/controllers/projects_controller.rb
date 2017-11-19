@@ -238,16 +238,14 @@ class ProjectsController < ApplicationController
       redirect_to public_project_path(@project.id)
     end
   end
- 
+
   def save_areas_de_interesse
     params[:areas] = [] if params[:areas].nil?
     params[:areas].each do |nome_area|
       area_de_interesse = AreaDeInteresse.find_by_name(nome_area)
       if area_de_interesse
-        ProjectAreaDeInteresse.create({project_id: @project.id, area_de_interesse_id: area_de_interesse.id})  
+        ProjectAreaDeInteresse.create({project_id: @project.id, area_de_interesse_id: area_de_interesse.id})
       end
     end
   end
-
 end
-
