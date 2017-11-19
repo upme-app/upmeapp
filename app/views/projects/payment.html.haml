@@ -25,12 +25,14 @@
                     - @payments.each do |payment|
                       %tr
                         %td= payment.user.full_name
-                        %td= number_to_currency(payment.order_amount, :precision => 2)
+                        %td R$ 500,00
                         %td= payment.status
 
             .row
               .col.m12.s12
-                - if @payments.where(status: :aguardando).any?
+                - if @payments.where(status: :pago).any?
+                  Seu pagamento foi confirmado com sucesso!
+                - elsif @payments.where(status: :aguardando).any?
                   Seu pagamento esta aguardando confirmação, espere a solicitação receber atualização para prosseguir.
                   Se o pagamento for negado por algum motivo, você poderá efetuar uma nova tentativa de pagamento.
                 - else
