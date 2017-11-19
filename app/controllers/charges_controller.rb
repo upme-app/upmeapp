@@ -15,7 +15,6 @@ class ChargesController < ApplicationController
   end
 
   def payment_notification
-    binding.pry
     respond_to do |format|
       format.json do
         if params[:data][:object][:paid]
