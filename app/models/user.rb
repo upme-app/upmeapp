@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  # extends ...................................................................
+  # includes ..................................................................
+  # security (i.e. attr_accessible) ...........................................
+  # relationships .............................................................
+  has_many :user_area_de_interesse
+  has_many :notifications
+  # validations ...............................................................
+  # callbacks .................................................................
+  # scopes ....................................................................
+  # additional config .........................................................
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,9 +16,8 @@ class User < ApplicationRecord
 
   enum user_type: [:aluno, :professor, :empresa]
   enum tipo_pessoa: [:fisica, :juridica]
-  has_many :user_area_de_interesse
-  has_many :notifications
-
+  # class methods .............................................................
+  # public instance methods ...................................................
   def update_areas_de_interesse(ar_nome_areas)
     user_area_de_interesse.destroy_all
     areas_selecionadas = AreaDeInteresse.where(name: ar_nome_areas)
@@ -80,14 +89,16 @@ class User < ApplicationRecord
 
   def add_notification(description, url)
     Notification.create({
-      user_id: self.id,
-      url: url,
-      description: description
-    })
+                            user_id: self.id,
+                            url: url,
+                            description: description
+                        })
   end
 
   def unread_notifications_size
-    notifications.reject{ |n| n.read == true }.size
+    notifications.reject {|n| n.read == true}.size
   end
+  # protected instance methods ................................................
+  # private instance methods ..................................................
 
 end
