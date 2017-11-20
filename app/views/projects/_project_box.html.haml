@@ -12,9 +12,10 @@
       - if project.user.profilepicurl
         .up-avatar-small{style: "background-image: url('#{project.user.profilepicurl}')"}
       - else
-        .avatar-small
-        .text-small
-          = project.user.first_name.split(' ').first
+        .profile-small
+          .profile-image
+          .profile-name
+            = project.user.first_name.split(' ').first
     
       
       -# - if project.client and project.client.logourl

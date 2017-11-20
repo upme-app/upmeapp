@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'upicons';
-    src:  asset-url('/assets/fonts/upicons.eot?3ebhqd');
-    src:  asset-url('/assets/fonts/upicons.eot?3ebhqd#iefix') format('embedded-opentype'),
-      asset-url('/assets/fonts/upicons.ttf?3ebhqd') format('truetype'),
-      asset-url('/assets/fonts/upicons.woff?3ebhqd') format('woff'),
-      asset-url('/assets/fonts/upicons.svg?3ebhqd#upicons') format('svg');
+    src:  image-url('app/upicons.eot');
+    src:  image-url('app/upicons.eot') format('embedded-opentype'),
+      image-url('app/upicons.ttf') format('truetype'),
+      image-url('app/upicons.woff') format('woff'),
+      image-url('app/upicons.svg') format('svg');
     font-weight: normal;
     font-style: normal;
   }

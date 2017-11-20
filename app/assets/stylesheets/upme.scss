@@ -9,6 +9,8 @@ body {
   line-height: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  min-height: 95vh;
 }
 .app-body {
   background-color: $bg-light;
@@ -34,6 +36,14 @@ a {
     width: 1.5rem;
     height: 1.5rem;
   }
+}
+// CORRIGIR ESSA CACAGA:
+.nav-link #img-profilepic {
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 6px !important;
+  background-color: $bg-light !important;
+  margin-right: .5rem !important;
 }
 .profile-image {
   width: 3rem;
@@ -761,15 +771,7 @@ label {
     color: $blue;
   }
 }
-.dropdown-content {
-  border: 2px solid #b8b8b8;
-  border-radius: 4px;
-  box-shadow: none !important;
-}
-#dropdown1 li > a,
-#dropdown1 li > span {
-  color: #666 !important;
-}
+  
 .top-step {
   height: 6px;
   width: 100%;
@@ -813,6 +815,8 @@ label {
   padding-top: 100px !important;
   width: 100%;
   color: #9D9D9D;
+  position: absolute;
+  bottom: 0;
   a {
     color: #9D9D9D;
     font-size: 14px;

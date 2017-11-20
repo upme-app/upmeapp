@@ -5,33 +5,34 @@
 %div.center-align
   = image_tag logourl(current_user), width: '100px', class: 'profile-company-logo', id: 'img-logo'
   %br
-  %a.btn-upme-outline-grey.btn-small.modal-trigger.btn-square.btn-change-logo{href: '#modal-update-logo', style: 'vertical-align: middle;',title: 'Alterar Logo da Empresa'}
-    %i{data: {feather: 'edit'}}
+  .btn-upme-outline-grey.btn-small.modal-trigger.btn-square.btn-change-logo{data: {toggle: 'modal', target: '#modal-update-logo'}, style: 'vertical-align: middle;',title: 'Alterar Logo da Empresa'}
+    %i.up-pencil
 
 
-#modal-update-logo.modal
-  .modal-content
-    - if current_user.empresa?
-      %h4 Escolha sua logo
-    - else
-      %h4 Logo da universidade
+#modal-update-logo.modal.fade
+  .modal-dialog
+    = form_tag update_logo_path,class: 'modal-content', id: 'save-logo-form', method: :post, enctype: 'multipart/form-data' do
+      .modal-header
+        - if current_user.empresa?
+          .modal-title Escolha sua logo
+        - else
+          .modal-title Logo da universidade
+      .modal-body
+        .file-field.input-field
+          %div
+            - if current_user.empresa?
+              Escolha sua logo
+            - else
+              Logo da universidade
+            = file_field_tag :logo, id: 'input-user-logo'
+            %br
+          .file-path-wrapper{style: 'opacity:0'}
+            %input.file-path.validate{type: 'text'}
 
-    = form_tag update_logo_path, id: 'save-logo-form', method: :post, enctype: 'multipart/form-data' do
-
-      .file-field.input-field
-        .btn
-          - if current_user.empresa?
-            Escolha sua logo
-          - else
-            Logo da universidade
-          = file_field_tag :logo, id: 'input-user-logo'
-        .file-path-wrapper
-          %input.file-path.validate{type: 'text'}
-
-    .upme-loading.display-none
-  .modal-footer.row
-    .col.s12.right-align
-      %button.waves-effect.waves-light.btn#btn-save-logo{type: 'button'} Salvar
+      .upme-loading.display-none
+      .modal-footer
+        %button.btn-default{type: 'button', data: {dismiss: 'modal'}} Cancelar
+        %button.btn-primary#btn-save-logo{type: 'submit'} Salvar
 
 :javascript
   $('.modal').modal();
