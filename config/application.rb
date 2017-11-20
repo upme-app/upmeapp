@@ -13,6 +13,7 @@ module Upmeapp
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Brasilia'
     config.active_job.queue_adapter = :sidekiq
+
   end
 end
 

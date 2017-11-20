@@ -1,17 +1,30 @@
 class ClientSolicitation < ApplicationRecord
+  # extends ...................................................................
+  # includes ..................................................................
+  # security (i.e. attr_accessible) ...........................................
+  # relationships .............................................................
   belongs_to :project
   belongs_to :user
-
+  # validations ...............................................................
   validate :solicitation_already_exists
   validate :only_empresa
-
+  # callbacks .................................................................
+  # scopes ....................................................................
+  # additional config .........................................................
+  # class methods .............................................................
   def self.new_solicitation(current_user, project, message)
     ClientSolicitation.new({
-      user_id: current_user.id,
-      project_id: project.id,
-      message: message
-    })
+                               user_id: current_user.id,
+                               project_id: project.id,
+                               message: message
+                           })
   end
+
+  def self.solicitation_exists(project, user)
+    ClientSolicitation.where(project_id: project.id).where(user_id: user.id).size > 0
+  end
+
+  # public instance methods ...................................................
 
   def accept(current_user)
     if project.user_id == current_user.id
@@ -38,14 +51,12 @@ class ClientSolicitation < ApplicationRecord
     end
   end
 
-  def self.solicitation_exists(project, user)
-    ClientSolicitation.where(project_id: project.id).where(user_id: user.id).size > 0
-  end
-
   def only_empresa
     unless user.empresa?
       errors.add(:not_empresa, 'Apenas empresas podem pode participar de um projeto de aluno ou professor')
     end
   end
 
+  # protected instance methods ................................................
+  # private instance methods ..................................................
 end

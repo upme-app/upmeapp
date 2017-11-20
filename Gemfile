@@ -29,9 +29,12 @@ gem 'material_icons'
 gem 'aws-sdk', '~> 2'
 gem 'sidekiq'
 gem 'select2-rails'
+gem "figaro"
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+
 end
 
 group :development do
@@ -40,6 +43,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # gem 'tzinfo-data' # WINDOWS
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'pry'
 end
 
 group :test do
