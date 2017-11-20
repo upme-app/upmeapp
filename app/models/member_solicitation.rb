@@ -30,7 +30,6 @@ class MemberSolicitation < ApplicationRecord
   def accept(current_user)
     if project.user_id == current_user.id
       project.add_user(self.user)
-      project.start
       MemberSolicitationMailer.accept(user, project.user, project).deliver_later
       Notification.accept_member_solicitation(user, project.user, project)
       self.destroy
