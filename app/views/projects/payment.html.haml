@@ -61,7 +61,7 @@
                       'use strict';
 
                       // Create a Stripe client
-                      var stripe = Stripe('pk_test_2PlUXzX86FgZg6rdSrbq2IJa');
+                      var stripe = Stripe('#{ENV["stripe_publishable_key"]}');
 
                       // Create an instance of Elements
                       var elements = stripe.elements();

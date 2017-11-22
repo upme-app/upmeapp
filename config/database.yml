@@ -11,8 +11,8 @@ development:
   encoding: unicode
   pool: 5
   database: upmeapp_development
-  username: root
-  password: 123456
+  username: jcottobboni
+  password: abissal
   port: 5432
   host: localhost
 
