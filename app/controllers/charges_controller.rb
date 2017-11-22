@@ -45,7 +45,9 @@ class ChargesController < ApplicationController
       format.json do
         if params[:data][:object][:paid]
           @payment.update_attribute(:status, 0)
-          render json: {success: true}, status: 200
+
+          @payment.project.start
+          render json: { success: true }, status: 200
         end
       end
     end

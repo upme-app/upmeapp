@@ -68,7 +68,7 @@
     }
   }
 
-  #{@project.started == true ? "$( '.upme-loading').show();" : "$( '.upme-loading').hide();"}
+  #{@project.started == true ? "$(\".upme-loading\").show();".html_safe : "$(\".upme-loading\").hide();".html_safe }
 
   $.get( "#{show_timeline_url(@project.id)}", function( data ) {
     refresh_timeline(data);
