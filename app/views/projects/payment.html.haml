@@ -61,7 +61,9 @@
                       'use strict';
 
                       // Create a Stripe client
+
                       var stripe = Stripe("#{ENV['stripe_publishable_key']}");
+
 
                       // Create an instance of Elements
                       var elements = stripe.elements();
@@ -103,6 +105,10 @@
                             return 'O código de seguração está incompleto.';
                           case 'Your postal code is incomplete.':
                             return 'O código postal está incompleto.';
+                          case 'Your card was declined. Your request was in live mode, but used a known test card.':
+                            return 'O seu cartão foi recusado.';
+                          case "Your card's expiration year is invalid.":
+                            return 'A data de expiração do cartão é inválida.'
                           default:
                             return message;
                         }
