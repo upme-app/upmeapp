@@ -61,7 +61,7 @@
                       'use strict';
 
                       // Create a Stripe client
-                      var stripe = Stripe('pk_test_2PlUXzX86FgZg6rdSrbq2IJa');
+                      var stripe = Stripe('pk_live_UD4gYrKXYww0YXAVfdv9eBNn');
 
                       // Create an instance of Elements
                       var elements = stripe.elements();
@@ -103,6 +103,8 @@
                             return 'O código de seguração está incompleto.';
                           case 'Your postal code is incomplete.':
                             return 'O código postal está incompleto.';
+                          case 'Your card was declined. Your request was in live mode, but used a known test card.':
+                            return 'O seu cartão foi recusado.';
                           default:
                             return message;
                         }
