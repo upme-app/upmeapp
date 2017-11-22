@@ -12,29 +12,29 @@ class ChargesController < ApplicationController
     begin
       StripeChargesService.new(charges_params, current_user).call
       # No exceptions were raised; Set our success message.
-      flash[:notice] = 'Card charged successfully.'
+      flash[:danger] = 'Card charged successfully.'
     rescue Stripe::RateLimitError => e
-      flash[:notice] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Ocorreu um erro desconhecido'
       # Too many requests made to the API too quickly
     rescue Stripe::InvalidRequestError => e
-      flash[:notice] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Ocorreu um erro desconhecido'
       # Invalid parameters were supplied to Stripe's API
     rescue Stripe::AuthenticationError => e
-      flash[:notice] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Ocorreu um erro desconhecido'
       # Authentication with Stripe's API failed
       # (maybe you changed API keys recently)
     rescue Stripe::APIConnectionError => e
-      flash[:notice] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Ocorreu um erro desconhecido'
       # Network communication with Stripe failed
     rescue Stripe::StripeError => e
      if  e.http_status == 402
-      flash[:notice] = 'Seu cartao foi recusado'
+      flash[:danger] = 'Seu cartao foi recusado'
       end
       # Display a very generic error to the user, and maybe send
       # yourself an email
     rescue => e
 
-      flash[:notice] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Ocorreu um erro desconhecido'
     end
 
     redirect_to payment_path(@project)
