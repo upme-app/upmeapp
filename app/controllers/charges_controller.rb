@@ -14,17 +14,17 @@ class ChargesController < ApplicationController
       # No exceptions were raised; Set our success message.
       flash[:danger] = 'Card charged successfully.'
     rescue Stripe::RateLimitError => e
-      flash[:danger] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Nossa API recebeu muitas conexões neste momento, tente novamente.'
       # Too many requests made to the API too quickly
     rescue Stripe::InvalidRequestError => e
-      flash[:danger] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Parametros incorretos'
       # Invalid parameters were supplied to Stripe's API
     rescue Stripe::AuthenticationError => e
-      flash[:danger] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Falha na autenticação com api'
       # Authentication with Stripe's API failed
       # (maybe you changed API keys recently)
     rescue Stripe::APIConnectionError => e
-      flash[:danger] = 'Ocorreu um erro desconhecido'
+      flash[:danger] = 'Falha na Conexão com API'
       # Network communication with Stripe failed
     rescue Stripe::StripeError => e
      if  e.http_status == 402
