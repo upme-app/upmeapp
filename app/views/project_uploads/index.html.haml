@@ -1,0 +1,10 @@
+= render 'layouts/upme_nav'
+
+.container
+  .row
+    .col.s12.m12
+      = render partial: '/projects/project_tabs', locals: { project: @project }
+  .row
+    .col.s12.m4
+      FILE
+= render 'layouts/upme_footer'
