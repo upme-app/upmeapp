@@ -18,5 +18,9 @@
 //= require is_on_screen
 //= require waves_fix
 //= require select2
+//= require moment 
+//= require fullcalendar
+//= require fullcalendar/gcal
 //= require_tree .
 
+$('#calendar').fullCalendar({});

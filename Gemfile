@@ -29,6 +29,8 @@ gem 'material_icons'
 gem 'aws-sdk', '~> 2'
 gem 'sidekiq'
 gem 'select2-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri
