@@ -6,5 +6,21 @@
       = render partial: '/projects/project_tabs', locals: { project: @project }
   .row
     .col.s12.m4
-      FILE
+      - ProjectUpload.where(project_id: @project.id).each do |file|
+        = link_to file.file, project_uploads_download_path(@project.id, file.file.split('.')[0], file.file.split('.')[1]) 
+        %hr
+  .row
+    .col.s12
+
+      = form_tag upload_project_file_path, method: :post, enctype: 'multipart/form-data' do
+
+        .file-field.input-field
+          .btn
+            Arquivo
+            = file_field_tag :file 
+          .file-path-wrapper
+            %input.file-path.validate{type: 'text'}
+
+        = submit_tag "Enviar", class: "waves-effect waves-light btn"
+
 = render 'layouts/upme_footer'

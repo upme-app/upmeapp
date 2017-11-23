@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'project_uploads/index'
-
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
@@ -39,6 +37,8 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
   # project uploads
   match 'meus-projetos/:id/arquivos', as: :project_uploads, to: 'project_uploads#index', via: :get
+  match 'meus-projetos/:id/arquivos/:file_name/:ext', as: :project_uploads_download, to: 'project_uploads#download', via: :get
+  match 'meus-projetos/:id/arquivos', as: :upload_project_file, to: 'project_uploads#upload', via: :post
   #
   match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
