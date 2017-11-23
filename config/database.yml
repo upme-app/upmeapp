@@ -14,7 +14,7 @@ development:
   username: upmeapp 
   password: 123456
   port: 5432
-  host: localhost
+  host: <%= ENV['DB_HOST'] ||= 'localhost' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,10 +24,10 @@ test:
   encoding: unicode
   pool: 5
   database: upmeapp_test
-  username: root
+  username: upmeapp
   password: 123456
   port: 5432
-  host: localhost
+  host: <%= ENV['DB_HOST'] ||= 'localhost' %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
