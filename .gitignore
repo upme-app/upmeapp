@@ -22,3 +22,6 @@
 
 .ruby-gemset
 .ruby-version
+
+*.swp
+

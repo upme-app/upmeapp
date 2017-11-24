@@ -3,15 +3,41 @@ class ChargesController < ApplicationController
   before_action :webhook_verification, only: :payment_notification
   before_action :set_payment, only: :payment_notification
 
-  rescue_from Stripe::CardError, with: :catch_exception
+  #rescue_from Stripe::CardError, with: :catch_exception
 
   def new
   end
 
   def create
-    StripeChargesService.new(charges_params, current_user).call
-    flash[:success] = 'Requisição de Pagamento enviada, aguarde confirmação'
-    redirect_to  payment_path(@project)
+    begin
+      StripeChargesService.new(charges_params, current_user).call
+      # No exceptions were raised; Set our success message.
+      flash[:danger] = 'Card charged successfully.'
+    rescue Stripe::RateLimitError => e
+      flash[:danger] = 'Nossa API recebeu muitas conexões neste momento, tente novamente.'
+      # Too many requests made to the API too quickly
+    rescue Stripe::InvalidRequestError => e
+      flash[:danger] = 'Parametros incorretos'
+      # Invalid parameters were supplied to Stripe's API
+    rescue Stripe::AuthenticationError => e
+      flash[:danger] = 'Falha na autenticação com api'
+      # Authentication with Stripe's API failed
+      # (maybe you changed API keys recently)
+    rescue Stripe::APIConnectionError => e
+      flash[:danger] = 'Falha na Conexão com API'
+      # Network communication with Stripe failed
+    rescue Stripe::StripeError => e
+     if  e.http_status == 402
+      flash[:danger] = 'Seu cartao foi recusado'
+      end
+      # Display a very generic error to the user, and maybe send
+      # yourself an email
+    rescue => e
+
+      flash[:danger] = 'Ocorreu um erro desconhecido'
+    end
+
+    redirect_to payment_path(@project)
   end
 
   def payment_notification
@@ -19,6 +45,8 @@ class ChargesController < ApplicationController
       format.json do
         if params[:data][:object][:paid]
           @payment.update_attribute(:status, 0)
+
+          @payment.project.start
           render json: { success: true }, status: 200
         end
       end
@@ -46,7 +74,7 @@ class ChargesController < ApplicationController
   def webhook_verification
     return if verify_webhook
     respond_to do |format|
-      format.json { return render json: { success: false }, status: 400 }
+      format.json {return render json: {success: false}, status: 400}
     end
   end
 
