@@ -1,52 +1,55 @@
+-# Meus projetos - Projeto privado - informações do projeto
+
 = render 'layouts/upme_nav'
 
 .container
     .row
-        .col.s12.m12
+        .col-12.col-md-3
             = render partial: 'project_tabs', locals: { project: @project }
-        .row
-            .col.m2.s12
+            %br
+            = link_to public_project_path(@project) do
+                .banner-see-public
+                    %i{data: {feather: 'eye'}}
+                    .upme-sub-title Visualizar projeto como público
+            - if @project.user_id == current_user.id
                 %br
-                = link_to public_project_path(@project) do
-                    .banner-see-public
-                        %i{data: {feather: 'eye'}}
-                        .upme-sub-title Visualizar projeto como público
-                - if @project.user_id == current_user.id
+                = button_to 'Editar Projeto', edit_project_path(@project), class: 'btn-primary btn-full-width', method: :get
+            %br
+
+            - if @project.can_be_deleted_by(current_user)
+                .dropdown-button.btn-upme-outline-grey.btn-small.btn-full-width.hover-pointer{data: {activates: 'project-more-actions'}} Mais ações
+                %ul.dropdown-content#project-more-actions
+                    %li
+                        = link_to delete_project_path(@project), style: 'color: #FB3028;' do
+                            %i{data: {feather: 'inbox'}, style: 'stroke: #FB3028;'}
+                            %span Arquivar Projeto
+                    %li
+                        = link_to duplicate_project_path(@project), style: 'color: #666;' do
+                            %i{data: {feather: 'copy'}, style: 'stroke: #666;'}
+                            %span Duplicar projeto
+
+            - if @project.can_be_restored_by(current_user)
+                = button_to 'Restaurar', restore_project_path(@project), class: 'btn-upme-outline-grey btn-small btn-full-width', method: :get
+
+            %br
+        .col-12.col-md-6
+            .private-project-box.card
+                .card-body
+                   
                     %br
-                    = button_to 'Editar Projeto', edit_project_path(@project), class: 'btn-upme-blue btn-full-width', method: :get
-                %br
-
-                - if @project.can_be_deleted_by(current_user)
-                    .dropdown-button.btn-upme-outline-grey.btn-small.btn-full-width.hover-pointer{data: {activates: 'project-more-actions'}} Mais ações
-                    %ul.dropdown-content#project-more-actions
-                        %li
-                            = link_to delete_project_path(@project), style: 'color: #FB3028;' do
-                                %i{data: {feather: 'inbox'}, style: 'stroke: #FB3028;'}
-                                %span Arquivar Projeto
-                        %li
-                            = link_to duplicate_project_path(@project), style: 'color: #666;' do
-                                %i{data: {feather: 'copy'}, style: 'stroke: #666;'}
-                                %span Duplicar projeto
-
-                - if @project.can_be_restored_by(current_user)
-                    = button_to 'Restaurar', restore_project_path(@project), class: 'btn-upme-outline-grey btn-small btn-full-width', method: :get
-
-                %br
-            .col.m8.s12
-                .private-project-box
-                    .label-upme Projeto
-                    %h1.huge-title= @project.title
-                    .label-upme Objetivo
+                    .label Objetivo
                     %p= @project.objective
-                    .label-upme Público-alvo
+                    %br
+                    .label Público-alvo
                     %p= @project.target_audience
-                    .label-upme Mais informações
+                    %br
+                    .label Mais informações
                     %p= @project.description
                     = render partial: 'natureza_project'
 
 
-            .col.m2.s12
-                = render partial: 'project_right_bar', locals: { project: @project }
+        .col-12.col-md-3
+            = render partial: 'project_right_bar', locals: { project: @project }
 
 = render 'layouts/upme_footer'
 

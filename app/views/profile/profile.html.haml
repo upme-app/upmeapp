@@ -2,8 +2,8 @@
 
 .container
   .row
-    .col.s12.m2
-    .col.s12.m8
+    .col-md-2
+    .col-12.col-md-8
       %br
       %h5.upme-sub-title Perfil
       .paper-box
@@ -39,6 +39,6 @@
                   .label-upme Área(s) de interesse
                   - @user.user_area_de_interesse.each do |ua|
                     .tag-upme-blue.mb-16= ua.area_de_interesse.name
-    .col.s12.m2
+    .col-md-2
 
 = render 'layouts/upme_footer'

@@ -1,38 +1,65 @@
-@import 'variables';
+
+@import '_variables';
+@import 'typography';
+
 
 body {
   font-family: 'Lato', sans-serif;
-  color: $black;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 18px;
-}
-
-// COMPONENTS
-.paper-box {
-  width: 100%;
-  border: 2px solid $border-color;
-  border-radius: 4px;
-  padding: 48px;
+  font-size: 16px;
+  line-height: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   position: relative;
-  background-color: #fff;
-  display: inline-block;
-  -webkit-transition: all 0.25s ease;
-  -moz-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-  &:before {
-    content: '';
-    border: 2px solid $border-color;
-    border-radius: 4px;
-    width: 100%;
-    height: 100%;
-    background-color: #F8F8F8;
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    z-index: -2;
+  min-height: 95vh;
+}
+.app-body {
+  background-color: $bg-light;
+  color: $grey;
+}
+a {
+  color: $blue;
+}
+.container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.page-header {
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+// COMPONENTS
+.profile,
+.profile-small {
+  display: flex;
+  align-items: center;
+  .profile-image {
+    width: 1.5rem;
+    height: 1.5rem;
   }
+}
+// CORRIGIR ESSA CACAGA:
+.nav-link #img-profilepic {
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 6px !important;
+  background-color: $bg-light !important;
+  margin-right: .5rem !important;
+}
+.profile-image {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 6px;
+  background-color: $bg-light;
+  margin-right: .5rem;
+}
+.profile-name {
+  @extend .text;
+}
+.up-navbar {
+  background-color: #fff;
+  height: 80px;
+  margin-bottom: 1rem;
 }
 .help-text {
   font-style: italic;
@@ -40,10 +67,7 @@ body {
   font-size: 14px;
   color: #afafaf;
 }
-.btn-full-width {
-  width: 100%;
-  margin: 0px;
-}
+
 .big-font-form {
   font-style: italic !important;
   font-weight: 940000;
@@ -51,107 +75,11 @@ body {
   color: #333333;
   padding: 8px 0px !important;
 }
-.label-upme {
-  font-weight: 800 !important;
-  font-size: 14px !important;
-  color: #666 !important;
-}
-.collapsible-body .label-upme {
-  margin-top: 24px;
-  margin-bottom: 8px;
-}
+
 .blue-hover:hover {
   color: $blue !important;
 }
-.btn-upme {
-  border-radius: 4px;
-  padding: 16px;
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 900;
-  font-style: initial !important;
-  height: 48px;
-  border: none;
-  text-align: center;
-}
 
-.btn-upme-blue {
-  @extend .btn-upme;
-  background: $blue;
-  color: #ffffff;
-}
-
-.btn-upme-white {
-  @extend .btn-upme;
-  background: white;
-  color: #333;
-}
-
-.tag-upme-blue {
-  padding: 8px 16px !important;
-  font-size: 16px !important;
-  line-height: 14px !important;
-  height: 32px;
-  font-style: italic !important;
-  border: none !important;
-  border-radius: 4px !important;
-  text-align: center;
-  background: $blue !important;
-  color: #ffffff;
-  cursor: initial;
-  display: inline-block
-}
-
-.select2-selection__choice {
-  padding: 8px 16px !important;
-  font-size: 16px !important;
-  line-height: 14px !important;
-  height: 32px;
-  font-style: italic !important;
-  border: none !important;
-  border-radius: 4px !important;
-  text-align: center;
-  background: $blue !important;
-  color: #ffffff;
-  display: inline-block
-}
-
-.select2-selection__choice__remove {
-  color: #fff !important;
-}
-
-.btn-upme-gray {
-  background: #F5F5F5;
-  color: #4F4F4F;
-}
-.btn-upme-outline-grey {
-  @extend .btn-upme;
-
-  color: $grey;
-  border: 2px solid $border-color;
-  background-color: white;
-}
-.btn-upme-outline-white {
-  @extend .btn-upme;
-  color: #fff;
-  border: 2px solid #fff;
-  background-color: transparent;
-}
-.btn-upme-outline-blue {
-  @extend .btn-upme;
-  background-color: white;
-  color: $blue;
-  border: 2px solid $blue;
-}
-.btn-small {
-  padding: 8px 16px;
-  font-size: 14px;
-  line-height: 14px;
-  height: 32px;
-}
-button:focus {
-  background-color: initial !important;
-}
 .upme-sub-title {
   font-style: italic;
   font-weight: 400;
@@ -186,8 +114,8 @@ button:focus {
   margin-bottom: 8px;
 }
 .project-user-photo {
-  width: 32px;
-  height: 32px;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: #f7f7f7;
   border-radius: 100%;
   display: inline-block;
@@ -227,38 +155,14 @@ button:focus {
   font-size: 16px;
   line-height: 16px;
 }
-.paper-box .label-upme {
-    margin-top: 24px;
-    margin-bottom: 8px;
-}
-.paper-box > .label-upme {
-    margin-top: 0;
-    margin-bottom: 8px;
-}
-.private-project-box, {
-  @extend .paper-box;
-  margin-top: -20px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  min-height: 400px;
-  > .label-upme {
-    margin-top: 24px;
-    margin-bottom: 8px;
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-  .timeline {
-    margin-left: -50px;
-    margin-right: -50px;
-  }
-}
 .timeline-step-header {
   border: 2px solid $border-color !important;
   margin-bottom: -2px;
   position: relative;
   height: 64px;
   padding: 20px 16px;
+  display: flex;
+  justify-content: space-between;
   .label-upme {
     margin-top: 4px;
   }
@@ -792,6 +696,9 @@ label {
 }
 
 // Coisas cagadas para resolver pequenos probelmas
+.no-decoration:hover {
+  text-decoration: none;
+}
 #registration-step-2 > div:nth-child(2) > div > div > div:nth-child(1) > div.col.s12 > .label-upme {
   margin-top: 0;
 }
@@ -865,15 +772,7 @@ label {
     color: $blue;
   }
 }
-.dropdown-content {
-  border: 2px solid #b8b8b8;
-  border-radius: 4px;
-  box-shadow: none !important;
-}
-#dropdown1 li > a,
-#dropdown1 li > span {
-  color: #666 !important;
-}
+  
 .top-step {
   height: 6px;
   width: 100%;
@@ -914,10 +813,11 @@ label {
   text-align: right;
 }
 .page-footer {
-  background-color: #fff !important;
-  padding-top: 60px !important;
+  padding-top: 100px !important;
   width: 100%;
   color: #9D9D9D;
+  position: absolute;
+  bottom: 0;
   a {
     color: #9D9D9D;
     font-size: 14px;

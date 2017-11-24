@@ -1,20 +1,22 @@
-.container
-  .row
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      %a.navbar-brand{:href => "/"}
-        = image_tag 'landing/logo.png'
-      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-        %span.navbar-toggler-icon
-      #navbarSupportedContent.collapse.navbar-collapse
-        %ul.navbar-nav.ml-auto
-          %li.nav-item
-            %a.nav-link{href: "/precos" } Preços
-          %li.nav-item
-            %a.nav-link{href: "/blog", target: '_blank'} Blog
-          %li.nav-item
-            %a.nav-link{href: "/entrar", target: '_blank'} Login
+%br
+
+%nav.navbar.navbar-expand-lg.navbar-light.up-navbar
+  .container
+    %a.navbar-brand{:href => "#"}
+      = image_tag 'app/logo-upme-vetor.svg'
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+          %a.nav-link{href: "/precos" } Preços
+        %li.nav-item
+          %a.nav-link{href: "/blog", target: '_blank'} Blog
+        %li.nav-item
+          %a.nav-link{href: "/entrar", target: '_blank'} Login
         %form.form-inline
-          %a.btn.btn-outline-primary{:href => "/registrar"} Cadastre-se
+          %a.btn-primary{:href => "/registrar"} Cadastre-se
+
 .hero-section
   .container
     .row
