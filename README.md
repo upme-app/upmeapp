@@ -6,19 +6,22 @@ Nosso site: https://www.upmeapp.com.br
 
 ## DEPENDENCIES
 
-* Ruby 2.3.0
+* Ruby 2.3.1
 * Rails 5.1.3
 * PostgreSQL 9.4 
 * Redis
 
 ## SETUP
 
-
 ### Local setup
 * create development postgres user
 * bundle install
 * rake db:create db:migrate
 * rails server
+
+### Redis
+* install redis
+* run redis-server
 
 ### Docker compose infrastructure setup
 

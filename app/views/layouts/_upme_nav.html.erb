@@ -1,112 +1,52 @@
-<div class="upme-nav">
+
+<nav class="navbar navbar-expand-lg navbar-light up-navbar">
   <div class="container">
-    <div class="row">
-      <div class="col s4 m4 upme-nav-logo">
-        &nbsp;
-      </div>
-      <div class="col s2 m4 hide-on-small-only center-align">
 
-        <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active' : '' do %>
-          <div class="upme-nav-item nav-bg-compass hide-on-med-and-down">explorar</div>
+  <a class="navbar-brand" href="#">
+    <%= image_tag 'app/logo-upme-vetor.svg' %>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">  
+      <li class="nav-item">
+        <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active btn btn-default' : 'btn btn-default' do %>
+          <i class="up-brieftcase"></i>
+          Demandas
         <% end %>
-        <%- if current_user %>
-          <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active' : '' do %>
-              <div class="upme-nav-item nav-bg-clipboard hide-on-med-and-down">meus projetos</div>
+      </li>
+      <%- if current_user %>
+        <li class="nav-item">
+          <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
+            <i class="up-project"></i>
+            Projetos
           <% end %>
-        <% end %>
-      </div>
-      <div class="col s8 m4 right-align">
-          <%= link_to '#', onclick: "show_notifications()", id: 'notifications-link' do %>
-            <%- if current_user.unread_notifications_size > 0 %>
-              <div id='unread-notifications-size'>
-                <%= current_user.unread_notifications_size %>
-              </div>
-            <%- end %>
-            <div id='btn-bell' class="open-upme-notifications upme-nav-item nav-bg-bell">notificações</div>
-          <% end %>
-          <%- if current_user %>
-            <a class='dropdown-button upme-nav-item nav-bg-user hide-on-med-and-down' href='#' data-activates='dropdown1'>
-              <%= current_user.first_name.split(' ').first %>
-            </a>
-            <ul id='dropdown1' class='dropdown-content' style="min-width: 120px;">
-              <li>
-                <%= link_to my_profile_path do %>
-                  Meu perfil
-                <%- end %>
-              </li>
-              <li>
-                <%= link_to 'Conta', my_account_path %>
-              </li>
-              <li>
-                <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          <% end %>
-        <a href="#" data-activates="mobile-demo" class="button-collapse hide-on-large-only" >
-          <i class="material-icons hamburguer-menu" style="margin: 25px 15px">menu</i>
-        </a>
-      </div>
-    </div>
+        </li>
+      <% end %>
+    </ul>
+    <form class="form-inline ml-auto">
+           <%= link_to 'Criar projeto', new_project_path, class: 'btn btn-primary' %>
+    </form>
   </div>
-</div>
-
-<ul class="side-nav" id="mobile-demo">
-  <li><%= link_to 'Explorar', explore_path %></li>
-  <li><%= link_to 'Meus Projetos', projects_path %></li>
-  <li><%= link_to 'Perfil', my_profile_path %></li>
-  <li><%= link_to 'Conta', my_account_path %></li>
-  <li><%= link_to 'Sair', destroy_user_session_path, method: :delete %></li>
-</ul>
-
-<div id="upme-notifications">
-  <%- current_user.notifications.reverse.each do |notification| %>
-    <%= link_to notification.url + "?read_notification=#{notification.id}" do %>
-      <div class="upme-notification <%= 'upme-notification-read' if !notification.read %>">
-        <%= notification.description.capitalize %>
-        <br>
-        <span class="notification-date">
-          <%= l notification.created_at %>
-        </span>
+  <ul class="navbar-nav ml-auto">
+    <%- if current_user %>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= render 'profile/update_profile_picture' %>
+    </a>
+    <li class="nav-item dropdown">
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to my_profile_path, class: 'dropdown-item' do %>
+        Meu perfil
+        <%- end %>
+        <%= link_to 'Conta', my_account_path, class: 'dropdown-item' %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
       </div>
+    </li>
     <% end %>
-  <% end %>
-  <%- if current_user.notifications.size == 0 %>
-    Nenhuma notificação.
-  <% end %>
+  </ul>
 </div>
 
-<script type="text/javascript" charset="utf-8">
-
-  $('#upme-notifications').hide();
-
-  function show_notifications() {
-    $('#btn-bell').addClass('nav-bell-active');
-    $('#upme-notifications').slideDown('fast');
-  }
-
-  function hide_notifications() {
-    $('#btn-bell').removeClass('nav-bell-active');
-    $('#upme-notifications').slideUp('fast');
-  }
-
-  $(document).click(function(event) {
-    if(!$(event.target).hasClass('open-upme-notifications') && !$(event.target).hasClass('upme-notification')) {
-      hide_notifications();
-    }
-  });
-
-  $(".button-collapse").sideNav()
-
-  $('.dropdown-button').dropdown({
-    inDuration: 300,
-    outDuration: 225,
-    constrainWidth: false, // Does not change width of dropdown to that of the activator
-    gutter: 0, // Spacing from edge
-    belowOrigin: false, // Displays dropdown below the button
-    alignment: 'right', // Displays dropdown with edge aligned to the left of button
-    stopPropagation: false // Stops event propagation
-  });
-       
-</script>
-
+</nav>
 <%= render 'layouts/upme_flash' %>

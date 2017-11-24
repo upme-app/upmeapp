@@ -1,37 +1,42 @@
 <div class="upme-logo-container">
 </div>
-<h1 class="center-align huge-title">Faça seu login</h1>
+<h1 class="title text-center">Faça seu login</h1>
 <br/>
 <br/>
 <%= render 'layouts/upme_flash' %>
 <div class="container">
   <div class="row">
-    <div class="col m8 offset-m2 m-no-padding">
-      <div class="paper-box">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 m-no-padding">
+      <div class="card">
+        <div class="card-body">
+
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="input-field">
-            <%= f.label :email, 'Seu e-mail', class: 'label-upme' %>
-            <%= f.email_field :email, class: 'validate big-font-form', placeholder: 'Digite seu e-mail aqui' %>
+            <%= f.label :email, 'Seu e-mail', class: 'label' %>
+            <%= f.email_field :email, class: 'validate form-control', placeholder: 'Digite seu e-mail aqui' %>
           </div>
 
           <div class="input-field">
-            <%= f.label :password, 'Sua senha', class: 'label-upme' %>
-            <%= f.password_field :password, autocomplete: "off", class: 'big-font-form', placeholder: '********'%>
+            <%= f.label :password, 'Sua senha', class: 'label' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: '********'%>
           </div>
-          <button type="submit" class="waves-effect waves-light btn-upme-blue btn-full-width">Fazer login</button>
+          <button type="submit" class="btn-primary btn-full-width">Fazer login</button>
         <% end %>
         <%=
         #render "devise/shared/links"
         %>
       </div>
+      
+      </div>
       <div class="row">
-      <div class="col m6 s12 m-center-align right-align">
+      <div class="col">
         <br>
-          <%= link_to 'Faça seu cadastro', registrar_path, data: { turbolinks: false }, class: 'waves-effect waves-dark btn-upme-outline-blue btn-small' %>
+          <%= link_to 'Faça seu cadastro', registrar_path, data: { turbolinks: false }, class: 'btn-default btn-small' %>
         </div>
-        <div class="col m6 s12 m-center-align">
+        <div class="col">
           <br>
-            <%= link_to 'Esqueci minha senha', new_password_path(resource_name), class: 'waves-effect waves-light-blue btn-upme-outline-grey btn-small' %>
+            <%= link_to 'Esqueci minha senha', new_password_path(resource_name), class: 'btn-default btn-small' %>
         </div>
       </div>
     </div>

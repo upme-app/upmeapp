@@ -19,30 +19,31 @@
 
 - if current_user.my_projects.size > 0 or current_user.my_filed_projects.size > 0
   .container
+    .page-header
+      .row
+        .col.m12.l6
+          .title
+            - if action_name == 'filed_projects'
+              %span Projetos arquivados
+            - else
+              %span Meus projetos
+     
     .row
-      .col.m12.l6
-        .upme-screen-title
-          %i.upme-screen-logo{data: {feather: 'clipboard'}}
-          - if action_name == 'filed_projects'
-            %span Projeto arquivados
-          - else
-            %span Projetos que você faz parte
-      .col.m12.l6.right-align
-        %br
-        %br
-        - if action_name == 'index'
-          = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
-        - else
-          = link_to projects_path, class: 'waves-effect waves-light-dark btn-upme-outline-grey btn-small' do
-            %i.icon-small{data: {feather: 'chevron-left'}}
-            Voltar para projetos
-        &nbsp
-        &nbsp
-        = link_to 'Novo projeto', new_project_path, class: 'waves-effect waves-light btn-upme-blue btn-small'
-      
-    .row
-      - @projects.each do |project|
-        = render partial: 'project_box', locals: { project: project }
+      .col-lg-3
+        .card
+          %ul.list-group.list-group-flush
+            %li.list-group-item
+              - if action_name == 'index'
+                = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
+              - else
+                = link_to projects_path, class: 'waves-effect waves-light-dark btn-upme-outline-grey btn-small' do
+                  %i.icon-small{data: {feather: 'chevron-left'}}
+                  Voltar para projetos
+
+      .col-lg-9
+        .row
+          - @projects.each do |project|
+            = render partial: 'project_box', locals: { project: project }
 - else
   .container
     .row
