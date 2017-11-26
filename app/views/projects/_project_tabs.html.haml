@@ -4,13 +4,13 @@
     %h1.title= @project.title
   %ul.list-group.list-group-flush
     = link_to 'Projeto', project_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'show' ? 'active' : '')
-    
+    = link_to 'Eventos', events_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'events' ? 'active' : '')
     = link_to timeline_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'timeline' ? 'active' : '') do
       Linha do Tempo
       - project_user = ProjectUser.where(project_id: @project.id).where(user_id: current_user.id).first
       -# - unless project_user.first_timeline_view == true
   - unless @project.client
-    
+
     = link_to client_solicitations_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'client_solicitations' ? 'active' : '') do
       Solicitações de clientes
 
@@ -23,7 +23,7 @@
 
       - if @project.member_solicitations.size > 0
         %span.new.badge.red.upme-badge-number{data: {'badge-caption' => ''}}= @project.member_solicitations.size
-  
+
   - if @project.started == false and @project.client and @project.client.id == current_user.id
     = link_to payment_path(project.id), class: 'upme-tab-title ' + (action_name == 'payment' ? 'active' : '') do
       Pagamentos
