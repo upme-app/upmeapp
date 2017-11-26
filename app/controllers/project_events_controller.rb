@@ -4,7 +4,7 @@ class ProjectEventsController < ApplicationController
   # GET /project_events
   # GET /project_events.json
   def index
-    @project_events = ProjectEvent.all
+    @project_events = ProjectEvent.where(user_id:current_user.id)
   end
 
   # GET /project_events/1

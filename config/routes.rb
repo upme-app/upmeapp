@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :project_events
+  resources :project_events,path: 'eventos'
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
