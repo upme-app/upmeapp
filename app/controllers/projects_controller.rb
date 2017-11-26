@@ -196,7 +196,7 @@ class ProjectsController < ApplicationController
       Notification.invite_member_solicitation(current_user, @project.user, @project)
       flash[:success] = 'Solicitação enviada!'
     else
-      flash[:danger] = 'Erro!'
+      flash[:danger] = @solicitation.errors.full_messages.join(', ')
     end
     redirect_to public_project_path(@project.id)
   end

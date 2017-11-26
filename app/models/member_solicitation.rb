@@ -52,7 +52,7 @@ class MemberSolicitation < ApplicationRecord
 
   def not_empresa
     if user.empresa?
-      errors.add(:not_empresa, 'Empresa não pode participar de um projeto de uma empresa')
+      errors.add(:base, 'Empresa não pode participar de um projeto de uma empresa')
     end
   end
 

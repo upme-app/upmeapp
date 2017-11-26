@@ -1,0 +1,85 @@
+= render 'layouts/upme_nav'
+
+.container
+  .row
+    .col.s12.m2
+    .col.s12.m8
+      %br
+      %h5.upme-sub-title Editando perfil
+      .paper-box
+        .row
+          .col.s12.m3
+            .profile-photo-container
+              = render 'profile/update_profile_picture'
+          .col.s12.m9
+            = form_for current_user, url: save_profile_path, method: :post do |f|
+              .row
+                .col.s12
+                  - if current_user.empresa?
+                    %span.label-upme Nome da empersa
+                    = f.text_field :nome_empresa, class: 'validate upme-input-small', placeholder: 'Coloque o nome da sua empresa'
+
+                  %span.label-upme Nome
+                  .help-text
+                    Por enquanto você não pode editar seu nome :(
+                  = text_field_tag :full_name, current_user.full_name, class: 'upme-input-small', disabled: true
+
+                  %span.label-upme Sobre Você
+                  = f.text_area :about, class: 'validate upme-input-small materialize-textarea', placeholder: 'Escreva um pouco sobre você'
+
+                  %span.label-upme Linkedin
+                  = f.text_field :linkedin, class: 'validate upme-input-small', placeholder: 'Coloque o link do seu Linkedin'
+
+
+                .col.s12
+                  - if current_user.aluno? or current_user.professor?
+                    %span.label-upme Universidade
+                    = f.text_field :universidade, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                  - if current_user.aluno?
+                    %span.label-upme Curso(s)
+                    = f.text_field :curso, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                    %span.label-upme Semestre
+                    = f.text_field :semestre, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                - unless current_user.empresa?
+                  .col.s12
+                    %span.label-upme Cidade
+                    = f.text_field :city, class: 'validate upme-input-small', placeholder: 'Escreva aqui'
+                - else
+                  .col.s12{style: "border: 1px solid yellow; margin-bottom: 10px;"}
+                    .col.s12
+                      %span.label-upme Estas informações não aparecerão no seu perfil público.
+                    .col.s12{style: "margin: 10px 0px 10px 0px"}
+                      %label
+                        = f.radio_button :tipo_pessoa, 'fisica', required: true
+                        %span.label-upme Pessoa física
+                      %label
+                        = f.radio_button :tipo_pessoa, 'juridica'
+                        %span.label-upme Pessoa Juridica
+                    .col.s12
+                      %span.label-upme CPF/CNPJ
+                      = f.text_field :cpf, class: 'validate upme-input-small', placeholder: 'CPF/CNPJ (Somente Números)', required: true
+                    .col.s12
+                      %span.label-upme Telefone para contato
+                      = f.text_field :telefone, class: 'validate upme-input-small', placeholder: 'Telefone (Somente Números)', required: true
+                    .col.m9.s12
+                      %span.label-upme Endereço
+                      = f.text_field :endereco, class: 'validate upme-input-small', placeholder: 'Rua, Avenida (Sem número)', required: true
+                    .col.m3.s12
+                      %span.label-upme Número
+                      = f.text_field :numero, class: 'validate upme-input-small', placeholder: 'Número', required: true
+                    .col.m5.s12
+                      %span.label-upme Bairro
+                      = f.text_field :bairro, class: 'validate upme-input-small', placeholder: 'Bairro', required: true
+                    .col.m4.s9
+                      %span.label-upme Cidade
+                      = f.text_field :cidade, class: 'validate upme-input-small', placeholder: 'Cidade', required: true
+                    .col.m3.s3
+                      %span.label-upme UF
+                      = f.text_field :uf, class: 'validate upme-input-small', placeholder: 'Estado', required: true
+                    .col.s12
+                      %span.label-upme CEP
+                      = f.text_field :cep, class: 'validate upme-input-small', placeholder: 'CEP (Somente Números)', required: true
+
+                .col.s12.right-align
+                  = link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn-upme-outline-grey'
+                  %button.waves-effect.waves-light.btn-upme-blue Salvar

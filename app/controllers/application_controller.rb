@@ -31,4 +31,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def sou_professor?
+    current_user and current_user.professor? ? true : false
+  end
+
+  def sou_empresa?
+    current_user and current_user.empresa? ? true : false
+  end
+
+  def sou_aluno?
+    current_user and current_user.aluno? ? true : false
+  end
+
 end
