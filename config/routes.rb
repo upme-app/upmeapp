@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   match '/termos', to: 'visitors#termos', via: :get
   match '/precos', to: 'visitors#precos', via: :get
   match '/contato', to: 'visitors#contato', via: :get
-  
+
 
   match '/cursos-superiores', to: 'cursos#all', via: :get
   match '/newsletter', to: 'visitors#post_newsletter', via: :post
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/duplicar', as: :duplicate_project, to: 'projects#duplicate', via: :get
   match 'meus-projetos/:id/restaurar', as: :restore_project, to: 'projects#restore', via: :get
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
+  match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get
   match 'meus-projetos/:id/enviar-solicitacao-para-usuario', as: :invite_user_to_project, to: 'projects#invite_user_to_project', via: :post
@@ -76,6 +77,7 @@ Rails.application.routes.draw do
 
   match 'admin/usuarios', to: 'admin_users#index', via: :get, as: :admin_users
   match 'admin/usuarios/:id', to: 'admin_users#show', via: :get, as: :admin_user
-  resources :charges, only: [:new, :create]
-
+  resources :charges, only: [:new, :create] do
+    post 'payment_notification', on: :collection
+  end
 end

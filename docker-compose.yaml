@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: upmeapp
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis
+  webapp:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      RAILS_ENV: development
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    links:
+      - "db:postgres"
+      - "redis"
+

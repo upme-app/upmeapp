@@ -1,12 +1,15 @@
 class TimelineStep < ApplicationRecord
+  # extends ...................................................................
+  # includes ..................................................................
+  # security (i.e. attr_accessible) ...........................................
+  # relationships .............................................................
   belongs_to :project
   has_many :timeline_comments
-
-  def finish(user)
-    if user.can_finish_step?(project, self)
-      update_attribute :check_date, Time.now
-    end
-  end
+  # validations ...............................................................
+  # callbacks .................................................................
+  # scopes ....................................................................
+  # additional config .........................................................
+  # class methods .............................................................
 
   def self.init_project_steps(project)
     create_step(
@@ -48,17 +51,28 @@ class TimelineStep < ApplicationRecord
 
   def self.create_step(project, title, desc, entregavel, data_entrega)
     TimelineStep.create({
-      project_id: project.id,
-      title: title,
-      description: desc,
-      entregavel: entregavel,
-      entrega: data_entrega
-    })
+                            project_id: project.id,
+                            title: title,
+                            description: desc,
+                            entregavel: entregavel,
+                            entrega: data_entrega
+                        })
+  end
+
+  # public instance methods ...................................................
+
+  def finish(user)
+    if user.can_finish_step?(project, self)
+      update_attribute :check_date, Time.now
+    end
   end
 
   def entregue?
     return true unless check_date.nil?
     false
   end
+  # protected instance methods ................................................
+  # private instance methods ..................................................
+
 
 end

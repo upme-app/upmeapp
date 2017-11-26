@@ -1,0 +1,10 @@
+@import '_variables';
+
+.form-control {
+    border: 2px solid $border-color;
+    min-height: 3rem;
+    border-radius: .5rem;
+}
+.form-control:focus {
+    border-color: $blue;
+}

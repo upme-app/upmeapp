@@ -75,6 +75,11 @@ class ProjectsController < ApplicationController
     set_project
   end
 
+  def payment
+    @payments = Payment.all.where(user_id: current_user.id)
+    set_project
+  end
+
   def show_timeline
     set_project
 
@@ -90,7 +95,7 @@ class ProjectsController < ApplicationController
       end
     end
 
-    render :layout => false
+    render layout: false
   end
 
   def timeline_comment
@@ -113,7 +118,7 @@ class ProjectsController < ApplicationController
 
     @selected_step = @step.id
 
-    render :show_timeline, :layout => false
+    render :show_timeline, layout: false
   end
 
   def update_timeline_date
@@ -233,16 +238,14 @@ class ProjectsController < ApplicationController
       redirect_to public_project_path(@project.id)
     end
   end
- 
+
   def save_areas_de_interesse
     params[:areas] = [] if params[:areas].nil?
     params[:areas].each do |nome_area|
       area_de_interesse = AreaDeInteresse.find_by_name(nome_area)
       if area_de_interesse
-        ProjectAreaDeInteresse.create({project_id: @project.id, area_de_interesse_id: area_de_interesse.id})  
+        ProjectAreaDeInteresse.create({project_id: @project.id, area_de_interesse_id: area_de_interesse.id})
       end
     end
   end
-
 end
-

@@ -1,0 +1,156 @@
+= render 'layouts/upme_nav'
+
+.container
+  .row
+    .col-md-3
+      = render partial: 'project_tabs', locals: { project: @project }
+    .col-md-6
+      .card.card-full-width
+        .card-body
+          %h3.label Tentativas de Pagamentos
+          %br
+          %br
+          - if @project.client
+            - if @payments.empty?
+              .center-align Nenhum
+            - else
+              %table.bordered.striped
+                %tr
+                  %th Nome
+                  %th Valor
+                  %th Status Pagamento
+                - @payments.each do |payment|
+                  %tr
+                    %td= payment.user.full_name
+                    %td R$ 500,00
+                    %td= payment.status
+
+            - if @payments.where(status: :pago).any?
+              Seu pagamento foi confirmado com sucesso!
+            - elsif @payments.where(status: :aguardando).any?
+              Seu pagamento esta aguardando confirmação, espere a solicitação receber atualização para prosseguir.
+              Se o pagamento for negado por algum motivo, você poderá efetuar uma nova tentativa de pagamento.
+            - else
+              = form_tag charges_path, id: 'payment-form' do
+                = hidden_field_tag "stripeToken"
+                = hidden_field_tag "project_id",@project.id
+                %article
+                - if flash[:error].present?
+                  %p= flash[:error]
+                %label.amount
+                  %span
+                  Valor: R$ 500,00
+                %div
+                  %label{ for: 'card-element' }
+                    Cartão de crédito
+                  #card-element
+
+                  #card-errors{ role: 'alert' }
+
+                  %button.btn-primary
+                    Pagar
+                  //%script.stripe-button{"data-amount" => "50000", "data-description" => "match payment", "data-key" => ENV["stripe_publishable_key"], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+
+                  :javascript
+                    (function () {
+                      'use strict';
+
+                      // Create a Stripe client
+
+                      var stripe = Stripe("#{ENV['stripe_publishable_key']}");
+
+
+                      // Create an instance of Elements
+                      var elements = stripe.elements();
+
+                      // Custom styling can be passed to options when creating an Element.
+                      // (Note that this demo uses a wider set of styles than the guide below.)
+                      var style = {
+                        base: {
+                          color: '#32325d',
+                          lineHeight: '18px',
+                          fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                          fontSmoothing: 'antialiased',
+                          fontSize: '16px',
+                          '::placeholder': {
+                            color: '#aab7c4'
+                          }
+                        },
+                        invalid: {
+                          color: '#fa755a',
+                          iconColor: '#fa755a'
+                        }
+                      };
+
+                      // Create an instance of the card Element
+                      var card = elements.create('card', {style: style,hidePostalCode:true});
+
+                      // Add an instance of the card Element into the `card-element` <div>
+                      card.mount('#card-element');
+
+                      function translateErrorMessages (message) {
+                        switch (message) {
+                          case 'Your card number is incomplete.':
+                            return 'O número do cartão está incompleto.';
+                          case 'Your card number is invalid.':
+                            return 'O número do cartão é inválido.';
+                          case "Your card's expiration date is incomplete.":
+                            return 'A data de expiração do cartão está incompleto.';
+                          case "Your card's security code is incomplete.":
+                            return 'O código de seguração está incompleto.';
+                          case 'Your postal code is incomplete.':
+                            return 'O código postal está incompleto.';
+                          case 'Your card was declined. Your request was in live mode, but used a known test card.':
+                            return 'O seu cartão foi recusado.';
+                          case "Your card's expiration year is invalid.":
+                            return 'A data de expiração do cartão é inválida.'
+                          default:
+                            return message;
+                        }
+                      }
+
+                      // Handle real-time validation errors from the card Element.
+                      card.addEventListener('change', function(event) {
+                        var displayError = document.getElementById('card-errors');
+
+                        if (event.error) {
+                          displayError.textContent = translateErrorMessages(event.error.message);
+                        } else {
+                          displayError.textContent = '';
+                        }
+                      });
+
+                      function stripeTokenHandler(token) {
+                        // Insert the token ID into the form so it gets submitted to the server
+                        var form = document.getElementById('payment-form');
+                        var hiddenInput = document.createElement('input');
+                        hiddenInput.setAttribute('type', 'hidden');
+                        hiddenInput.setAttribute('name', 'stripeToken');
+                        hiddenInput.setAttribute('value', token.id);
+                        form.appendChild(hiddenInput);
+
+                        // Submit the form
+                        form.submit();
+                      }
+
+                      // Handle form submission
+                      var form = document.getElementById('payment-form');
+                      form.addEventListener('submit', function(event) {
+                        event.preventDefault();
+
+                        stripe.createToken(card).then(function(result) {
+                          if (result.error) {
+                            // Inform the user if there was an error
+                            var errorElement = document.getElementById('card-errors');
+                            errorElement.textContent = result.error.message;
+                          } else {
+                            // Send the token to your server
+                            stripeTokenHandler(result.token);
+                          }
+                        });
+                      });
+                    }).call(this);
+    .col-md-3
+      = render partial: 'project_right_bar', locals: { project: @project }
+
+= render 'layouts/upme_footer'
