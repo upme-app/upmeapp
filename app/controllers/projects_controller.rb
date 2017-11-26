@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
 
   def events
     set_project
-    @events = ProjectEvent.all
+    @events = ProjectEvent.where(project_id:@project.id)
   end
 
   def payment

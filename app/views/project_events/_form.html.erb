@@ -1,0 +1,43 @@
+<%= form_for @project_event do |f| %>
+    <% if @project_event.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= "#{pluralize(@project_event.errors.count, "error")} prohibited this project_event from being saved:" %>
+          </h2>
+          <ul>
+            <% @project_event.errors.full_messages.each do |msg| %>
+                <li>
+                  <%= msg %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :project_id,'Projeto' %>
+      <%= f.select :project_id,Project.all.collect {|p| [ p.title, p.id ] }, {class: "form-control input-lg"} %>
+
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id,value: current_user.id %>
+    </div>
+    <div class="field">
+      <%= f.label :title,'Título' %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :description,'Descrição' %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :start_date,'Data Início' %>
+      <%= f.datetime_select :start_date %>
+    </div>
+    <div class="field">
+      <%= f.label :end_date,'Data Fim' %>
+      <%= f.datetime_select :end_date %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Salvar',class:'btn btn-primary' %>
+    </div>
+<% end %>
