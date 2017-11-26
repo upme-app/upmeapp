@@ -81,4 +81,15 @@ module ApplicationHelper
     current_user and current_user.aluno? ? true : false
   end
 
+  def convert_date(date)
+    date.present? ? date.strftime('%d/%m/%Y') : ''
+  end
+
+  def convert_timestamp(date)
+    date.present? ? date.strftime('%d/%m/%Y as %H:%M') : ''
+  end
+
+  def yes_no(bool)
+    bool ? "Sim" : 'Não'
+  end
 end
