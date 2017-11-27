@@ -10,7 +10,7 @@ class ExploreController < ApplicationController
     else
       @selected_areas = AreaDeInteresse.where(name: ["Engenharias", "Marketing", "Administração"])
     end
+
+    @avaliable_projects = current_user.available_projects(@selected_areas.map { |item| item.id})
   end
-
-
 end
