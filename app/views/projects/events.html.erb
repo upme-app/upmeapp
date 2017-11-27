@@ -7,11 +7,19 @@
     <div class="col-md-6">
       <div class="card card-full-width">
         <div class="card-body">
-          <h3 class="label">Tentativas de Pagamentos</h3>
+          <div class="row">
+            <div class="col">
+              <h3 class="label">Agenda</h3>
+            </div>
+            <div class="col" style="display:flex">
+              <%=link_to 'Agendar compromisso',new_project_event_path, class: 'btn-small btn-primary ml-auto'%>
+            </div>
+          </div>
           <br/>
           <br/>
           <% if @events.empty? %>
-              <div class="center-align">Nenhum</div>
+              <div class="text-center">Nenhum compromisso agendado ainda.</div>
+              <br>
           <% else %>
               <table class="bordered striped">
                 <tr>

@@ -1,30 +1,30 @@
-.areas-container
-  .container
-    .row
-      .col.m6.offset-m3
-        .text-center
-          .nav-bg-compass{style: 'width: 80px;display: block;height: 77px;background-size: 100%;margin: 0 auto;'}
-          .huge-title Escolha quais áreas de atuação você tem mais interesse:
-          %br
-          %p Gostamos de entregar ofertas que tem mais a ver com você.
-          %p Escolha as áreas de atuação que você tem mais interesse:
-          %br
-          .row
-            .col.s12
-              %span.label-upme Áreas selecionadas:
-            .col.s12
-              .tag-list
-                .upme-loading
-          .row
-            .col.s12
-              .input-field
-                %label.label-upme{:for => "input-add-tag"} Buscar áreas
-                %input#input-add-tag{:placeholder => "Escreva pelo menos 3 letras (Ex.: Adm)", :type => "text"}/
-                %br
-          .row
-            .col.s6
-              = link_to :back do
-                = button_tag 'Voltar', class: 'btn-full-width btn-upme btn-upme-gray', type: :button
-            .col.s6
-              %button#btn-save-areas-de-interesse.btn-full-width.btn-upme.btn-upme-blue{:type => "button"}
-                Salvar
+-# .areas-container
+-#   .container
+-#     .row
+-#       .col.m6.offset-m3
+-#         .text-center
+-#           .nav-bg-compass{style: 'width: 80px;display: block;height: 77px;background-size: 100%;margin: 0 auto;'}
+-#           .huge-title Escolha quais áreas de atuação você tem mais interesse:
+-#           %br
+-#           %p Gostamos de entregar ofertas que tem mais a ver com você.
+-#           %p Escolha as áreas de atuação que você tem mais interesse:
+-#           %br
+-#           .row
+-#             .col.s12
+-#               %span.label-upme Áreas selecionadas:
+-#             .col.s12
+-#               .tag-list
+-#                 .upme-loading
+-#           .row
+-#             .col.s12
+-#               .input-field
+-#                 %label.label-upme{:for => "input-add-tag"} Buscar áreas
+-#                 %input#input-add-tag{:placeholder => "Escreva pelo menos 3 letras (Ex.: Adm)", :type => "text"}/
+-#                 %br
+-#           .row
+-#             .col.s6
+-#               = link_to :back do
+-#                 = button_tag 'Voltar', class: 'btn-full-width btn-upme btn-upme-gray', type: :button
+-#             .col.s6
+-#               %button#btn-save-areas-de-interesse.btn-full-width.btn-upme.btn-upme-blue{:type => "button"}
+-#                 Salvar

@@ -278,7 +278,6 @@ a {
 
 .huge-title {
   font-family: Lato !important;
-  font-style: italic !important;
   font-weight: 800 !important;
   line-height: 48px !important;
   font-size: 48px !important;
@@ -332,7 +331,10 @@ a {
   text-align: center;
   padding: 5px;
 }
-
+.list-group-item.active {
+  background-color: $blue;
+  border-color: $blue;
+}
 .upme-action-bar-bg {
   background: #00C7FF;
   position: fixed;
@@ -340,6 +342,7 @@ a {
   height: 80px;
   bottom: 0;
   padding: 16px;
+  z-index: 9;
 }
 
 .upme-action-bar {
@@ -383,7 +386,9 @@ a {
   color: #666666 !important;
   background: #FFFFFF !important;
 }
-
+.edit_user {
+  width: 100%;
+}
 .waves-effect.waves-light-blue .waves-ripple {
   /* The alpha value allows the text and background color
   of the button to still show through. */
@@ -685,6 +690,11 @@ label {
   position: absolute;
   top: 155px;
   right: 28px;
+  border: 2px solid $border-color;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 24px;
 }
 .btn-change-profilepic {
   vertical-align: middle;
@@ -693,6 +703,11 @@ label {
   z-index: 2;
   top: -6px;
   right: 20px;
+  border: 2px solid $border-color;
+  border-radius: 4px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 24px;
 }
 .mb-16 {
   margin-bottom: 16px;
@@ -819,8 +834,6 @@ label {
   padding-top: 100px !important;
   width: 100%;
   color: #9D9D9D;
-  position: absolute;
-  bottom: 0;
   a {
     color: #9D9D9D;
     font-size: 14px;
@@ -851,13 +864,5 @@ label {
 .float-right {
   float: right;
 }
-.select2 .select2-container .select2-container--default {
-  border: 2px solid #999 !important;
-  height: 48px !important;
-}
-.select2-container--default .select2-selection--multiple .select2-selection__rendered {
-  height: 40px;
-}
-.select2-container {
-  width: 78% !important;
-}
+
+

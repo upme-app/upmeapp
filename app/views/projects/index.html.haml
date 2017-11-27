@@ -47,12 +47,13 @@
 - else
   .container
     .row
-      .col.m4.s12.offset-m4.center-align
+      .col.m4.s12.offset-m4.text-center
         %br
         %i.no-projects-icon-plus{data: {feather: 'plus-circle'}}
-        %h2.upme-sub-title.center-align
+        %h2.upme-sub-title.text-center
           Você ainda não tem
           %br projetos cadastrados :(
-        = link_to 'Cadastrar primeiro projeto', new_project_path, class: 'waves-effect waves-light btn-upme-blue'
+        %br
+        = link_to 'Cadastrar primeiro projeto', new_project_path, class: 'btn-primary'
 
 = render 'layouts/upme_footer'

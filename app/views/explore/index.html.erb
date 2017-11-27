@@ -20,6 +20,16 @@
       <div class="card">
         <div class="card-body">
           <div class="label">Categorias</div>
+          <%= form_tag explore_path, method: :get do %>
+              <% @all_areas.each do |selected_area| %>
+                  <%= label_tag selected_area.name do %>
+                      <%= check_box_tag('areas_interesse[]', value = selected_area.id,
+                                        checked =( @selected_areas.map { |item| item.id}.include? selected_area.id) , options = {}) %>
+                      <%=selected_area.name%>
+                  <% end %>
+              <% end %>
+              <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary btn-small") %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -7,12 +7,12 @@
     .col-md-6
       .card.card-full-width
         .card-body
-          %h3.label Tentativas de Pagamentos
+          %h3.label Pagamento
           %br
           %br
           - if @project.client
             - if @payments.empty?
-              .center-align Nenhum
+              -# .center-align Nenhum
             - else
               %table.bordered.striped
                 %tr
@@ -39,15 +39,17 @@
                   %p= flash[:error]
                 %label.amount
                   %span
+                  .label Taxa de operação
                   Valor: R$ 500,00
                 %div
+                  %br
                   %label{ for: 'card-element' }
-                    Cartão de crédito
+                    Insira seu cartão de crédito
                   #card-element
 
                   #card-errors{ role: 'alert' }
 
-                  %button.btn-primary
+                  %button.btn-primary.ml-auto
                     Pagar
                   //%script.stripe-button{"data-amount" => "50000", "data-description" => "match payment", "data-key" => ENV["stripe_publishable_key"], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
 
