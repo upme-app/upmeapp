@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   match 'explorar', to: 'explore#index', as: :explore, via: :get
 
+
   # PROJECTS
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo', edit: 'editar' }
   match 'meus-projetos-arquivados', as: :filed_projects, to: 'projects#filed_projects', via: :get
