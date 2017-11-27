@@ -75,6 +75,11 @@ class ProjectsController < ApplicationController
     set_project
   end
 
+  def events
+    set_project
+    @events = ProjectEvent.where(project_id:@project.id)
+  end
+
   def payment
     @payments = Payment.all.where(user_id: current_user.id)
     set_project
@@ -196,7 +201,7 @@ class ProjectsController < ApplicationController
       Notification.invite_member_solicitation(current_user, @project.user, @project)
       flash[:success] = 'Solicitação enviada!'
     else
-      flash[:danger] = 'Erro!'
+      flash[:danger] = @solicitation.errors.full_messages.join(', ')
     end
     redirect_to public_project_path(@project.id)
   end

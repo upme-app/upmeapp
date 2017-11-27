@@ -6,12 +6,18 @@
         .card.creating-project
           .card-body
             .input-field
-              = f.label :title, 'Título do projeto', class: 'label'
+              - if sou_empresa?
+                = f.label :title, 'Título da demanda', class: 'label'
+              - if sou_professor?
+                = f.label :title, 'Título do projeto', class: 'label'
               = f.text_field :title, class: 'validate form-control', placeholder: 'Escreva o titulo aqui'
               .help-text (Ex.: Planejamento estratégico, Plano de cargos e salários, Logotipo, Campanha publicitária, Projeto Arquitetônico e etc.)
             /.input-field.active
             .input-field
-              = f.label :objective, 'Objetivos do Projeto', class: 'label'
+              - if sou_empresa?
+                = f.label :objective, 'Objetivos da demanda', class: 'label'
+              - if sou_professor?
+                = f.label :objective, 'Objetivos do Projeto', class: 'label'
               = f.text_area :objective, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva aqui'
               .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
             .input-field
@@ -20,7 +26,10 @@
               .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
             
             %br
-            .label A quem o projeto se destina
+            - if sou_empresa?
+              .label Sua empresa é de natureza:
+            - if sou_professor?
+              .label A quem o projeto se destina
             .row
               .col.s4
                 = f.check_box :nat_privada, checked: 'checked'
@@ -37,7 +46,11 @@
               .help-text (Quem vai se beneficiar do projeto solicitado, qual o setor da organização e público beneficiado pelo projeto)
             
             %br
-            .label Categoria do projeto
+            - if sou_empresa?
+              .label Categoria da demanda
+            - if sou_professor?
+              .label Categoria do projeto
+              
             %select#e2.form-control{name: "areas[]", multiple: :multiple}
               - AreaDeInteresse.all.order(name: :asc).each do |a|
                 - if @selected_areas.include? a.name
@@ -58,10 +71,17 @@
               - else
                 = button_tag 'Cancelar', type: 'button', class: 'btn btn-outline-dark', :onclick => "location.href = '#{projects_path}'"
             .col-6.no-padding{style:'display:flex'}
+              
               - if action_name == 'edit'
-                = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
+                - if sou_empresa?
+                  = submit_tag 'Salvar demanda', class: 'btn btn-light ml-auto'
+                - if sou_professor?
+                  = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
               - else  
-                = submit_tag 'Publicar projeto', class: 'btn btn-light ml-auto'
+                - if sou_empresa?
+                  = submit_tag 'Salvar demanda', class: 'btn btn-light ml-auto'
+                - if sou_professor?
+                  = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
 
 :javascript
   $(document).ready(function() {

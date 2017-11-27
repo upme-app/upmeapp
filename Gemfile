@@ -31,6 +31,7 @@ gem 'sidekiq'
 gem 'select2-rails'
 gem "figaro"
 gem 'stripe'
+gem 'draper'
 
 group :development, :test do
   gem 'byebug', platform: :mri

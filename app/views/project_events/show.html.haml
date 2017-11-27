@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @project_event.project_id
+%p
+  %b User:
+  = @project_event.user_id
+%p
+  %b Title:
+  = @project_event.title
+%p
+  %b Description:
+  = @project_event.description
+%p
+  %b Start date:
+  = @project_event.start_date
+%p
+  %b End date:
+  = @project_event.end_date
+
+= link_to 'Edit', edit_project_event_path(@project_event)
+\|
+= link_to 'Back', project_events_path

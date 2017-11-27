@@ -331,7 +331,10 @@ a {
   text-align: center;
   padding: 5px;
 }
-
+.list-group-item.active {
+  background-color: $blue;
+  border-color: $blue;
+}
 .upme-action-bar-bg {
   background: #00C7FF;
   position: fixed;

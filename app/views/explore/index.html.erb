@@ -1,0 +1,58 @@
+<%= render 'layouts/upme_nav' %>
+<div class="explore-bg"></div>
+<div class="container">
+  <div class="row">
+    <div class="col m7">
+      <div class="page-header">
+        <div class="title">
+          <% if current_user.empresa? %>
+              <span>Ofertas de professores</span>
+          <% else %>
+              <span>Demandas de empresas</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col m5"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="label">Categorias</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="row">
+        <% projects_found = 0; %>
+        <% current_user.available_projects.each do |project| %>
+            <% find = false %>
+            <% project.project_area_de_interesse.each do |p| %>
+                <% find = true if @selected_areas.include? p.area_de_interesse.name %>
+            <% end %>
+            <% if find == true %>
+                <% projects_found += 1 %>
+                <%= render partial: 'projects/project_box', locals: { project: project } %>
+            <% end %>
+        <% end %>
+        <% if projects_found == 0 %>
+            <div class="upme-sub-title">Nenhum projeto foi encontrado.</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+    $(document).ready(function() {
+        $("#e1").select2({
+            tags: true,
+            multiple: true
+        });
+    });
+
+
+
+</script>
+<%= render 'layouts/upme_footer' %>
