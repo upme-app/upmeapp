@@ -28,7 +28,7 @@ class ProjectEventsController < ApplicationController
 
     respond_to do |format|
       if @project_event.save
-        format.html { redirect_to @project_event, notice: 'Project event was successfully created.' }
+        format.html { redirect_to project_path @project_event.project_id, notice: 'Project event was successfully created.' }
         format.json { render :show, status: :created, location: @project_event }
       else
         format.html { render :new }
