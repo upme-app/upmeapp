@@ -53,6 +53,9 @@ a {
   background-color: $bg-light;
   margin-right: .5rem;
 }
+.card-full-width {
+  width: 100%;
+}
 .profile-name {
   @extend .text;
 }

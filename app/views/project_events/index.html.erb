@@ -1,0 +1,46 @@
+<%= render 'layouts/upme_nav' %>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <%=link_to 'Novo Evento',new_project_event_path, class: 'btn btn-xs btn-primary pull-right'%>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="card card-full-width">
+        <div class="card-body">
+          <h3 class="label">Eventos</h3>
+          <br/>
+          <br/>
+          <% if @project_events.empty? %>
+              <div class="center-align">Nenhum</div>
+          <% else %>
+              <table class="bordered striped">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Descrição</th>
+                  <th>Data Início</th>
+                  <th>Data Fim</th>
+                  <th>Usuário</th>
+                  <th>Projeto</th>
+                </tr>
+                <% @project_events.each do |event| %>
+                    <tr>
+                      <td><%= event.title %></td>
+                      <td><%= event.description %></td>
+                      <td><%= convert_timestamp(event.start_date) %></td>
+                      <td><%= convert_timestamp(event.end_date) %></td>
+                      <td><%= event.user.full_name %></td>
+                      <td><%= link_to  event.project.title,project_path(event.project) %></td>
+                    </tr>
+                <% end %>
+              </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/upme_footer' %>

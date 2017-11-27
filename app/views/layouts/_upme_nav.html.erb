@@ -1,52 +1,61 @@
-
 <nav class="navbar navbar-expand-lg navbar-light up-navbar">
   <div class="container">
 
-  <a class="navbar-brand" href="#">
-    <%= image_tag 'app/logo-upme-vetor.svg' %>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">  
-      <li class="nav-item">
-        <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active btn btn-default' : 'btn btn-default' do %>
-          <i class="up-brieftcase"></i>
-          Demandas
-        <% end %>
-      </li>
-      <%- if current_user %>
+    <a class="navbar-brand" href="#">
+      <%= image_tag 'app/logo-upme-vetor.svg' %>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
-            <i class="up-project"></i>
-            Projetos
+          <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active btn btn-default' : 'btn btn-default' do %>
+              <i class="up-brieftcase"></i>
+              Demandas
           <% end %>
         </li>
+        <% if current_user %>
+            <li class="nav-item">
+              <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
+                  <i class="up-project"></i>
+                  Projetos
+              <% end %>
+            </li>
+        <% end %>
+        <% if current_user %>
+            <li class="nav-item">
+              <%= link_to project_events_path, class: controller_name == 'project_events' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
+                  <i class="up-calendar"></i>
+                  Eventos
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+      <% unless sou_aluno? %>
+          <form class="form-inline ml-auto">
+            <%= link_to 'Criar projeto', new_project_path, class: 'btn btn-primary' %>
+          </form>
+      <% end %>
+    </div>
+    <ul class="navbar-nav ml-auto">
+      <% if current_user %>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= render 'profile/update_profile_picture' %>
+          </a>
+          <li class="nav-item dropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to my_profile_path, class: 'dropdown-item' do %>
+                  Meu perfil
+              <%- end %>
+              <%= link_to 'Conta', my_account_path, class: 'dropdown-item' %>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+            </div>
+          </li>
       <% end %>
     </ul>
-    <form class="form-inline ml-auto">
-           <%= link_to 'Criar projeto', new_project_path, class: 'btn btn-primary' %>
-    </form>
   </div>
-  <ul class="navbar-nav ml-auto">
-    <%- if current_user %>
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <%= render 'profile/update_profile_picture' %>
-    </a>
-    <li class="nav-item dropdown">
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <%= link_to my_profile_path, class: 'dropdown-item' do %>
-        Meu perfil
-        <%- end %>
-        <%= link_to 'Conta', my_account_path, class: 'dropdown-item' %>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-      </div>
-    </li>
-    <% end %>
-  </ul>
-</div>
 
 </nav>
 <%= render 'layouts/upme_flash' %>
