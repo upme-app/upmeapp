@@ -2,48 +2,56 @@
 
 <div class="container">
   <div class="row">
-    <div class="col s12 m2"></div>
-    <div class="col s12 m8">
+    <div class="col-12 col-md-3"></div>
+    <div class="col-12 col-md-6">
       <br>
-      <h5 class="upme-sub-title">Alterar Minha Conta</h5>
-      <div class="paper-box">
+      <h5 class="upme-sub-title">Alterar minha conta</h5>
+      <div class="card">
+      <div class="card-body">
         <div class="row">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= devise_error_messages! %>
 
-            <div class="col s12">
+            <div class="col">
               <span class="upme-bolder"> Email</span><br />
-              <%= f.email_field :email, class: 'validate upme-input-small' %>
+              <%= f.email_field :email, class: 'validate form-control' %>
             </div>
 
-            <div class="col s12">
+            <div class="col">
               <span class="upme-bolder"> Senha atual</span><br />
               <span class="help-text">Precisamos da sua senha para alterar estes dados</span>
-              <%= f.password_field :current_password, autocomplete: "off" %>
+              <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
             </div>
 
 
-              <div class="col s12">
+              <div class="col">
               <span class="upme-bolder"> Senha nova</span><br>
               <span class="help-text">Deixe em branco se você não deseja alterar</span>
-              <%= f.password_field :password, autocomplete: "off" %>
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
             </div>
 
-            <div class="col s12">
+            <div class="col">
               <span class="upme-bolder"> Confirme sua nova senha</span><br />
               <span class="help-text">No mínimo <%= @minimum_password_length %> caracteres</span>
-              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
             </div>
+            <div class="col">
 
-            <div class="col s12 right-align">
-              <%= link_to 'Cancelar', my_profile_path, class: 'waves-effect waves-light btn-upme-outline-grey' %>
-              <%= f.submit "Salvar", class: 'waves-effect waves-light btn-upme-blue' %>
+              <div class="row">
+                <div class="col-6" style="display:flex">
+                  <%= link_to 'Cancelar', my_profile_path, class: 'btn-default' %>
+                </div>
+                <div class="col-6" style="display:flex">
+                  <%= f.submit "Salvar", class: 'btn-primary ml-auto' %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
       </div>
+      </div>
     </div>
-    <div class="col s12 m2"></div>
+    <div class="col m2"></div>
   </div>
 </div>
 

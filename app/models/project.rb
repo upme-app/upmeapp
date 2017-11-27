@@ -53,12 +53,14 @@ class Project < ApplicationRecord
     Project.where(deleted: false)
   end
 
-  def self.available_empresa_projects
-    Project.joins(:user).not_deleted.not_started.where('users.user_type != ?', User.user_types[:empresa])
+  def self.available_empresa_projects(project_areas_de_interesse=nil)
+    Project.joins(:user,:project_area_de_interesse).not_deleted.not_started
+        .where('users.user_type != ? and project_area_de_interesses.id in (?)', User.user_types[:empresa],project_areas_de_interesse)
   end
 
-  def self.available_aluno_projects
-    Project.joins(:user).not_deleted.not_started.where('users.user_type = ?', User.user_types[:empresa])
+  def self.available_aluno_projects(project_areas_de_interesse=nil)
+    Project.joins(:user,:project_area_de_interesse).not_deleted.not_started.
+        where('users.user_type = ? and project_area_de_interesses.id in (?)', User.user_types[:empresa],project_areas_de_interesse)
   end
 
   def self.projects_running

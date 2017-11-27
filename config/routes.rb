@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :project_events,path: 'eventos'
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
 
   match 'explorar', to: 'explore#index', as: :explore, via: :get
 
+
   # PROJECTS
   resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo', edit: 'editar' }
   match 'meus-projetos-arquivados', as: :filed_projects, to: 'projects#filed_projects', via: :get
@@ -35,6 +37,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/duplicar', as: :duplicate_project, to: 'projects#duplicate', via: :get
   match 'meus-projetos/:id/restaurar', as: :restore_project, to: 'projects#restore', via: :get
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
+  match 'meus-projetos/:id/eventos', as: :events, to: 'projects#events', via: :get
   match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get

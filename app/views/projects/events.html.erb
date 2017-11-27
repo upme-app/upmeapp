@@ -1,0 +1,49 @@
+<%= render 'layouts/upme_nav' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: 'project_tabs', locals: {project: @project} %>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-full-width">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h3 class="label">Agenda</h3>
+            </div>
+            <div class="col" style="display:flex">
+              <%=link_to 'Agendar compromisso',new_project_event_path, class: 'btn-small btn-primary ml-auto'%>
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <% if @events.empty? %>
+              <div class="text-center">Nenhum compromisso agendado ainda.</div>
+              <br>
+          <% else %>
+              <table class="bordered striped">
+                <tr>
+                  <th>Titulo</th>
+                  <th>Data Início</th>
+                  <th>Data Fim</th>
+                  <th>Usuário</th>
+                </tr>
+                <% @events.each do |event| %>
+                    <tr>
+                      <td><%= event.title %></td>
+                      <td><%= convert_timestamp(event.start_date) %></td>
+                      <td><%= convert_timestamp(event.end_date) %></td>
+                      <td><%= event.user.full_name %></td>
+                    </tr>
+                <% end %>
+              </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= render partial: 'project_right_bar', locals: {project: @project} %>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/upme_footer' %>
