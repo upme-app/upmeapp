@@ -35,7 +35,7 @@ class ProjectUploadsController < ApplicationController
   end
 
   def delete
-
+    redirect_to project_uploads_path(@project.id)
   end
 
   def set_project
