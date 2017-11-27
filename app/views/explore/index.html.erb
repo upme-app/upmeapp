@@ -20,23 +20,26 @@
       <div class="card">
         <div class="card-body">
           <div class="label">Categorias</div>
+          <%= form_tag explore_path, method: :get do %>
+              <% @all_areas.each do |selected_area| %>
+                  <%= label_tag selected_area.name do %>
+                      <%= check_box_tag('areas_interesse[]', value = selected_area.id,
+                                        checked =( @selected_areas.map { |item| item.id}.include? selected_area.id) , options = {}) %>
+                      <%=selected_area.name%>
+                  <% end %>
+              <% end %>
+              <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary") %>
+          <% end %>
         </div>
       </div>
     </div>
     <div class="col-lg-9">
       <div class="row">
-        <% projects_found = 0; %>
-        <% current_user.available_projects.each do |project| %>
-            <% find = false %>
-            <% project.project_area_de_interesse.each do |p| %>
-                <% find = true if @selected_areas.include? p.area_de_interesse.name %>
+        <% if @avaliable_projects.any? %>
+            <% @avaliable_projects.each do |project| %>
+                <%= render partial: 'projects/project_box', locals: {project: project} %>
             <% end %>
-            <% if find == true %>
-                <% projects_found += 1 %>
-                <%= render partial: 'projects/project_box', locals: { project: project } %>
-            <% end %>
-        <% end %>
-        <% if projects_found == 0 %>
+        <% else %>
             <div class="upme-sub-title">Nenhum projeto foi encontrado.</div>
         <% end %>
       </div>
@@ -45,13 +48,12 @@
 </div>
 <script>
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#e1").select2({
             tags: true,
             multiple: true
         });
     });
-
 
 
 </script>
