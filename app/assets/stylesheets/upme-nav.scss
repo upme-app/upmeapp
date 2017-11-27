@@ -35,12 +35,6 @@
   border-bottom: 4px solid #00C7FF;
 }
 
-.nav-bell-active {
-  color: #00C7FF;
-  background-image: image_url('app/nav/bell-hover.svg') !important;
-  border-bottom: 4px solid #00C7FF;
-}
-
 .upme-nav-clipboard-active div {
   color: #00C7FF;
   background-image: image_url('app/nav/clipboard-hover.svg');
@@ -50,9 +44,6 @@
 
 .nav-bg-user { background-image: image_url('app/nav/user.svg'); }
 .nav-bg-user:hover { background-image: image_url('app/nav/user-hover.svg'); }
-
-.nav-bg-bell { background-image: image_url('app/nav/bell.svg'); }
-.nav-bg-bell:hover { background-image: image_url('app/nav/bell-hover.svg'); }
 
 .nav-bg-clipboard { background-image: image_url('app/nav/clipboard.svg'); }
 .nav-bg-clipboard:hover { background-image: image_url('app/nav/clipboard-hover.svg'); }

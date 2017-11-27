@@ -31,6 +31,16 @@
               <% end %>
             </li>
         <% end %>
+        <%= link_to '#', onclick: "show_notifications()",class: 'nav-item', id: 'notifications-link' do %>
+        <i id='btn-bell' class="open-upme-notifications btn-default nav-bg-bell up-bell">
+        </i>
+        <%- if current_user.unread_notifications_size > 0 %>
+          <div id='unread-notifications-size'>
+            <%= current_user.unread_notifications_size %>
+          </div>
+        <%- end %>
+        
+      <% end %>
         <!-- <% if current_user %>
             <li class="nav-item">
               <%= link_to project_events_path, class: controller_name == 'project_events' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
@@ -40,6 +50,7 @@
             </li>
         <% end %> -->
       </ul>
+     
       <% if sou_empresa? %>
           <form class="form-inline ml-auto">
             <%= link_to 'Criar demanda', new_project_path, class: 'btn btn-primary' %>
@@ -50,7 +61,7 @@
             <%= link_to 'Criar projeto', new_project_path, class: 'btn btn-primary' %>
           </form>
       <% end %>
-
+          
     </div>
     <ul class="navbar-nav ml-auto">
       <% if current_user %>
@@ -70,7 +81,55 @@
     </ul>
   </div>
 </div>
-
-
 </nav>
+<div id="upme-notifications">
+  <%- current_user.notifications.reverse.each do |notification| %>
+    <%= link_to notification.url + "?read_notification=#{notification.id}" do %>
+      <div class="upme-notification <%= 'upme-notification-read' if !notification.read %>">
+        <%= notification.description.capitalize %>
+        <br>
+        <span class="notification-date">
+          <%= l notification.created_at %>
+        </span>
+      </div>
+    <% end %>
+  <% end %>
+  <%- if current_user.notifications.size == 0 %>
+    Nenhuma notificação.
+  <% end %>
+</div>
+<script type="text/javascript" charset="utf-8">
+
+  $('#upme-notifications').hide();
+
+  function show_notifications() {
+    $('#btn-bell').addClass('nav-bell-active');
+    $('#upme-notifications').slideDown('fast');
+  }
+
+  function hide_notifications() {
+    $('#btn-bell').removeClass('nav-bell-active');
+    $('#upme-notifications').slideUp('fast');
+  }
+
+  $(document).click(function(event) {
+    if(!$(event.target).hasClass('open-upme-notifications') && !$(event.target).hasClass('upme-notification')) {
+      hide_notifications();
+    }
+  });
+
+  $(".button-collapse").sideNav()
+
+  $('.dropdown-button').dropdown({
+    inDuration: 300,
+    outDuration: 225,
+    constrainWidth: false, // Does not change width of dropdown to that of the activator
+    gutter: 0, // Spacing from edge
+    belowOrigin: false, // Displays dropdown below the button
+    alignment: 'right', // Displays dropdown with edge aligned to the left of button
+    stopPropagation: false // Stops event propagation
+  });
+       
+</script>
+
 <%= render 'layouts/upme_flash' %>
