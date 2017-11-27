@@ -10,24 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126212734) do
+ActiveRecord::Schema.define(version: 20171127221113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "area_de_interesses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "area_not_found_notifications", force: :cascade do |t|
-    t.integer  "area_de_interesse_id"
-    t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["area_de_interesse_id"], name: "index_area_not_found_notifications_on_area_de_interesse_id", using: :btree
-    t.index ["user_id"], name: "index_area_not_found_notifications_on_user_id", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "client_solicitations", force: :cascade do |t|
@@ -439,8 +431,6 @@ ActiveRecord::Schema.define(version: 20171126212734) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "area_not_found_notifications", "area_de_interesses", column: "area_de_interesse_id"
-  add_foreign_key "area_not_found_notifications", "users"
   add_foreign_key "client_solicitations", "projects"
   add_foreign_key "client_solicitations", "users"
   add_foreign_key "invite_emails", "projects"
