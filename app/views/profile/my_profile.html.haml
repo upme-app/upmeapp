@@ -6,86 +6,90 @@
     .col-12.col-md-8
       %br
       %h5.upme-sub-title Meu Perfil
-      .paper-box
-        .row
-          .col-12.col-md-3
-            .profile-photo-container
-              = render 'profile/update_profile_picture'
-              = render 'profile/update_logo'
-              .center-align
-                = link_to 'Editar Perfil', edit_profile_path, class: 'btn-primary'
-          .col-12.col-md-9
-            %h4.huge-title
-              - if current_user.empresa?
-                .label Nome da empresa
-                = complete_seu_cadastro(current_user.nome_empresa, '')
-              - else
-                = current_user.full_name
+      .card
+        .card-body
+          .row
+            .col-12.col-md-3
+              .profile-photo-container
+                = render 'profile/update_profile_picture'
+                = render 'profile/update_logo'
+                .center-align
+            .col-12.col-md-9
             
-            .row
-              .col-12
+              %h4.title
                 - if current_user.empresa?
-                  .label Nome
-                  %div= current_user.full_name
-                 
-                .label Sobre você
-                %div= complete_seu_cadastro(current_user.about)
+                  .label Nome da empresa
+                  = complete_seu_cadastro(current_user.nome_empresa, '')
+                - else
+                  = current_user.full_name
+              
+              .row
+                .col-12
+                  - if current_user.empresa?
+                    .label Nome
+                    %div= current_user.full_name
+                  
+                  .label Sobre você
+                  %div= complete_seu_cadastro(current_user.about)
 
-                .label Linkedin
-                %div= complete_seu_cadastro(current_user.linkedin)
-                
-              .col-12.no-padding
-                .col-12.col-md-6
-                  - if current_user.aluno? or current_user.professor?
-                    .label Universidade
-                    %div= complete_seu_cadastro(current_user.universidade)
-                  - if current_user.aluno?
-                    .label Curso(s)
-                    %div= complete_seu_cadastro(current_user.curso)
-                    .label Semestre
-                    %div= complete_seu_cadastro(current_user.semestre)
-                  - unless current_user.empresa?
+                  .label Linkedin
+                  %div= complete_seu_cadastro(current_user.linkedin)
+                  
+                .col-12
+                  .row
+                    .col-12.col-md-6
+                      - if current_user.aluno? or current_user.professor?
+                        .label Universidade
+                        %div= complete_seu_cadastro(current_user.universidade)
+                      - if current_user.aluno?
+                        .label Curso(s)
+                        %div= complete_seu_cadastro(current_user.curso)
+                        .label Semestre
+                        %div= complete_seu_cadastro(current_user.semestre)
+                      - unless current_user.empresa?
+                        .label Cidade
+                        %div= complete_seu_cadastro(current_user.city)
+                    -# .col-12.m12
+                    -#   .label Área(s) de interesse
+                    -#   - current_user.user_area_de_interesse.each do |ua|
+                    -#     .tag-upme-blue.mb-16= ua.area_de_interesse.name
+                    -#   %br
+                    -#   = link_to 'Editar área(s)', areas_de_interesse_path, class: 'btn-upme-outline-grey btn-small'
+                - if current_user.empresa?
+                  .col-12
+                    .label
+                      - if current_user.fisica?
+                        %input{type: 'radio', checked: true}= 'Pessoa Física' 
+                    .label
+                      - if current_user.juridica?
+                        %input{type: 'radio', checked: true}= 'Pessoa Jurídica'
+                  .col-12
+                    .label CPF/CNPJ
+                    %div= current_user.cpf
+                  .col-12
+                    .label Telefone para contato 
+                    %div= current_user.telefone
+                  .col-12.m9
+                    .label Endereço
+                    %div= current_user.endereco
+                  .col-12.m3
+                    .label Número
+                    %div= current_user.numero 
+                  .col-12.m5
+                    .label Bairro
+                    %div= current_user.bairro
+                  .col-12.m4
                     .label Cidade
-                    %div= complete_seu_cadastro(current_user.city)
-                .col-12.m12
-                  .label Área(s) de interesse
-                  - current_user.user_area_de_interesse.each do |ua|
-                    .tag-upme-blue.mb-16= ua.area_de_interesse.name
-                  %br
-                  = link_to 'Editar área(s)', areas_de_interesse_path, class: 'btn-upme-outline-grey btn-small'
-              - if current_user.empresa?
-                .col-12
-                  .label
-                    - if current_user.fisica?
-                      %input{type: 'radio', checked: true}= 'Pessoa Física' 
-                  .label
-                    - if current_user.juridica?
-                      %input{type: 'radio', checked: true}= 'Pessoa Jurídica'
-                .col-12
-                  .label CPF/CNPJ
-                  %div= current_user.cpf
-                .col-12
-                  .label Telefone para contato 
-                  %div= current_user.telefone
-                .col-12.m9
-                  .label Endereço
-                  %div= current_user.endereco
-                .col-12.m3
-                  .label Número
-                  %div= current_user.numero 
-                .col-12.m5
-                  .label Bairro
-                  %div= current_user.bairro
-                .col-12.m4
-                  .label Cidade
-                  %div= current_user.cidade
-                .col-12.m3
-                  .label UF
-                  %div= current_user.uf
-                .col-12
-                  .label CEP
-                  %div= current_user.cep
-
+                    %div= current_user.cidade
+                  .col-12.m3
+                    .label UF
+                    %div= current_user.uf
+                  .col-12
+                    .label CEP
+                    %div= current_user.cep
+          .col{style: 'display:flex'}
+            = link_to 'Editar Perfil', edit_profile_path, class: 'btn-primary ml-auto'
+          
 
     .col-12.m2
 
