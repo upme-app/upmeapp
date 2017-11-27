@@ -61,11 +61,11 @@ class User < ApplicationRecord
     true
   end
 
-  def available_projects
+  def available_projects(project_areas_de_interesse=nil)
     if empresa?
-      Project.available_empresa_projects
+      Project.available_empresa_projects(project_areas_de_interesse)
     else
-      Project.available_aluno_projects
+      Project.available_aluno_projects(project_areas_de_interesse)
     end
   end
 
