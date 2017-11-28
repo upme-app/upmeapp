@@ -18,7 +18,7 @@
                 - if current_user.billing_data_is_complete?
                   %div
                     .label Ficou interessado no projeto?
-                    .btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
+                    .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
                 - else
                   .box-blue.text-left
                     .title.upme-sub-title Ficou interessado no projeto?
@@ -30,7 +30,7 @@
 
               - if (current_user.aluno? or current_user.professor?) and !@project.started and !MemberSolicitation.solicitation_exists(@project, current_user) and @project.user_id != current_user.id
                 .label Ficou interessado no projeto?
-                %a.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
+                .btn.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
               - if @project.has_user current_user
                 .help-text Você é membro deste projeto
                 %br
@@ -39,13 +39,17 @@
     .col-12.col-md-6
       .card
         .card-body
-          %h1.huge-title= @project.title
+          .title= @project.title
           %br
-          .label-upme Objetivo deste projeto
+          .label Objetivo deste projeto
           %p= @project.objective
-          .label-upme Público-alvo
+          %br
+          
+          .label Público-alvo
           %p= @project.target_audience
-          .label-upme Mais informações
+          %br
+          
+          .label Mais informações
           %p= @project.description
 
           = render partial: 'natureza_project'
@@ -62,12 +66,12 @@
         %p.help-text
           %i{data: {feather: "help-circle"}}
           Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
+        %br
         .label Edite sua mensagem
         = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
       .modal-footer
-        .col.s12
-          %button.btn-default{type: :button} Cancelar
-          %button.btn-primary Enviar Solicitação
+        %button.btn-default{type: :button} Cancelar
+        %button.btn-primary Enviar Solicitação
 
 #modal2.modal.fade
   = form_tag add_member_solicitation_path(@project.id), class: 'modal-dialog' do
@@ -78,6 +82,7 @@
         %p.help-text
           %i{data: {feather: "help-circle"}}
           Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
+        %br
         .label Edite sua mensagem
         = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
       .modal-footer
