@@ -1,0 +1,142 @@
+/* line 1, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post {
+  max-width: 970px;
+  margin: 0px auto;
+  text-align: left;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 26px;
+  font-size: 18px;
+  color: #4F4F4F;
+}
+
+/* line 15, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+h1, h2, h3, h4, h5, h6 {
+  text-align: left;
+  font-family: Lato;
+  color: #333333;
+}
+
+/* line 21, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post figure {
+  text-align: center;
+}
+
+/* line 26, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+h2 {
+  line-height: 42px;
+  font-size: 42px;
+}
+
+/* line 31, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.first_post_image {
+  width: 100%;
+}
+
+/* line 35, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post-image {
+  max-width: 100%;
+}
+
+/* line 39, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.category_bar {
+  height: 78px;
+  width: 100%;
+  background: #00C7FF;
+  display: block;
+}
+
+/* line 47, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.left-bar {
+  padding: 60px 25px 15px 25px;
+}
+
+/* line 51, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.right-bar {
+  padding: 60px 25px 15px 25px;
+}
+
+/* line 55, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post-row {
+  padding: 15px;
+}
+
+/* line 59, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post-logo-top {
+  width: 100%;
+  height: 400px;
+  background-position: center center;
+  background-size: 100% auto;
+}
+
+/* line 66, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post-title {
+  font-style: italic;
+  font-weight: 800;
+  line-height: 43px;
+  font-size: 42px;
+  color: #333333;
+}
+
+/* line 74, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.huge-title {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 800;
+  line-height: 53px;
+  font-size: 52px;
+  color: #232323;
+}
+
+/* line 85, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.small-title {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 800;
+  line-height: 28px;
+  font-size: 26px;
+  color: #232323;
+}
+
+/* line 94, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post-list-title {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 33px;
+  font-size: 32px;
+  color: #333333;
+}
+
+/* line 103, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.post-list-subtitle {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 18px;
+  color: #4F4F4F;
+}
+
+/* line 112, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.blue-label {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 800;
+  line-height: normal;
+  font-size: 18px;
+  color: #00C7FF;
+}
+
+/* line 122, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/default/application.css.scss */
+.input-search-blog {
+  border: 2px solid #828282;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Lato;
+  line-height: normal;
+  font-size: 16px;
+  color: #BDBDBD;
+  padding: 6px 12px;
+}
