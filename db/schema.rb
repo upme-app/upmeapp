@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126212734) do
+ActiveRecord::Schema.define(version: 20171128042112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "area_de_interesses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "area_not_found_notifications", force: :cascade do |t|
@@ -386,6 +387,7 @@ ActiveRecord::Schema.define(version: 20171126212734) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.datetime "check_date"
+    t.text     "feedback"
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
 

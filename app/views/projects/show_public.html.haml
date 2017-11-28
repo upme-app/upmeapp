@@ -3,82 +3,94 @@
 .container{style: 'margin-top: 30px'}
   .row
     .col-12.col-md-3
-      = link_to '< Voltar', :back, class: 'btn-upme-outline-grey btn-small'
+      = link_to '< Voltar', :back, class: 'btn-default btn-small'
       %br
       %br
+      
+      .card
+        .card-body
+          .center-align
+            - if current_user
+              - if ClientSolicitation.solicitation_exists(@project, current_user) or MemberSolicitation.solicitation_exists(@project, current_user)
+                Aguardando resposta.
 
-      .center-align
-        - if current_user
-          - if ClientSolicitation.solicitation_exists(@project, current_user) or MemberSolicitation.solicitation_exists(@project, current_user)
-            Aguardando resposta.
+              - if current_user.empresa? and !@project.started and !ClientSolicitation.solicitation_exists(@project, current_user) and @project.user_id != current_user.id
+                - if current_user.billing_data_is_complete?
+                  %div
+                    .label Ficou interessado no projeto?
+                    .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
+                - else
+                  .box-blue.text-left
+                    .title.upme-sub-title Ficou interessado no projeto?
+                    %br
+                    %p Complete as informações no seu perfil para enviar uma mensagem.
+                    %br
+                    = link_to edit_billing_back_to_project_path(@project.id) do
+                      .btn-upme-outline-grey.btn-small Adicionar!
 
           - if current_user.empresa? and !@project.started and !ClientSolicitation.solicitation_exists(@project, current_user) and @project.user_id != current_user.id
             - if current_user.billing_data_is_complete?
               %div
-                %a.btn-primary{data: {toggle: "modal", target: "#modal2"} } Tenho interesse!
+                %a.btn-primary{data: {toggle: "modal", target: "#modal1"} } Tenho interesse!
             - else
               .box-blue.text-left
                 .title.upme-sub-title Ficou interessado no projeto?
-                %br
-                %p Complete as informações no seu perfil para enviar uma mensagem.
-                %br
-                = link_to edit_billing_back_to_project_path(@project.id) do
-                  .btn-upme-outline-grey.btn-small Adicionar!
 
-          - if (current_user.aluno? or current_user.professor?) and !@project.started and !MemberSolicitation.solicitation_exists(@project, current_user) and @project.user_id != current_user.id
-            %div
-              %a.btn-primary{data: {toggle: "modal", target: "#modal1"} } Tenho interesse!
-          - if @project.has_user current_user
-            .help-text Você é membro deste projeto
-            %br
-            = link_to 'Área Privada', project_path(@project)
+                %br
+                = link_to 'Área Privada', project_path(@project)
       %br
-    .col.s12.m8
-      .paper-box
-        %h1.huge-title= @project.title
-        %br
-        .label-upme Objetivo deste projeto
-        %p= @project.objective
-        .label-upme Público-alvo
-        %p= @project.target_audience
-        .label-upme Mais informações
-        %p= @project.description
+    .col-12.col-md-6
+      .card
+        .card-body
+          .title= @project.title
+          %br
+          .label Objetivo deste projeto
+          %p= @project.objective
+          %br
+          
+          .label Público-alvo
+          %p= @project.target_audience
+          %br
+          
+          .label Mais informações
+          %p= @project.description
 
-        = render partial: 'natureza_project'
+          = render partial: 'natureza_project'
 
-
-    .col.s12.m2
+    .col-12.col-md-3
       = render partial: 'project_team'
 
-#modal1.modal
-  = form_tag add_client_solicitation_path(@project.id) do
+#modal1.modal.fade
+  = form_tag add_client_solicitation_path(@project.id), class: 'modal-dialog' do
     .modal-content
-      .modal-title Mostre seu interesse
-      %p.help-text
-        %i{data: {feather: "help-circle"}}
-        Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
-      .label-upme Edite sua mensagem
-      = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "materialize-textarea"
-    .modal-footer.row
-      .col.s12
-        %button.waves-effect.waves-light.btn-upme-outline-grey.modal-close{type: :button} Cancelar
-        %button.waves-effect.waves-light.btn-upme-blue Enviar Solicitação
-
-#modal2.modal.face
-  = form_tag add_member_solicitation_path(@project.id) do
-    .modal-dialog
-      .modal-content
-        .modal-header
-          .modal-title Mostre seu interesse
+      .modal-header
+        .modal-title Mostre seu interesse
       .modal-body
         %p.help-text
           %i{data: {feather: "help-circle"}}
           Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
-        .label-upme Edite sua mensagem
-        = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "materialize-textarea"
-    .modal-footer
-      %button.btn-primary{type: :button} Cancelar
-      %button.btn-default Enviar Solicitação
+        %br
+        .label Edite sua mensagem
+        = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
+      .modal-footer
+        %button.btn-default{type: :button} Cancelar
+        %button.btn-primary Enviar Solicitação
+
+#modal2.modal.fade
+  = form_tag add_member_solicitation_path(@project.id), class: 'modal-dialog' do
+    .modal-content
+      .modal-header
+        .modal-title Mostre seu interesse
+      .modal-body
+        %p.help-text
+          %i{data: {feather: "help-circle"}}
+          Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
+        %br
+        .label Edite sua mensagem
+        = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
+      .modal-footer
+        %button.btn-default{type: :button} Cancelar
+        %button.btn-primary Enviar Solicitação
 
 = render 'layouts/upme_footer'
 
