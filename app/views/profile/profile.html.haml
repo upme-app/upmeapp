@@ -6,39 +6,40 @@
     .col-12.col-md-8
       %br
       %h5.upme-sub-title Perfil
-      .paper-box
-        .row
-          .col.s12.m3
-            .profile-photo-container.center-align
-              = image_tag profilepic(@user), class: 'circle', width: '130px', id: 'img-profilepic'
-              = image_tag logourl(@user), class: 'circle', width: '130px', class: 'profile-company-logo'
-          .col.s12.m9.m-margin-top-48
-            - if @user.empresa?
-              .huge-title=@user.nome_empresa
-              .label-upme Nome
-              =@user.full_name
-            - else
-              .huge-title=@user.full_name
-            .row
-              .col.s12
-                
-                .label-upme Sobre mim
-                %div= @user.about
-                .label-upme Linkedin
-                %div= @user.linkedin
-              .col.s12.no-padding
-                .col.s12.m12
-                  - if @user.aluno?
-                    .label-upme Universidade
-                    %div= @user.universidade
-                    .label-upme Semestre
-                    %div= @user.semestre
-                  .label-upme Cidade
-                  %div= @user.city
-                .col.s12.m12
-                  .label-upme Área(s) de interesse
-                  - @user.user_area_de_interesse.each do |ua|
-                    .tag-upme-blue.mb-16= ua.area_de_interesse.name
+      .card
+        .card-body
+          .row
+            .col.s12.m3
+              .profile-photo-container.center-align
+                = image_tag profilepic(@user), class: 'circle', width: '130px', id: 'img-profilepic'
+                = image_tag logourl(@user), class: 'circle', width: '130px', class: 'profile-company-logo'
+            .col.s12.m9.m-margin-top-48
+              - if @user.empresa?
+                .huge-title=@user.nome_empresa
+                .label-upme Nome
+                =@user.full_name
+              - else
+                .huge-title=@user.full_name
+              .row
+                .col.s12
+                  
+                  .label-upme Sobre mim
+                  %div= @user.about
+                  .label-upme Linkedin
+                  %div= @user.linkedin
+                .col.s12.no-padding
+                  .col.s12.m12
+                    - if @user.aluno?
+                      .label-upme Universidade
+                      %div= @user.universidade
+                      .label-upme Semestre
+                      %div= @user.semestre
+                    .label-upme Cidade
+                    %div= @user.city
+                  .col.s12.m12
+                    .label-upme Área(s) de interesse
+                    - @user.user_area_de_interesse.each do |ua|
+                      .tag-upme-blue.mb-16= ua.area_de_interesse.name
     .col-md-2
 
 = render 'layouts/upme_footer'
