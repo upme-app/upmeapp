@@ -10,18 +10,22 @@
           - if @project.member_solicitations.empty?
             .upme-sub-title Nenhuma solicitação.
           - @project.member_solicitations.each do |cs|
-            .col.s2
-              = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'
+            .card{style: 'border: 1px solid #eee'}
+              .card-body
+                .col.s2
+                  = link_to profile_path(cs.user), class: 'profile-small' do
+                    .profile-image  
+                      = image_tag profilepic(cs.user), class: 'circle', width: '100px', id: 'img-profilepic'
+                    .profile-name= cs.user.full_name
             
-            .col.s9
-              .upme-sub-title= cs.user.full_name
-              .row
-                .col.s12
-                %br
-                %p= cs.message
-                %br
-                = link_to 'Aceitar', accept_member_solicitation_path(cs.id), class: 'waves-effect waves-light btn-upme-blue'
-                = link_to 'Recusar', refuse_member_solicitation_path(cs.id), class: 'waves-effect waves-dark btn-upme-outline-grey'
+                .col.s9
+                  .row
+                    .col.s12
+                    %br
+                    %p= cs.message
+                    %br
+                    = link_to 'Aceitar', accept_member_solicitation_path(cs.id), class: 'btn btn-primary'
+                    = link_to 'Recusar', refuse_member_solicitation_path(cs.id), class: 'btn btn-default'
     .col-12.col-md-3
       = render partial: 'project_right_bar', locals: { project: @project }
 
