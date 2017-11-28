@@ -21,7 +21,7 @@
   function refresh_timeline(html) {
     $( "#timeline" ).html( html );
     $( '.upme-loading').hide();
-    $( '.modal' ).modal();
+    //$( '.modal' ).modal();
 
     $('.edit-step-data').click(function(event) {
       event.stopPropagation();
@@ -44,7 +44,6 @@
       });
     });
 
-    $('.collapsible').collapsible();
 
     if($('#scroll-here').length) {
       $('html,body').animate({scrollTop: $('#scroll-here').offset().top});
