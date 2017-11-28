@@ -3,16 +3,16 @@
 = render partial: 'project_team'
 
 - if @project.client_id != current_user.id
-  %a.btn-primary{data: {toggle: "modal", target: "#invitation-modal"}}
+  .btn.btn-primary{data: {toggle: "modal", target: "#invitation-modal"}}
     Convide seu time
 
 .modal.fade#invitation-modal
-   = form_tag invite_user_to_project_path(@project.id), class: 'modal-dialog' do |f|
+  = form_tag invite_user_to_project_path(@project.id), class: 'modal-dialog' do |f|
     .modal-content
       .modal-header
         .modal-title Convide seu time
       .modal-body
-          = text_field_tag :email, '', class: 'form-control', placeholder: 'Digite o email de quem você quer convidar.'
+        = text_field_tag :email, '', class: 'form-control', placeholder: 'Digite o email de quem você quer convidar.'
       .modal-footer
         %a.btn-default{data: {dismiss: "modal"}} Cancelar
         %button.btn-primary{type: :submit} Convidar

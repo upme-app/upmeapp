@@ -1,3 +1,9 @@
-// Place all the styles related to the timeline controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import '_variables';
+
+.collapsible.timeline-step-header {
+    border: 2px solid $border-color !important;
+}
+.timeline-ul {
+    padding-left: 0;
+    margin: 0;
+}

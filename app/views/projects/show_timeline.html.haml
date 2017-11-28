@@ -2,72 +2,78 @@
 #calendargem
 
 .timeline
-  %ul.collapsible{data: {collapsible: 'expandable'}}
+  %ul.timeline-ul{data: {collapsible: 'expandable'}}
     - @project.ordered_timeline_steps.each_with_index do |step, index|
-      %li
-        .collapsible-header.timeline-step-header{class: (@selected_step == step.id) ? 'active' : ''}
-          .timeline-step-check
-          .col.s3
-            .label-upme= "Etapa 0#{index+1}"
-          .col.s9.right-align
-            .label-upme
-              - if step.entregue?
-                .label-green= "Entregue #{l step.check_date}"
-              - else
-                - if current_user.can_edit_step_entrega?(@project, step)
-                  - modal_id = "modal-update-date#{step.id}"
-
-                  .modal{id: modal_id}
-                    = form_tag update_timeline_date_path(@project.id, step.id), method: :post do
-                      .modal-content
-                        %h4= "Alterar data de entrega da etapa 0#{index+1}"
-                        .row
-                          .col.s12.m4
-                          .col.s12.m4
-                            = date_field_tag :date, nil
-                      .modal-footer.row
-                        .col.s12.right-align
-                          %button.waves-effect.waves-light.btn{type: 'submit'} Salvar
-
-                  %button.waves-effect.waves-light-black.btn-upme-outline-grey.btn-small.edit-step-data{data: {modal: modal_id}}
-                    Editar data
-                  &nbsp
-                  &nbsp
-                - if step.entrega > Time.now.to_date
-                  = l step.entrega
-                - else
-                  - dias_atraso = (Time.now.to_date - step.entrega).to_i
-                  - if dias_atraso == 0
-                    A entrega é hoje
+      %li{style: 'border: 2px solid #D0DDE1; border-radius: 6px'}
+        .card-body
+          .collapsible{data: {toggle: 'collapse', target: "#collapse0#{index+1}"},class: (@selected_step == step.id) ? 'active' : ''}
+            .row  
+              .col-6
+                .title= "Etapa 0#{index+1}"
+              .col-6.text-right
+                .label
+                  - if step.entregue?
+                    .label-green= "Entregue #{l step.check_date}"
                   - else
-                    .label-red= "#{dias_atraso} dia(s) de atraso"
-        .collapsible-body.timeline-step-body
-          %input.display-none.datepicker{style: "max-width: 100px;"}
-          .left-align
-            - if current_user.can_finish_step?(@project, step)
-              = button_to finish_step_path(@project, step), method: :get, class: 'upme-screen-title btn-medium waves-effect waves-light-blue btn-upme-outline-blue', style: "padding: 8px" do
-                %i{data: {feather: 'check-square'}}
-                %span Marcar etapa como feita
-          %h4.upme-sub-title= step.title
-          %p
-            = step.description
-          .label-upme Entregável
-          %p= step.entregavel
+                    - if current_user.can_edit_step_entrega?(@project, step)
+                      - modal_id = "modal-update-date#{step.id}"
 
-          .label-upme Comentários
-          %br
-          - step.timeline_comments.each do |comment|
-            - if @comment and @comment.id == comment.id
-              .upme-alert-success#scroll-here{onclick: "$(this).fadeOut()", style: "margin-bottom: 32px;"}
-                Comentario enviado!
-            .comment-row#botaoenviarcomentario
-              = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
-              %span.comment-username
-                = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
-              %p.comment-message= comment.message
-              .comment-info= l comment.created_at
-          .label-upme Comente
-          = form_tag timeline_comment_path(@project.id) do
-            = hidden_field_tag :timeline_step_id, step.id
-            = text_area_tag :message, '', class: 'materialize-textarea', placeholder: "Escreva seu comentário aqui"
-            %button.waves-effect.waves-light-blue.btn-upme-outline-blue.btn-small.timeline-comment-submit{type: :button} Enviar comentário
+                      .modal{id: modal_id}
+                        = form_tag update_timeline_date_path(@project.id, step.id), method: :post do
+                          .modal-content
+                            %h4= "Alterar data de entrega da etapa 0#{index+1}"
+                            .row
+                              .col.s12.m4
+                              .col.s12.m4
+                                = date_field_tag :date, nil
+                          .modal-footer.row
+                            .col.s12.right-align
+                              %button.waves-effect.waves-light.btn{type: 'submit'} Salvar
+
+                      %button.waves-effect.waves-light-black.btn-upme-outline-grey.btn-small.edit-step-data{data: {modal: modal_id}}
+                        Editar data
+                      &nbsp
+                      &nbsp
+                    - if step.entrega > Time.now.to_date
+                      = l step.entrega
+                    - else
+                      - dias_atraso = (Time.now.to_date - step.entrega).to_i
+                      - if dias_atraso == 0
+                        A entrega é hoje
+                      - else
+                        .label-red= "#{dias_atraso} dia(s) de atraso"
+              
+          .collapse.show.timeline-step-body{id: "collapse0#{index+1}"}
+            %input.display-none.datepicker{style: "max-width: 100px;"}
+            .left-align
+              - if current_user.can_finish_step?(@project, step)
+                = button_to finish_step_path(@project, step), method: :get, class: 'upme-screen-title btn-primary btn-small', style: "padding: 8px" do
+                  %i{data: {feather: 'check-square'}}
+                  %span Marcar etapa como feita
+            %br
+            
+            %h4.label= step.title
+            %p
+              = step.description
+            %br
+              
+            .label Entregável
+            %p= step.entregavel
+            %br
+
+            .label Comentários
+            - step.timeline_comments.each do |comment|
+              - if @comment and @comment.id == comment.id
+                .upme-alert-success#scroll-here{onclick: "$(this).fadeOut()", style: "margin-bottom: 32px;"}
+                  Comentario enviado!
+              .comment-row#botaoenviarcomentario
+                = image_tag profilepic(comment.user), class: 'circle comment-avatar', width: '40px', id: 'img-profilepic'
+                %span.comment-username
+                  = link_to comment.user.full_name, profile_path(comment.user.id), class: 'dark-link'
+                %p.comment-message= comment.message
+                .comment-info= l comment.created_at
+            .label Comente
+            = form_tag timeline_comment_path(@project.id) do
+              = hidden_field_tag :timeline_step_id, step.id
+              = text_area_tag :message, '', class: 'form-control', placeholder: "Escreva seu comentário aqui"
+              %button.waves-effect.waves-light-blue.btn-upme-outline-blue.btn-small.timeline-comment-submit{type: :button} Enviar comentário
