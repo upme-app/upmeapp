@@ -81,6 +81,10 @@ class User < ApplicationRecord
     true if professor? and project.has_user(self) and project.has_step(step) and !step.entregue?
   end
 
+  def can_edit_project?(projcet)
+    true if professor? or empresa?
+  end
+
   def user_label
     return 'aluno(a)' if aluno?
     return 'professor(a)' if professor?

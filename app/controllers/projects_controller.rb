@@ -31,17 +31,27 @@ class ProjectsController < ApplicationController
 
   def edit
     set_project
-    @selected_areas = AreaDeInteresse.where(id: @project.project_area_de_interesse.pluck(:area_de_interesse_id)).pluck(:name)
+    if current_user.can_edit_project? @project
+      @selected_areas = AreaDeInteresse.where(id: @project.project_area_de_interesse.pluck(:area_de_interesse_id)).pluck(:name)
+    else
+      flash[:danger] = 'Você não pode acessar essa página'
+      redirect_to public_project_path(@project.id)
+    end
   end
 
   def update
     set_project
-    if @project.user_id == current_user.id and @project.update_attributes(project_params)
-      ProjectAreaDeInteresse.where(project_id: @project.id).delete_all
-      save_areas_de_interesse
-      redirect_to project_path(@project)
+    if current_user.can_edit_project? @project
+      if @project.user_id == current_user.id and @project.update_attributes(project_params)
+        ProjectAreaDeInteresse.where(project_id: @project.id).delete_all
+        save_areas_de_interesse
+        redirect_to project_path(@project)
+      else
+        render 'projects/edit'
+      end
     else
-      render 'projects/edit'
+      flash[:danger] = 'Você não pode acessar essa página'
+      redirect_to public_project_path(@project.id)
     end
   end
 

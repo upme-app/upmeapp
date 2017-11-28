@@ -1,0 +1,437 @@
+/* line 1, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+body {
+  font-family: 'Lato';
+}
+
+/* line 4, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 7, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.hero-section {
+  margin-top: 96px;
+  margin-bottom: 96px;
+}
+
+/* line 11, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.blue-section {
+  background: #EBFBFF;
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+/* line 16, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.hero-note {
+  position: absolute;
+  left: -80px;
+  top: 220px;
+}
+
+/* line 21, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.huge-title {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 800;
+  line-height: 53px;
+  font-size: 52px;
+  color: #232323;
+}
+
+/* line 30, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.sub-title {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 33px;
+  font-size: 32px;
+  text-align: center;
+  color: #232323;
+}
+
+/* line 40, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.hero-section p.lead {
+  margin-top: 22px;
+  margin-bottom: 45px;
+}
+
+/* line 44, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+p.lead {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  font-size: 19px;
+  color: #000000;
+}
+
+/* line 52, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.btn-blue {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 20px;
+  background: #00C7FF;
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 16px 24px !important;
+  border: none;
+}
+
+/* line 64, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.btn-blue:hover {
+  background-color: #00C7FF;
+}
+
+/* line 67, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.navbar-lading {
+  background-color: transparent !important;
+  margin-top: 32px;
+  width: 100%;
+}
+
+/* line 72, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.values {
+  margin-bottom: 128px;
+}
+
+/* line 75, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.values .sub-title {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+/* line 79, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.testimonial-avatar-container {
+  position: relative;
+}
+
+/* line 82, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.testimonial-phrase {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 200;
+  line-height: normal;
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+  color: #000000;
+  min-height: 124px;
+}
+
+/* line 93, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.testimonial-phrase:before {
+  content: '';
+  background-image: url(/assets/landing/quote-64aeb7e0f89ef1f249b545912326b2928ee06d96a37fc218f4ca4249ed173e93.png);
+  height: 48px;
+  position: absolute;
+  display: block;
+  width: 48px;
+  background-repeat: no-repeat;
+  left: -20px;
+  top: -24px;
+}
+
+/* line 104, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.testimonial-name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* line 109, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.testimonial-avatar {
+  border-radius: 100px;
+  width: 128px;
+  height: 128px;
+}
+
+/* line 114, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.testimonial-play {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+}
+
+/* line 120, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.play-note {
+  position: absolute;
+  left: -25px;
+  top: 110px;
+}
+
+/* line 125, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.media {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* line 129, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.bg-blue-font {
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 20vw;
+  font-size: 20vw;
+  text-align: center;
+  color: #afeeff;
+}
+
+/* line 139, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.blue-font-phrase {
+  position: absolute;
+  font-family: Lato;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 33px;
+  font-size: 32px;
+  text-align: center;
+  color: #333333;
+}
+
+/* line 150, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.media .sub-title {
+  margin-top: 30px;
+}
+
+/* line 153, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.media-logos {
+  margin: 50px;
+}
+
+/* line 156, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+label {
+  font-size: 20px;
+  color: #828282;
+}
+
+/* line 162, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.footer {
+  margin: 80px 0px 20px 0px;
+}
+
+/* line 165, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.form-inline {
+  margin-left: 24px !important;
+}
+
+/* line 168, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.cta .huge-title {
+  margin-bottom: 30px;
+}
+
+/* line 171, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.cta-note {
+  position: absolute;
+  right: -10px;
+  top: -110px;
+}
+
+/* line 176, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.cta-brush {
+  position: absolute;
+  top: 117px;
+  left: -6px;
+}
+
+/* line 181, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.hero-brush,
+.hero-brush-1 {
+  position: absolute;
+}
+
+/* line 185, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.hero-brush-1 {
+  top: 110px;
+  left: 7px;
+  z-index: -1;
+}
+
+/* line 190, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.hero-brush {
+  top: 173px;
+  z-index: -1;
+}
+
+/* line 194, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.btn-outline-primary {
+  color: #00C7FF;
+  border-color: #00C7FF;
+}
+
+/* line 198, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.btn-outline-primary:hover {
+  background-color: #00C7FF;
+  border-color: #00C7FF;
+}
+
+/* line 202, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+img {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  /* line 206, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .hide-cta-note {
+    display: none;
+  }
+
+  /* line 210, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .bg-blue-font {
+    line-height: 40vw;
+    font-size: 40vw;
+  }
+
+  /* line 215, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .numbers-mobile {
+    margin-bottom: 80px;
+  }
+
+  /* line 219, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .blue-font-phrase {
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
+  }
+
+  /* line 225, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .video-container {
+    margin-top: 60px;
+  }
+}
+@media screen and (max-width: 480px) {
+  /* line 233, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .testimonial-phrase {
+    margin-top: 80px;
+    min-height: 90px;
+  }
+
+  /* line 237, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .testimonial-phrase:before {
+    left: 0;
+  }
+
+  /* line 240, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .values p.lead {
+    margin-bottom: 60px;
+  }
+
+  /* line 243, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .play-note {
+    left: -15px;
+    top: 127px;
+  }
+
+  /* line 247, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .hero-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  /* line 251, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .navbar {
+    margin-top: 0;
+  }
+
+  /* line 254, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .hero-note {
+    display: none;
+  }
+
+  /* line 257, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+  .hero-section iframe {
+    height: 180px;
+    margin-top: 40px;
+  }
+}
+/* line 263, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.paper-box {
+  width: 100%;
+  border: 2px solid #ECECEC;
+  border-radius: 4px;
+  padding: 30px;
+  position: relative;
+  background-color: #fff;
+  display: inline-block;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+/* line 275, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.paper-box:before {
+  content: '';
+  border: 2px solid #ECECEC;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  background-color: #F8F8F8;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: -2;
+}
+
+/* line 288, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.price-type {
+  font-family: Lato;
+  font-weight: bold;
+  font-size: 24px;
+  color: #333333;
+  margin-top: 14px;
+}
+
+/* line 295, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.the-price {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  font-size: 48px;
+  color: #00C7FF;
+}
+
+/* line 303, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.price-benefits {
+  line-height: 29px;
+  font-size: 16px;
+  color: #666666;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+  line-height: 90%;
+  margin-left: 15px;
+}
+/* line 313, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.price-benefits li {
+  margin-bottom: 20px;
+  position: relative;
+}
+/* line 316, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.price-benefits li:last-child {
+  margin-bottom: 0;
+}
+/* line 319, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.price-benefits li:before {
+  content: '';
+  background-image: url(/assets/landing/check-371ee7422b3802a755ea73157780d20894584f030d51cd20b10b6e4cfae41fdf.png);
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  position: absolute;
+  left: -25px;
+}
+
+/* line 330, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.price-line {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+/* line 334, /home/paulo/dev/upme/upmeapp/app/assets/stylesheets/landing_page.scss */
+.badge-info {
+  background-color: #00c7ff;
+}
