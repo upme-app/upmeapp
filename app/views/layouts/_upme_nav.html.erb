@@ -43,7 +43,7 @@
         <% end %>
         <li class="nav-item">
 
-          <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default', id: 'notifications-link' do %>
+          <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default open-upme-notifications', id: 'notifications-link' do %>
           <i id='btn-bell' class="open-upme-notifications nav-bg-bell up-bell">
           </i>
             <%- if current_user.unread_notifications_size > 0 %>
@@ -131,7 +131,7 @@
     }
   });
 
-  $(".button-collapse").sideNav()
+  // $(".button-collapse").sideNav()
 
   $('.dropdown-button').dropdown({
     inDuration: 300,
