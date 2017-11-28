@@ -1,21 +1,26 @@
-= render 'layouts/upme_nav'
+<%= render 'layouts/upme_nav' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: 'project_tabs', locals: { project: @project } %>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-body private-project-box">
+          <div class="label">Linha do tempo</div>
+          <div class="upme-loading"></div>
+          <div id="timeline"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3">
+      <%= render partial: 'project_right_bar', locals: { project: @project } %>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/upme_footer' %>
+<script>
 
-.container
-  .row
-    .col-md-3
-      = render partial: 'project_tabs', locals: { project: @project }
-    .col-12.col-md-6
-      .card
-        .card-body.private-project-box
-          .label Linha do tempo
-          .upme-loading
-          #timeline
-    .col-12.col-md-3
-      = render partial: 'project_right_bar', locals: { project: @project }
-
-= render 'layouts/upme_footer'
-
-:javascript
 
 
   function refresh_timeline(html) {
@@ -56,3 +61,6 @@
   $.get( "#{show_timeline_url(@project.id)}", function( data ) {
     refresh_timeline(data);
   });
+
+
+</script>

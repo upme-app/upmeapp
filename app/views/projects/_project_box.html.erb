@@ -1,0 +1,56 @@
+<% if controller_name == "explore" %>
+  <% path = public_project_path(project.id) %>
+<% else %>
+  <% if project.started %>
+    <% path = timeline_path(project.id) %>
+  <% else %>
+    <% path = project_path(project.id) %>
+  <% end %>
+<% end %>
+<div class="col-lg-4 col-md-6 col-12">
+  <%= link_to path, class: 'card projects-list' do %>
+    <div class="card-header">
+      <% if project.user.profilepicurl %>
+        <div class="up-avatar-small" style="background-image: url('<%= project.user.profilepicurl %>')"></div>
+      <% else %>
+        <div class="profile-small">
+          <div class="profile-image"></div>
+          <div class="profile-name">
+            <%= project.user.first_name.split(' ').first %>
+          </div>
+        </div>
+      <% end %>
+      <% # - if project.client and project.client.logourl %>
+      <% #   = image_tag project.client.logourl, class: 'project-company-logo' %>
+      <% # - else %>
+      <% #   = image_tag 'app/project-image-placeholder.png', class: 'project-company-logo' %>
+    </div>
+    <div class="card-image-container">
+      <% if project.imgurl %>
+        <%= image_tag project.imgurl, class: 'card-image' %>
+      <% else %>
+        <%= image_tag 'app/project-image-placeholder.png', class: 'card-image' %>
+      <% end %>
+      <% if project.project_area_de_interesse.first %>
+        <div class="card-categories">
+          <div class="badge badge-primary">
+            <%= project.project_area_de_interesse.first.area_de_interesse.name %>
+          </div>
+          <% if project.project_area_de_interesse.size > 1 %>
+            <div class="btn-upme-outline-grey btn-small btn-square" style="padding: 6px 3px; display:inline-block;">
+              <%= "+#{project.project_area_de_interesse.size-1}" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="card-footer">
+      <h4 class="card-title up-header">
+        <%= project.title %>
+      </h4>
+      <% if project.deleted %>
+        <span class="red badge" style="color: white;">Projeto arquivado</span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
