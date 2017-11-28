@@ -55,12 +55,12 @@ class Project < ApplicationRecord
 
   def self.all_ofertas
     Project.joins(:user).not_deleted.not_started
-      .where('users.user_type != ?', User.user_types[:empresa]).uniq
+      .where('users.user_type != ?', User.user_types[:empresa]).distinct
   end
 
   def self.all_demandas
-    Project.joins(:user,:project_area_de_interesse).not_deleted.not_started.
-      where('users.user_type = ?', User.user_types[:empresa]).uniq
+    Project.joins(:user).not_deleted.not_started.
+      where('users.user_type = ?', User.user_types[:empresa]).distinct
   end
 
   def self.projects_running
