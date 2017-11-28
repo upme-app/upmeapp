@@ -42,7 +42,9 @@
       <div class="row">
         <% if @avaliable_projects.any? %>
             <% @avaliable_projects.each do |project| %>
+              <%- if (project.project_area_de_interesse.pluck(:area_de_interesse_id) & @selected_areas.pluck(:id)).size > 0 %>
                 <%= render partial: 'projects/project_box', locals: {project: project} %>
+              <% end %>
             <% end %>
         <% else %>
             <div class="upme-sub-title">Nenhum projeto foi encontrado.</div>
