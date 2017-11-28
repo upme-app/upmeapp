@@ -18,7 +18,7 @@
               <% end %>
               <% if sou_professor? %>
                 <i class="up-brieftcase"></i>
-                Demandas
+                  Demandas
               <% end %>
               <% if sou_aluno? %>
                   <i class="up-brieftcase"></i>
@@ -30,21 +30,30 @@
         <% if current_user %>
             <li class="nav-item">
               <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>
-                  <i class="up-project"></i>
-                  Projetos
+                  <% if sou_empresa? %>
+                    <i class="up-project"></i>
+                    Minhas demandas
+                  <% end %>
+                  <% if sou_professor? %>
+                    <i class="up-project"></i>
+                    Minhas ofertas
+                  <% end %>
               <% end %>
             </li>
         <% end %>
-        <%= link_to '#', onclick: "show_notifications()",class: 'nav-item', id: 'notifications-link' do %>
-        <i id='btn-bell' class="open-upme-notifications btn-default nav-bg-bell up-bell">
-        </i>
-        <%- if current_user.unread_notifications_size > 0 %>
-          <div id='unread-notifications-size'>
-            <%= current_user.unread_notifications_size %>
-          </div>
-        <%- end %>
-        
-      <% end %>
+        <li class="nav-item">
+
+          <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default', id: 'notifications-link' do %>
+          <i id='btn-bell' class="open-upme-notifications nav-bg-bell up-bell">
+          </i>
+            <%- if current_user.unread_notifications_size > 0 %>
+            <div id='unread-notifications-size'>
+              <%= current_user.unread_notifications_size %>
+            </div>
+          <%- end %>
+          
+          <% end %>
+        </li>
         <!-- <% if current_user %>
             <li class="nav-item">
               <%= link_to project_events_path, class: controller_name == 'project_events' ? 'upme-nav-clipboard-active btn btn-default' : 'btn btn-default' do %>

@@ -3,11 +3,11 @@
 = render partial: 'project_team'
 
 - if @project.client_id != current_user.id
-  %a.btn-primary{data: {toggle: "modal", target: "#invitation-modal"}}
+  .btn.btn-primary{data: {toggle: "modal", target: "#invitation-modal"}}
     Convide seu time
 
 .modal.fade#invitation-modal
-  = form_tag invite_user_to_project_path(@project.id) do |f|
+  = form_tag invite_user_to_project_path(@project.id), class: 'modal-dialog' do |f|
     .modal-content
       .modal-header
         .modal-title Convide seu time
