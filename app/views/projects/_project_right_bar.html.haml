@@ -7,13 +7,12 @@
     Convide seu time
 
 .modal.fade#invitation-modal
-  .modal-dialog
+  = form_tag invite_user_to_project_path(@project.id) do |f|
     .modal-content
       .modal-header
         .modal-title Convide seu time
       .modal-body
-        = form_tag invite_user_to_project_path(@project.id) do |f|
-          = text_field_tag :email, '', class: 'form-control', placeholder: 'Digite o email de quem você quer convidar.'
+        = text_field_tag :email, '', class: 'form-control', placeholder: 'Digite o email de quem você quer convidar.'
       .modal-footer
         %a.btn-default{data: {dismiss: "modal"}} Cancelar
         %button.btn-primary{type: :submit} Convidar
