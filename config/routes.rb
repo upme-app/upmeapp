@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/eventos', as: :events, to: 'projects#events', via: :get
   match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
+  match 'meus-projects/:id/negotiation', as: :negotiation, to: 'projects#negotiation', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get
   match 'meus-projetos/:id/enviar-solicitacao-para-usuario', as: :invite_user_to_project, to: 'projects#invite_user_to_project', via: :post
   match 'aceitar-convite/:invitation_id', as: :accept_invitation, to: 'projects_invitation#accept_invitation', via: :get

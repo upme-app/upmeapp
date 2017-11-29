@@ -144,19 +144,6 @@ ActiveRecord::Schema.define(version: 20171129000314) do
     t.index ["user_to_id"], name: "index_project_invitations_on_user_to_id", using: :btree
   end
 
-  create_table "project_step_feedbacks", force: :cascade do |t|
-    t.integer  "note"
-    t.text     "description"
-    t.integer  "user_id"
-    t.integer  "project_id"
-    t.integer  "timeline_step_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["project_id"], name: "index_project_step_feedbacks_on_project_id", using: :btree
-    t.index ["timeline_step_id"], name: "index_project_step_feedbacks_on_timeline_step_id", using: :btree
-    t.index ["user_id"], name: "index_project_step_feedbacks_on_user_id", using: :btree
-  end
-
   create_table "project_users", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "user_id"
@@ -483,9 +470,6 @@ ActiveRecord::Schema.define(version: 20171129000314) do
   add_foreign_key "project_events", "projects"
   add_foreign_key "project_events", "users"
   add_foreign_key "project_invitations", "projects"
-  add_foreign_key "project_step_feedbacks", "projects"
-  add_foreign_key "project_step_feedbacks", "timeline_steps"
-  add_foreign_key "project_step_feedbacks", "users"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"
