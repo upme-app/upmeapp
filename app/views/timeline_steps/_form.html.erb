@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+
+        <%= form_for @timeline_step do |f| %>
+            <% if @timeline_step.errors.any? %>
+                <div id="error_explanation">
+                  <h2>
+                    <%= "#{pluralize(@timeline_step.errors.count, "error")} prohibited this project_event from being saved:" %>
+                  </h2>
+                  <ul>
+                    <% @timeline_step.errors.full_messages.each do |msg| %>
+                        <li>
+                          <%= msg %>
+                        </li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+
+            <%= f.hidden_field :project_id, value: @project.id %>
+
+            <div class="form-group">
+              <%= f.label :title, 'Título' %>
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description, 'Entregável' %>
+              <%= f.text_area :description, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :entrega, 'Data da Entrega' %>
+              <%= f.datetime_select :entrega, class: 'form-control' %>
+            </div>
+            <!--<div class="form-group">-->
+            <!--<%#= f.label :position, 'Ordenação' %>-->
+            <!--<%#= f.number_field :position, class: 'form-control', style: 'width: 80px' %>-->
+            <!--</div>-->
+            <div class="actions">
+              <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+            </div>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>
