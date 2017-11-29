@@ -274,6 +274,7 @@ GEM
       activemodel (>= 4.2, < 5.2)
       activerecord (>= 4.2, < 5.2)
       request_store (~> 1.0)
+    go_geography (0.1.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -534,6 +535,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   figaro
   fog
+  go_geography
   haml
   haml-rails
   jbuilder (~> 2.5)

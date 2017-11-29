@@ -152,10 +152,10 @@ class ProjectsController < ApplicationController
   def finish_step
     set_project
     @step = TimelineStep.find(params[:step_id])
-    if @step.finish(current_user)
+    if @step.finish(current_user,params[:feedback],params[:note])
       flash[:notice] = 'Etapa entregue!'
     else
-      flash[:alert] = 'Erro!'
+      flash[:alert] = "Erro! #{@step.errors.full_messages.join("<br />")}"
     end
     redirect_to timeline_path(@project)
   end
