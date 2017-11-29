@@ -3,9 +3,9 @@
 - @project.project_users.each do |pu|
   - if pu.user.professor?
     = link_to profile_path(pu.user.id) do
-      .collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
+      .profile
         = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
-        %span.title.dark-link.profiles-names= pu.user.first_name
+        .profile-name= pu.user.first_name= pu.user.first_name
 
 - if @project.client
   %h2.label Cliente

@@ -11,7 +11,7 @@
                 .banner-see-public
                     %i{data: {feather: 'eye'}}
                     .upme-sub-title Visualizar projeto como público
-            - if @project.user_id == current_user.id
+            - if current_user.can_edit_project? @project
                 %br
                 = button_to 'Editar Projeto', edit_project_path(@project), class: 'btn-primary btn-full-width', method: :get
             %br
@@ -35,7 +35,6 @@
         .col-12.col-md-6
             .private-project-box.card
                 .card-body
-                   
                     %br
                     .label Objetivo
                     %p= @project.objective

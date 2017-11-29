@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171118214442) do
+ActiveRecord::Schema.define(version: 20171128042112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "area_de_interesses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "area_not_found_notifications", force: :cascade do |t|
@@ -106,6 +107,19 @@ ActiveRecord::Schema.define(version: 20171118214442) do
     t.datetime "updated_at",           null: false
     t.index ["area_de_interesse_id"], name: "index_project_area_de_interesses_on_area_de_interesse_id", using: :btree
     t.index ["project_id"], name: "index_project_area_de_interesses_on_project_id", using: :btree
+  end
+
+  create_table "project_events", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["project_id"], name: "index_project_events_on_project_id", using: :btree
+    t.index ["user_id"], name: "index_project_events_on_user_id", using: :btree
   end
 
   create_table "project_invitations", force: :cascade do |t|
@@ -373,6 +387,7 @@ ActiveRecord::Schema.define(version: 20171118214442) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.datetime "check_date"
+    t.text     "feedback"
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
 
@@ -439,6 +454,8 @@ ActiveRecord::Schema.define(version: 20171118214442) do
   add_foreign_key "payments", "users"
   add_foreign_key "project_area_de_interesses", "area_de_interesses", column: "area_de_interesse_id"
   add_foreign_key "project_area_de_interesses", "projects"
+  add_foreign_key "project_events", "projects"
+  add_foreign_key "project_events", "users"
   add_foreign_key "project_invitations", "projects"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"

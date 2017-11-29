@@ -17,6 +17,9 @@
     border: none;
     text-align: center;
     cursor: pointer;
+    &:hover {
+      text-decoration: none;
+    }
 }
 .btn-primary {
     @extend .btn;

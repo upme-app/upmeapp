@@ -1,0 +1,69 @@
+<%= render 'layouts/upme_nav' %>
+<div class="explore-bg"></div>
+<div class="container">
+  <div class="row">
+    <div class="col m7">
+      <div class="page-header">
+        <div class="title">
+          <% if current_user.empresa? %>
+              <span>Ofertas de professores</span>
+          <% else %>
+              <span>Demandas de empresas</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col m5"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="label">Categorias</div>
+          <%= form_tag explore_path, method: :get do %>
+              <% @all_areas.each do |selected_area| %>
+                  <%= label_tag selected_area.name do %>
+                      <%= check_box_tag('areas_interesse[]', value = selected_area.id,
+                                        checked =(@selected_areas.map {|item| item.id}.include? selected_area.id), options = {}) %>
+                      <b><%= selected_area.name %></b>
+                      <br/>
+                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= selected_area.description %></p>
+                      <br/>
+                  <% end %>
+              <% end %>
+              <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary btn-small") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="row">
+        <% if @avaliable_projects.any? %>
+            <% @avaliable_projects.each do |project| %>
+              <%- if (project.project_area_de_interesse.pluck(:area_de_interesse_id) & @selected_areas.pluck(:id)).size > 0 %>
+                <%= render partial: 'projects/project_box', locals: {project: project} %>
+              <% end %>
+            <% end %>
+        <% else %>
+            <div class="upme-sub-title">Nenhum projeto foi encontrado.</div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#e1").select2({
+            tags: true,
+            multiple: true
+        });
+    });
+
+
+</script>
+<%= render 'layouts/upme_footer' %>

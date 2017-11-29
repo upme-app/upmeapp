@@ -1,0 +1,2 @@
+module ProjectEventsHelper
+end

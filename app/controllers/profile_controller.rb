@@ -61,7 +61,7 @@ class ProfileController < ApplicationController
   end
 
   def edit_billing
-
+    flash[:danger] = 'Para se adicionar a um projeto, é necessário completar os seus dados'
   end
 
   def save_billing

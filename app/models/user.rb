@@ -61,11 +61,11 @@ class User < ApplicationRecord
     true
   end
 
-  def available_projects
+  def available_projects(project_areas_de_interesse=nil)
     if empresa?
-      Project.available_empresa_projects
+      Project.all_ofertas
     else
-      Project.available_aluno_projects
+      Project.all_demandas
     end
   end
 
@@ -79,6 +79,10 @@ class User < ApplicationRecord
 
   def can_edit_step_entrega?(project, step)
     true if professor? and project.has_user(self) and project.has_step(step) and !step.entregue?
+  end
+
+  def can_edit_project?(projcet)
+    true if professor? or empresa?
   end
 
   def user_label
