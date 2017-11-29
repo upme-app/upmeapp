@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   before_action :authenticate_user!, except: [:show_public]
   before_action :authorize_project, except: [:show_public, :index, :filed_projects, :new, :create, :add_client_solicitation, :add_member_solicitation]
-
+  before_action :set_project, only: :negotiation
 
   def index
     @projects = current_user.my_projects
@@ -71,6 +71,9 @@ class ProjectsController < ApplicationController
   def show
     set_project
   end
+
+  # GET /projects/:id/negotiation
+  def negotiation; end
 
   def client_solicitations
     set_project
