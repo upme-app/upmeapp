@@ -33,6 +33,7 @@ gem "figaro"
 gem 'stripe'
 gem 'draper'
 gem 'record_tag_helper'
+gem 'go_geography'
 
 group :development, :test do
   gem 'byebug', platform: :mri

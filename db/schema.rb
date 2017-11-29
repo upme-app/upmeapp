@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128231501) do
+ActiveRecord::Schema.define(version: 20171129000314) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +35,25 @@ ActiveRecord::Schema.define(version: 20171128231501) do
 
   create_table "curso_superiors", force: :cascade do |t|
     t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "geography_cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "cdg_ibge"
+    t.integer  "state_id"
+    t.integer  "population_2010"
+    t.decimal  "demographic_density"
+    t.string   "gentile"
+    t.decimal  "area"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "geography_states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -122,6 +142,19 @@ ActiveRecord::Schema.define(version: 20171128231501) do
     t.index ["project_id"], name: "index_project_invitations_on_project_id", using: :btree
     t.index ["user_from_id"], name: "index_project_invitations_on_user_from_id", using: :btree
     t.index ["user_to_id"], name: "index_project_invitations_on_user_to_id", using: :btree
+  end
+
+  create_table "project_step_feedbacks", force: :cascade do |t|
+    t.integer  "note"
+    t.text     "description"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "timeline_step_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["project_id"], name: "index_project_step_feedbacks_on_project_id", using: :btree
+    t.index ["timeline_step_id"], name: "index_project_step_feedbacks_on_timeline_step_id", using: :btree
+    t.index ["user_id"], name: "index_project_step_feedbacks_on_user_id", using: :btree
   end
 
   create_table "project_users", force: :cascade do |t|
@@ -380,6 +413,7 @@ ActiveRecord::Schema.define(version: 20171128231501) do
     t.datetime "check_date"
     t.text     "feedback"
     t.integer  "position"
+    t.integer  "note"
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
 
@@ -429,6 +463,8 @@ ActiveRecord::Schema.define(version: 20171128231501) do
     t.string   "cep"
     t.integer  "tipo_pessoa"
     t.string   "stripe_token"
+    t.integer  "geography_state_id"
+    t.integer  "geography_city_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -447,6 +483,9 @@ ActiveRecord::Schema.define(version: 20171128231501) do
   add_foreign_key "project_events", "projects"
   add_foreign_key "project_events", "users"
   add_foreign_key "project_invitations", "projects"
+  add_foreign_key "project_step_feedbacks", "projects"
+  add_foreign_key "project_step_feedbacks", "timeline_steps"
+  add_foreign_key "project_step_feedbacks", "users"
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "projects", "users"

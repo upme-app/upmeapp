@@ -54,7 +54,8 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/linha-do-tempo/mostrar', as: :show_timeline, to: 'projects#show_timeline', via: :get
   match 'meus-projetos/:id/linha-do-tempo/comentar', as: :timeline_comment, to: 'projects#timeline_comment', via: :post
   match 'meus-projetos/:id/linha-do-tempo/alterar-data-entrega/:step_id', as: :update_timeline_date, to: 'projects#update_timeline_date', via: :post
-  match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa/:step_id', as: :finish_step, to: 'projects#finish_step', via: :get
+  #match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa/:step_id', as: :finish_step, to: 'projects#finish_step', via: :post
+  match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa', as: :finish_step, to: 'projects#finish_step', via: :post
 
   match 'aceitar-solicitacao-cliente/:solicitation_id', as: :accept_client_solicitation, to: 'client_solicitation#accept', via: :get
   match 'recusar-solicitacao-cliente/:solicitation_id', as: :refuse_client_solicitation, to: 'client_solicitation#refuse', via: :get
@@ -75,7 +76,6 @@ Rails.application.routes.draw do
   match 'meu-perfil/salvar_foto', to: 'profile#update_picture', via: :post, as: :update_picture
   match 'meu-perfil/salvar_logo', to: 'profile#update_logo', via: :post, as: :update_logo
   match 'perfil/:id', to: 'profile#profile', via: :get, as: :profile
-
 
   # ADMIN
   match 'admin', to: 'admin#index', via: :get, as: :admin
