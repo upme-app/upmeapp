@@ -1,6 +1,6 @@
 -# Modal Convide seu time
 
-= render partial: 'project_team'
+= render partial: 'projects/project_team'
 
 - if @project.client_id != current_user.id
   .btn.btn-primary{data: {toggle: "modal", target: "#invitation-modal"}}
