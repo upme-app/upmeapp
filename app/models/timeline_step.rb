@@ -5,6 +5,7 @@ class TimelineStep < ApplicationRecord
   # relationships .............................................................
   belongs_to :project
   has_many :timeline_comments
+  validates_presence_of :feedback,:note
   # validations ...............................................................
   # callbacks .................................................................
   # scopes ....................................................................
@@ -61,9 +62,9 @@ class TimelineStep < ApplicationRecord
 
   # public instance methods ...................................................
 
-  def finish(user)
+  def finish(user,feedback,note)
     if user.can_finish_step?(project, self)
-      update_attribute :check_date, Time.now
+      update_attributes check_date: Time.now,feedback:feedback,note:note.to_i
     end
   end
 

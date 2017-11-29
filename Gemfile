@@ -32,6 +32,7 @@ gem 'select2-rails'
 gem "figaro"
 gem 'stripe'
 gem 'draper'
+gem 'go_geography'
 
 group :development, :test do
   gem 'byebug', platform: :mri

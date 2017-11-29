@@ -30,7 +30,7 @@
                     .form-group
                       %span.label Linkedin
                       = f.text_field :linkedin, class: 'validate form-control', placeholder: 'Coloque o link do seu Linkedin'
-                
+
                   .col-12
                     - if current_user.aluno? or current_user.professor?
                       %span.label Universidade
@@ -70,16 +70,17 @@
                       .col.m5.s12
                         %span.label Bairro
                         = f.text_field :bairro, class: 'validate form-control', placeholder: 'Bairro', required: true
-                      .col.m4.s9
-                        %span.label Cidade
-                        = f.text_field :cidade, class: 'validate form-control', placeholder: 'Cidade', required: true
                       .col.m3.s3
                         %span.label UF
-                        = f.text_field :uf, class: 'validate form-control', placeholder: 'Estado', required: true
+                        = f.select :geography_state_id, Geography::State.all.collect {|p| [p.name, p.id]}, {required: true}, {class: "form-control input-lg", id: "uf_field"}
+                      .col.m4.s9
+                        %span.label Cidade
+                        = f.select :geography_city_id, Geography::City.all.collect {|p| [p.name, p.id]}, {required: true}, {class: "form-control input-lg", id: "cities_field"}
                       .col-12
                         %span.label CEP
                         = f.text_field :cep, class: 'validate form-control', placeholder: 'CEP (Somente Números)', required: true
-    
+
                   .col-12.right-align
                     = link_to 'Cancelar', my_profile_path, class: 'btn-default'
                     %button.btn-primary Salvar
+

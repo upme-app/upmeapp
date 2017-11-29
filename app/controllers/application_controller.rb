@@ -42,5 +42,5 @@ class ApplicationController < ActionController::Base
   def sou_aluno?
     current_user and current_user.aluno? ? true : false
   end
-
+  
 end
