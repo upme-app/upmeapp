@@ -1,0 +1,40 @@
+<%= render 'layouts/upme_nav' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: 'projects/project_tabs', locals: {project: @project} %>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-full-width">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col">
+              <h3 class="label">Novo Passo da Linha do Tempo</h3>
+            </div>
+          </div>
+
+          <br/>
+          <br/>
+
+          <% if sou_professor? and @project.user_id == current_user.id %>
+              <%= render 'form' %>
+          <% else %>
+              Apenas os Professores do Projeto podem criar novos passos
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= render partial: 'projects/project_right_bar', locals: {project: @project} %>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/upme_footer' %>
+
+
+
+
+
+

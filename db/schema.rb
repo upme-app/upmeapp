@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171129000314) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -411,6 +412,7 @@ ActiveRecord::Schema.define(version: 20171129000314) do
     t.datetime "updated_at",  null: false
     t.datetime "check_date"
     t.text     "feedback"
+    t.integer  "position"
     t.integer  "note"
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
