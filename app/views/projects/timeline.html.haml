@@ -7,11 +7,7 @@
     .col-12.col-md-6
       .card
         .card-body.private-project-box
-          .row
-            .label.col-md-6 Linha do tempo
-            - if sou_professor? and @project.user_id == current_user.id
-              .label.col-md-6{style: 'display:flex'}
-                = link_to 'Re-organizar Linha do Tempo', reorder_timeline_steps_path(project_id: @project.id), class: 'btn-small btn-primary ml-auto'
+          .label Linha do tempo
           .upme-loading
           #timeline
     .col-12.col-md-3

@@ -88,8 +88,7 @@ class Project < ApplicationRecord
   end
 
   def ordered_timeline_steps
-    #timeline_steps.order(entrega: :asc) #helio, comentei essa linha porque adicionei nova coluna chamada position para ordenação
-    timeline_steps.order(position: :asc)
+    timeline_steps.order(entrega: :asc)
   end
 
   # protected instance methods ................................................

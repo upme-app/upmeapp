@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   before_action :authenticate_user!, except: [:show_public]
   before_action :authorize_project, except: [:show_public, :index, :filed_projects, :new, :create, :add_client_solicitation, :add_member_solicitation]
-  before_action :set_project, only: :negotiation
+
 
   def index
     @projects = current_user.my_projects
@@ -71,9 +71,6 @@ class ProjectsController < ApplicationController
   def show
     set_project
   end
-
-  # GET /projects/:id/negotiation
-  def negotiation; end
 
   def client_solicitations
     set_project
@@ -155,10 +152,10 @@ class ProjectsController < ApplicationController
   def finish_step
     set_project
     @step = TimelineStep.find(params[:step_id])
-    if @step.finish(current_user,params[:feedback],params[:note])
+    if @step.finish(current_user)
       flash[:notice] = 'Etapa entregue!'
     else
-      flash[:alert] = "Erro! #{@step.errors.full_messages.join("<br />")}"
+      flash[:alert] = 'Erro!'
     end
     redirect_to timeline_path(@project)
   end
