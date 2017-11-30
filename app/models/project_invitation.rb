@@ -24,19 +24,13 @@ class ProjectInvitation < ApplicationRecord
   end
 
   def accept_and_notify
-    unless Rails.env.development?
-      ProjectInvitationMailer.accept(user_to, user_from, project).deliver_later
-    end
-
+    ProjectInvitationMailer.accept(user_to, user_from, project).deliver_later
     Notification.accept_project_invitation(user_to, user_from, project)
     accept
   end
 
   def refuse_and_notify
-    unless Rails.env.development?
-      ProjectInvitationMailer.refuse(user_to, user_from, project).deliver_later
-    end
-
+    ProjectInvitationMailer.refuse(user_to, user_from, project).deliver_later
     Notification.refuse_project_invitation(user_to, user_from, project)
     refuse
   end

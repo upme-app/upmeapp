@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :project_events, path: 'eventos'
-  resources :timeline_steps, path: 'linha_do_tempo_passos' do
-    collection do
-      post 'sort'
-      get 'reorder'
-    end
-  end
+  resources :project_events,path: 'eventos'
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
@@ -36,7 +30,7 @@ Rails.application.routes.draw do
   match 'explorar', to: 'explore#index', as: :explore, via: :get
 
   # PROJECTS
-  resources :projects, controller: :projects, path: 'meus-projetos', path_names: {new: 'novo', edit: 'editar'}
+  resources :projects, controller: :projects, path: 'meus-projetos', path_names: { new: 'novo', edit: 'editar' }
   match 'meus-projetos-arquivados', as: :filed_projects, to: 'projects#filed_projects', via: :get
   match 'meus-projetos/:id/excluir', as: :delete_project, to: 'projects#delete', via: :get
   match 'meus-projetos/:id/duplicar', as: :duplicate_project, to: 'projects#duplicate', via: :get
@@ -45,7 +39,6 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/eventos', as: :events, to: 'projects#events', via: :get
   match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
-  match 'meus-projects/:id/negotiation', as: :negotiation, to: 'projects#negotiation', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get
   match 'meus-projetos/:id/enviar-solicitacao-para-usuario', as: :invite_user_to_project, to: 'projects#invite_user_to_project', via: :post
   match 'aceitar-convite/:invitation_id', as: :accept_invitation, to: 'projects_invitation#accept_invitation', via: :get
@@ -55,8 +48,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/linha-do-tempo/mostrar', as: :show_timeline, to: 'projects#show_timeline', via: :get
   match 'meus-projetos/:id/linha-do-tempo/comentar', as: :timeline_comment, to: 'projects#timeline_comment', via: :post
   match 'meus-projetos/:id/linha-do-tempo/alterar-data-entrega/:step_id', as: :update_timeline_date, to: 'projects#update_timeline_date', via: :post
-  #match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa/:step_id', as: :finish_step, to: 'projects#finish_step', via: :post
-  match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa', as: :finish_step, to: 'projects#finish_step', via: :post
+  match 'meus-projetos/:id/linha-do-tempo/finalizar-etapa/:step_id', as: :finish_step, to: 'projects#finish_step', via: :get
 
   match 'aceitar-solicitacao-cliente/:solicitation_id', as: :accept_client_solicitation, to: 'client_solicitation#accept', via: :get
   match 'recusar-solicitacao-cliente/:solicitation_id', as: :refuse_client_solicitation, to: 'client_solicitation#refuse', via: :get
@@ -77,6 +69,7 @@ Rails.application.routes.draw do
   match 'meu-perfil/salvar_foto', to: 'profile#update_picture', via: :post, as: :update_picture
   match 'meu-perfil/salvar_logo', to: 'profile#update_logo', via: :post, as: :update_logo
   match 'perfil/:id', to: 'profile#profile', via: :get, as: :profile
+
 
   # ADMIN
   match 'admin', to: 'admin#index', via: :get, as: :admin
