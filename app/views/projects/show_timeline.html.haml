@@ -7,7 +7,7 @@
       %li{style: 'border: 2px solid #D0DDE1; border-radius: 6px'}
         .card-body
           .collapsible{data: {toggle: 'collapse', target: "#collapse0#{index+1}"},class: (@selected_step == step.id) ? 'active' : ''}
-            .row  
+            .row
               .col-6
                 .title= "Etapa 0#{index+1}"
               .col-6.text-right
@@ -42,21 +42,30 @@
                         A entrega é hoje
                       - else
                         .label-red= "#{dias_atraso} dia(s) de atraso"
-              
+
           .collapse.show.timeline-step-body{id: "collapse0#{index+1}"}
             %input.display-none.datepicker{style: "max-width: 100px;"}
             .left-align
               - if current_user.can_finish_step?(@project, step)
-                = button_to finish_step_path(@project, step), method: :get, class: 'upme-screen-title btn-primary btn-small', style: "padding: 8px" do
-                  %i{data: {feather: 'check-square'}}
-                  %span Marcar etapa como feita
+                = form_tag finish_step_path(@project), method: :post do
+                  = hidden_field_tag :step_id, step.id
+                  = label_tag "Nota"
+                  = select_tag :note, options_for_select([ [1, 1],[2, 2],[3, 3],[4, 4],[5, 5], ],5)
+                  = text_area_tag :feedback, '', class: 'form-control', placeholder: "Escreva aqui o Feedback da etapa 0#{index+1}"
+                  %button.waves-effect.waves-light-blue.btn-upme-outline-blue.btn-small.timeline-comment-submit{type: :button} Marcar etapa como feita
+              - else
+                .label Feedback
+                %p= step.feedback
+                .label Nota
+                %p= step.note
+
             %br
-            
+
             %h4.label= step.title
             %p
               = step.description
             %br
-              
+
             .label Entregável
             %p= step.entregavel
             %br

@@ -1,0 +1,31 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: upmeapp_development
+  username: root
+  password: 12345678
+  port: 5432
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: upmeapp_test
+  username: root
+  password: 12345678
+  port: 5432
+  host: localhost
+
+production:
+  <<: *default
+  database: upmeapp_production
+  username: upmeapp
+  password: <%= ENV['UPMEAPP_DATABASE_PASSWORD'] %>
