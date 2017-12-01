@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128042112) do
+ActiveRecord::Schema.define(version: 20171129000314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,25 @@ ActiveRecord::Schema.define(version: 20171128042112) do
 
   create_table "curso_superiors", force: :cascade do |t|
     t.string   "nome"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "geography_cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "cdg_ibge"
+    t.integer  "state_id"
+    t.integer  "population_2010"
+    t.decimal  "demographic_density"
+    t.string   "gentile"
+    t.decimal  "area"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "geography_states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "initials"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -398,6 +417,8 @@ ActiveRecord::Schema.define(version: 20171128042112) do
     t.datetime "updated_at",  null: false
     t.datetime "check_date"
     t.text     "feedback"
+    t.integer  "position"
+    t.integer  "note"
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
 
@@ -447,6 +468,8 @@ ActiveRecord::Schema.define(version: 20171128042112) do
     t.string   "cep"
     t.integer  "tipo_pessoa"
     t.string   "stripe_token"
+    t.integer  "geography_state_id"
+    t.integer  "geography_city_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
