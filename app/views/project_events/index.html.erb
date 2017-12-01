@@ -2,44 +2,55 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-12">
-      <%=link_to 'Novo Evento',new_project_event_path, class: 'btn btn-xs btn-primary pull-right'%>
+    <div class="col-md-3">
+      <%= render partial: '/projects/project_tabs', locals: {project: @project} %>
     </div>
-  </div>
-  <div class="row">
 
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="card card-full-width">
         <div class="card-body">
-          <h3 class="label">Eventos</h3>
+          <div class="row">
+            <div class="col">
+              <h3 class="label">Agenda de compromissos</h3>
+            </div>
+            <div class="col" style="display:flex">
+              <%=link_to 'Agendar compromisso',new_project_event_path, class: 'btn-small btn-primary ml-auto'%>
+            </div>
+          </div>
           <br/>
           <br/>
           <% if @project_events.empty? %>
-              <div class="center-align">Nenhum</div>
+            <div class="text-center">Nenhum compromisso agendado ainda.</div>
+            <br>
           <% else %>
-              <table class="bordered striped">
-                <tr>
-                  <th>Titulo</th>
-                  <th>Descrição</th>
-                  <th>Data Início</th>
-                  <th>Data Fim</th>
-                  <th>Usuário</th>
-                  <th>Projeto</th>
-                </tr>
-                <% @project_events.each do |event| %>
-                    <tr>
-                      <td><%= event.title %></td>
-                      <td><%= event.description %></td>
-                      <td><%= convert_timestamp(event.start_date) %></td>
-                      <td><%= convert_timestamp(event.end_date) %></td>
-                      <td><%= event.user.full_name %></td>
-                      <td><%= link_to  event.project.title,project_path(event.project) %></td>
-                    </tr>
-                <% end %>
-              </table>
+            <div class="row">
+              <% @project_events.each do |event| %>
+                <div class="col-4">
+                  <div class="up-mini-calendar">
+                    <div class="up-mini-calendar-header">Novembro</div>
+                      <%= convert_timestamp(event.start_date) %>
+                  </div>
+                </div>
+                <div class="col-5">
+
+                  <div class="label"><%= event.title %></div>
+                  <div class="text"><%= event.description %></div>
+                </div>
+                <div class="col-3">
+                  <%= link_to 'Editar', edit_project_event_path(@project.id, event.id), class: 'btn-small btn-primary ml-auto' %>
+                  <br>
+                  <br>
+                  <br>
+                  <%= link_to 'Excluir', project_event_path(@project.id, event.id), class: 'btn-small btn-primary ml-auto', method: :delete %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>
+    </div>
+    <div class="col-md-3">
+      <%= render partial: '/projects/project_right_bar', locals: {project: @project} %>
     </div>
   </div>
 </div>
