@@ -35,6 +35,14 @@ class ProjectUploadsController < ApplicationController
   end
 
   def delete
+    filename = "#{params[:file_name]}.#{params[:ext]}"
+    if ProjectUpload.where(file: filename, project_id: @project.id).size > 0
+      ProjectUpload.where(file: filename, project_id: @project.id).destroy_all 
+      S3_BUCKET.object("project-uploads/#{@project.id}/#{filename}").delete
+      flash[:notice] = 'Arquivo excluído!' 
+    else
+      flash[:danger] = 'Arquivo não existe.'
+    end
     redirect_to project_uploads_path(@project.id)
   end
 
