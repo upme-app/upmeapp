@@ -18,7 +18,7 @@ class ProfileController < ApplicationController
 
   def update_picture
     picture_address = "./tmp/#{current_user.id}-tmp-profile-pic.png"
-    IO.copy_stream(params['file'], picture_address)
+    IO.copy_stream(params['picture'], picture_address)
 
     uuid = SecureRandom.uuid
 
@@ -30,15 +30,14 @@ class ProfileController < ApplicationController
 
     if upload
       current_user.update_attribute :profilepicurl, new_url
-      render json: current_user.profilepicurl
-    else
-      render json: :error
     end
+
+    redirect_to my_profile_path    
   end
 
   def update_logo
     picture_address = "./tmp/#{current_user.id}-tmp-profile-pic.png"
-    IO.copy_stream(params['file'], picture_address)
+    IO.copy_stream(params['logo'], picture_address)
 
     uuid = SecureRandom.uuid
 
@@ -50,10 +49,9 @@ class ProfileController < ApplicationController
 
     if upload
       current_user.update_attribute :logourl, new_url
-      render json: current_user.logourl
-    else
-      render json: :error
     end
+
+    redirect_to my_profile_path
   end
 
   def profile

@@ -9,13 +9,25 @@
 .col-lg-4.col-md-6.col-12
   = link_to path, class: 'card projects-list' do
     .card-header
-      - if project.user.profilepicurl
-        .up-avatar-small{style: "background-image: url('#{project.user.profilepicurl}')"}
+      - if project.user.empresa?
+        - if project.user.logourl
+          .profile-small
+            = image_tag project.user.logourl, class: 'profile-image'
+            .profile-name= project.user.nome_empresa
+        - else
+          .profile-small
+            .profile-image
+            .profile-name= project.user.nome_empresa
+      
       - else
-        .profile-small
-          .profile-image
-          .profile-name
-            = project.user.first_name.split(' ').first
+        - if project.user.profilepicurl
+          .profile-small
+            = image_tag project.user.profilepicurl, class: 'profile-image'
+            .profile-name= project.user.first_name.split(' ').first
+        - else
+          .profile-small
+            .profile-image
+            .profile-name= project.user.first_name.split(' ').first
     
       
       -# - if project.client and project.client.logourl

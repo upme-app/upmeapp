@@ -38,6 +38,10 @@
                     <i class="up-project"></i>
                     Minhas ofertas
                   <% end %>
+                  <% if sou_aluno? %>
+                    <i class="up-project"></i>
+                    Meus projetos
+                  <% end %>
               <% end %>
             </li>
         <% end %>
@@ -70,11 +74,15 @@
     </div>
     <ul class="navbar-nav ml-auto">
       <% if current_user %>
-          <a class="btn-default dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Perfil
+          <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%- if current_user.empresa? %>
+              <%= image_tag logourl(current_user),class: 'profile-image profile-image-navbar'%>
+            <% else %>
+              <%= image_tag profilepic(current_user),class: 'profile-image profile-image-navbar'%>
+            <% end %>
           </a>
           <li class="nav-item dropdown">
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" id="profile-dropdown" aria-labelledby="navbarDropdown">
               <%= link_to my_profile_path, class: 'dropdown-item' do %>
                   Meu perfil
               <%- end %>
@@ -89,9 +97,9 @@
 </nav>
 <div id="upme-notifications">
   <%- current_user.notifications.reverse.each do |notification| %>
-    <%= link_to notification.url + "?read_notification=#{notification.id}" do %>
+    <%= link_to notification.url + "?read_notification=#{notification.id}", class: "upme-notification-link" do %>
       <div class="upme-notification <%= 'upme-notification-read' if !notification.read %>">
-        <%= notification.description.capitalize %>
+        <span><%= notification.description.capitalize %></span>
         <br>
         <span class="notification-date">
           <%= l notification.created_at %>
