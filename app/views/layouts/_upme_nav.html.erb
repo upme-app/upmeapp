@@ -4,7 +4,7 @@
     <a class="navbar-brand" href="#">
       <%= image_tag 'app/logo-upme-vetor.svg' %>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler d-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -95,6 +95,40 @@
   </div>
 </div>
 </nav>
+<nav class="nav mobile-footer-nav fixed-bottom d-block d-md-none d-lg-none">
+    <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active btn btn-default btn-small' : 'btn btn-default btn-small' do %>
+      <% if sou_empresa? %>
+        <i class="up-brieftcase"></i>
+        Ofertas
+      <% end %>
+      <% if sou_professor? %>
+        <i class="up-brieftcase"></i>
+          Demandas
+      <% end %>
+      <% if sou_aluno? %>
+          <i class="up-brieftcase"></i>
+          Demandas
+      <% end %>
+    <% end %>
+    <%= link_to projects_path, class: controller_name == 'projects' ? 'upme-nav-clipboard-active btn btn-default btn-small' : 'btn btn-default btn-small' do %>
+    <% if sou_empresa? %>
+      <i class="up-project"></i>
+      Minhas demandas
+    <% end %>
+    <% if sou_professor? %>
+      <i class="up-project"></i>
+      Minhas ofertas
+    <% end %>
+    <% if sou_aluno? %>
+      <i class="up-project"></i>
+      Meus projetos
+    <% end %>
+<% end %>
+
+  <%= link_to new_project_path, class: 'btn btn-primary btn-small', style: 'margin-left:.5rem;' do %>
+  Criar
+  <% end %>
+</nav> 
 <div id="upme-notifications">
   <%- current_user.notifications.reverse.each do |notification| %>
     <%= link_to notification.url + "?read_notification=#{notification.id}", class: "upme-notification-link" do %>
