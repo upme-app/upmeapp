@@ -1,10 +1,14 @@
 class ProjectEventsController < ApplicationController
+
+  before_action :authenticate_user!
+  before_action :authorize_project
   before_action :set_project_event, only: [:show, :edit, :update, :destroy]
+
 
   # GET /project_events
   # GET /project_events.json
   def index
-    @project_events = ProjectEvent.where(user_id:current_user.id)
+    @project_events = @project.project_events
   end
 
   # GET /project_events/1
@@ -25,10 +29,11 @@ class ProjectEventsController < ApplicationController
   # POST /project_events.json
   def create
     @project_event = ProjectEvent.new(project_event_params)
+    @project_event.project_id = @project.id
 
     respond_to do |format|
       if @project_event.save
-        format.html { redirect_to project_path @project_event.project_id, notice: 'Project event was successfully created.' }
+        format.html { redirect_to project_events_url(@project.id), notice: 'Project event was successfully created.' }
         format.json { render :show, status: :created, location: @project_event }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class ProjectEventsController < ApplicationController
   def update
     respond_to do |format|
       if @project_event.update(project_event_params)
-        format.html { redirect_to @project_event, notice: 'Project event was successfully updated.' }
+        format.html { redirect_to project_events_url(@project.id), notice: 'Project event was successfully created.' }
         format.json { render :show, status: :ok, location: @project_event }
       else
         format.html { render :edit }
@@ -69,6 +74,19 @@ class ProjectEventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_event_params
-      params.require(:project_event).permit(:project_id, :user_id, :title, :description, :start_date, :end_date)
+      params.require(:project_event).permit(:user_id, :title, :description, :start_date, :end_date)
     end
+
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def authorize_project
+      set_project
+      unless @project.has_user(current_user)
+        flash[:danger] = 'Você não pode acessar essa página'
+        redirect_to public_project_path(@project.id)
+      end
+    end
+    
 end

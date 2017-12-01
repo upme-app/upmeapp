@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   has_many :client_solicitations
   has_many :member_solicitations
   has_many :project_area_de_interesse
+  has_many :project_events
   belongs_to :user
   belongs_to :client, class_name: 'User'
   # validations ...............................................................
