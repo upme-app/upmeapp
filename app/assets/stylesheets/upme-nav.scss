@@ -127,11 +127,11 @@
 #profile-dropdown {
   right: 0px;
   border-top: 0;
-  top: 62px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border: 0;
   left: initial;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
 }
 .dropdown-toggle::after {
   display: none;
@@ -148,7 +148,16 @@
   height: 3rem;
   background-color: #fff;
   box-shadow: 0px -5px 25px rgba(0,0,0,.1);
-  display: flex;
+  display: flex !important;
   justify-content: center;
   padding-top: .5rem;
+  .btn {
+    padding: .5rem .5rem;
+  }
+}
+.dropdown {
+  z-index: 99;
+}
+.navbar-nav .dropdown-menu {
+  position: absolute;
 }
