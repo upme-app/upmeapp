@@ -1,55 +1,57 @@
 <div class="upme-logo-container">
 </div>
 
-<div id="registration-step-1" class="display-none center-align">
-  <h1 class="huge-title center-align">Vamos começar seu cadastro.</h1>
-  <h4 class="upme-sub-title center-align">Só precisamos de 4 informações.</h4>
+<div id="registration-step-1" class="display-none text-center">
+  <h1 class="title text-center">Vamos começar seu cadastro.</h1>
+  <h4 class="upme-sub-title text-center">Só precisamos de 4 informações.</h4>
 </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form'}) do |f| %>
   <div class="container" id="registration-step-2" class="display-none">
       
     <div class="row">
-      <div class="col s12 m8 offset-m2 center-align">
-        <h1 class="huge-title center-align">Quem é você?</h1>
+      <div class="col s12 m8 offset-m2 text-center">
+        <h1 class="title text-center">Quem é você?</h1>
       </div>
     </div>
     <div class="row">
-      <div class="col s12 m8 offset-m2 m-no-padding">
-        <div class="paper-box" style="position: relative;">
+      <div class="col-md-2"></div>
+      <div class="col-12 col-md-8 m-no-padding">
+        <div class="card" style="position: relative;">
+        <div class="card-body">
             <div class="row">
                 
-                <div class="registration-progress">
-                  <div class="col s4">
+                <div class="registration-progre2ss">
+                  <div class="col">
                     <div class="top-step active"></div>
                   </div>
-                  <div class="col s4">
+                  <div class="col">
                     <div class="top-step"></div>
                   </div>
-                  <div class="col s4">
+                  <div class="col">
                     <div class="top-step"></div>
                   </div>
                 </div>
-                <div class="col s12">
-                  <div class="label-upme">Selecione a opção apropriada
+                <div class="col-12">
+                  <div class="label">Selecione a opção apropriada
                     <br>
                   </div>
                 </div>
                 <br>
-                <div class="col s4 m4">
-                  <%= f.radio_button :user_type, 'aluno', class: 'pretty-image-checkbox', required: true, id: 'radio-aluno' %>
+                <div class="col-4">
+                  <%= f.radio_button :user_type, 'aluno', class: 'pretty-image-checkbox', checked: 'checked', required: true, id: 'radio-aluno' %>
                   <label for="radio-aluno">
                     <img src="https://i.imgur.com/hMY7GNR.png" alt="" class="pretty-checkbox-image">
                     <span class="pretty-checkbox-name">Sou aluno(a)</span>
                   </label>
                 </div>
-                <div class="col s4 m4">
+                <div class="col-4">
                   <%= f.radio_button :user_type, 'professor', class: 'pretty-image-checkbox', required: true, id: 'radio-prof' %>
                   <label for="radio-prof">
                       <img src="https://i.imgur.com/yabrxOy.png" alt="" class="pretty-checkbox-image">
                       <span class="pretty-checkbox-name">Sou professor(a)</span>
                   </label>
                 </div>
-                <div class="col s4 m4">
+                <div class="col-4">
                   <%= f.radio_button :user_type, 'empresa', class: 'pretty-image-checkbox', required: true, id: 'radio-empresa' %>
                   <label for="radio-empresa">
                       <img src="https://i.imgur.com/vqqoE0D.png" alt="" class="pretty-checkbox-image">
@@ -59,28 +61,28 @@
               </div>
               <br>
               <br>
-
+            
           <div>
             <div class="row">
-              <div class="col s12" id="col-primeiro-nome">
+              <div class="col-12 col-md-6" id="col-primeiro-nome">
                 <div class="input-field">
-                  <%= f.label :first_name, 'Primeiro Nome', class: 'label-upme' %>
+                  <%= f.label :first_name, 'Primeiro Nome', class: 'label' %>
                   <br>
-                  <%= f.text_field :first_name, class: 'big-font-form validate',placeholder: 'Primeiro nome', minlength: 2, maxlength: 100, required: true, id: :registration_first_name %>
+                  <%= f.text_field :first_name, class: 'form-control validate',placeholder: 'Primeiro nome', minlength: 2, maxlength: 100, required: true, id: :registration_first_name %>
                 </div>
               </div>
-              <div class="col s12" id="col-sobreonme">
+              <div class="col-12 col-md-6" id="col-sobreonme">
                 <div class="input-field">
-                  <%= f.label :last_name, 'Sobrenome', class: 'label-upme'%>
+                  <%= f.label :last_name, 'Sobrenome', class: 'label'%>
                   <br>
-                  <%= f.text_field :last_name, class: 'big-font-form validate',placeholder: 'Sobrenome', minlength: 2, maxlength: 100, required: true, id: :registration_last_name%>
+                  <%= f.text_field :last_name, class: 'form-control validate',placeholder: 'Sobrenome', minlength: 2, maxlength: 100, required: true, id: :registration_last_name%>
                 </div>
               </div>
               <div class="col s12">
                 <div class="input-field" id="col-nome-da-empresa">
-                  <%= f.label :nome_empresa, 'Nome da empresa', class: 'label-upme'%>
+                  <%= f.label :nome_empresa, 'Nome da empresa', class: 'label'%>
                   <br>
-                  <%= f.text_field :nome_empresa, class: 'big-font-form validate',placeholder: 'Nome da empresa', id: :registration_nome_empresa%>
+                  <%= f.text_field :nome_empresa, class: 'form-control validate',placeholder: 'Nome da empresa', id: :registration_nome_empresa%>
                 </div>
               </div>
             </div>
@@ -91,18 +93,20 @@
 
           <%- unless resource.errors.size > 0 %>
             <div class="row">
-              <div class="col s6">
+              <div class="col">
                 <%= link_to entrar_path do %>
-                    <%= button_tag 'Cancelar', class: 'waves-effect waves-dark btn-full-width btn-upme-outline-grey', type: :button %>
+                    <%= button_tag 'Cancelar', class: 'btn-default', type: :button %>
                 <% end %>
               </div>
-              <div class="col s6">
-                <button type="button" id="btn-continue-registration-step-2" class="waves-effect waves-light btn-full-width btn-upme-blue">
+              <div class="col" style="display:flex">
+                <button type="button" id="btn-continue-registration-step-2" class="btn-primary ml-auto">
                   Continuar
                 </button>
               </div>
             </div>
           <% end %>
+        </div>  
+        
         </div>
       </div>
     </div>
@@ -110,17 +114,19 @@
   <div class="container" id="registration-step-3" class="display-none">
       
     <div class="row">
-      <div class="col s12 m8 offset-m2 center-align">
-        <h1 class="huge-title center-align">Cadastre um e-mail e senha</h1>
+      <div class="col s12 m8 offset-m2 text-center">
+        <h1 class="title text-center">Cadastre um e-mail e senha</h1>
         <br>
       </div>
     </div>
     <div class="row">
-      <div class="col s12 m8 offset-m2 m-no-padding">
-      <div class="paper-box" style="position: relative;">
+      <div class="col-md-2"></div>
+      <div class="col-12 col-md-8  m-no-padding">
+      <div class="card" style="position: relative;">
+        <div class="card-body">
         <div class="row">
 
-          <div class="registration-progress">
+          <div class="registration-progre2ss">
                   <div class="col s4">
                     <div class="top-step active"></div>
                   </div>
@@ -134,21 +140,21 @@
         </div>
 
         <div class="input-field">
-          <%= f.label :email, 'Escreva seu e-mail', class: 'label-upme' %>
+          <%= f.label :email, 'Escreva seu e-mail', class: 'label' %>
           <br />
           <%- if @invite %>
-            <%= email_field_tag :invite_email, @invite.to_email, disabled: true, class: 'big-font-form', placeholder: 'Seu melhor e-mail' %>
+            <%= email_field_tag :invite_email, @invite.to_email, disabled: true, class: 'form-control', placeholder: 'Seu melhor e-mail' %>
             <%= hidden_field_tag :invite_token, @invite.token %>
           <%- else %>
-            <%= f.email_field :email, required: true, class: 'big-font-form', placeholder: 'Seu melhor e-mail' %>
+            <%= f.email_field :email, required: true, class: 'form-control', placeholder: 'Seu melhor e-mail' %>
           <%- end %>
           <%= form_error(resource.errors.messages[:email]) %>
         </div>
 
         <div class="input-field">
-          <%= f.label :password, 'Escolha sua senha', class: 'label-upme' %>
+          <%= f.label :password, 'Escolha sua senha', class: 'label' %>
           <br>
-          <%= f.password_field :password, autocomplete: "off", required: true, class: 'big-font-form', placeholder: 'Uma senha forte', pattern: ".{6,20}", title: "Entre 6 e 20 caracteres" %>
+          <%= f.password_field :password, autocomplete: "off", required: true, class: 'form-control', placeholder: 'Uma senha forte', pattern: ".{6,20}", title: "Entre 6 e 20 caracteres" %>
           <%= form_error(resource.errors.messages[:password]) %>
         </div>
 <br>
@@ -161,22 +167,23 @@
         </p>
 <br>
         <div class="row">
-          <div class="col s6">
+          <div class="col">
             <%- unless resource.errors.size > 0 %>
-              <button type="button" id="btn-back-registration-step-3" class="btn-full-width btn-upme btn-upme-gray">
+              <button type="button" id="btn-back-registration-step-3" class="btn-default">
                 Voltar
               </button>
             <% end %>
           </div>
-          <div class="col s6">
-              <button type="submit" id="btn-continue-registration-step-3" class="btn-full-width btn-upme btn-upme-blue">
-                  Finalizar
+          <div class="col" style="display:flex">
+              <button type="submit" id="btn-continue-registration-step-3" class="btn-primary ml-auto">
+                  Concluir cadastro
                 </button>
           </div>
         </div>
         
       </div>
     </div>
+  </div>
     </div>
   </div>
 <% end %>

@@ -2,59 +2,56 @@
 
 .container
   .row
-    .col.s12.m12
+    .col-md-3
       = render partial: 'project_tabs', locals: { project: @project }
-    .row
-      .col.m2.s12
-      .col.m8.s12
-        .private-project-box
-          %h3.huge-title Tentativas de Pagamentos
+    .col-md-6
+      .card.card-full-width
+        .card-body
+          %h3.label Pagamento
           %br
           %br
           - if @project.client
-            .row
-              .col.m12.s12
-                - if @payments.empty?
-                  .center-align Nenhum
-                - else
-                  %table.bordered.striped
-                    %tr
-                      %th Nome
-                      %th Valor
-                      %th Status Pagamento
-                    - @payments.each do |payment|
-                      %tr
-                        %td= payment.user.full_name
-                        %td R$ 500,00
-                        %td= payment.status
+            - if @payments.empty?
+              -# .center-align Nenhum
+            - else
+              %table.bordered.striped
+                %tr
+                  %th Nome
+                  %th Valor
+                  %th Status Pagamento
+                - @payments.each do |payment|
+                  %tr
+                    %td= payment.user.full_name
+                    %td R$ 500,00
+                    %td= payment.status
 
-            .row
-              .col.m12.s12
-                - if @payments.where(status: :pago).any?
-                  Seu pagamento foi confirmado com sucesso!
-                - elsif @payments.where(status: :aguardando).any?
-                  Seu pagamento esta aguardando confirmação, espere a solicitação receber atualização para prosseguir.
-                  Se o pagamento for negado por algum motivo, você poderá efetuar uma nova tentativa de pagamento.
-                - else
-                  = form_tag charges_path, id: 'payment-form' do
-                    = hidden_field_tag "stripeToken"
-                    = hidden_field_tag "project_id",@project.id
-                    %article
-                    - if flash[:error].present?
-                      %p= flash[:error]
-                    %label.amount
-                      %span
-                      Valor: R$ 500,00
-                    .form-row
-                      %label{ for: 'card-element' }
-                        Cartão de crédito
-                      #card-element
+            - if @payments.where(status: :pago).any?
+              Seu pagamento foi confirmado com sucesso!
+            - elsif @payments.where(status: :aguardando).any?
+              Seu pagamento esta aguardando confirmação, espere a solicitação receber atualização para prosseguir.
+              Se o pagamento for negado por algum motivo, você poderá efetuar uma nova tentativa de pagamento.
+            - else
+              = form_tag charges_path, id: 'payment-form' do
+                = hidden_field_tag "stripeToken"
+                = hidden_field_tag "project_id",@project.id
+                %article
+                - if flash[:error].present?
+                  %p= flash[:error]
+                %label.amount
+                  %span
+                  .label Taxa de operação
+                  Valor: R$ 500,00
+                %div
+                  %br
+                  %label{ for: 'card-element' }
+                    Insira seu cartão de crédito
+                  #card-element
 
-                      #card-errors{ role: 'alert' }
+                  #card-errors{ role: 'alert' }
 
-                      %button.btn-upme-blue
-                        Pagar
-                    //%script.stripe-button{"data-amount" => "50000", "data-description" => "match payment", "data-key" => ENV["stripe_publishable_key"], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
+                  %button.btn-primary.ml-auto
+                    Pagar
+                  //%script.stripe-button{"data-amount" => "50000", "data-description" => "match payment", "data-key" => ENV["stripe_publishable_key"], "data-locale" => "auto", :src => "https://checkout.stripe.com/checkout.js"}
 
                   :javascript
                     (function () {
@@ -155,7 +152,7 @@
                         });
                       });
                     }).call(this);
-      .col.m2.s12
-        = render partial: 'project_right_bar', locals: { project: @project }
+    .col-md-3
+      = render partial: 'project_right_bar', locals: { project: @project }
 
 = render 'layouts/upme_footer'

@@ -1,0 +1,49 @@
+<%= render 'layouts/upme_nav' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: 'project_tabs', locals: {project: @project} %>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-full-width">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h3 class="label">Agenda de compromissos</h3>
+            </div>
+            <div class="col" style="display:flex">
+              <%=link_to 'Agendar compromisso',new_project_event_path, class: 'btn-small btn-primary ml-auto'%>
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <% if @events.empty? %>
+              <div class="text-center">Nenhum compromisso agendado ainda.</div>
+              <br>
+          <% else %>
+          <div class="row">
+            <% @events.each do |event| %>
+              <div class="col-4">
+                <div class="up-mini-calendar">
+                  <div class="up-mini-calendar-header">Novembro</div>
+                    <%= convert_timestamp(event.start_date) %>
+                </div>
+              </div>
+              <div class="col-8">
+
+                <div class="label"><%= event.title %></div>
+                <div class="text"><%= event.description %></div>
+              </div>
+        <% end %>
+            </div>
+                
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= render partial: 'project_right_bar', locals: {project: @project} %>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/upme_footer' %>

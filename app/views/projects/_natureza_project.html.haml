@@ -1,4 +1,5 @@
-.label-upme
+%br
+.label
   - if @project.user.empresa?
     = 'Natureza'
   - else
@@ -7,15 +8,15 @@
 .row
   - if @project.nat_privada
     .col.s12.m4.center-align
-      .btn-upme-outline-grey 🏢  Empresa privada
+      🏢  Empresa privada
       %br
   - if @project.nat_publica
     .col.s12.m4.center-align
-      .btn-upme-outline-grey 🏛️ Empresa pública
+      🏛️ Empresa pública
       %br
       
   - if @project.nat_ong
     .col.s12.m4.center-align
-      .btn-upme-outline-grey 🙌  ONG/Social
+      🙌  ONG/Social
       %br
       

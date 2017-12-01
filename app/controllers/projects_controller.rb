@@ -31,17 +31,27 @@ class ProjectsController < ApplicationController
 
   def edit
     set_project
-    @selected_areas = AreaDeInteresse.where(id: @project.project_area_de_interesse.pluck(:area_de_interesse_id)).pluck(:name)
+    if current_user.can_edit_project? @project
+      @selected_areas = AreaDeInteresse.where(id: @project.project_area_de_interesse.pluck(:area_de_interesse_id)).pluck(:name)
+    else
+      flash[:danger] = 'Você não pode acessar essa página'
+      redirect_to public_project_path(@project.id)
+    end
   end
 
   def update
     set_project
-    if @project.user_id == current_user.id and @project.update_attributes(project_params)
-      ProjectAreaDeInteresse.where(project_id: @project.id).delete_all
-      save_areas_de_interesse
-      redirect_to project_path(@project)
+    if current_user.can_edit_project? @project
+      if @project.user_id == current_user.id and @project.update_attributes(project_params)
+        ProjectAreaDeInteresse.where(project_id: @project.id).delete_all
+        save_areas_de_interesse
+        redirect_to project_path(@project)
+      else
+        render 'projects/edit'
+      end
     else
-      render 'projects/edit'
+      flash[:danger] = 'Você não pode acessar essa página'
+      redirect_to public_project_path(@project.id)
     end
   end
 
@@ -73,6 +83,11 @@ class ProjectsController < ApplicationController
 
   def timeline
     set_project
+  end
+
+  def events
+    set_project
+    @events = ProjectEvent.where(project_id:@project.id)
   end
 
   def payment
@@ -196,7 +211,7 @@ class ProjectsController < ApplicationController
       Notification.invite_member_solicitation(current_user, @project.user, @project)
       flash[:success] = 'Solicitação enviada!'
     else
-      flash[:danger] = 'Erro!'
+      flash[:danger] = @solicitation.errors.full_messages.join(', ')
     end
     redirect_to public_project_path(@project.id)
   end

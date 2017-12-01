@@ -1,0 +1,51 @@
+@import 'typography';
+
+.card {
+    border: none;
+    border-radius: .5rem;
+    &:hover {
+        text-decoration: none;
+    }
+}
+.card-body {
+    padding: 1rem;
+}
+.card-header {
+    display: flex;
+    align-items: center;
+}
+.card-header,
+.card-footer {
+    background-color: #fff;
+    padding: 1rem;
+}
+.card-footer .up-header{
+    margin-bottom: 0;
+}
+.card-header,
+.card-header:first-child {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.card-footer,
+.card-footer:last-child {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+.projects-list {
+    margin-bottom: 2rem;
+}
+.card-title {
+    @extend .label;
+}
+.card-image-container {
+    position: relative;
+}
+.card-categories {
+    position: absolute;
+    bottom: .5rem;
+    left: .5rem;
+}
+.card-body .label {
+    margin-bottom: .5rem;
+}

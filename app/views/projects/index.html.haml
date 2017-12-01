@@ -4,54 +4,55 @@
 - if current_user.my_invitations.size > 0
   .container
     .row
-      .col.m2
-      .col.m8.s12
+      .col-md-2
+      .col-12.col-md-8
         .upme-alert-invitation
           - current_user.my_invitations.each do |invitation|
-            .upme-sub-title
-              O projeto
+            .label.upme-alert-invitation-title
+              Você está sendo convidado para participar do projeto:
               = link_to invitation.project.title, public_project_path(invitation.project.id)
-              quer te convidar
             .invitation-button
-              = link_to 'Aceitar convite', accept_invitation_path(invitation.id), class: "btn-upme-blue"
-              = link_to 'Recusar', refuse_invitation_path(invitation.id), class: "btn-upme-outline-grey"
+              = link_to 'Aceitar convite', accept_invitation_path(invitation.id), class: "btn-primary"
+              = link_to 'Recusar', refuse_invitation_path(invitation.id), class: "btn-default"
       .col.m2
 
 - if current_user.my_projects.size > 0 or current_user.my_filed_projects.size > 0
   .container
+    .page-header
+      .row
+        .col.m12.l6
+          .title
+            - if action_name == 'filed_projects'
+              %span Projetos arquivados
+            - else
+              %span Meus projetos
+     
     .row
-      .col.m12.l6
-        .upme-screen-title
-          %i.upme-screen-logo{data: {feather: 'clipboard'}}
-          - if action_name == 'filed_projects'
-            %span Projeto arquivados
-          - else
-            %span Projetos que você faz parte
-      .col.m12.l6.right-align
-        %br
-        %br
-        - if action_name == 'index'
-          = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
-        - else
-          = link_to projects_path, class: 'waves-effect waves-light-dark btn-upme-outline-grey btn-small' do
-            %i.icon-small{data: {feather: 'chevron-left'}}
-            Voltar para projetos
-        &nbsp
-        &nbsp
-        = link_to 'Novo projeto', new_project_path, class: 'waves-effect waves-light btn-upme-blue btn-small'
-      
-    .row
-      - @projects.each do |project|
-        = render partial: 'project_box', locals: { project: project }
+      .col-lg-3
+        .card
+          %ul.list-group.list-group-flush
+            %li.list-group-item
+              - if action_name == 'index'
+                = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
+              - else
+                = link_to projects_path, class: 'waves-effect waves-light-dark btn-upme-outline-grey btn-small' do
+                  %i.icon-small{data: {feather: 'chevron-left'}}
+                  Voltar para projetos
+
+      .col-lg-9
+        .row
+          - @projects.each do |project|
+            = render partial: 'project_box', locals: { project: project }
 - else
   .container
     .row
-      .col.m4.s12.offset-m4.center-align
+      .col.m4.s12.offset-m4.text-center
         %br
         %i.no-projects-icon-plus{data: {feather: 'plus-circle'}}
-        %h2.upme-sub-title.center-align
+        %h2.upme-sub-title.text-center
           Você ainda não tem
           %br projetos cadastrados :(
-        = link_to 'Cadastrar primeiro projeto', new_project_path, class: 'waves-effect waves-light btn-upme-blue'
+        %br
+        = link_to 'Cadastrar primeiro projeto', new_project_path, class: 'btn-primary'
 
 = render 'layouts/upme_footer'

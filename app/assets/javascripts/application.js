@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require materialize-sprockets
 //= require animateCss
 //= require is_on_screen
 //= require waves_fix

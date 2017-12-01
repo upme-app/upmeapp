@@ -1,28 +1,23 @@
-%h2.upme-sub-title Professor
-
-
+%h2.label Professor
 %ul.collection{style: 'border: none'}
 - @project.project_users.each do |pu|
-  %ul
-    - if pu.user.professor?
-      = link_to profile_path(pu.user.id) do
-        %li.collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
-          = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
-          %span.title.dark-link.profiles-names= pu.user.first_name
+  - if pu.user.professor?
+    = link_to profile_path(pu.user.id) do
+      .profile
+        = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
+        .profile-name= pu.user.first_name= pu.user.first_name
 
 - if @project.client
-  %h2.upme-sub-title Cliente
-  %ul
-    = link_to profile_path(@project.client.id) do
-      %li.collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
-        = image_tag profilepic(@project.client), class: 'circle', width: '30px', id: 'img-profilepic'
-        %span.title.dark-link.profiles-names= @project.client.full_name
+  %h2.label Cliente
+  = link_to profile_path(@project.client.id) do
+    .profile
+      = image_tag profilepic(@project.client), class: 'profile-image', width: '30px', id: 'img-profilepic'
+      .profile-name= @project.client.full_name
 
-%h2.upme-sub-title Equipe
+%h2.label Equipe
 - @project.project_users.each do |pu|
-  %ul
-    - if pu.user.aluno?
-      = link_to profile_path(pu.user.id) do
-        %li.collection-item.avatar{style: 'border: none;vertical-align: bottom;' }
-          = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
-          %span.title.dark-link.profiles-names= pu.user.first_name
+  - if pu.user.aluno?
+    = link_to profile_path(pu.user.id) do
+      .profile
+        = image_tag profilepic(pu.user), class: 'profile-image', width: '30px', id: 'img-profilepic'
+        .profile-name= pu.user.first_name

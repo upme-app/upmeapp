@@ -1,21 +1,18 @@
-
+-# Modal Convide seu time
 
 = render partial: 'project_team'
 
 - if @project.client_id != current_user.id
-  %a.waves-effect.waves-light.modal-trigger.upme-btn-blue{href: '#invitation-modal'}
+  .btn.btn-primary{data: {toggle: "modal", target: "#invitation-modal"}}
     Convide seu time
 
-#invitation-modal.modal
-  = form_tag invite_user_to_project_path(@project.id) do |f|
+.modal.fade#invitation-modal
+  = form_tag invite_user_to_project_path(@project.id), class: 'modal-dialog' do |f|
     .modal-content
-      %h4 Convide seu time
-
-      = text_field_tag :email, '', placeholder: 'Digite o email de quem você quer convidar.'
-    .modal-footer
-      %a.modal-action.modal-close.waves-effect.btn-flat{href: '#!'} Cancelar
-      %button.modal-action.waves-effect.btn-flat{type: :submit} Convidar
-
-
-:javascript
-  $('.modal').modal();
+      .modal-header
+        .modal-title Convide seu time
+      .modal-body
+        = text_field_tag :email, '', class: 'form-control', placeholder: 'Digite o email de quem você quer convidar.'
+      .modal-footer
+        %a.btn-default{data: {dismiss: "modal"}} Cancelar
+        %button.btn-primary{type: :submit} Convidar

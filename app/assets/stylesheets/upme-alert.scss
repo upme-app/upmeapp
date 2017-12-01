@@ -1,3 +1,5 @@
+@import '_variables';
+
 .upme-alert-success, .upme-alert-danger, .upme-alert-notice, .upme-alert-alert {
   font-family: Lato;
   font-style: italic;
@@ -11,7 +13,7 @@
   padding: 24px 16px 24px 16px;
   margin-top: 32px;
   height: 80px;
-  background: #FFFFFF;
+  background: transparent;
 }
 
 .upme-icon-success, .upme-icon-danger, .upme-icon-alert {
@@ -45,14 +47,14 @@
 }
 
 .upme-alert-invitation {
-  border: 2px solid #ECECEC;
+  border: 2px solid $blue;
   padding: 34px;
   border-radius: 4px;
   margin-top: 24px;
   position: relative;
-  .upme-sub-title {
-    width: 60%;
-  }
+}
+.upme-alert-invitation-title {
+  width: 60%;
 }
 
 @media screen and (max-width: 768px) {

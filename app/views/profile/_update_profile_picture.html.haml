@@ -1,27 +1,30 @@
 %div.center-align
   = image_tag profilepic(current_user), class: 'circle', width: '130px', id: 'img-profilepic'
   %br
-  %a.btn-upme-outline-grey.btn-small.modal-trigger.btn-square.btn-change-profilepic{href: '#modal-update-picture', title: 'Alterar Foto do Perfil'}
-    %i{data: {feather: 'edit'}}
+  .btn-upme-outline-grey.btn-small.modal-trigger.btn-square.btn-change-profilepic{data: {toggle: 'modal', target: '#modal-update-picture'}}
+    %i.up-pencil
 
 
-#modal-update-picture.modal
-  .modal-content
-    %h4 Escolha sua foto
+#modal-update-picture.modal.fade
+  .modal-dialog
+    
+    = form_tag update_picture_path,class: 'modal-content', id: 'save-picture-form', method: :post, enctype: 'multipart/form-data' do
+    
+      .modal-header
+        .modal-title Escolha sua foto
 
-    = form_tag update_picture_path, id: 'save-picture-form', method: :post, enctype: 'multipart/form-data' do
-
-      .file-field.input-field
-        .btn
-          %span Foto
+      .modal-body
+        .file-field.input-field
+          .btn
+          .label selecione sua foto
+          %br
           = file_field_tag :picture, id: 'input-user-picture'
-        .file-path-wrapper
-          %input.file-path.validate{type: 'text'}
+          .file-path-wrapper{style: 'opacity: 0'}
+            %input.file-path.validate{type: 'text'}
 
-    .upme-loading.display-none
-  .modal-footer.row
-    .col.s12.right-align
-      %button.waves-effect.waves-light.btn#btn-save-picture{type: 'button'} Salvar
+        .upme-loading.display-none
+        %button.btn-default{type: 'button', data: {dismiss: 'modal'}} Cancelar
+        %button.btn-primary#btn-save-picture{type: 'submit'} Salvar
 
 :javascript
   $('.modal').modal();
@@ -43,7 +46,7 @@
         if(xhr.responseText != 'error') {
           $('#img-profilepic').attr('src', xhr.responseText);
         }
-        $('#modal-update-picture').modal('close');
+        $('#modal-update-picture').modal('hide');
         $('.upme-loading').fadeOut();
       }
     });

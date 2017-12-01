@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  <div class="upme-sub-title">Agendar compromisso</div>
+  <br>
+      <div class="card">
+          <div class="card-body">
+              <%= form_for @project_event do |f| %>
+              <% if @project_event.errors.any? %>
+                  <div id="error_explanation">
+                    <h2>
+                      <%= "#{pluralize(@project_event.errors.count, "error")} prohibited this project_event from being saved:" %>
+                    </h2>
+                    <ul>
+                      <% @project_event.errors.full_messages.each do |msg| %>
+                          <li>
+                            <%= msg %>
+                          </li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+          
+              <div class="form-group">
+                <%= f.label :project_id,'Selecione o projeto' %>
+                <%= f.select :project_id,Project.all.collect {|p| [ p.title, p.id ] }, {class: "form-control input-lg"} %>
+              </div>
+              <div class="form-group">
+                <%= f.hidden_field :user_id,value: current_user.id %>
+              </div>
+              <div class="form-group">
+                <%= f.label :title,'Título' %>
+                <%= f.text_field :title, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :description,'Descrição' %>
+                <%= f.text_area :description, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :start_date,'Data Início' %>
+                <%= f.datetime_select :start_date, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :end_date,'Data Fim' %>
+                <%= f.datetime_select :end_date, class: 'form-control' %>
+              </div>
+              <div class="actions">
+                <%= f.submit 'Salvar',class:'btn btn-primary' %>
+              </div>
+          <% end %>
+          
+          </div>
+        </div>
+        
+  </div>
+</div>

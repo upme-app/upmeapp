@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :project_events,path: 'eventos'
   devise_for :users, controllers: {
       registrations: 'users/registrations'
   }
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/arquivos/:file_name/:ext', as: :delete_project_file, to: 'project_uploads#delete', via: :delete
   match 'meus-projetos/:id/arquivos', as: :upload_project_file, to: 'project_uploads#upload', via: :post
   #
+  match 'meus-projetos/:id/eventos', as: :events, to: 'projects#events', via: :get
   match 'meus-projetos/:id/pagamentos', as: :payment, to: 'projects#payment', via: :get
   match 'meus-projetos/:id/solicitacoes-de-clientes', as: :client_solicitations, to: 'projects#client_solicitations', via: :get
   match 'meus-projetos/:id/solicitacoes-de-membros', as: :member_solicitations, to: 'projects#member_solicitations', via: :get

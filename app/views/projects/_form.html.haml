@@ -1,67 +1,87 @@
 = form_for @project do |f|
   .container
     .row
-      .col.s12.m2
-      .col.s12.m8
-        .paper-box.creating-project
-          .input-field.check-validation
-            = f.label :title, 'Título do Projeto', class: 'label-upme'
-            = f.text_field :title, class: 'validate big-font-form', placeholder: 'Escreva o titulo aqui'
-            .help-text (Ex.: Planejamento estratégico, Plano de cargos e salários, Logotipo, Campanha publicitária, Projeto Arquitetônico e etc.)
-          /.input-field.check-validation.active
-          .input-field.check-validation
-            = f.label :objective, 'Objetivos do Projeto', class: 'label-upme'
-            = f.text_area :objective, class: 'materialize-textarea', data: { length: 350 }, placeholder: 'Escreva aqui'
-            .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
-          .input-field.check-validation
-            = f.label :description, 'Mais Informações', class: 'label-upme'
-            = f.text_area :description, class: 'materialize-textarea', data: { length: 350 }, placeholder: 'Escreva outras informações'
-            .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
-          
-          .label-upme A quem o projeto se destina
-          %br
-          .row
-            .col.s4
-              = f.check_box :nat_privada
-              = f.label :nat_privada, '🏢  Empresa privada'
-            .col.s4
-              = f.check_box :nat_publica
-              = f.label :nat_publica, '🏛️  Empresa Pública'
-            .col.s4
-              = f.check_box :nat_ong
-              = f.label :nat_ong, '🙌  ONG/Social'
-          .input-field.check-validation
-            = f.label :target_audience, 'Público-alvo', class: 'label-upme'
-            = f.text_field :target_audience, class: 'validate', placeholder: 'Escreva o publico alvo do seu projeto aqui'
-            .help-text (Quem vai se beneficiar do projeto solicitado, qual o setor da organização e público beneficiado pelo projeto)
-          
-          .row
-            .label-upme Áreas de interesse do projeto
-            %select#e2{name: "areas[]", multiple: :multiple}
+      .col-md-2
+      .col-md-8
+        .card.creating-project
+          .card-body
+            .input-field
+              - if sou_empresa?
+                = f.label :title, 'Título da demanda', class: 'label'
+              - if sou_professor?
+                = f.label :title, 'Título do projeto', class: 'label'
+              = f.text_field :title, class: 'validate form-control', placeholder: 'Escreva o titulo aqui'
+              .help-text (Ex.: Planejamento estratégico, Plano de cargos e salários, Logotipo, Campanha publicitária, Projeto Arquitetônico e etc.)
+            /.input-field.active
+            .input-field
+              - if sou_empresa?
+                = f.label :objective, 'Objetivos da demanda', class: 'label'
+              - if sou_professor?
+                = f.label :objective, 'Objetivos do Projeto', class: 'label'
+              = f.text_area :objective, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva aqui'
+              .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
+            .input-field
+              = f.label :description, 'Mais Informações', class: 'label'
+              = f.text_area :description, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva outras informações'
+              .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
+            
+            %br
+            - if sou_empresa?
+              .label Sua empresa é de natureza:
+            - if sou_professor?
+              .label A quem o projeto se destina
+            .row
+              .col.s4
+                = f.check_box :nat_privada, checked: 'checked'
+                = f.label :nat_privada, '🏢  Empresa privada'
+              .col.s4
+                = f.check_box :nat_publica
+                = f.label :nat_publica, '🏛️  Empresa Pública'
+              .col.s4
+                = f.check_box :nat_ong
+                = f.label :nat_ong, '🙌  ONG/Social'
+            .input-field
+              = f.label :target_audience, 'Público-alvo', class: 'label'
+              = f.text_field :target_audience, class: 'form-control validate', placeholder: 'Escreva o publico alvo do seu projeto aqui'
+              .help-text (Quem vai se beneficiar do projeto solicitado, qual o setor da organização e público beneficiado pelo projeto)
+            
+            %br
+            - if sou_empresa?
+              .label Categoria da demanda
+            - if sou_professor?
+              .label Categoria do projeto
+              
+            %select#e2.form-control{name: "areas[]", multiple: :multiple}
               - AreaDeInteresse.all.order(name: :asc).each do |a|
                 - if @selected_areas.include? a.name
                   %option{:value => a.name, selected: "selected"}= a.name
                 - else
                   %option{:value => a.name}= a.name
-     
-      .col.s12.m2
+      
+        .col.s12.m2
   .upme-action-bar-bg
     .container
       .row.no-padding.upme-action-bar
-        .col.m2.no-padding
-        .col.m8.s12.no-padding
-          .col.s3.m4.left-align.no-padding
-            - if action_name == 'edit'
-              = button_tag 'Cancelar', type: 'button', class: 'btn-upme-outline-white', :onclick => "location.href = '#{project_path(@project)}'"
-            - else
-              = button_tag 'Cancelar', type: 'button', class: 'btn-upme-outline-white', :onclick => "location.href = '#{projects_path}'"
-          .col.s4.center-align.no-padding
-
-          .col.s5.m4.right-align.no-padding
-            - if action_name == 'edit'
-              = submit_tag 'Salvar Projeto', class: 'btn-upme-white'
-            - else
-              = submit_tag 'Publicar Projeto', class: 'btn-upme-white'
+        .col-md-2
+        .col-md-8.col-12.no-padding
+          .row  
+            .col-6.left-align.no-padding
+              - if action_name == 'edit'
+                = button_tag 'Cancelar', type: 'button', class: 'btn btn-outline-dark', :onclick => "location.href = '#{project_path(@project)}'"
+              - else
+                = button_tag 'Cancelar', type: 'button', class: 'btn btn-outline-dark', :onclick => "location.href = '#{projects_path}'"
+            .col-6.no-padding{style:'display:flex'}
+              
+              - if action_name == 'edit'
+                - if sou_empresa?
+                  = submit_tag 'Salvar demanda', class: 'btn btn-light ml-auto'
+                - if sou_professor?
+                  = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
+              - else  
+                - if sou_empresa?
+                  = submit_tag 'Salvar demanda', class: 'btn btn-light ml-auto'
+                - if sou_professor?
+                  = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
 
 :javascript
   $(document).ready(function() {
