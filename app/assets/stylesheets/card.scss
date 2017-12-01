@@ -1,3 +1,4 @@
+@import '_variables';
 @import 'typography';
 
 .card {
@@ -6,6 +7,9 @@
     &:hover {
         text-decoration: none;
     }
+}
+.card-project {
+    min-height: 400px;
 }
 .card-body {
     padding: 1rem;
@@ -48,4 +52,7 @@
 }
 .card-body .label {
     margin-bottom: .5rem;
+}
+.card .list-group-item {
+    border: none;
 }

@@ -1,0 +1,65 @@
+@import '_variables';
+@import 'typography';
+@import 'card';
+
+.card-file {
+    @extend .card;
+    border: 2px solid $border-color;
+    padding: .5rem;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+.card-file-name {
+    margin-right: 1rem;
+    color: $black;
+    font-weight: 700;
+    &:before {
+        font-family: 'upicons' !important;
+        content: "\e92e";
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+#file-7 {
+    display: none;
+}
+
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile-6 + label {
+    border: 2px solid $border-color;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 6px;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.inputfile-name {
+    position: absolute;
+    top: 66px;
+    right: 0;
+    color: $grey;
+}
+.inputfile-label {
+    position: relative;
+    width: 100%;
+}

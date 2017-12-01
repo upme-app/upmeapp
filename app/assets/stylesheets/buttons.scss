@@ -14,7 +14,6 @@
     font-weight: 700;
     font-style: initial !important;
     height: 48px;
-    border: none;
     text-align: center;
     cursor: pointer;
     &:hover {
@@ -24,6 +23,7 @@
 .btn-primary {
     @extend .btn;
     background-color: $blue;
+    border: none;
     &:hover {
         background-color: darken($blue, 3%);
     }
@@ -46,75 +46,65 @@
       background-color: darken($bg-light, 5%) !important;
   }
 }
-  .btn-upme-blue {
-    background: $blue;
-    color: #ffffff;
+.btn-upme-blue {
+  background: $blue;
+  color: #ffffff;
+}
+
+.btn-upme-white {
+  background: white;
+  color: #333;
+}
+.btn-icon {
+  width: 4rem;
+  height: 4rem;
+  padding: .5rem !important;
+}
+.tag-upme-blue {
+  padding: 8px 16px !important;
+  font-size: 16px !important;
+  line-height: 14px !important;
+  height: 32px;
+  font-style: italic !important;
+  border: none !important;
+  border-radius: 4px !important;
+  text-align: center;
+  background: $blue !important;
+  color: #ffffff;
+  cursor: initial;
+  display: inline-block
+}
+
+.btn-upme-gray {
+  background: #F5F5F5;
+  color: #4F4F4F;
+}
+.btn-upme-outline-grey {
+
+  color: $grey;
+  border: 2px solid $border-color;
+  background-color: white;
+}
+.btn-upme-outline-white {
+  color: #fff;
+  border: 2px solid #fff;
+  background-color: transparent;
+}
+.btn-upme-outline-blue {
+  background-color: white;
+  color: $blue;
+  border: 2px solid $blue;
+}
+.btn-small {
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 14px;
+  height: 2rem;
+  &.btn-icon {
+    width: 2rem;
+    height: 2rem;
   }
-  
-  .btn-upme-white {
-    background: white;
-    color: #333;
-  }
-  
-  .tag-upme-blue {
-    padding: 8px 16px !important;
-    font-size: 16px !important;
-    line-height: 14px !important;
-    height: 32px;
-    font-style: italic !important;
-    border: none !important;
-    border-radius: 4px !important;
-    text-align: center;
-    background: $blue !important;
-    color: #ffffff;
-    cursor: initial;
-    display: inline-block
-  }
-  
-  .select2-selection__choice {
-    padding: 8px 16px !important;
-    font-size: 16px !important;
-    line-height: 14px !important;
-    height: 32px;
-    font-style: italic !important;
-    border: none !important;
-    border-radius: 4px !important;
-    text-align: center;
-    background: $blue !important;
-    color: #ffffff;
-    display: inline-block
-  }
-  
-  .select2-selection__choice__remove {
-    color: #fff !important;
-  }
-  
-  .btn-upme-gray {
-    background: #F5F5F5;
-    color: #4F4F4F;
-  }
-  .btn-upme-outline-grey {
-  
-    color: $grey;
-    border: 2px solid $border-color;
-    background-color: white;
-  }
-  .btn-upme-outline-white {
-    color: #fff;
-    border: 2px solid #fff;
-    background-color: transparent;
-  }
-  .btn-upme-outline-blue {
-    background-color: white;
-    color: $blue;
-    border: 2px solid $blue;
-  }
-  .btn-small {
-    padding: 8px 16px;
-    font-size: 14px;
-    line-height: 14px;
-    height: 32px;
-  }
-  button:focus {
-    background-color: initial !important;
-  }
+}
+button:focus {
+  background-color: initial !important;
+}

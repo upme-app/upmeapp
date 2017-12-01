@@ -1,0 +1,73 @@
+<%= render 'layouts/upme_nav' %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-3">
+      <%= render partial: '/projects/project_tabs', locals: { project: @project } %>
+    </div>
+    <div class="col-12 col-md-9">
+      <div class="card card-project">
+        <div class="card-body">
+          <div class="label">Arquivos</div>
+          <% ProjectUpload.where(project_id: @project.id).each do |file| %>
+            
+          <div class="card-file">
+            <%= link_to project_uploads_download_path(@project.id, file.file.split('.')[0], file.file.split('.')[1]), class: 'card-file-name' do %>
+              <%= file.file %>
+            <% end %>
+            
+            
+            <%= link_to delete_project_file_path(@project.id, file.file.split('.')[0], file.file.split('.')[1]), method: :delete, class: 'btn btn-outline-secondary btn-icon btn-small' do %>
+              <i class="up-trash"></i>
+            <% end %>
+          </div>
+          
+            <% end %>
+          <%= form_tag upload_project_file_path, method: :post, enctype: 'multipart/form-data' do %>
+            <%= file_field_tag :file, class: 'inputfile', id: 'file-7' , 'data-multiple-caption' => "{count} files selected" %>
+            <label for="file-7" class="btn btn-light inputfile-label"> Selecione um arquivo <span class="inputfile-name"></span> </label>
+            <%= submit_tag "Enviar arquivo", class: "btn btn-primary ml-auto" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  /*
+	By Osvaldas Valutis, www.osvaldas.info
+	Available for use under the MIT License
+*/
+
+'use strict';
+
+;( function( $, window, document, undefined )
+{
+	$( '.inputfile' ).each( function()
+	{
+		var $input	 = $( this ),
+			$label	 = $input.next( 'label' ),
+			labelVal = $label.html();
+
+		$input.on( 'change', function( e )
+		{
+			var fileName = '';
+
+			if( this.files && this.files.length > 1 )
+				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+			else if( e.target.value )
+				fileName = e.target.value.split( '\\' ).pop();
+
+			if( fileName )
+				$label.find( 'span' ).html( fileName );
+			else
+				$label.html( labelVal );
+		});
+
+		// Firefox bug fix
+		$input
+		.on( 'focus', function(){ $input.addClass( 'has-focus' ); })
+		.on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+	});
+})( jQuery, window, document );
+</script>
+<%= render 'layouts/upme_footer' %>
