@@ -9,6 +9,9 @@
       Linha do Tempo
       - project_user = ProjectUser.where(project_id: @project.id).where(user_id: current_user.id).first
       -# - unless project_user.first_timeline_view == true
+      -#   = image_tag('app/notes/note-frist-view-timeline.png', style: 'position: absolute; margin-top: -70px; margin-left: -45px;')
+    = link_to project_uploads_path(project.id), class: 'list-group-item list-group-item-action' + (action_name == 'index' ? 'active' : '') do
+      Arquivos
     - unless @project.client
 
       = link_to client_solicitations_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'client_solicitations' ? 'active' : '') do
