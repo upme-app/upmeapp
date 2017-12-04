@@ -17,7 +17,7 @@
         Solicitações de clientes
 
         - if @project.client_solicitations.size > 0
-          %span.new.badge.red.upme-badge-number{data: {'badge-caption' => ''}}= @project.client_solicitations.size
+          %span.badge.badge-danger= @project.client_solicitations.size
 
     - if @project.client and @project.project_users.size == 1
       = link_to member_solicitations_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'member_solicitations' ? 'active' : '') do

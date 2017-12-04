@@ -94,38 +94,32 @@
               #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion", :role => "tabpanel"}
                 %p Sim! Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. A taxa de operação da UpMe!, realizada em parcela única, não diz respeito ao valor do projeto. Ela existe para garantir a sustentabilidade da nossa iniciativa. Ou seja, para que possamos continuar mantendo uma estrutura para conectar alunos e professores universitários à demandas reais de mercado.               
               
-              #headingThree{:role => "tab"}
-                .label.collapsed{"aria-controls" => "collapseThree", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseThree"}
-                  O que será entregue no final do projeto?
-              #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion", :role => "tabpanel"}
-                %p Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+             
 
 
     .col-12.col-md-3
       .card
         .card-body
-          - if current_user
-            - if ClientSolicitation.solicitation_exists(@project, current_user) or MemberSolicitation.solicitation_exists(@project, current_user)
-              Aguardando resposta.
-            
-            - if !@project.started and @project.user_id != current_user.id
-              - if current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
-                - if current_user.billing_data_is_complete?
-                  %div.text-center
-                    .label Ficou interessado nesta oferta do professor?
-                    %p Envie uma solicitação de projeto para iniciar a negociação com o(a) professor(a).
-                    .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
-                - else
-                  .box-blue.text-left
-                    .title.upme-sub-title Ficou interessado no projeto?
-                    %p Complete as informações no seu perfil para enviar uma mensagem.
-                    = link_to edit_billing_back_to_project_path(@project.id) do
-                      .btn-upme-outline-grey.btn-small Adicionar!
-              - elsif !MemberSolicitation.solicitation_exists(@project, current_user)
+          - if !@project.started and @project.user_id != current_user.id
+            - if current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
+              - if current_user.billing_data_is_complete?
                 %div.text-center
-                  .label Ficou interessado nesta demanda da empresa?
-                  %p Envie uma solicitação de projeto para iniciar a negociação com a empresa.
-                  .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
+                  .label Ficou interessado nesta oferta do professor?
+                  %p Envie uma solicitação de projeto para iniciar a negociação com o(a) professor(a).
+                  .btn.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
+              - else
+                .box-blue.text-left
+                  .title.upme-sub-title Ficou interessado no projeto?
+                  %br
+                  %p Complete as informações no seu perfil para enviar uma mensagem.
+                  %br
+                  = link_to edit_billing_back_to_project_path(@project.id) do
+                    .btn-upme-outline-grey.btn-small Adicionar!
+            - if !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
+              %div.text-center
+                .label Ficou interessado nesta demanda da empresa?
+                %p Envie uma solicitação de projeto para iniciar a negociação com a empresa.
+                .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
 
       = render partial: 'project_team'
 
