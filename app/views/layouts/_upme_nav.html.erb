@@ -41,19 +41,22 @@
               <% end %>
             </li>
         <% end %>
-        <li class="nav-item">
 
-          <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default open-upme-notifications', id: 'notifications-link' do %>
-          <i id='btn-bell' class="open-upme-notifications nav-bg-bell up-bell">
-          </i>
-            <%- if current_user.unread_notifications_size > 0 %>
-            <div id='unread-notifications-size'>
-              <%= current_user.unread_notifications_size %>
-            </div>
-          <%- end %>
-          
-          <% end %>
-        </li>
+        <% if current_user %>
+          <li class="nav-item">
+
+            <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default open-upme-notifications', id: 'notifications-link' do %>
+            <i id='btn-bell' class="open-upme-notifications nav-bg-bell up-bell">
+            </i>
+              <%- if current_user.unread_notifications_size > 0 %>
+              <div id='unread-notifications-size'>
+                <%= current_user.unread_notifications_size %>
+              </div>
+            <%- end %>
+            
+            <% end %>
+          </li>
+        <% end %>
       </ul>
      
       <% if sou_empresa? %>
@@ -131,22 +134,25 @@
   Criar
   <% end %>
 </nav>  -->
-<div id="upme-notifications">
-  <%- current_user.notifications.reverse.each do |notification| %>
-    <%= link_to notification.url + "?read_notification=#{notification.id}", class: "upme-notification-link" do %>
-      <div class="upme-notification <%= 'upme-notification-read' if !notification.read %>">
-        <span><%= notification.description.capitalize %></span>
-        <br>
-        <span class="notification-date">
-          <%= l notification.created_at %>
-        </span>
-      </div>
+
+<% if current_user %>
+  <div id="upme-notifications">
+    <%- current_user.notifications.reverse.each do |notification| %>
+      <%= link_to notification.url + "?read_notification=#{notification.id}", class: "upme-notification-link" do %>
+        <div class="upme-notification <%= 'upme-notification-read' if !notification.read %>">
+          <span><%= notification.description.capitalize %></span>
+          <br>
+          <span class="notification-date">
+            <%= l notification.created_at %>
+          </span>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  <%- if current_user.notifications.size == 0 %>
-    Nenhuma notificação.
-  <% end %>
-</div>
+    <%- if current_user.notifications.size == 0 %>
+      Nenhuma notificação.
+    <% end %>
+  </div>
+<% end %>
 <script type="text/javascript" charset="utf-8">
 
   $('#upme-notifications').hide();
