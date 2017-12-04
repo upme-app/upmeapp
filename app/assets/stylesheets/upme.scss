@@ -26,7 +26,10 @@ a {
   margin-bottom: 1rem;
 }
 // COMPONENTS
-.profile,
+.profile {
+  display: flex;
+  align-items: center;
+}
 .profile-small {
   display: flex;
   align-items: center;
@@ -392,10 +395,7 @@ a {
    height: 64px !important;
    width: 64px !important;
  }
- p {
-  font-size: 16px;
-  color: #666;
-}
+
 @media only screen and (min-width: 993px) {
   .container {
       width: 1170px !important;
@@ -878,4 +878,12 @@ label {
 }
 .modal.fade.show {
   background-color: rgba(0,0,0,.4) 
+}
+#faq {
+  .collapse {
+    margin-bottom: 1rem;
+  }
+  .label {
+    cursor: pointer;
+  }
 }

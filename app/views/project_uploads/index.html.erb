@@ -22,11 +22,17 @@
           </div>
           
             <% end %>
-          <%= form_tag upload_project_file_path, method: :post, enctype: 'multipart/form-data' do %>
-            <%= file_field_tag :file, class: 'inputfile', id: 'file-7' , 'data-multiple-caption' => "{count} files selected" %>
-            <label for="file-7" class="btn btn-light inputfile-label"> Selecione um arquivo <span class="inputfile-name"></span> </label>
-            <%= submit_tag "Enviar arquivo", class: "btn btn-primary ml-auto" %>
-          <% end %>
+            <div class="row">
+              <%= form_tag upload_project_file_path, method: :post, enctype: 'multipart/form-data' do %>
+              <%= file_field_tag :file, class: 'inputfile', id: 'file-7' , 'data-multiple-caption' => "{count} files selected" %>
+             <div class="col-9">
+               <label for="file-7" class="btn btn-primary inputfile-label"> Selecione um arquivo <span class="inputfile-name"></span> </label>
+              </div>
+              <div class="col-3">
+                <%= submit_tag "Enviar arquivo", class: "btn btn-primary ml-auto" %>
+              </div>
+              <% end %>
+            </div>
         </div>
       </div>
     </div>

@@ -11,12 +11,19 @@
 .card-project {
     min-height: 400px;
 }
+.card-list .card {
+    margin-top: 1rem;
+    &:first-child {
+        margin-top: 0;
+    }
+}
 .card-body {
     padding: 1rem;
 }
 .card-header {
     display: flex;
     align-items: center;
+    border-color: transparent;
 }
 .card-header,
 .card-footer {
