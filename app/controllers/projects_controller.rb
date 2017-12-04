@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
   end
 
   def payment
-    @payments = Payment.all.where(user_id: current_user.id)
+    @payments = Payment.all.where(project_id: @project.id)
     set_project
   end
 
