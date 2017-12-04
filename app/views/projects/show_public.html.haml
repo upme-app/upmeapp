@@ -20,7 +20,7 @@
                   - if current_user.billing_data_is_complete?
                     %div
                       .label Ficou interessado no projeto?
-                      .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
+                      .btn.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
                   - else
                     .box-blue.text-left
                       .title.upme-sub-title Ficou interessado no projeto?
@@ -29,9 +29,9 @@
                       %br
                       = link_to edit_billing_back_to_project_path(@project.id) do
                         .btn-upme-outline-grey.btn-small Adicionar!
-                - elsif !MemberSolicitation.solicitation_exists(@project, current_user)
+                - if !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
                   %div
-                    %a.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
+                    %a.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
 
       %br
     .col-12.col-md-6
