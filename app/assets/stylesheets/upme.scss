@@ -887,3 +887,10 @@ label {
     cursor: pointer;
   }
 }
+[data-toggle="collapse"] i:before{   
+  content: "\f139";
+}
+
+[data-toggle="collapse"].collapsed i:before{
+  content: "\f13a";
+}
