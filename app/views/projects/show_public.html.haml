@@ -3,56 +3,130 @@
 .container{style: 'margin-top: 30px'}
   .row
     .col-12.col-md-3
-      = link_to '< Voltar', :back, class: 'btn-default btn-small'
+      = link_to '< Voltar para o painel', :back, class: 'btn btn-default btn-small'
       %br
       %br
-      
       .card
-        .card-body
-          .center-align
-            - if current_user
-              - if ClientSolicitation.solicitation_exists(@project, current_user) or MemberSolicitation.solicitation_exists(@project, current_user)
-                Aguardando resposta.
+        .card-body 
+          - if @project.user.empresa?
+            .label Empresa:
+            .profile
+              = image_tag logourl(@project.user), class: 'profile-image'           
+              .profile-name= @project.user.nome_empresa
+          - else
+            .label Professor:
+            .profile
+              = image_tag profilepic(@project.user), class: 'profile-image'
+              .profile-name= @project.user.full_name
+          %p= @project.user.about
+          %i.up-pin
+          = @project.user.cidade
+        
+          - if @project.user.empresa?
+            %hr
+            .label Criado por:
+            .profile-small
+              = image_tag profilepic(@project.user), class: 'profile-image'
+              .profile-name= @project.user.full_name
+          
 
-              
-              - if !@project.started and @project.user_id != current_user.id
-                - if current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
-                  - if current_user.billing_data_is_complete?
-                    %div
-                      .label Ficou interessado no projeto?
-                      .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
-                  - else
-                    .box-blue.text-left
-                      .title.upme-sub-title Ficou interessado no projeto?
-                      %br
-                      %p Complete as informações no seu perfil para enviar uma mensagem.
-                      %br
-                      = link_to edit_billing_back_to_project_path(@project.id) do
-                        .btn-upme-outline-grey.btn-small Adicionar!
-                - elsif !MemberSolicitation.solicitation_exists(@project, current_user)
-                  %div
-                    %a.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
-
-      %br
     .col-12.col-md-6
-      .card
-        .card-body
-          .title= @project.title
-          %br
-          .label Objetivo deste projeto
-          %p= @project.objective
-          %br
-          
-          .label Público-alvo
-          %p= @project.target_audience
-          %br
-          
-          .label Mais informações
-          %p= @project.description
+      .card-list
+        .card
+          .card-body
+            .title= @project.title
+            .label Objetivo deste projeto
+            %p= @project.objective
+            
+            .label Público-alvo
+            %p= @project.target_audience
+            
+            .label Mais informações
+            %p= @project.description
 
-          = render partial: 'natureza_project'
+            = render partial: 'natureza_project'
+        .card
+          .card-header
+            .label-title Próximos passos:
+          .card-body
+            .row
+              .col-2
+                = image_tag 'app/send.png'
+              .col-10
+                .label 1. Envie uma notificação e mostre seu interesse
+                %p Clique no botão azul Enviar solicitação para enviar uma mensagem para o dono deste projeto. Aguarde a resposta dele, e caso seja aceito você vai iniciar a fase de negociação.
+                
+            .row
+              .col-2
+                = image_tag 'app/handshake.png'
+              .col-10
+                .label 2. Negocie, definam o escopo e prazo
+                %p É um requisito para iniciar o projeto que vocês tenham definido o escopo do projeto, o que será entregue no final e os prazos de tudo.
+                
+            .row
+              .col-2
+                = image_tag 'app/checklist.png'
+              .col-10
+                .label 3. Acompanhe as entregas e dê feedback
+                %p Depois disso é só acompanhar as entregas feitas pelos grupos através do nosso gerenciador de projetos, Ah! se você for o cliente do projeto pedimos que deixe seu feedback para os alunos sempre que uma entrega for feita.
+                
+            .row
+              .col-2
+                = image_tag 'app/fireworks.png'
+              .col-10
+                .label 4. Projeto concluído
+                %p A recompensa de todo trabalho está em um bom resultado, siga os passos corretamente e no final você vai ter um super projeto em suas mãos.
+                
+        .card
+          .card-header
+            .label-title Perguntas frequentes:
+          .card-body
+            #faq{:role => "tablist"}
+              #headingOne{:role => "tab"}
+                .label{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-toggle" => "collapse", :href => "#collapseOne"}
+                  Os alunos recebem para fazer a consultoria ou o projeto?
+              #collapseOne.collapse.show{"aria-labelledby" => "headingOne", "data-parent" => "#accordion", :role => "tabpanel"}
+                %p Empresas não pagam pelos projetos e alunos não recebem para executar os trabalhos. Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. No entanto, a UpMe! Cobra uma taxa de operação pelo match.
+
+              #headingTwo{:role => "tab"}
+                .label.collapsed{"aria-controls" => "collapseTwo", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                  As empresas precisam pagar para a UpMe?
+              #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion", :role => "tabpanel"}
+                %p Sim! Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. A taxa de operação da UpMe!, realizada em parcela única, não diz respeito ao valor do projeto. Ela existe para garantir a sustentabilidade da nossa iniciativa. Ou seja, para que possamos continuar mantendo uma estrutura para conectar alunos e professores universitários à demandas reais de mercado.               
+              
+              #headingThree{:role => "tab"}
+                .label.collapsed{"aria-controls" => "collapseThree", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseThree"}
+                  O que será entregue no final do projeto?
+              #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion", :role => "tabpanel"}
+                %p Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
 
     .col-12.col-md-3
+      .card
+        .card-body
+          - if current_user
+            - if ClientSolicitation.solicitation_exists(@project, current_user) or MemberSolicitation.solicitation_exists(@project, current_user)
+              Aguardando resposta.
+            
+            - if !@project.started and @project.user_id != current_user.id
+              - if current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
+                - if current_user.billing_data_is_complete?
+                  %div.text-center
+                    .label Ficou interessado nesta oferta do professor?
+                    %p Envie uma solicitação de projeto para iniciar a negociação com o(a) professor(a).
+                    .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
+                - else
+                  .box-blue.text-left
+                    .title.upme-sub-title Ficou interessado no projeto?
+                    %p Complete as informações no seu perfil para enviar uma mensagem.
+                    = link_to edit_billing_back_to_project_path(@project.id) do
+                      .btn-upme-outline-grey.btn-small Adicionar!
+              - elsif !MemberSolicitation.solicitation_exists(@project, current_user)
+                %div.text-center
+                  .label Ficou interessado nesta demanda da empresa?
+                  %p Envie uma solicitação de projeto para iniciar a negociação com a empresa.
+                  .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
+
       = render partial: 'project_team'
 
 #modal1.modal.fade
@@ -64,7 +138,6 @@
         %p.help-text
           %i{data: {feather: "help-circle"}}
           Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
-        %br
         .label Edite sua mensagem
         = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
       .modal-footer
@@ -80,7 +153,6 @@
         %p.help-text
           %i{data: {feather: "help-circle"}}
           Descreva aqui os motivos pelos quais você tem interesse em ingressar nesta experiência. Lembre-se de ser claro e atraente para despertar o interesse sobre você.
-        %br
         .label Edite sua mensagem
         = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
       .modal-footer

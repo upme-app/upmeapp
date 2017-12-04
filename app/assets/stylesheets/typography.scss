@@ -1,5 +1,11 @@
 @import 'variables';
-
+p {
+    size: 1rem;
+    color: $grey;
+}
+.card-body p {
+    margin-bottom: 1rem;
+}
 .label {
     font-weight: 700 !important;
     font-size: 1rem !important;
@@ -9,6 +15,11 @@
 .label-light {
     @extend .label;
     color: #fff !important;
+}
+
+.label-title {
+    @extend .label;
+    color: $grey !important;
 }
 .title {
     font-weight: 400 !important;
