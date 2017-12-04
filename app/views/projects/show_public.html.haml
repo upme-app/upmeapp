@@ -102,7 +102,7 @@
     .col-12.col-md-3
       .card
         .card-body
-          - if !@project.started and @project.user_id != current_user.id
+          - if current_user and !@project.started and @project.user_id != current_user.id
             - if current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
               - if current_user.billing_data_is_complete?
                 %div.text-center
