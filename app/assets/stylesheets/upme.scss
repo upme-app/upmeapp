@@ -656,9 +656,9 @@ label {
 }
 
 .btn-square {
-  height: 32px;
-  width: 32px;
-    padding: 2px 3px;
+  height: 2rem;
+  width: 2rem;
+  padding: .5rem;
 }
 
 .profile-photo-container {
@@ -873,3 +873,9 @@ label {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 } 
+.modal-backdrop.show {
+  display: none;
+}
+.modal.fade.show {
+  background-color: rgba(0,0,0,.4) 
+}
