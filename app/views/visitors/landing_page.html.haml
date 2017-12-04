@@ -1,22 +1,25 @@
-%br
-
 %nav.navbar.navbar-expand-lg.navbar-light.up-navbar
   .container
     %a.navbar-brand{:href => "#"}
       = image_tag 'app/logo-upme-vetor.svg'
-    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
+
+    %a.btn.btn-primary.ml-auto.btn-small.d-block.d-sm-none{:href => "/registrar"} Cadastre-se
+    
+    %a.btn.menu-toggle.ex#mobile-menu-toggle.d-block.d-sm-none
+      %span.bar.upper
+      %span.bar.middle
+      %span.bar.lower
+    
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.ml-auto
         %li.nav-item
-          %a.nav-link{href: "/precos" } Preços
+          %a.nav-link.btn-default{href: "/precos" } Preços
         %li.nav-item
-          %a.nav-link{href: "/blog", target: '_blank'} Blog
+          %a.nav-link.btn-default{href: "/blog", target: '_blank'} Blog
         %li.nav-item
-          %a.nav-link{href: "/entrar"} Login
-        %form.form-inline
-          %a.btn-primary{:href => "/registrar"} Cadastre-se
-
+          %a.nav-link.btn-default{href: "/entrar"} Login
+        %li.nav-item.form-inline
+          %a.btn.btn-primary{:href => "/registrar"} Cadastre-se
 .hero-section
   .container
     .row
@@ -33,7 +36,7 @@
           conectando os assuntos de cada
           %br/
           disciplina com projetos de mercado.
-        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
+        %a.btn.btn-primary{:href => "/registrar"} Cadastre-se
       .col-md-7.video-container
         = image_tag 'landing/veja-o-video-hero.png', class: 'hero-note'
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "354", :src => "https://www.youtube.com/embed/ywpooUzHVtk?rel=0&showinfo=0", :width => "100%"}
@@ -62,7 +65,7 @@
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "320", :src => "https://www.youtube.com/embed/n56fi5ULKxY?rel=0&showinfo=0", :width => "100%"}
       .col-md-6.col-sm-12
         %br
-        %h2
+        %h2.title
           %strong  Para alunos(as)
         %p.lead Otimize seu tempo na faculdade, transformando trabalhos de disciplinas em experiências reais de mercado e em portfólio! De quebra você ainda pode adquirir certificados para validar horas de atividades complementares.
         %br
@@ -82,7 +85,7 @@
     .row
       .col-md-6.col-sm-12
         %br
-        %h2
+        %h2.title
           %strong  Para professores(as)
         %p.lead Acreditamos que o aprendizado vem dos livros, mas também da mão na massa! Cadastre os trabalhos de suas disciplinas para conectar seus alunos com startups, empresas ou ONGs. Você ainda terá a possibilidade de aproveitar os projetos para Extensão Universitária.
         %br
@@ -112,7 +115,7 @@
         %iframe{:allowfullscreen => "", :frameborder => "0", :height => "320", :src => "https://www.youtube.com/embed/luTpthSYKX4?rel=0&showinfo=0", :width => "100%"}
       .col-md-6.col-sm-12
         %br
-        %h2
+        %h2.title
           %strong  Para empreededores(as)
         %p.lead Encontre uma equipe de alunos e um professsor qualificado para ajudá-lo a resolver problemas de sua empresa! Explore projetos de faculdade e conecte-se pagando apenas uma taxa de operação pelo match.
         %br
@@ -126,28 +129,7 @@
           .col-md-4.col-sm-12.text-center
             = image_tag 'landing/checklist.png'
             %p Controle dos prazos e entregas dos projetos pela linha do tempo da plataforma.
-         
-      -# .col-12.col-md-4.text-center
-      -#   .testimonial-phrase Além de todo o desenvolvimento pessoal e profissional, a gente conseguiu ainda vender um projeto para a nossa empresa júnior.
-      -#   %p.testimonial-name Maria Júlia, universitária
-      -#   .testimonial-avatar-container
-      -#     = image_tag 'landing/avatar.png', class: 'testimonial-avatar'
-      -#     %a{"data-target" => "#universitaria-modal", "data-toggle" => "modal", :href => "#"}
-      -#       = image_tag 'landing/play-button.png', class: 'testimonial-play'
-      -# .col-12.col-md-4.text-center
-      -#   .testimonial-phrase Contar com uma ferramenta que conecte a necessidade das empresas com aquilo que os alunos estão precisando aplicar é fenomenal!
-      -#   %p.testimonial-name Graziela, professora
-      -#   .testimonial-avatar-container
-      -#     = image_tag 'landing/avatar-professor.png', class: 'testimonial-avatar'
-      -#     %a{"data-target" => "#professor-modal", "data-toggle" => "modal", :href => "#"}
-      -#       = image_tag 'landing/play-button.png', class: 'testimonial-play'
-      -# .col-12.col-md-4.text-center
-      -#   .testimonial-phrase Foi muito profissional. A gente até se surpreendeu de ver aquelas meninas tão jovens entregando um trabalho muito legal, muito profissional.”
-      -#   %p.testimonial-name Rodrigo, empreendedor
-      -#   .testimonial-avatar-container
-      -#     = image_tag 'landing/avatar-empresa.png', class: 'testimonial-avatar'
-      -#     %a{"data-target" => "#empresa-modal", "data-toggle" => "modal", :href => "#"}
-      -#       = image_tag 'landing/play-button.png', class: 'testimonial-play'
+        
 .media.text-center
   .container
     .row
@@ -204,7 +186,7 @@
               %option{:value => "professor"} Professor(a) 👩‍🏫👨🏼‍🏫
               %option{:value => "empresa"} Gestor(a) de empresa ou ONG 🤵👩🏾
           .d-flex.justify-content-right
-            = submit_tag 'Ficar por dentro!', class: 'btn btn-primary btn-blue d-flex'
+            = submit_tag 'Ficar por dentro!', class: 'btn btn-primary'
 / Modal
 #universitaria-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog.modal-lg{:role => "document"}

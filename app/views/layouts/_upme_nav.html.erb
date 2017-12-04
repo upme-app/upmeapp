@@ -1,13 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light up-navbar">
   <div class="container">
 
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/explorar">
       <%= image_tag 'app/logo-upme-vetor.svg' %>
     </a>
-    <button class="navbar-toggler d-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
+   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -25,7 +22,6 @@
                   Demandas
               <% end %>
           <% end %>
-          
         </li>
         <% if current_user %>
             <li class="nav-item">
@@ -81,6 +77,7 @@
               <%= image_tag profilepic(current_user),class: 'profile-image profile-image-navbar'%>
             <% end %>
           </a>
+          
           <li class="nav-item dropdown">
             <div class="dropdown-menu" id="profile-dropdown" aria-labelledby="navbarDropdown">
               <%= link_to my_profile_path, class: 'dropdown-item' do %>
@@ -91,11 +88,16 @@
             </div>
           </li>
       <% end %>
+      
     </ul>
+    <a class='btn menu-toggle ex d-block d-sm-none' id='mobile-menu-toggle'>
+        <span class='bar upper'></span>
+        <span class='bar middle'></span>
+        <span class='bar lower'></span>
+      </a>
   </div>
-</div>
 </nav>
-<nav class="nav mobile-footer-nav fixed-bottom d-block d-md-none d-lg-none">
+<!-- <nav class="nav mobile-footer-nav fixed-bottom d-none d-sm-block d-md-block">
     <%= link_to explore_path, class: controller_name == 'explore' ? 'upme-nav-compass-active btn btn-default btn-small' : 'btn btn-default btn-small' do %>
       <% if sou_empresa? %>
         <i class="up-brieftcase"></i>
@@ -128,7 +130,7 @@
   <%= link_to new_project_path, class: 'btn btn-primary btn-small', style: 'margin-left:.5rem;' do %>
   Criar
   <% end %>
-</nav> 
+</nav>  -->
 <div id="upme-notifications">
   <%- current_user.notifications.reverse.each do |notification| %>
     <%= link_to notification.url + "?read_notification=#{notification.id}", class: "upme-notification-link" do %>
@@ -164,19 +166,8 @@
       hide_notifications();
     }
   });
-
-  // $(".button-collapse").sideNav()
-
-  $('.dropdown-button').dropdown({
-    inDuration: 300,
-    outDuration: 225,
-    constrainWidth: false, // Does not change width of dropdown to that of the activator
-    gutter: 0, // Spacing from edge
-    belowOrigin: false, // Displays dropdown below the button
-    alignment: 'right', // Displays dropdown with edge aligned to the left of button
-    stopPropagation: false // Stops event propagation
-  });
-       
 </script>
 
 <%= render 'layouts/upme_flash' %>
+
+

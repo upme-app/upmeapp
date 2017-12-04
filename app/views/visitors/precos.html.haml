@@ -1,39 +1,41 @@
-.container
-  .row
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      %a.navbar-brand{:href => "/"}
-        = image_tag 'landing/logo.png'
-      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-        %span.navbar-toggler-icon
-      #navbarSupportedContent.collapse.navbar-collapse
-        %ul.navbar-nav.ml-auto
-          %li.nav-item
-            %a.nav-link{href: "/precos" } Preços
-          %li.nav-item
-            %a.nav-link{href: "/blog", target: '_blank'} Blog
-          %li.nav-item
-            %a.nav-link{href: "/entrar", target: '_blank'} Login
-        %form.form-inline
-          %a.btn.btn-outline-primary{:href => "/registrar"} Cadastre-se
+%nav.navbar.navbar-expand-lg.navbar-light.up-navbar
+  .container
+    %a.navbar-brand{:href => "#"}
+      = image_tag 'app/logo-upme-vetor.svg'
 
-
-
+    %a.btn.btn-primary.ml-auto.btn-small.d-block.d-sm-none{:href => "/registrar"} Cadastre-se
+    
+    %a.btn.menu-toggle.ex#mobile-menu-toggle.d-block.d-sm-none
+      %span.bar.upper
+      %span.bar.middle
+      %span.bar.lower
+    
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+          %a.nav-link.btn-default{href: "/precos" } Preços
+        %li.nav-item
+          %a.nav-link.btn-default{href: "/blog", target: '_blank'} Blog
+        %li.nav-item
+          %a.nav-link.btn-default{href: "/entrar"} Login
+        %li.nav-item.form-inline
+          %a.btn.btn-primary{:href => "/registrar"} Cadastre-se
 .container
   %br
   %br
   .row
     .col.text-center
-      %h1.huge-title Preços
+      %h1.huge-title.text-center Preços
       %br
       %p.lead A plataforma é 100% gratuita. Cadastre-se agora mesmo.
       .lead Empresas só pagam quando acontece um match.
       %p.lead Alunos só pagam pela emissão do certificado, que é opicional.
       %br
   .row
-    .col.col-md-4
-      .paper-box.text-center{style:"height: 620px"}
+    .col-12.col-md-4.text-center
+      .paper-box{style:"height: 620px"}
         = image_tag 'landing/alunos-precos.png'
-        %h2.price-type Alunos
+        %h2.price-type.text-center Alunos
         %sup R$
         %span.the-price 15,00
         %p.lead por certificado (Opcional)
@@ -45,11 +47,11 @@
           %li Experiências com clientes reais.
           %li Aumento de suas competências e skills.
         %br
-        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
-    .col.col-md-4
-      .paper-box.text-center{style:"height: 640px"}
+        %a.btn.btn-primary{:href => "/registrar"} Cadastre-se
+    .col-12.col-md-4.text-center
+      .paper-box{style:"height: 640px"}
         = image_tag 'landing/empresas-precos.png'
-        %h2.price-type Empresas
+        %h2.price-type.text-center Empresas
         %sup R$
         %span.the-price 500,00
         %br
@@ -63,11 +65,11 @@
           %li Planejamento detalhado da execução.
           %li Controle dos prazos e entrega.
         %br
-        %a.btn.btn-primary.btn-blue{:href => "/registrar"} Cadastre-se
-    .col.col-md-4
-      .paper-box.text-center
+        %a.btn.btn-primary{:href => "/registrar"} Cadastre-se
+    .col-12.col-md-4.text-center
+      .paper-box
         = image_tag 'landing/universidade-precos.png'
-        %h2.price-type Universidades
+        %h2.price-type.text-center Universidades
         %span.the-price{style:"font-size:32px"} Entre em contato
         %p.lead contato@upmeapp.com.br
         %hr.price-line
@@ -79,7 +81,7 @@
           %li Emissão de certificados de atividades complementares.
           %li Destaque de Qualidade para professores.
   .row
-    .col.col-md-5
+    .col-12.col-md-5
       %br
       %br
       = image_tag 'landing/parceiro.png'

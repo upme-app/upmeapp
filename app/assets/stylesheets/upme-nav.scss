@@ -1,64 +1,15 @@
-@import 'variables';
+@import '_variables';
 
-.upme-nav {
-  background: #FFFFFF;
-  border-bottom: 2px solid #ECECEC;
-  box-sizing: border-box;
-  height: 80px;
+.up-navbar {
+  background-color: #fff;
 }
-
-.upme-nav-item {
-  font-family: Lato;
-  font-style: italic;
-  font-weight: normal;
-  font-size: 18px;
-  color: #828282;
-  display: inline-block;
-  background-size: 25% auto;
-  background-repeat: no-repeat;
-  background-position: center 25%;
-  height: 80px;
-  line-height: 110px;
-  text-align: center;
-  margin-left: 16px;
-  padding: 0 8px;
+.navbar-collapse {
+  background-color: #fff;
 }
-
-.upme-nav-item:hover {
-  cursor: pointer;
-  color: #00C7FF;
-}
-
-.upme-nav-compass-active div {
-  color: #00C7FF;
-  background-image: image_url('app/nav/compass-hover.svg');
-  border-bottom: 4px solid #00C7FF;
-}
-
-.upme-nav-clipboard-active div {
-  color: #00C7FF;
-  background-image: image_url('app/nav/clipboard-hover.svg');
-  border-bottom: 4px solid #00C7FF;
-}
-
-
-.nav-bg-user { background-image: image_url('app/nav/user.svg'); }
-.nav-bg-user:hover { background-image: image_url('app/nav/user-hover.svg'); }
-
-.nav-bg-clipboard { background-image: image_url('app/nav/clipboard.svg'); }
-.nav-bg-clipboard:hover { background-image: image_url('app/nav/clipboard-hover.svg'); }
-
-.nav-bg-compass {
-  background-image: image_url('app/nav/compass.svg');
-  background-size: 30% auto;
-}
-.nav-bg-compass:hover { background-image: image_url('app/nav/compass-hover.svg'); }
-
 .upme-nav-logo {
   background-image: image_url('app/logo.png');
   background-repeat: no-repeat;
   background-position: left center;
-  height: 80px;
   display: inline-block;
 }
 
@@ -160,4 +111,113 @@
 }
 .navbar-nav .dropdown-menu {
   position: absolute;
+}
+.collapse.show {
+  z-index: 99;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.slideout-menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 256px;
+  min-height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+  display: none;
+}
+
+.slideout-menu-left {
+  left: 0;
+}
+
+.slideout-menu-right {
+  right: 0;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+  background-color: #FFF; /* A background-color is required */
+  min-height: 100vh;
+  transition: all .15s ease-in-out;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+.menu-toggle {
+  cursor: pointer;
+  display: inline-block;
+  padding: 13px;
+
+  .bar {
+      width: 1.5rem;
+      height: 3px;
+      background: lighten(#000, 50%);
+      display: block;
+      margin-bottom: 5px;
+      border-radius: 5px;
+  }
+}
+
+.ex {
+  .bar {
+      transition: all 300ms;
+  }
+
+  &.clicked {
+      .upper {
+          transform: translateY(9px) rotate(45deg);
+      }
+
+      .middle {
+          opacity: 0;
+      }
+
+      .lower {
+          transform: translateY(-7px) rotate(-45deg);
+      }
+  }
+}
+.nav-link {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: $grey;
+}
+
+.app-body .slideout-panel {
+  background-color: $bg-light;
+}
+.menu-mobile {
+  background-color: $black;
+  .nav-link {
+    color: rgba(255,255,255,.8);
+    &:hover,
+    &:active {
+      background-color: rgba(255,255,255,.05);
+      color: rgba(255,255,255,1);
+    }
+  }
+  .label-light {
+    padding: 1rem;
+  }
+  .btn-default {
+    color: rgba(255,255,255,.8);
+  }
 }

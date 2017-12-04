@@ -56,11 +56,6 @@ a {
 .profile-name {
   @extend .text;
 }
-.up-navbar {
-  background-color: #fff;
-  height: 80px;
-  margin-bottom: 1rem;
-}
 .help-text {
   font-style: italic;
   line-height: 14px;
@@ -274,12 +269,13 @@ a {
 }
 
 .huge-title {
-  font-family: Lato !important;
-  font-weight: 800 !important;
+  font-family: 'Lato' !important;
+  font-weight: 900 !important;
   line-height: 48px !important;
   font-size: 48px !important;
   color: #333333 !important;
   margin: 0;
+  font-style: initial !important;
 }
 
 .bottom-image-label {
@@ -876,4 +872,4 @@ label {
   margin-bottom: 1rem;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-}
+} 

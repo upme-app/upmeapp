@@ -5,6 +5,11 @@
     font-size: 1rem !important;
     color: $black !important;
 }
+
+.label-light {
+    @extend .label;
+    color: #fff !important;
+}
 .title {
     font-weight: 400 !important;
     font-size: 1.5rem !important;
