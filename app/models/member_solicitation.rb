@@ -48,6 +48,7 @@ class MemberSolicitation < ApplicationRecord
     if MemberSolicitation.where(project_id: project_id).where(user_id: user_id).size > 0
       errors.add(:invitation_already_exists, 'Convite já enviado.')
     end
+
   end
 
   def not_empresa

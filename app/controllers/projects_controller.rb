@@ -19,9 +19,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @selected_areas = []
     @project = Project.new(project_params)
     @project.user_id = current_user.id
-    if @project.save
+
+    params[:areas] = [] if params[:areas].nil?
+    if params[:areas].size == 0
+      @show_areas_errors = true
+      render 'projects/new'
+    elsif @project.save
       save_areas_de_interesse
       redirect_to project_path(@project)
     else
@@ -59,7 +65,6 @@ class ProjectsController < ApplicationController
     @duplicated_project = @project
     @project = Project.new
     @project.title = @duplicated_project.title
-    @project.target_audience = @duplicated_project.target_audience
     @project.objective = @duplicated_project.objective
     @project.description = @duplicated_project.description
     @project.nat_privada = @duplicated_project.nat_privada
@@ -239,7 +244,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :objective, :description, :target_audience, :nat_privada, :nat_publica, :nat_ong)
+    params.require(:project).permit(:title, :objective, :description, :nat_privada, :nat_publica, :nat_ong)
   end
 
   def set_project

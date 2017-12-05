@@ -32,7 +32,7 @@
               .label A quem o projeto se destina
             .row
               .col.s4
-                = f.check_box :nat_privada, checked: 'checked'
+                = f.check_box :nat_privada
                 = f.label :nat_privada, '🏢  Empresa privada'
               .col.s4
                 = f.check_box :nat_publica
@@ -40,17 +40,16 @@
               .col.s4
                 = f.check_box :nat_ong
                 = f.label :nat_ong, '🙌  ONG/Social'
-            .input-field
-              = f.label :target_audience, 'Público-alvo', class: 'label'
-              = f.text_field :target_audience, class: 'form-control validate', placeholder: 'Escreva o publico alvo do seu projeto aqui'
-              .help-text (Quem vai se beneficiar do projeto solicitado, qual o setor da organização e público beneficiado pelo projeto)
             
             %br
             - if sou_empresa?
               .label Categoria da demanda
             - if sou_professor?
               .label Categoria do projeto
-              
+
+            - if @show_areas_errors 
+              .alert.alert-danger= "Você precisa selecionar pelo menos uma categoria" 
+            
             %select#e2.form-control{name: "areas[]", multiple: :multiple}
               - AreaDeInteresse.all.order(name: :asc).each do |a|
                 - if @selected_areas.include? a.name
