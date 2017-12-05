@@ -18,8 +18,8 @@
 %h2.center-align Dashboard
 %h3.center-align= "#{Project.all.size} Projetos"
 %h6.center-align= "#{Project.projects_running.size} em andamento"
-%h6.center-align= "#{Project.available_empresa_projects.size} aguardando cliente"
-%h6.center-align= "#{Project.available_aluno_projects.size} aguardando professor/aluno"
+%h6.center-align= "#{Project.all_ofertas.size} aguardando cliente"
+%h6.center-align= "#{Project.all_demandas.size} aguardando professor/aluno"
 %h6.center-align= "#{0} finalizados"
 %h6.center-align= "#{Project.deleted_projects.size} arquivados"
 %h3.center-align= "#{User.all.size} Usuários"
