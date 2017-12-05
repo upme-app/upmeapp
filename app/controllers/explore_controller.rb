@@ -4,7 +4,7 @@ class ExploreController < ApplicationController
 
   def index
     @all_areas = AreaDeInteresse.all
-    @selected_areas = @all_areas
+    @selected_areas = []
 
     if params and params[:areas_interesse].present?
       @selected_areas = AreaDeInteresse.where(id: params[:areas_interesse].map { |item| item.to_i})

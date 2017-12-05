@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205165844) do
+ActiveRecord::Schema.define(version: 20171205194639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -413,15 +413,6 @@ ActiveRecord::Schema.define(version: 20171205165844) do
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
 
-  create_table "user_area_de_interesses", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "area_de_interesse_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["area_de_interesse_id"], name: "index_user_area_de_interesses_on_area_de_interesse_id", using: :btree
-    t.index ["user_id"], name: "index_user_area_de_interesses_on_user_id", using: :btree
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -489,6 +480,4 @@ ActiveRecord::Schema.define(version: 20171205165844) do
   add_foreign_key "timeline_comments", "timeline_steps"
   add_foreign_key "timeline_comments", "users"
   add_foreign_key "timeline_steps", "projects"
-  add_foreign_key "user_area_de_interesses", "area_de_interesses", column: "area_de_interesse_id"
-  add_foreign_key "user_area_de_interesses", "users"
 end
