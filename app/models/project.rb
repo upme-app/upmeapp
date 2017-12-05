@@ -80,6 +80,10 @@ class Project < ApplicationRecord
     TimelineStep.find(step.id).project_id == self.id
   end
 
+  def all_students
+    project_users.reject { |u| u.user.aluno? == false }
+  end
+
   def can_be_deleted_by(user)
     true if deleted == false and user.id == user_id
   end

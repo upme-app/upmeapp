@@ -7,17 +7,19 @@
         = image_tag profilepic(pu.user), class: 'circle', width: '30px', id: 'img-profilepic'
         .profile-name= pu.user.first_name= pu.user.first_name
 
-%h2.label Cliente
 - if @project.client
+  %h2.label Cliente
   = link_to profile_path(@project.client.id) do
     .profile-small
       = image_tag profilepic(@project.client), class: 'profile-image', width: '30px', id: 'img-profilepic'
       .profile-name= @project.client.full_name
 
-%h2.label Equipe
-- @project.project_users.each do |pu|
-  - if pu.user.aluno?
-    = link_to profile_path(pu.user.id) do
-      .profile-small
-        = image_tag profilepic(pu.user), class: 'profile-image', width: '30px', id: 'img-profilepic'
-        .profile-name= pu.user.first_name
+
+- if @project.all_students.size > 0
+  %h2.label Equipe
+  - @project.all_students.each do |pu|
+    - if pu.user.aluno?
+      = link_to profile_path(pu.user.id) do
+        .profile-small
+          = image_tag profilepic(pu.user), class: 'profile-image', width: '30px', id: 'img-profilepic'
+          .profile-name= pu.user.first_name

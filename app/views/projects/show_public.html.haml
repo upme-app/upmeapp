@@ -3,9 +3,10 @@
 .container{style: 'margin-top: 30px'}
   .row
     .col-12.col-md-3
-      = link_to '< Voltar para o painel', :back, class: 'btn btn-default btn-small'
-      %br
-      %br
+      - if current_user
+        = link_to '< Voltar para o painel', :back, class: 'btn btn-default btn-small'
+        %br
+        %br
       .card
         .card-body 
           - if @project.user.empresa?
@@ -122,6 +123,10 @@
                 .label Ficou interessado nesta demanda da empresa?
                 %p Envie uma solicitação de projeto para iniciar a negociação com a empresa.
                 .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
+
+          - unless current_user
+            .label Ficou interessado no projeto?
+            .btn.btn-primary Faça seu cadastro!
 
       = render partial: 'project_team'
 
