@@ -41,7 +41,7 @@
       <div class="row">
         <%- p_count = 0 %>  
         <% @avaliable_projects.each do |project| %>
-          <%- if (project.project_area_de_interesse.pluck(:area_de_interesse_id) & @selected_areas.pluck(:id)).size > 0 %>
+          <%- if @selected_areas.size == 0 or (project.project_area_de_interesse.pluck(:area_de_interesse_id) & @selected_areas.pluck(:id)).size > 0 %>
             <%- p_count += 1 %>
             <%= render partial: 'projects/project_box', locals: {project: project} %>
           <% end %>
