@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   enum user_type: [:aluno, :professor, :empresa]
   enum tipo_pessoa: [:fisica, :juridica]
+  enum natureza: [:publica, :privada, :ong]
   # class methods .............................................................
   # public instance methods ...................................................
   def update_areas_de_interesse(ar_nome_areas)

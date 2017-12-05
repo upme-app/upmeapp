@@ -35,6 +35,12 @@
                   .label Linkedin
                   %div= complete_seu_cadastro(current_user.linkedin)
                   
+                  - if current_user.empresa?
+                    .label Site 
+                    %div= complete_seu_cadastro(current_user.site)
+                    .label Natureza 
+                    %div= complete_seu_cadastro(t("user.natureza.#{current_user.natureza}"))
+
                 .col-12
                   .row
                     .col-12.col-md-6

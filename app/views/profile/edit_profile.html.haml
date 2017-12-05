@@ -30,7 +30,22 @@
                     .form-group
                       %span.label Linkedin
                       = f.text_field :linkedin, class: 'validate form-control', placeholder: 'Coloque o link do seu Linkedin'
-                
+                    - if current_user.empresa?
+                      .form-group
+                        %span.label Site 
+                        = f.text_field :site, class: 'validate form-control', placeholder: 'Escreva aqui'
+                      .form-group
+                        %span.label Natureza
+                        .col-12{style: "margin: 10px 0px 10px 0px"}
+                          %label
+                            = f.radio_button :natureza, 'publica', required: true
+                            %span.label Pública
+                          %label
+                            = f.radio_button :natureza, 'privada'
+                            %span.label Privada
+                          %label
+                            = f.radio_button :natureza, 'ong'
+                            %span.label ONG
                   .col-12
                     - if current_user.aluno? or current_user.professor?
                       %span.label Universidade

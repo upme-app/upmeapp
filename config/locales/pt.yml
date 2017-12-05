@@ -415,3 +415,9 @@ pt:
   languages:
     en: Inglês
     nl: Neerlandês
+  user:
+    natureza:
+      ong: ONG
+      privada: Privada
+      publica: Pública
+
