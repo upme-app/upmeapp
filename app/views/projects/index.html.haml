@@ -2,7 +2,7 @@
 
 
 - if current_user.my_invitations.size > 0
-  .container
+  .container{style: "margin-top:1rem;"}
     .row
       .col-md-2
       .col-12.col-md-8
@@ -28,16 +28,13 @@
               %span Meus projetos
      
     .row
-      .col-lg-3
-        .card
-          %ul.list-group.list-group-flush
-            %li.list-group-item
-              - if action_name == 'index'
-                = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
-              - else
-                = link_to projects_path, class: 'waves-effect waves-light-dark btn-upme-outline-grey btn-small' do
-                  %i.icon-small{data: {feather: 'chevron-left'}}
-                  Voltar para projetos
+      .col-12.col-md-3
+        - if action_name == 'index'
+          = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
+        - else
+          = link_to projects_path, class: 'btn btn-default btn-small' do
+            %i.up-arrow-left
+            Voltar para askmdalksdjlasjd
 
       .col-lg-9
         .row

@@ -21,18 +21,17 @@
       <div class="card">
         <div class="card-body">
           <div class="label">Categorias</div>
+          <p class="text">Selecione a categoria e clique em filtrar.</p>
           <%= form_tag explore_path, method: :get do %>
               <% @all_areas.each do |selected_area| %>
-                  <%= label_tag selected_area.name do %>
-                      <%= check_box_tag('areas_interesse[]', value = selected_area.id,
-                                        checked =(@selected_areas.map {|item| item.id}.include? selected_area.id), options = {}) %>
-                      <b><%= selected_area.name %></b>
-                      <br/>
-                      <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= selected_area.description %></p>
-                      <br/>
-                  <% end %>
+                <%= check_box_tag('areas_interesse[]', value = selected_area.id, checked =(@selected_areas.map {|item| item.id}.include? selected_area.id), options = { id: "area_de_interesse_#{selected_area.id}" }) %>
+                <%= label_tag "area_de_interesse_#{selected_area.id}", selected_area.name %>
               <% end %>
-              <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary btn-small") %>
+              <div class="row">
+                <div class="col">
+                  <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary btn-small") %>
+                </div>
+              </div>
           <% end %>
         </div>
       </div>

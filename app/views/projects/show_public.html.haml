@@ -4,7 +4,9 @@
   .row
     .col-12.col-md-3
       - if current_user
-        = link_to '< Voltar para o painel', :back, class: 'btn btn-default btn-small'
+        = link_to :back, class: 'btn btn-default btn-small' do
+          %i.up-arrow-left
+          Voltar para o painel
         %br
         %br
       .card

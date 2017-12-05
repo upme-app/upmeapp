@@ -13,6 +13,21 @@
               = f.text_field :title, class: 'validate form-control', placeholder: 'Escreva o titulo aqui'
               .help-text (Ex.: Planejamento estratégico, Plano de cargos e salários, Logotipo, Campanha publicitária, Projeto Arquitetônico e etc.)
             /.input-field.active
+            %br
+            - if sou_empresa?
+              .label Categoria da demanda
+            - if sou_professor?
+              .label Categoria do projeto
+
+            - if @show_areas_errors 
+              .alert.alert-danger= "Você precisa selecionar pelo menos uma categoria" 
+            
+            %select#e2.form-control{name: "areas[]", multiple: :multiple}
+              - AreaDeInteresse.all.order(name: :asc).each do |a|
+                - if @selected_areas.include? a.name
+                  %option{:value => a.name, selected: "selected"}= a.name
+                - else
+                  %option{:value => a.name}= a.name
             .input-field
               - if sou_empresa?
                 = f.label :objective, 'Objetivos da demanda', class: 'label'
@@ -39,46 +54,27 @@
                   = f.check_box :nat_ong
                   = f.label :nat_ong, '🙌  ONG/Social'
             
-            %br
-            - if sou_empresa?
-              .label Categoria da demanda
-            - if sou_professor?
-              .label Categoria do projeto
-
-            - if @show_areas_errors 
-              .alert.alert-danger= "Você precisa selecionar pelo menos uma categoria" 
-            
-            %select#e2.form-control{name: "areas[]", multiple: :multiple}
-              - AreaDeInteresse.all.order(name: :asc).each do |a|
-                - if @selected_areas.include? a.name
-                  %option{:value => a.name, selected: "selected"}= a.name
+           
+            .row  
+              .col
+                %br
+                - if action_name == 'edit'
+                  = button_tag 'Cancelar', type: 'button', class: 'btn btn-default', :onclick => "location.href = '#{project_path(@project)}'"
                 - else
-                  %option{:value => a.name}= a.name
+                  = button_tag 'Cancelar', type: 'button', class: 'btn btn-default', :onclick => "location.href = '#{projects_path}'"
+              .col
+                %br
+                - if action_name == 'edit'
+                  - if sou_empresa?
+                    = submit_tag 'Salvar demanda', class: 'btn btn-primary float-right'
+                  - if sou_professor?
+                    = submit_tag 'Salvar projeto', class: 'btn btn-primary float-right'
+                - else  
+                  - if sou_empresa?
+                    = submit_tag 'Salvar demanda', class: 'btn btn-primary float-right'
+                  - if sou_professor?
+                    = submit_tag 'Salvar projeto', class: 'btn btn-primary float-right'
       
-        .col.s12.m2
-  .upme-action-bar-bg
-    .container
-      .row.no-padding.upme-action-bar
-        .col-md-2
-        .col-md-8.col-12.no-padding
-          .row  
-            .col-6.left-align.no-padding
-              - if action_name == 'edit'
-                = button_tag 'Cancelar', type: 'button', class: 'btn btn-outline-dark', :onclick => "location.href = '#{project_path(@project)}'"
-              - else
-                = button_tag 'Cancelar', type: 'button', class: 'btn btn-outline-dark', :onclick => "location.href = '#{projects_path}'"
-            .col-6.no-padding{style:'display:flex'}
-              
-              - if action_name == 'edit'
-                - if sou_empresa?
-                  = submit_tag 'Salvar demanda', class: 'btn btn-light ml-auto'
-                - if sou_professor?
-                  = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
-              - else  
-                - if sou_empresa?
-                  = submit_tag 'Salvar demanda', class: 'btn btn-light ml-auto'
-                - if sou_professor?
-                  = submit_tag 'Salvar projeto', class: 'btn btn-light ml-auto'
 
 :javascript
   $(document).ready(function() {

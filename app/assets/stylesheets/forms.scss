@@ -14,3 +14,73 @@
     border-radius: .5rem;
     width: 100%;
 }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    line-height: 36px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  input[type="checkbox"] + label::before,
+  input[type="radio"] + label::before {
+    content: " ";
+    position: absolute;
+    top: 6px;
+    left: 0;
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    z-index: -1;
+  }
+  input[type="radio"] + label::before {
+    border-radius: 18px;
+  }
+  /* Checked */
+  input[type="checkbox"]:checked + label,
+  input[type="radio"]:checked + label {
+    padding-left: 2.5rem;
+    color: $blue;
+  }
+  input[type="checkbox"]:checked + label::before,
+  input[type="radio"]:checked + label::before {
+    font-family: 'upicons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\e919";
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 2px solid $blue;
+    font-size: 1.5rem;
+    padding-left: .5rem;
+    padding-top: .25rem;
+    
+  }
+  /* Transition */
+  label,
+  label::before {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }

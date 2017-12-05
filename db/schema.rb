@@ -38,25 +38,6 @@ ActiveRecord::Schema.define(version: 20171205165844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "geography_cities", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "cdg_ibge"
-    t.integer  "state_id"
-    t.integer  "population_2010"
-    t.decimal  "demographic_density"
-    t.string   "gentile"
-    t.decimal  "area"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  create_table "geography_states", force: :cascade do |t|
-    t.string   "name"
-    t.string   "initials"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "invite_emails", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "to_email"
@@ -408,8 +389,6 @@ ActiveRecord::Schema.define(version: 20171205165844) do
     t.datetime "updated_at",  null: false
     t.datetime "check_date"
     t.text     "feedback"
-    t.integer  "position"
-    t.integer  "note"
     t.index ["project_id"], name: "index_timeline_steps_on_project_id", using: :btree
   end
 
@@ -459,8 +438,6 @@ ActiveRecord::Schema.define(version: 20171205165844) do
     t.string   "cep"
     t.integer  "tipo_pessoa"
     t.string   "stripe_token"
-    t.integer  "geography_state_id"
-    t.integer  "geography_city_id"
     t.string   "site"
     t.integer  "natureza"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
