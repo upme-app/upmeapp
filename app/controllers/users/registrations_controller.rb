@@ -75,7 +75,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    explore_path
+    if params[:voltar_para_projeto] and Project.find(params[:voltar_para_projeto])
+      public_project_path(params[:voltar_para_projeto])
+    else
+      explore_path
+    end
   end
 
   # The path used after sign up for inactive accounts.

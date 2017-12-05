@@ -104,7 +104,7 @@
       .card
         .card-body
           - if current_user and !@project.started and @project.user_id != current_user.id
-            - if current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
+            - if @project.user.professor? and current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
               - if current_user.billing_data_is_complete?
                 %div.text-center
                   .label Ficou interessado nesta oferta do professor?
@@ -118,7 +118,7 @@
                   %br
                   = link_to edit_billing_back_to_project_path(@project.id) do
                     .btn-upme-outline-grey.btn-small Adicionar!
-            - if !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
+            - if @project.user.empresa? and !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
               %div.text-center
                 .label Ficou interessado nesta demanda da empresa?
                 %p Envie uma solicitação de projeto para iniciar a negociação com a empresa.
@@ -126,7 +126,7 @@
 
           - unless current_user
             .label Ficou interessado no projeto?
-            .btn.btn-primary Faça seu cadastro!
+            = link_to 'Faça seu cadastro!', registrar_path + "?voltar_para_projeto=#{@project.id}", class: 'btn btn-primary'
 
       = render partial: 'project_team'
 

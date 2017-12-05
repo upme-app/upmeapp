@@ -9,6 +9,7 @@
   <h4 class="upme-sub-title text-center">Só precisamos de 4 informações.</h4>
 </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { id: 'registration-form'}) do |f| %>
+  <%= hidden_field_tag :voltar_para_projeto, params[:voltar_para_projeto] %>
   <div class="container" id="registration-step-2" class="display-none">
       
     <div class="row">
