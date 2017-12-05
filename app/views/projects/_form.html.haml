@@ -26,20 +26,18 @@
               .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
             
             %br
-            - if sou_empresa?
-              .label Sua empresa é de natureza:
-            - if sou_professor?
+            - if current_user.professor?
               .label A quem o projeto se destina
-            .row
-              .col.s4
-                = f.check_box :nat_privada
-                = f.label :nat_privada, '🏢  Empresa privada'
-              .col.s4
-                = f.check_box :nat_publica
-                = f.label :nat_publica, '🏛️  Empresa Pública'
-              .col.s4
-                = f.check_box :nat_ong
-                = f.label :nat_ong, '🙌  ONG/Social'
+              .row
+                .col.s4
+                  = f.check_box :nat_privada
+                  = f.label :nat_privada, '🏢  Empresa privada'
+                .col.s4
+                  = f.check_box :nat_publica
+                  = f.label :nat_publica, '🏛️  Empresa Pública'
+                .col.s4
+                  = f.check_box :nat_ong
+                  = f.label :nat_ong, '🙌  ONG/Social'
             
             %br
             - if sou_empresa?
