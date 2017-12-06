@@ -41,9 +41,7 @@ class ChargesController < ApplicationController
   end
 
   def payment_notification
-    puts 'a'
     if params['data']['object']['paid']
-      puts 'b'
       @payment.update_attribute(:status, 0)
       @payment.project.start
       render json: { success: true }, status: 200
