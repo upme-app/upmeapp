@@ -43,7 +43,7 @@ class ChargesController < ApplicationController
   def payment_notification
     respond_to do |format|
       format.json do
-        if params[:data][:object][:paid]
+        if params['data']['object']['paid']
           @payment.update_attribute(:status, 0)
 
           @payment.project.start
