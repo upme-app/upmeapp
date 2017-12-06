@@ -87,6 +87,6 @@ class StripeChargesService
   end
 
   def order_amount
-    1
+    100
   end
 end
