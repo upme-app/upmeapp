@@ -80,7 +80,7 @@ class ChargesController < ApplicationController
 
     begin
       event = Stripe::Webhook.construct_event(payload, sig_header,
-                                              Rails.application.secrets.stripe_endpoint_secret)
+                                              ENV['stripe_endpoint_secret'])
     rescue JSON::ParserError => e
       return false
     rescue Stripe::SignatureVerificationError => e
