@@ -1,5 +1,8 @@
-= render 'layouts/upme_nav'
-
+- if current_user
+  = render 'layouts/upme_nav'
+- else
+  = render 'layouts/nav_site'
+  
 .container{style: 'margin-top: 30px'}
   .row
     .col-12.col-md-3
