@@ -1,3 +1,5 @@
+- @title = @project.title
+
 - if current_user
   = render 'layouts/upme_nav'
 - else
@@ -40,7 +42,7 @@
       .card-list
         .card
           .card-body
-            .title= @project.title
+            %h1.title= @project.title
             .label Objetivo deste projeto
             %p= @project.objective
             

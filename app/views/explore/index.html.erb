@@ -1,14 +1,21 @@
+<% if current_user.empresa? %>
+<%- @title = "Ofertas de professores" %>
+<% else %>
+<%- @title = "Demandas de empresas" %>
+<% end %>
+
 <%= render 'layouts/upme_nav' %>
+
 <div class="explore-bg"></div>
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-7">
       <div class="page-header">
-        <div class="title">
+        <div>
           <% if current_user.empresa? %>
-              <span>Ofertas de professores</span>
+              <h1 class="title">Ofertas de professores</h1>
           <% else %>
-              <span>Demandas de empresas</span>
+              <h1 class="title">Demandas de empresas</h1>
           <% end %>
         </div>
       </div>

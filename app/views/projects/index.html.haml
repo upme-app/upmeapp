@@ -1,5 +1,9 @@
-= render 'layouts/upme_nav'
+- if current_user.empresa?
+  - @title =  "Minhas demandas"
+- else
+  - @title = "Minhas ofertas"
 
+= render 'layouts/upme_nav'
 
 - if current_user.my_invitations.size > 0
   .container{style: "margin-top:1rem;"}
@@ -21,11 +25,15 @@
     .page-header
       .row
         .col.m12.l6
-          .title
+          %h1.title
             - if action_name == 'filed_projects'
               %span Projetos arquivados
             - else
-              %span Meus projetos
+              - if current_user.empresa?
+                %span Minhas demandas
+              - else
+                %span Minhas ofertas
+
      
     .row
       .col-12.col-md-3
