@@ -1,25 +1,5 @@
-%nav.navbar.navbar-expand-lg.navbar-light.up-navbar
-  .container
-    %a.navbar-brand{:href => "#"}
-      = image_tag 'app/logo-upme-vetor.svg'
+= render 'layouts/nav_site'
 
-    %a.btn.btn-primary.ml-auto.btn-small.d-block.d-sm-none{:href => "/registrar"} Cadastre-se
-    
-    %a.btn.menu-toggle.ex#mobile-menu-toggle.d-block.d-sm-none
-      %span.bar.upper
-      %span.bar.middle
-      %span.bar.lower
-    
-    #navbarSupportedContent.collapse.navbar-collapse
-      %ul.navbar-nav.ml-auto
-        %li.nav-item
-          %a.nav-link.btn-default{href: "/precos" } Preços
-        %li.nav-item
-          %a.nav-link.btn-default{href: "/blog", target: '_blank'} Blog
-        %li.nav-item
-          %a.nav-link.btn-default{href: "/entrar"} Login
-        %li.nav-item.form-inline
-          %a.btn.btn-primary{:href => "/registrar"} Cadastre-se
 .hero-section
   .container
     .row

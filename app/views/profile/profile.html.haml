@@ -1,3 +1,9 @@
+- if @user.empresa?
+  - @title = @user.nome_empresa
+
+- else
+  - @title = @user.full_name
+  
 = render 'layouts/upme_nav'
 
 .container

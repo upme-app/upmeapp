@@ -1,11 +1,33 @@
+- @title =  "Meu perfil"
+
+
 = render 'layouts/upme_nav'
 
 .container
   .row
-    .col-12.col-md-2
-    .col-12.col-md-8
+    .col-12.col-md-3
+      %h1.title Meu perfil
+      %nav.nav.flex-column
+        %a.nav-link.active{:href => "#"} Perfil pessoal
+        %a.nav-link{:href => "#"}
+          - if current_user.empresa?
+            Dados da empresa
+          - else
+            Dados da universidade
+        %a.nav-link{:href => "#"} Alterar senha
+        %br
+        %br
+        %br
+        %br
+        %br
+        %br
+        %br
+        %br
+        = link_to 'Deslogar', destroy_user_session_path, method: :delete, class: 'nav-link'
+
+
+    .col-12.col-md-9
       %br
-      %h5.upme-sub-title Meu Perfil
       .card
         .card-body
           .row
@@ -55,12 +77,7 @@
                       - unless current_user.empresa?
                         .label Cidade
                         %div= complete_seu_cadastro(current_user.city)
-                    -# .col-12.m12
-                    -#   .label Área(s) de interesse
-                    -#   - current_user.user_area_de_interesse.each do |ua|
-                    -#     .tag-upme-blue.mb-16= ua.area_de_interesse.name
-                    -#   %br
-                    -#   = link_to 'Editar área(s)', areas_de_interesse_path, class: 'btn-upme-outline-grey btn-small'
+
                 - if current_user.empresa?
                   .col-12
                     .label

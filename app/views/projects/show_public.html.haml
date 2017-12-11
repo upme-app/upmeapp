@@ -1,5 +1,10 @@
-= render 'layouts/upme_nav'
+- @title = @project.title
 
+- if current_user
+  = render 'layouts/upme_nav'
+- else
+  = render 'layouts/nav_site'
+  
 .container{style: 'margin-top: 30px'}
   .row
     .col-12.col-md-3
@@ -37,7 +42,7 @@
       .card-list
         .card
           .card-body
-            .title= @project.title
+            %h1.title= @project.title
             .label Objetivo deste projeto
             %p= @project.objective
             
