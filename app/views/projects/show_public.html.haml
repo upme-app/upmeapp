@@ -11,7 +11,7 @@
       - if current_user
         = link_to :back, class: 'btn btn-default btn-small' do
           %i.up-arrow-left
-          Voltar para o painel
+          Voltar
         %br
         %br
       .card
@@ -112,19 +112,10 @@
         .card-body
           - if current_user and !@project.started and @project.user_id != current_user.id
             - if @project.user.professor? and current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
-              - if current_user.billing_data_is_complete?
-                %div.text-center
-                  .label Ficou interessado nesta oferta do professor?
-                  %p Envie uma solicitação de projeto para iniciar a negociação com o(a) professor(a).
-                  .btn.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
-              - else
-                .box-blue.text-left
-                  .title.upme-sub-title Ficou interessado no projeto?
-                  %br
-                  %p Complete as informações no seu perfil para enviar uma mensagem.
-                  %br
-                  = link_to edit_billing_back_to_project_path(@project.id) do
-                    .btn-upme-outline-grey.btn-small Adicionar!
+              %div.text-center
+                .label Ficou interessado nesta oferta do professor?
+                %p Envie uma solicitação de projeto para iniciar a negociação com o(a) professor(a).
+                .btn.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
             - if @project.user.empresa? and !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
               %div.text-center
                 .label Ficou interessado nesta demanda da empresa?
@@ -134,8 +125,9 @@
           - unless current_user
             .label Ficou interessado no projeto?
             = link_to 'Faça seu cadastro!', registrar_path + "?voltar_para_projeto=#{@project.id}", class: 'btn btn-primary'
-
-      = render partial: 'project_team'
+      
+      - unless current_user
+        = render partial: 'project_team'
 
 #modal1.modal.fade
   = form_tag add_client_solicitation_path(@project.id), class: 'modal-dialog' do
