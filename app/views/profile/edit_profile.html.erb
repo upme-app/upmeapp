@@ -63,6 +63,7 @@
                     <%- if current_user.empresa? %>
                     <%= render partial: 'form_address', locals: { f: f } %>
                     <%- else %>
+                    <label for="" class="label">Nome da Universidade</label>
                     <%= f.text_field :universidade, class: 'validate form-control', placeholder: 'Universidade', required: true %>
                     <% end %>
                     <%= submit_tag 'Salvar informações', class: "btn btn-primary" %>
