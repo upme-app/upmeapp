@@ -1,13 +1,62 @@
-<%= f.text_field :cidade, class: 'validate form-control', placeholder: 'Cidade', required: true %>
-<%= f.text_field :endereco, class: 'validate form-control', placeholder: 'Endereço', required: true %>
+<div class="row form-row">
+    <div class="col-12 col-md-9">
+        <label class="label"> Endereço
+            <%= f.text_field :endereco, class: 'validate form-control', placeholder: 'Endereço', required: true %> 
+        </label>
+    </div>
+    <div class="col-12 col-md-3">
+        <label class="label"> Número
+            <%= f.text_field :numero, class: 'validate form-control', placeholder: 'Número', required: true %>
+        </label>
+    </div>
+</div>
 
-<%= f.text_field :numero, class: 'validate form-control', placeholder: 'Número', required: true %>
+<div class="row form-row">
+    <div class="col-12 col-md-3">
+        <label class="label"> Bairro
+            <%= f.text_field :bairro, class: 'validate form-control', placeholder: 'Bairro', required: true %>
+        </label>
+    </div>
+    <div class="col-12 col-md-3">
+        <label class="label"> CEP
+            <%= f.text_field :cep, class: 'validate form-control', placeholder: 'CEP', required: true %>
+        </label>
+    </div>
+    <div class="col-12 col-md-3">
+        <label class="label"> Cidade
+            <%= f.text_field :cidade, class: 'validate form-control', placeholder: 'Cidade', required: true %>
+        </label>
+    </div>
+    <div class="col-12 col-md-3">
+        <label class="label"> UF
+            <%= f.text_field :uf, class: 'validate form-control', placeholder: 'UF', required: true %>
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
 
-<%= f.text_field :bairro, class: 'validate form-control', placeholder: 'Bairro', required: true %>
-<%= f.text_field :cep, class: 'validate form-control', placeholder: 'CEP', required: true %>
-<%= f.text_field :cidade, class: 'validate form-control', placeholder: 'Cidade', required: true %>
-<%= f.text_field :uf, class: 'validate form-control', placeholder: 'UF', required: true %>
+        <div class="card border-success">
+            <div class="card-body">
+                <div class="row">
 
-INFORMAÇOES PRIVADAS
-<%= f.text_field :cpf, class: 'validate form-control', placeholder: 'CPF', required: true %>
-<%= f.text_field :telefone, class: 'validate form-control', placeholder: 'Telefone', required: true %>
+                    <div class="col-12">
+                        <div class="label">Informações privadas:</div>
+                        <br>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="label"> CPF/CNPJ
+                            <%= f.text_field :cpf, class: 'validate form-control', placeholder: 'CPF', required: true %>
+                        </label>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="label"> Telefone para contato
+                            <%= f.text_field :telefone, class: 'validate form-control', placeholder: 'Telefone', required: true %>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

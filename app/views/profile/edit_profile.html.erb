@@ -2,42 +2,73 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-2"></div> 
-    <div class="col-12 col-md-8">
-      <br />
-      <h5 class="upme-sub-title">Editar perfil</h5>
+    <div class="col-12 col-md-3">
+        <h1 class="title">Editar perfil</h1>
+        <br>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link <%= 'active' if @tab == 0 %>" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Meu Perfil</a>
+            <a class="nav-link <%= 'active' if @tab == 1 %>" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+              <% if sou_empresa? %>
+                Dados da empresa
+              <% end %>
+              <% if sou_professor? %>
+                Universidade
+              <% end %>
+              <% if sou_aluno? %>
+                Universidade
+              <% end %>
+            </a>
+          </div>
+    </div> 
+    <div class="col-12 col-md-9">
+      <br>
       <div class="card">
         <div class="card-body">
           <div class="body">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link <%= 'active' if @tab == 0 %>" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Meu Perfil</a>
-              <a class="nav-link <%= 'active' if @tab == 1 %>" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Empresa</a>
-            </div>
-
+            
             <div class="tab-content" id="v-pills-tabContent">
               <div class="tab-pane fade <%= 'show active' if @tab == 0 %>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-
-                <%= form_for current_user, url: save_profile_path, method: :post do |f| %>
-                  
-                  <%= f.email_field :email, class: 'validate form-control', placeholder: 'Coloque o seu email' %>
-
-                  <%- unless current_user.empresa? %>
-                    <%= render partial: 'form_address', locals: { f: f } %>
-                  <% end %>
-                  
-                  <%= submit_tag 'SALVAR' %>
-                <% end %>
+                <div class="row">
+                  <div class="col-md-3">
+                      <%= render 'profile/update_profile_picture' %>
+                  </div>
+                  <div class="col-md-9">
+                      <h1 class="title"><%= current_user.full_name %></h1>
+                      <%= form_for current_user, url: save_profile_path, method: :post do |f| %>
+                      
+                    <label class="label">E-mail
+                      <%= f.email_field :email, class: 'validate form-control', placeholder: 'Coloque o seu email' %>
+                    </label>  
+    
+                      <%- unless current_user.empresa? %>
+                        <%= render partial: 'form_address', locals: { f: f } %>
+                      <% end %>
+                      
+                      <%= submit_tag 'Salvar informações', class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
+                
               </div>
               <div class="tab-pane fade <%= 'show active' if @tab == 1 %>" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <%= form_for current_user, url: save_profile_path, method: :post do |f| %>
-                  <%= hidden_field_tag :tab, 1 %>
-                  <%- if current_user.empresa? %>
+                <div class="row">
+
+                  <div class="col-12 col-md-3">
+                      <%= render 'profile/update_logo' %>
+                  </div>
+                  <div class="col-12 col-md-9">
+                      <h1 class="title"><%= complete_seu_cadastro(current_user.nome_empresa, '')%> </h1>
+                    <%= form_for current_user, url: save_profile_path, method: :post do |f| %>
+                    <%= hidden_field_tag :tab, 1 %>
+                    <%- if current_user.empresa? %>
                     <%= render partial: 'form_address', locals: { f: f } %>
-                  <%- else %>
+                    <%- else %>
                     <%= f.text_field :universidade, class: 'validate form-control', placeholder: 'Universidade', required: true %>
-                  <% end %>
-                  <%= submit_tag 'SALVAR' %>
-                <% end %>
+                    <% end %>
+                    <%= submit_tag 'Salvar informações', class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

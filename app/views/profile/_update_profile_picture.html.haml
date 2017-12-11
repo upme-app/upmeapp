@@ -1,9 +1,8 @@
-%div.center-align
+%div.text-center
   = image_tag profilepic(current_user), class: 'circle', width: '130px', id: 'img-profilepic'
   %br
-  .btn-upme-outline-grey.btn-small.modal-trigger.btn-square.btn-change-profilepic{data: {toggle: 'modal', target: '#modal-update-picture'}}
-    %i.up-pencil
-
+  .btn.btn-default.modal-trigger{data: {toggle: 'modal', target: '#modal-update-picture'}}
+    Alterar foto
 
 #modal-update-picture.modal.fade
   .modal-dialog

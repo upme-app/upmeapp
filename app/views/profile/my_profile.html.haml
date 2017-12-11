@@ -6,25 +6,6 @@
 .container
   .row
     .col-12.col-md-3
-      %h1.title Meu perfil
-      %nav.nav.flex-column
-        %a.nav-link.active{:href => "#"} Perfil pessoal
-        %a.nav-link{:href => "#"}
-          - if current_user.empresa?
-            Dados da empresa
-          - else
-            Dados da universidade
-        %a.nav-link{:href => "#"} Alterar senha
-        %br
-        %br
-        %br
-        %br
-        %br
-        %br
-        %br
-        %br
-        = link_to 'Deslogar', destroy_user_session_path, method: :delete, class: 'nav-link'
-
 
     .col-12.col-md-9
       %br
