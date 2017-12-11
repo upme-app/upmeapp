@@ -67,12 +67,14 @@ document.addEventListener("turbolinks:load", function() {
 
         function toggle_to_empresa_form() {
             $('#col-nome-da-empresa').show();
+            $('#col-telefone-da-empresa').show();
             $('#col-sobreonme').removeClass('s12').addClass('s6');
             $('#col-primeiro-nome').removeClass('s12').addClass('s6');
         }
 
         function toggle_to_alunoprof_form() {
             $('#col-nome-da-empresa').hide()
+            $('#col-telefone-da-empresa').hide()
             $('#col-sobreonme').removeClass('s6').addClass('s12');
             $('#col-primeiro-nome').removeClass('s6').addClass('s12');
         }
