@@ -35,7 +35,7 @@ class Notification < ApplicationRecord
 
   def self.invite_member_solicitation(member, project_owner, project)
     desc = "Já tem #{member.user_label} interessado(a) em atender a sua empresa! "
-    url = Rails.application.routes.url_helpers.project_path(project).to_s
+    url = Rails.application.routes.url_helpers.member_solicitations_path(project).to_s
     project_owner.add_notification(desc, url)
   end
 
@@ -55,7 +55,7 @@ class Notification < ApplicationRecord
 
   def self.invite_client_solicitation(client, project_owner, project)
     desc = "Já tem cliente interessado na sua oferta!"
-    url = Rails.application.routes.url_helpers.project_path(project).to_s
+    url = Rails.application.routes.url_helpers.client_solicitations_path(project).to_s
     project_owner.add_notification(desc, url)
   end
 
