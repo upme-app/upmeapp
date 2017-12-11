@@ -1,0 +1,878 @@
+@import url(normalize.css);
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+/* line 11, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+/* line 30, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 41, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 50, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+[hidden] {
+  display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 64, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 74, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+/* line 86, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 94, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 108, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+/* line 117, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 125, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+/* line 134, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 142, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 152, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+/* line 161, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+/* line 173, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+pre {
+  white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+/* line 181, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 189, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 197, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 205, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 209, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+/* line 221, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+/* line 229, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+/* line 241, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+figure {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 253, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 264, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 275, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 289, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+button,
+input {
+  line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+/* line 301, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 314, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 326, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+/* line 336, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 348, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+/* line 360, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 369, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+/* line 380, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 393, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "ics_spina";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/assets/spina/ics_spina-f1fc241b33c8c19a688e688bfe250f26dcfd9977b45f9837d1eb16a83e9e22e8.woff") format("woff");
+}
+/* line 9, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_fonts.sass */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: inherit;
+  line-height: inherit;
+  font-family: "ics_spina" !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  font-weight: normal !important;
+  text-transform: none !important;
+  speak: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 10, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_admin_editing.sass */
+#admin_bar {
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  font-family: "Proxima Nova";
+  padding: 12px 12px 8px 0;
+  text-align: right;
+}
+/* line 3, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar button, #admin_bar input[type="submit"], #admin_bar input[type="button"] {
+  border: none;
+}
+/* line 6, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button {
+  background: #efefef;
+  border-radius: 3px;
+  color: #444;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  margin: 0 4px 4px 0;
+  outline: none;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+/* line 20, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button:hover {
+  background: shade(#efefef, 5%);
+  color: inherit;
+}
+/* line 24, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-shaded:hover {
+  background: #efefef;
+}
+/* line 27, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button:active, #admin_bar .button.button-active, #admin_bar .button.button-shaded, #admin_bar .button.button-shaded:active {
+  background: shade(#efefef, 10%);
+  transform: scale(0.95);
+}
+/* line 31, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button:focus {
+  outline: none;
+}
+/* line 34, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-primary {
+  background: #6865b4;
+  color: #fff;
+}
+/* line 38, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-primary:hover {
+  background: shade(#6865b4, 10%);
+}
+/* line 41, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-primary.button-shaded:hover {
+  background: #6865b4;
+}
+/* line 44, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-primary:active, #admin_bar .button.button-primary.button-active, #admin_bar .button.button-primary.button-shaded, #admin_bar .button.button-primary.button-shaded:active {
+  background: shade(#6865b4, 20%);
+}
+/* line 47, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-success {
+  background: #80b867;
+  color: #fff;
+}
+/* line 51, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-success:hover {
+  background: tint(#80b867, 20%);
+}
+/* line 54, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-success.button-shaded:hover {
+  background: #80b867;
+}
+/* line 57, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-success:active, #admin_bar .button.button-success.button-active, #admin_bar .button.button-success.button-shaded, #admin_bar .button.button-success.button-shaded:active {
+  background: shade(#80b867, 10%);
+}
+/* line 60, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-danger {
+  color: #da3939;
+}
+/* line 63, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-block {
+  display: block;
+  text-align: center;
+}
+/* line 67, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-link {
+  background: none;
+  font-weight: 600;
+}
+/* line 71, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-link:hover {
+  color: #333;
+}
+/* line 74, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-link:active, #admin_bar .button.button-link.button-active {
+  color: #111;
+}
+/* line 77, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button i.icon {
+  margin-right: 8px;
+  margin-top: -2px;
+}
+/* line 82, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.icon-only:before, #admin_bar .button.icon-only i.icon {
+  margin-right: 0;
+}
+/* line 85, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.icon-mini:before {
+  margin-right: 4px;
+}
+/* line 88, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-large {
+  border-radius: 4px;
+  padding: 11px 18px;
+}
+/* line 92, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-large:before {
+  margin-right: 10px;
+}
+/* line 95, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-small {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+/* line 99, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-small i.icon {
+  margin-right: 4px;
+}
+/* line 102, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-mini {
+  font-size: 12px;
+  padding: 3px 10px;
+}
+/* line 106, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-hollow {
+  background: none;
+  border: 1px solid #ccc;
+  color: #777;
+}
+/* line 111, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-hollow:hover {
+  border: 1px solid #bbb;
+  color: #666;
+}
+/* line 115, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-hollow:active, #admin_bar .button.button-hollow.button-active {
+  border: 1px solid #aaa;
+  color: #444;
+}
+/* line 119, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-round {
+  border-radius: 21px;
+}
+/* line 122, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-saving {
+  background: #999 !important;
+}
+/* line 125, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button.button-saving:before {
+  animation: rotate 3s linear infinite;
+  display: inline-block;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* line 135, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .pull-right .button {
+  margin: 0 0 4px 4px;
+}
+/* line 141, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group .button {
+  border-radius: 0;
+  float: left;
+  margin-right: 0;
+}
+/* line 146, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group .button:first-child {
+  border-radius: 3px 0 0 3px;
+}
+/* line 149, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group .button:last-child {
+  border-radius: 0 3px 3px 0;
+}
+/* line 152, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+/* line 158, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group.button-group-round .button {
+  float: left;
+  margin-left: 0;
+  border-right: none;
+}
+/* line 163, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group.button-group-round .button:first-child {
+  border-radius: 21px 0 0 21px;
+}
+/* line 166, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .button-group.button-group-round .button:last-child {
+  border-radius: 0 21px 21px 0;
+}
+/* line 171, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .pagination-container {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-left: none;
+  border-right: none;
+  margin: 0 -40px;
+  padding: 0 40px;
+}
+/* line 181, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .pagination .previous_page, #admin_bar .pagination .next_page, #admin_bar .pagination em.current, #admin_bar .pagination a {
+  color: #999;
+  display: inline-block;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 8px;
+}
+/* line 190, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .pagination .previous_page:first-child, #admin_bar .pagination .next_page:first-child, #admin_bar .pagination em.current:first-child, #admin_bar .pagination a:first-child {
+  padding-left: 0;
+}
+/* line 193, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar .pagination .disabled {
+  display: none;
+}
+/* line 198, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] {
+  position: relative;
+}
+/* line 201, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul, #admin_bar [data-dropdown] .sliding-dropdown {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  display: none;
+  list-style: none;
+  margin: 0;
+  margin-top: 6px;
+  padding: 6px 0;
+  position: absolute;
+  width: 200px;
+  z-index: 999;
+}
+/* line 215, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul.animated, #admin_bar [data-dropdown] .sliding-dropdown.animated {
+  animation-duration: 0.3s;
+  display: block;
+}
+/* line 219, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul.no-animation, #admin_bar [data-dropdown] .sliding-dropdown.no-animation {
+  animation: none;
+}
+/* line 222, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul:before, #admin_bar [data-dropdown] .sliding-dropdown:before {
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  left: 11px;
+  top: -8px;
+  width: 0;
+  border-bottom: 8px solid #aaa;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+/* line 234, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul:after, #admin_bar [data-dropdown] .sliding-dropdown:after {
+  content: "";
+  display: block;
+  height: 0;
+  position: absolute;
+  left: 12px;
+  top: -7px;
+  width: 0;
+  border-bottom: 7px solid #fff;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+}
+/* line 246, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul.align-right, #admin_bar [data-dropdown] .sliding-dropdown.align-right {
+  right: 0px;
+}
+/* line 249, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul.align-right:before, #admin_bar [data-dropdown] .sliding-dropdown.align-right:before {
+  left: auto;
+  right: 11px;
+}
+/* line 253, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul.align-right:after, #admin_bar [data-dropdown] .sliding-dropdown.align-right:after {
+  left: auto;
+  right: 12px;
+}
+/* line 257, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul li.divider {
+  border-top: 1px solid #e9e9e9;
+  margin: 8px 0;
+}
+/* line 261, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul li a, #admin_bar [data-dropdown] ul li button {
+  background: none;
+  color: #333;
+  display: block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+}
+/* line 271, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul li a:hover, #admin_bar [data-dropdown] ul li button:hover {
+  background-color: #6865b4;
+  color: #fff;
+}
+/* line 275, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] ul li a:before, #admin_bar [data-dropdown] ul li button:before {
+  margin-right: 8px;
+}
+/* line 278, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown {
+  padding: 0;
+  width: 300px;
+}
+/* line 282, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls {
+  border-bottom: 1px solid #eaeaea;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 44px;
+  text-align: center;
+}
+/* line 290, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .slide-title {
+  display: none;
+}
+/* line 293, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .slide-title.active {
+  display: block;
+}
+/* line 296, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .previous, #admin_bar [data-dropdown] .sliding-dropdown .slide-controls .next {
+  color: #666;
+  font-size: 12px;
+  outline: none;
+  padding: 0 12px;
+  position: absolute;
+  top: 0px;
+}
+/* line 304, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .previous .icon:before, #admin_bar [data-dropdown] .sliding-dropdown .slide-controls .next .icon:before {
+  line-height: 44px;
+}
+/* line 307, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .previous:hover, #admin_bar [data-dropdown] .sliding-dropdown .slide-controls .next:hover {
+  color: #333;
+}
+/* line 310, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .previous.muted, #admin_bar [data-dropdown] .sliding-dropdown .slide-controls .next.muted {
+  color: #ccc;
+  cursor: default;
+}
+/* line 314, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .previous {
+  left: 0px;
+}
+/* line 317, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls .next {
+  right: 0px;
+}
+/* line 320, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-controls.open {
+  display: block;
+}
+/* line 323, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide {
+  display: none;
+  text-align: center;
+}
+/* line 327, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide.active {
+  display: block;
+}
+/* line 330, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide p {
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 16px;
+}
+/* line 336, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide p.muted {
+  color: #999;
+}
+/* line 339, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide .button {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin: -1px;
+  width: 300px;
+}
+/* line 345, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide .button.button-primary {
+  background: #efeef7;
+  border: 1px solid #cdcce6;
+  color: #6865b4;
+}
+/* line 350, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide .button.button-primary:hover {
+  background: #6865b4;
+  border: 1px solid #6865b4;
+  color: #fff;
+}
+/* line 355, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-dots {
+  margin: 12px;
+  text-align: center;
+}
+/* line 359, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-dots .slide-dot {
+  background: #ccc;
+  border-radius: 2px;
+  display: inline-block;
+  height: 4px;
+  width: 4px;
+}
+/* line 366, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_buttons.sass */
+#admin_bar [data-dropdown] .sliding-dropdown .slide-dots .slide-dot.active {
+  background: #333;
+}
+/* line 20, /Users/salatielq/.rbenv/versions/2.3.4/lib/ruby/gems/2.3.0/gems/spina-0.12.0/app/assets/stylesheets/spina/_admin_editing.sass */
+#admin_bar .button.button-hollow {
+  background: #fff;
+}
