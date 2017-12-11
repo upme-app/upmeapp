@@ -6,10 +6,16 @@ class ProfileController < ApplicationController
 
   end
 
+  def edit_profile
+    set_tab
+  end
+
   def save_profile
+    set_tab
+    
     if current_user.update_attributes(user_params)
       flash[:success] = 'Perfil salvo!'
-      redirect_to my_profile_path
+      redirect_to edit_profile_url + "?tab=#{@tab}"
     else
       flash[:danger] = 'Não conseguimos salvar suas informações.'
       redirect_to :back
@@ -80,6 +86,11 @@ class ProfileController < ApplicationController
 
   def user_params
     params.require(:user).permit(:linkedin, :email, :universidade, :semestre, :phone, :city, :about, :nome_empresa, :curso, :cpf, :telefone, :endereco, :numero, :bairro, :cidade, :uf, :cep, :tipo_pessoa, :natureza, :site)
+  end
+
+  def set_tab
+    @tab = 0
+    @tab = params[:tab].to_i if params[:tab]
   end
 
 end

@@ -13,11 +13,6 @@
             <%= devise_error_messages! %>
 
             <div class="col">
-              <span class="upme-bolder"> Email</span><br />
-              <%= f.email_field :email, class: 'validate form-control' %>
-            </div>
-
-            <div class="col">
               <span class="upme-bolder"> Senha atual</span><br />
               <span class="help-text">Precisamos da sua senha para alterar estes dados</span>
               <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
