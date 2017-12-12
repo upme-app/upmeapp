@@ -21,11 +21,14 @@
             .profile
               = image_tag logourl(@project.user), class: 'profile-image'           
               .profile-name= @project.user.nome_empresa
+            %br
+              
           - else
             .label Professor:
             .profile
               = image_tag profilepic(@project.user), class: 'profile-image'
               .profile-name= @project.user.full_name
+            %br
           %p= @project.user.about
           %i.up-pin
           = @project.user.cidade
@@ -46,82 +49,86 @@
             .label Objetivo deste projeto
             %p= @project.objective
             
-            .label Público-alvo
-            %p= @project.target_audience
-            
             .label Mais informações
             %p= @project.description
 
             = render partial: 'natureza_project'
-        .card
-          .card-header
-            .label-title Próximos passos:
-          .card-body
-            .row
-              .col-2
-                = image_tag 'app/send.png'
-              .col-10
-                .label 1. Envie uma notificação e mostre seu interesse
-                %p Clique no botão azul Enviar solicitação para enviar uma mensagem para o dono deste projeto. Aguarde a resposta dele, e caso seja aceito você vai iniciar a fase de negociação.
-                
-            .row
-              .col-2
-                = image_tag 'app/handshake.png'
-              .col-10
-                .label 2. Negocie, definam o escopo e prazo
-                %p É um requisito para iniciar o projeto que vocês tenham definido o escopo do projeto, o que será entregue no final e os prazos de tudo.
-                
-            .row
-              .col-2
-                = image_tag 'app/checklist.png'
-              .col-10
-                .label 3. Acompanhe as entregas e dê feedback
-                %p Depois disso é só acompanhar as entregas feitas pelos grupos através do nosso gerenciador de projetos, Ah! se você for o cliente do projeto pedimos que deixe seu feedback para os alunos sempre que uma entrega for feita.
-                
-            .row
-              .col-2
-                = image_tag 'app/fireworks.png'
-              .col-10
-                .label 4. Projeto concluído
-                %p A recompensa de todo trabalho está em um bom resultado, siga os passos corretamente e no final você vai ter um super projeto em suas mãos.
                 
         .card
-          .card-header
-            .label-title Perguntas frequentes:
-          .card-body
-            #faq{:role => "tablist"}
-              #headingOne{:role => "tab"}
-                .label{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-toggle" => "collapse", :href => "#collapseOne"}
-                  Os alunos recebem para fazer a consultoria ou o projeto?
-                  %i.fa
-              #collapseOne.collapse.show{"aria-labelledby" => "headingOne", "data-parent" => "#accordion", :role => "tabpanel"}
-                %p Empresas não pagam pelos projetos e alunos não recebem para executar os trabalhos. Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. No entanto, a UpMe! Cobra uma taxa de operação pelo match.
+          .card-header.d-flex.justify-content-between{"aria-controls" => "faq-collapse", "aria-expanded" => "true", "data-parent" => "#exampleAccordion", "data-toggle" => "collapse", :href => "#faq-collapse"}
+            .label.float-left Perguntas frequentes
+            .btn.btn-default.btn-small
+              Veja aqui
+          #faq-collapse.collapse{:role => "tabpanel"}
+            .card-body
+              #faq{:role => "tablist"}
+                #headingOne{:role => "tab"}
+                  
+                  .label Os alunos recebem para fazer a consultoria ou o projeto?
+                  %p Empresas não pagam pelos projetos e alunos não recebem para executar os trabalhos. Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. No entanto, a UpMe! Cobra uma taxa de operação pelo match.
 
-              #headingTwo{:role => "tab"}
-                .label.collapsed{"aria-controls" => "collapseTwo", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseTwo"}
-                  As empresas precisam pagar para a UpMe?
-                  %i.fa
-              #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion", :role => "tabpanel"}
-                %p Sim! Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. A taxa de operação da UpMe!, realizada em parcela única, não diz respeito ao valor do projeto. Ela existe para garantir a sustentabilidade da nossa iniciativa. Ou seja, para que possamos continuar mantendo uma estrutura para conectar alunos e professores universitários à demandas reais de mercado.               
-              
-             
-
-
+                  .label As empresas precisam pagar para a UpMe?
+                  %p Sim! Os projetos ofertados na UpMe! são de natureza pró-bono, um tipo de voluntariado exercido com competência técnica e caráter profissional, não existe transição monetária entre cliente e equipe ou professor. A taxa de operação da UpMe!, realizada em parcela única, não diz respeito ao valor do projeto. Ela existe para garantir a sustentabilidade da nossa iniciativa. Ou seja, para que possamos continuar mantendo uma estrutura para conectar alunos e professores universitários à demandas reais de mercado.               
+          
     .col-12.col-md-3
       .card
         .card-body
           - if current_user and !@project.started and @project.user_id != current_user.id
             - if @project.user.professor? and current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
-              %div.text-center
-                .label Ficou interessado nesta oferta do professor?
-                %p Envie uma solicitação de projeto para iniciar a negociação com o(a) professor(a).
-                .btn.btn-primary{data: {toggle: "modal", target: "#modal1"} } Enviar solicitação!
-            - if @project.user.empresa? and !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
-              %div.text-center
-                .label Ficou interessado nesta demanda da empresa?
-                %p Envie uma solicitação de projeto para iniciar a negociação com a empresa.
-                .btn.btn-primary{data: {toggle: "modal", target: "#modal2"} } Enviar solicitação!
+              %div
+                .label.mb-3 Ficou interessado nesta oferta?
+                .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal1"} }
+                  %i.up-negociation
+                  Quero contratar
+                
+                %p.d-flex.mt-3 É grátis. Cobramos somente quando a consultoria é iniciada, veja os preços.
 
+                  
+            - if @project.user.empresa? and !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
+              %div
+                .label Ficou interessado nesta demanda da empresa?
+                %p Transforme trabalhos da sua disciplina em serviço de consultoria para seus alunos proporcianando experiencia de mercado.
+                .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal2"} }
+                  %i.up-negociation
+                  Ofertar consultoria
+               
+            - else
+              %div
+                .btn.btn-success.btn-full-width.disabled
+                  %i.up-check-sign
+                  Solicitação enviada
+            - if @project.user.professor? 
+              %hr
+                .label.mb-3 O que vem a seguir:
+                #next-steps-project
+                  .step
+                    .step-number.active 1
+                    .step-text Quero contratar
+                  .step
+                    .step-number 2
+                    .step-text Aguarde a resposta do professor
+                  .step
+                    .step-number 3
+                    .step-text Negocie e aceite o escopo da consultoria
+                  .step
+                    .step-number 4
+                    .step-text Dê inicio a consultoria
+            - if @project.user.empresa? 
+              %hr
+                .label.mb-3 O que vem a seguir:
+                #next-steps-project
+                  .step
+                    .step-number.active 1
+                    .step-text Ofertar consultoria
+                  .step
+                    .step-number 2
+                    .step-text Aguarde a resposta da empresa
+                  .step
+                    .step-number 3
+                    .step-text Defina o escopo da consultoria
+                  .step
+                    .step-number 4
+                    .step-text Dê inicio a consultoria
           - unless current_user
             .label Ficou interessado no projeto?
             = link_to 'Faça seu cadastro!', registrar_path + "?voltar_para_projeto=#{@project.id}", class: 'btn btn-primary'

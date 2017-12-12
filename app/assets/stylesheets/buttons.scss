@@ -33,9 +33,38 @@
         background-color: darken($blue, 5%) !important;
     }
 }
+.btn-success {
+    @extend .btn;
+    background-color: $green;
+    border: none;
+    &:hover {
+        background-color: darken($green, 3%);
+    }
+    &:active,
+    &.focus,
+    &:focus {
+        background-color: darken($green, 5%) !important;
+    }
+}
+.btn-success.disabled {
+  @extend .btn;
+  background-color: $green;
+  border: none;
+  cursor: initial !important;
+  &:hover {
+      background-color: $green;
+  }
+  &:active,
+  &.focus,
+  &:focus {
+    background-color: $green;
+  }
+}
 .btn-default {
   @extend .btn;
   color: $grey;
+  border: 1px solid $border-color;
+  
   &:hover {
     background-color: $bg-light;
     color: $grey;
@@ -46,14 +75,8 @@
       background-color: darken($bg-light, 5%) !important;
   }
 }
-.btn-upme-blue {
-  background: $blue;
-  color: #ffffff;
-}
-
-.btn-upme-white {
-  background: white;
-  color: #333;
+.nav-item .btn-default {
+  border: none;
 }
 .btn-icon {
   width: 4rem;

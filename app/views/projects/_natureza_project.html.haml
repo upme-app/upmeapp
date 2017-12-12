@@ -1,4 +1,3 @@
-%br
 .label
   - if @project.user.empresa?
     = 'Natureza'
@@ -6,17 +5,15 @@
     = 'O projeto atende a organizações'
 
 .row
+  %br
   - if @project.nat_privada
     .col.s12.m4.center-align
       🏢  Empresa privada
-      %br
   - if @project.nat_publica
     .col.s12.m4.center-align
       🏛️ Empresa pública
-      %br
       
   - if @project.nat_ong
     .col.s12.m4.center-align
       🙌  ONG/Social
-      %br
       

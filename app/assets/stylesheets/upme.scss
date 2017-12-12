@@ -519,7 +519,6 @@ label {
     font-size: 16px;
   }
   p {
-    color: #666;
     font-size: 16px;
   }
   .comment-row {
@@ -879,18 +878,40 @@ label {
 .modal.fade.show {
   background-color: rgba(0,0,0,.4) 
 }
-#faq {
-  .collapse {
+#next-steps-project {
+  .step {
+    display: flex;
+    position: relative;
     margin-bottom: 1rem;
+    &:after {
+      content: '';
+      width: 1px;
+      height: 2rem;
+      left: 11px;
+      background-color: #00C7FF;
+      display: block;
+      position: absolute;
+      top: 18px;
+    }
+    &:last-child:after {
+      display: none;
+    }
   }
-  .label {
-    cursor: pointer;
+  .step-number {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid $blue;
+    text-align: center;
+    line-height: 1.2rem;
+    border-radius: 1.5rem;
+    background-color: #fff;
+    color: $blue;
+    z-index: 8;
+    margin-right: .5rem;
+    &.active {
+      background-color: $blue;
+      color: #fff; 
+    }
+    
   }
-}
-[data-toggle="collapse"] i:before{   
-  content: "\f139";
-}
-
-[data-toggle="collapse"].collapsed i:before{
-  content: "\f13a";
 }
