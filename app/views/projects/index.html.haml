@@ -37,12 +37,14 @@
      
     .row
       .col-12.col-md-3
-        - if action_name == 'index'
-          = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
-        - else
-          = link_to projects_path, class: 'btn btn-default btn-small' do
-            %i.up-arrow-left
-            Voltar para askmdalksdjlasjd
+      .card
+        .card-body
+          - if action_name == 'index'
+            = link_to 'Projetos arquivados', filed_projects_path, class: 'label-upme'
+          - else
+            = link_to projects_path, class: 'btn btn-default btn-small' do
+              %i.up-arrow-left
+              Voltar
 
       .col-lg-9
         .row
@@ -53,11 +55,17 @@
     .row
       .col.m4.s12.offset-m4.text-center
         %br
-        %i.no-projects-icon-plus{data: {feather: 'plus-circle'}}
-        %h2.upme-sub-title.text-center
-          Você ainda não tem
-          %br projetos cadastrados :(
-        %br
-        = link_to 'Cadastrar primeiro projeto', new_project_path, class: 'btn-primary'
+        .text-center
+          = image_tag 'app/no-projects.png', class: 'mb-3'
+          - if current_user.empresa?
+            .label-title.mb-3 Você ainda não tem nenhuma demanda cadastrada
+          - else
+            .label-title.mb-3 Você ainda não tem nenhuma oferta cadastrada
+
+        - if current_user.empresa?
+          = link_to 'Cadastrar demanda', new_project_path, class: 'btn btn-outline-primary'
+        - else
+          = link_to 'Cadastrar oferta', new_project_path, class: 'btn btn-outline-primary'
+
 
 = render 'layouts/upme_footer'
