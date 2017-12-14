@@ -74,29 +74,27 @@
       .card
         .card-body
           - if current_user and !@project.started and @project.user_id != current_user.id
-            - if @project.user.professor? and current_user.empresa? and !ClientSolicitation.solicitation_exists(@project, current_user)
-              %div
-                .label.mb-3 Ficou interessado nesta oferta?
-                .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal1"} }
-                  %i.up-negociation
-                  Quero contratar
-                
-                %p.d-flex.mt-3 É grátis. Cobramos somente quando a consultoria é iniciada, veja os preços.
-
+            - if @project.user.professor? and current_user.empresa?
+              - if !ClientSolicitation.solicitation_exists(@project, current_user)
+                %div
+                  .label.mb-3 Ficou interessado nesta oferta?
+                  .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal1"} }
+                    %i.up-negociation
+                    Quero contratar
                   
-            - if @project.user.empresa? and !current_user.empresa? and !MemberSolicitation.solicitation_exists(@project, current_user)
-              %div
-                .label Ficou interessado nesta demanda da empresa?
-                %p Transforme trabalhos da sua disciplina em serviço de consultoria para seus alunos proporcianando experiencia de mercado.
-                .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal2"} }
-                  %i.up-negociation
-                  Ofertar consultoria
-               
-            - else
-              %div
-                .btn.btn-success.btn-full-width.disabled
-                  %i.up-check-sign
-                  Solicitação enviada
+                  %p.d-flex.mt-3 É grátis. Cobramos somente quando a consultoria é iniciada, veja os preços.
+              - else
+                = render partial: 'projects/solicitacao_enviada'
+            - if @project.user.empresa? and !current_user.empresa?
+              - if !MemberSolicitation.solicitation_exists(@project, current_user)
+                %div
+                  .label Ficou interessado nesta demanda da empresa?
+                  %p Transforme trabalhos da sua disciplina em serviço de consultoria para seus alunos proporcianando experiencia de mercado.
+                  .btn.btn-primary.btn-full-width{data: {toggle: "modal", target: "#modal2"} }
+                    %i.up-negociation
+                    Ofertar consultoria
+              - else
+                = render partial: 'projects/solicitacao_enviada'
             - if @project.user.professor? 
               %hr
                 .label.mb-3 O que vem a seguir:
