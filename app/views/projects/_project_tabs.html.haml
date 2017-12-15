@@ -1,9 +1,9 @@
 .card
   .card-body
-    .label Projeto
+    .label-title Projeto
     %h1.title= @project.title
   %ul.list-group.list-group-flush
-    = link_to 'Projeto', project_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'show' ? 'active' : '')
+    = link_to 'Sobre', project_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'show' ? 'active' : '')
     = link_to 'Agenda', project_events_path(project.id), class: 'list-group-item list-group-item-action ' + ((controller_name == 'project_events' and action_name == 'index') ? 'active' : '')
     = link_to timeline_path(project.id), class: 'list-group-item list-group-item-action ' + (action_name == 'timeline' ? 'active' : '') do
       Linha do Tempo

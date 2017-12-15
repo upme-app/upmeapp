@@ -28,21 +28,8 @@
                   %option{:value => a.name, selected: "selected"}= a.name
                 - else
                   %option{:value => a.name}= a.name
-            .input-field
-              - if sou_empresa?
-                = f.label :objective, 'Objetivos da demanda', class: 'label'
-              - if sou_professor?
-                = f.label :objective, 'Objetivos do Projeto', class: 'label'
-              = f.text_area :objective, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva aqui'
-              .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
-            .input-field
-              = f.label :description, 'Mais Informações', class: 'label'
-              = f.text_area :description, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva outras informações'
-              .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
-            
-            %br
             - if current_user.professor?
-              .label A quem o projeto se destina
+              .label.mt-4 A quem o projeto se destina
               .row
                 .col.s4
                   = f.check_box :nat_privada
@@ -54,6 +41,17 @@
                   = f.check_box :nat_ong
                   = f.label :nat_ong, '🙌  ONG/Social'
             
+            .input-field
+              - if sou_empresa?
+                = f.label :objective, 'Objetivos da demanda', class: 'label'
+              - if sou_professor?
+                = f.label :objective, 'Objetivos do Projeto', class: 'label'
+              = f.text_area :objective, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva aqui'
+              .help-text (Ex.: Divulgação ou publicidade da organização, melhoria na gestão, melhor o meio ambiente de trabalho, etc)
+            .input-field
+              = f.label :description, 'Descrição', class: 'label'
+              = f.text_area :description, class: 'form-control', data: { length: 350 }, placeholder: 'Escreva outras informações'
+              .help-text (Aproveite esse espaço para escrever detalhes do projeto que chamem a atenção para o match!)
            
             .row  
               .col
@@ -68,12 +66,12 @@
                   - if sou_empresa?
                     = submit_tag 'Salvar demanda', class: 'btn btn-primary float-right'
                   - if sou_professor?
-                    = submit_tag 'Salvar projeto', class: 'btn btn-primary float-right'
+                    = submit_tag 'Salvar oferta', class: 'btn btn-primary float-right'
                 - else  
                   - if sou_empresa?
-                    = submit_tag 'Salvar demanda', class: 'btn btn-primary float-right'
+                    = submit_tag 'Criar demanda', class: 'btn btn-primary float-right'
                   - if sou_professor?
-                    = submit_tag 'Salvar projeto', class: 'btn btn-primary float-right'
+                    = submit_tag 'Criar oferta', class: 'btn btn-primary float-right'
       
 
 :javascript

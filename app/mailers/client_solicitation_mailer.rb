@@ -4,14 +4,14 @@ class ClientSolicitationMailer < ApplicationMailer
     @client = client
     @project_owner = project_owner
     @project = project
-    mail(to: @project_owner.email, subject: "Já tem cliente interessado na sua oferta!")
+    mail(to: @project_owner.email, subject: "Tem empresa interessada na sua oferta!")
   end
 
   def accept(client, project_owner, project)
     @client = client
     @project_owner = project_owner
     @project = project
-    mail(to: @client.email, subject: "Sua empresa foi selecionada para atender o projeto #{@project.title}!")
+    mail(to: @client.email, subject: "Sua empresa foi selecionada para receber o projeto #{@project.title}!")
   end
 
   def refuse(client, project_owner, project)

@@ -146,7 +146,7 @@
         .label Edite sua mensagem
         = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
       .modal-footer
-        %button.btn-default{type: :button} Cancelar
+        %button.btn-default{data: {dismiss: "modal"}} Cancelar
         %button.btn-primary Enviar Solicitação
 
 #modal2.modal.fade
@@ -161,7 +161,7 @@
         .label Edite sua mensagem
         = text_area_tag :message, "Olá! Adoraria fazer parte do seu projeto! Se quiser saber mais sobre mim, olhe meu perfil. Obrigado(a)" ,class: "form-control"
       .modal-footer
-        %button.btn-default{type: :button} Cancelar
+        %button.btn-default{data: {dismiss: "modal"}} Cancelar
         %button.btn-primary Enviar Solicitação
 
 = render 'layouts/upme_footer'
