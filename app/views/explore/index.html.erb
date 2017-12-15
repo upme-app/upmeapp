@@ -9,77 +9,68 @@
 <div class="explore-bg"></div>
 <div class="container">
   <div class="row">
-    <div class="col d-flex justify-content-between">
-      <% if current_user.empresa? %>
-      <h1 class="title">Ofertas de professores</h1>
-      <% else %>
-      <h1 class="title">Demandas de empresas</h1>
-      <% end %>
-        <a class="btn btn-light btn-small no-border" data-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">
-          <i class="up-help-circle"></i>
-          Ajuda
-        </a>
-    </div>
-    <div>
-
-    </div>
-  </div>
-  <div class="col m5"></div>
-
-<div class="row">
-  <div class="col-lg-3">
-    <div class="card">
-      <div class="card-body">
-        <div class="label">Categorias</div>
-        <p class="text">Selecione a categoria e clique em filtrar.</p>
-        <%= form_tag explore_path, method: :get do %>
-        <% @all_areas.each do |selected_area| %>
-        <%= check_box_tag('areas_interesse[]', value = selected_area.id, checked =(@selected_areas.map {|item| item.id}.include? selected_area.id), options = { id: "area_de_interesse_#{selected_area.id}" }) %>
-        <%= label_tag "area_de_interesse_#{selected_area.id}", selected_area.name %>
-        <% end %>
-        <div class="row">
-          <div class="col">
-            <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary btn-small") %>
-          </div>
+    <div class="col-12 col-md-7">
+      <div class="page-header">
+        <div>
+          <% if current_user.empresa? %>
+              <h1 class="title">Ofertas de professores</h1>
+          <% else %>
+              <h1 class="title">Demandas de empresas</h1>
+          <% end %>
         </div>
+      </div>
+    </div>
+    <div class="col m5"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="label">Categorias</div>
+          <p class="text">Selecione a categoria e clique em filtrar.</p>
+          <%= form_tag explore_path, method: :get do %>
+              <% @all_areas.each do |selected_area| %>
+                <%= check_box_tag('areas_interesse[]', value = selected_area.id, checked =(@selected_areas.map {|item| item.id}.include? selected_area.id), options = { id: "area_de_interesse_#{selected_area.id}" }) %>
+                <%= label_tag "area_de_interesse_#{selected_area.id}", selected_area.name %>
+              <% end %>
+              <div class="row">
+                <div class="col">
+                  <%= submit_tag("Filtrar", class: "btn btn-sm btn-primary btn-small") %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="row">
+        <%- p_count = 0 %>  
+        <% @avaliable_projects.each do |project| %>
+          <%- if @selected_areas.size == 0 or (project.project_area_de_interesse.pluck(:area_de_interesse_id) & @selected_areas.pluck(:id)).size > 0 %>
+            <%- p_count += 1 %>
+            <%= render partial: 'projects/project_box', locals: {project: project} %>
+          <% end %>
+        <% end %>
+        <%- if p_count == 0 %>
+          <div class="upme-sub-title">Nenhum projeto foi encontrado.</div>
         <% end %>
       </div>
     </div>
-  </div>
-  
-  <div class="col-lg-9">
-            
-      <div class="collapse multi-collapse mb-3" id="multiCollapseExample1">
-          <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-          </div>
-        </div>
-    <div class="row">
-      <%- p_count = 0 %>  
-      <% @avaliable_projects.each do |project| %>
-      <%- if @selected_areas.size == 0 or (project.project_area_de_interesse.pluck(:area_de_interesse_id) & @selected_areas.pluck(:id)).size > 0 %>
-      <%- p_count += 1 %>
-      <%= render partial: 'projects/project_box', locals: {project: project} %>
-      <% end %>
-      <% end %>
-      <%- if p_count == 0 %>
-      <div class="upme-sub-title">Nenhum projeto foi encontrado.</div>
-      <% end %>
-    </div>
+
   </div>
 </div>
 
-
-
 <script>
-  
-  $(document).ready(function () {
-    $("#e1").select2({
-      tags: true,
-      multiple: true
+
+    $(document).ready(function () {
+        $("#e1").select2({
+            tags: true,
+            multiple: true
+        });
     });
-  });
-  
-  
+
+
 </script>
 <%= render 'layouts/upme_footer' %>
