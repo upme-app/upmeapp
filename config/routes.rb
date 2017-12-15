@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   match 'meus-projetos/:id/duplicar', as: :duplicate_project, to: 'projects#duplicate', via: :get
   match 'meus-projetos/:id/restaurar', as: :restore_project, to: 'projects#restore', via: :get
   match 'meus-projetos/:id/linha-do-tempo', as: :timeline, to: 'projects#timeline', via: :get
+  match 'meus-projetos/:id/negociacao', as: :negociation, to: 'projects#negociation', via: :get
   # project uploads
   match 'meus-projetos/:id/arquivos', as: :project_uploads, to: 'project_uploads#index', via: :get
   match 'meus-projetos/:id/arquivos/:file_name/:ext', as: :project_uploads_download, to: 'project_uploads#download', via: :get

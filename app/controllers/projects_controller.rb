@@ -60,6 +60,10 @@ class ProjectsController < ApplicationController
       redirect_to public_project_path(@project.id)
     end
   end
+  
+  def negociation
+
+  end
 
   def duplicate
     @duplicated_project = @project
