@@ -172,9 +172,12 @@
         'tolerance': 70,
         'side': 'right'
       });
-      document.querySelector('#mobile-menu-toggle').addEventListener('click', function() {
-        slideout.toggle().fade();
-      });
+      var mobile_menu_toggle = document.querySelector('#mobile-menu-toggle');
+      if(mobile_menu_toggle != null) {
+        mobile_menu_toggle.addEventListener('click', function() {
+          slideout.toggle().fade();
+        });
+      }
       $('#mobile-menu-toggle').click(function(event) {
         $(this).toggleClass('clicked');
       });
