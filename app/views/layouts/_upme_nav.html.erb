@@ -42,22 +42,6 @@
             </li>
         <% end %>
 
-        <% if current_user %>
-          <li class="nav-item">
-
-            <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default open-upme-notifications', id: 'notifications-link' do %>
-            <i id='btn-bell' class="open-upme-notifications nav-bg-bell up-bell">
-            </i>
-              <%- if current_user.unread_notifications_size > 0 %>
-              <div id='unread-notifications-size'>
-                <%= current_user.unread_notifications_size %>
-              </div>
-            <%- end %>
-            
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
      
       <% if sou_empresa? %>
           <form class="form-inline ml-auto">
@@ -72,7 +56,25 @@
           
     </div>
     <ul class="navbar-nav ml-auto">
-      <% if current_user %>
+
+          <% if current_user %>
+            <% if current_user %>
+              <li class="nav-item">
+
+                <%= link_to '#', onclick: "show_notifications()",class: 'btn btn-default open-upme-notifications', id: 'notifications-link' do %>
+                <i id='btn-bell' class="open-upme-notifications nav-bg-bell up-bell">
+                </i>
+                  <%- if current_user.unread_notifications_size > 0 %>
+                  <div id='unread-notifications-size'>
+                    <%= current_user.unread_notifications_size %>
+                  </div>
+                <%- end %>
+                
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          
           <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%- if current_user.empresa? %>
               <%= image_tag logourl(current_user),class: 'profile-image profile-image-navbar'%>
