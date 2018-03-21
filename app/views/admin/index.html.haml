@@ -1,28 +1,27 @@
-.center-align
-  %h1.center-align UPME ADMIN
-
+.text-center
+  %h2.text-center UPME ADMIN
 
   = link_to 'Voltar para a plataforma', projects_path
 
   %br
   %br
 
-  = link_to 'Administrar Projetos', admin_projects_path
+  = link_to 'Projetos', admin_projects_path
 
   %br
   %br
 
-  = link_to 'Administrar Usuários', admin_users_path
+  = link_to 'Usuários', admin_users_path
 
 %hr
-%h2.center-align Dashboard
-%h3.center-align= "#{Project.all.size} Projetos"
-%h6.center-align= "#{Project.projects_running.size} em andamento"
-%h6.center-align= "#{Project.all_ofertas.size} aguardando cliente"
-%h6.center-align= "#{Project.all_demandas.size} aguardando professor/aluno"
-%h6.center-align= "#{0} finalizados"
-%h6.center-align= "#{Project.deleted_projects.size} arquivados"
-%h3.center-align= "#{User.all.size} Usuários"
-%h6.center-align= "#{User.where(user_type: :aluno).size} Alunos"
-%h6.center-align= "#{User.where(user_type: :professor).size} Professores"
-%h6.center-align= "#{User.where(user_type: :empresa).size} Empresas"
+%h2.text-center Dashboard
+%h3.text-center= "#{Project.all.size} Projetos"
+%h6.text-center "#{Project.projects_running.size} em andamento"
+%h6.text-center "#{Project.all_ofertas.size} aguardando cliente"
+%h6.text-center "#{Project.all_demandas.size} aguardando professor/aluno"
+%h6.text-center "#{0} finalizados"
+%h6.text-center "#{Project.deleted_projects.size} arquivados"
+%h3.text-center "#{User.all.size} Usuários"
+%h6.text-center "#{User.where(user_type: :aluno).size} Alunos"
+%h6.text-center "#{User.where(user_type: :professor).size} Professores"
+%h6.text-center "#{User.where(user_type: :empresa).size} Empresas"
